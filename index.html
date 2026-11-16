@@ -70,26 +70,41 @@
 
     <!-- Cabeçalho / Navbar -->
     <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-200/80">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-16 py-2 flex flex-wrap items-center justify-between gap-3">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-blue-500 flex items-center justify-center text-white shadow-md shadow-indigo-500/20">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-blue-500 flex items-center justify-center text-white shadow-md shadow-indigo-500/20 shrink-0">
                     <i data-lucide="activity" class="w-6 h-6"></i>
                 </div>
                 <div>
-                    <h1 class="font-display font-bold text-lg sm:text-xl text-slate-900 leading-tight">Corpo Humano <span class="text-indigo-600">360°</span></h1>
-                    <p class="text-xs text-slate-500 hidden sm:block">Atlas Anatômico Interativo & Curiosidades</p>
+                    <h1 id="header-title" class="font-display font-bold text-lg sm:text-xl text-slate-900 leading-tight">Corpo Humano <span class="text-indigo-600">360°</span></h1>
+                    <p id="header-subtitle" class="text-xs text-slate-500 hidden sm:block">Atlas Anatômico Interativo & Curiosidades</p>
                 </div>
             </div>
 
-            <nav class="flex items-center gap-2 sm:gap-4">
-                <button onclick="scrollToSection('explorer-section')" class="px-3 py-2 text-sm font-medium text-slate-600 hover:text-indigo-600 rounded-lg hover:bg-slate-100 transition">
-                    Explorar Sistemas
-                </button>
-                <button onclick="scrollToSection('quiz-section')" class="px-4 py-2 text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl shadow-sm shadow-indigo-600/20 transition flex items-center gap-2">
-                    <i data-lucide="brain-circuit" class="w-4 h-4"></i>
-                    <span>Mini-Quiz</span>
-                </button>
-            </nav>
+            <div class="flex items-center gap-2 sm:gap-4 ml-auto">
+                <!-- Seletor de Idiomas (PT / EN / ES) -->
+                <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200/80" role="group" aria-label="Seletor de Idioma">
+                    <button onclick="setLanguage('pt')" id="lang-btn-pt" class="px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 bg-white text-indigo-600 shadow-xs">
+                        <span>🇧🇷</span><span>PT</span>
+                    </button>
+                    <button onclick="setLanguage('en')" id="lang-btn-en" class="px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 text-slate-600 hover:text-slate-900">
+                        <span>🇺🇸</span><span>EN</span>
+                    </button>
+                    <button onclick="setLanguage('es')" id="lang-btn-es" class="px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 text-slate-600 hover:text-slate-900">
+                        <span>🇪🇸</span><span>ES</span>
+                    </button>
+                </div>
+
+                <nav class="flex items-center gap-1.5 sm:gap-3">
+                    <button id="nav-explore-btn" onclick="scrollToSection('explorer-section')" class="hidden md:inline-block px-3 py-2 text-sm font-medium text-slate-600 hover:text-indigo-600 rounded-lg hover:bg-slate-100 transition">
+                        Explorar Sistemas
+                    </button>
+                    <button onclick="scrollToSection('quiz-section')" class="px-3.5 py-2 text-xs sm:text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl shadow-sm shadow-indigo-600/20 transition flex items-center gap-1.5">
+                        <i data-lucide="brain-circuit" class="w-4 h-4"></i>
+                        <span id="nav-quiz-btn">Mini-Quiz</span>
+                    </button>
+                </nav>
+            </div>
         </div>
     </header>
 
@@ -97,12 +112,12 @@
     <section class="bg-gradient-to-b from-white to-slate-50 pt-8 pb-6 px-4 sm:px-6 lg:px-8 border-b border-slate-200/60">
         <div class="max-w-7xl mx-auto text-center max-w-3xl">
             <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-100 mb-3">
-                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Aprendizado Visual Interativo
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> <span id="hero-badge">Aprendizado Visual Interativo</span>
             </span>
-            <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
+            <h2 id="hero-title" class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
                 Descubra a incrível máquina que é o <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-500">Corpo Humano</span>
             </h2>
-            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+            <p id="hero-subtitle" class="text-slate-600 text-sm sm:text-base leading-relaxed">
                 Clique nos órgãos diretamente no modelo anatômico ou selecione um dos seis sistemas principais abaixo para explorar suas funções vitais, estruturas e fatos surpreendentes.
             </p>
         </div>
@@ -123,9 +138,9 @@
             <div class="lg:col-span-5 bg-white rounded-3xl p-6 shadow-sm border border-slate-200/80 flex flex-col items-center relative overflow-hidden">
                 <div class="w-full flex items-center justify-between mb-2">
                     <span class="text-xs font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                        <i data-lucide="mouse-pointer-click" class="w-4 h-4 text-indigo-500"></i> Toque em um órgão
+                        <i data-lucide="mouse-pointer-click" class="w-4 h-4 text-indigo-500"></i> <span id="svg-touch-hint">Toque em um órgão</span>
                     </span>
-                    <button onclick="resetView()" class="text-xs font-medium text-indigo-600 hover:text-indigo-800 bg-indigo-50 hover:bg-indigo-100 px-2.5 py-1 rounded-lg transition">
+                    <button id="svg-view-all-btn" onclick="resetView()" class="text-xs font-medium text-indigo-600 hover:text-indigo-800 bg-indigo-50 hover:bg-indigo-100 px-2.5 py-1 rounded-lg transition">
                         Ver Todos
                     </button>
                 </div>
@@ -163,6 +178,7 @@
 
                         <!-- 1. SISTEMA ESQUELÉTICO (Costelas, Coluna, Fêmur) -->
                         <g id="layer-skeletal" class="svg-organ text-slate-500" onclick="selectSystem('skeletal')">
+                            <title id="title-skeletal">Sistema Esquelético</title>
                             <!-- Coluna Vertebral -->
                             <rect x="146" y="95" width="8" height="175" rx="4" fill="#94A3B8" opacity="0.65" />
                             <!-- Caixa Torácica (Costelas estilizadas) -->
@@ -179,6 +195,7 @@
 
                         <!-- 2. SISTEMA MUSCULAR (Peitoral, Bíceps, Quadríceps) -->
                         <g id="layer-muscular" class="svg-organ text-pink-500" onclick="selectSystem('muscular')">
+                            <title id="title-muscular">Sistema Muscular</title>
                             <!-- Deltoides e Bíceps -->
                             <path d="M98,118 Q76,125 72,155 Q84,158 94,142 Z" fill="#F472B6" opacity="0.75" />
                             <path d="M202,118 Q224,125 228,155 Q216,158 206,142 Z" fill="#F472B6" opacity="0.75" />
@@ -191,6 +208,7 @@
 
                         <!-- 3. SISTEMA RESPIRATÓRIO (Traqueia e Pulmões) -->
                         <g id="layer-respiratory" class="svg-organ text-sky-500" onclick="selectSystem('respiratory')">
+                            <title id="title-respiratory">Sistema Respiratório</title>
                             <!-- Traqueia -->
                             <rect x="146" y="96" width="8" height="34" rx="3" fill="#0284C7" />
                             <!-- Pulmão Direito -->
@@ -201,6 +219,7 @@
 
                         <!-- 4. SISTEMA CARDIOVASCULAR (Coração e Vasos Principais) -->
                         <g id="layer-cardiovascular" class="svg-organ text-red-500" onclick="selectSystem('cardiovascular')">
+                            <title id="title-cardiovascular">Sistema Cardiovascular</title>
                             <!-- Artérias Principais -->
                             <path d="M152,140 L152,110 M152,145 L125,135 M152,145 L178,135 M152,170 L152,255" 
                                   stroke="#EF4444" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8" />
@@ -211,6 +230,7 @@
 
                         <!-- 5. SISTEMA DIGESTÓRIO (Esôfago, Estômago, Fígado e Intestinos) -->
                         <g id="layer-digestive" class="svg-organ text-emerald-500" onclick="selectSystem('digestive')">
+                            <title id="title-digestive">Sistema Digestório</title>
                             <!-- Fígado -->
                             <path d="M122,196 L154,196 L146,214 L120,210 Z" fill="#15803D" opacity="0.85" />
                             <!-- Estômago -->
@@ -222,6 +242,7 @@
 
                         <!-- 6. SISTEMA NERVOSO (Cérebro e Medula) -->
                         <g id="layer-nervous" class="svg-organ text-amber-500" onclick="selectSystem('nervous')">
+                            <title id="title-nervous">Sistema Nervoso</title>
                             <!-- Cérebro -->
                             <path d="M150,25 C134,25 124,36 124,49 C124,60 132,67 144,67 L156,67 C168,67 176,60 176,49 C176,36 166,25 150,25 Z" 
                                   fill="url(#brainGrad)" stroke="#B45309" stroke-width="1.5" />
@@ -237,7 +258,7 @@
                 <!-- Legenda Interativa Inferior -->
                 <div class="w-full bg-slate-50 rounded-2xl p-3 border border-slate-200/70 text-center">
                     <p class="text-xs text-slate-500">
-                        Sistema selecionado: <strong id="svg-active-label" class="text-slate-800">Todos os Sistemas</strong>
+                        <span id="svg-selected-prefix">Sistema selecionado:</span> <strong id="svg-active-label" class="text-slate-800">Todos os Sistemas</strong>
                     </p>
                 </div>
             </div>
@@ -255,13 +276,13 @@
             <div class="bg-gradient-to-r from-indigo-600 to-blue-600 p-6 sm:p-8 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
                     <span class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider bg-white/15 px-3 py-1 rounded-full mb-2">
-                        <i data-lucide="award" class="w-3.5 h-3.5"></i> Desafio de Conhecimento
+                        <i data-lucide="award" class="w-3.5 h-3.5"></i> <span id="quiz-badge">Desafio de Conhecimento</span>
                     </span>
-                    <h3 class="font-display text-2xl font-bold">Mini-Quiz de Anatomia</h3>
-                    <p class="text-indigo-100 text-sm mt-1">Teste o que você aprendeu explorando os sistemas do corpo humano.</p>
+                    <h3 id="quiz-title" class="font-display text-2xl font-bold">Mini-Quiz de Anatomia</h3>
+                    <p id="quiz-subtitle" class="text-indigo-100 text-sm mt-1">Teste o que você aprendeu explorando os sistemas do corpo humano.</p>
                 </div>
                 <div class="bg-white/10 backdrop-blur-sm rounded-2xl px-4 py-3 text-center border border-white/20 shrink-0">
-                    <span class="block text-xs text-indigo-100 uppercase font-semibold">Pontuação</span>
+                    <span id="quiz-score-label" class="block text-xs text-indigo-100 uppercase font-semibold">Pontuação</span>
                     <span id="quiz-score-badge" class="font-display text-2xl font-extrabold">0 / 6</span>
                 </div>
             </div>
@@ -275,21 +296,133 @@
     <!-- Rodapé -->
     <footer class="bg-white border-t border-slate-200 mt-12 py-8 px-4 text-center text-slate-500 text-sm">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p class="font-medium text-slate-700">Corpo Humano 360° — Educação Científica Interativa</p>
-            <p class="text-xs">Desenvolvido para fins educativos. Explore, clique e aprenda.</p>
+            <p id="footer-title" class="font-medium text-slate-700">Corpo Humano 360° — Educação Científica Interativa</p>
+            <p id="footer-subtitle" class="text-xs">Desenvolvido para fins educativos. Explore, clique e aprenda.</p>
         </div>
     </footer>
 
-    <!-- Lógica JavaScript Completa -->
+    <!-- Lógica JavaScript Completa com Suporte Multilíngue (PT, EN, ES) -->
     <script>
         // ==========================================
-        // 1. BASE DE DADOS DOS SISTEMAS DO CORPO
+        // 1. DICIONÁRIO DE TRADUÇÕES DA INTERFACE (UI)
+        // ==========================================
+        const uiTranslations = {
+            pt: {
+                pageTitle: 'Anatomia Interativa - Sistemas do Corpo Humano',
+                headerTitleHTML: 'Corpo Humano <span class="text-indigo-600">360°</span>',
+                headerSubtitle: 'Atlas Anatômico Interativo & Curiosidades',
+                navExplore: 'Explorar Sistemas',
+                navQuiz: 'Mini-Quiz',
+                heroBadge: 'Aprendizado Visual Interativo',
+                heroTitleHTML: 'Descubra a incrível máquina que é o <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-500">Corpo Humano</span>',
+                heroSubtitle: 'Clique nos órgãos diretamente no modelo anatômico ou selecione um dos seis sistemas principais abaixo para explorar suas funções vitais, estruturas e fatos surpreendentes.',
+                svgTouchHint: 'Toque em um órgão',
+                svgViewAll: 'Ver Todos',
+                svgSelectedPrefix: 'Sistema selecionado:',
+                svgAllSystemsLabel: 'Todos os Sistemas (Visão Geral)',
+                systemBadge: 'Sistema Anatômico',
+                mainFunctionsTitle: 'Funções Principais',
+                organsTitle: 'Principais Órgãos e Estruturas',
+                factsTitle: 'Você Sabia? Fatos Curiosos',
+                quizBadge: 'Desafio de Conhecimento',
+                quizTitle: 'Mini-Quiz de Anatomia',
+                quizSubtitle: 'Teste o que você aprendeu explorando os sistemas do corpo humano.',
+                quizScoreLabel: 'Pontuação',
+                quizQuestionCounter: (curr, total) => `Pergunta ${curr} de ${total}`,
+                quizCompletedPercent: (pct) => `${pct}% concluído`,
+                quizCorrectFeedback: 'Resposta Correta!',
+                quizWrongFeedback: 'Quase lá!',
+                quizNextBtn: 'Próxima',
+                quizFinishBtn: 'Ver Resultado',
+                quizEndTitle: 'Quiz Concluído!',
+                quizEndScore: (score, total) => `Você acertou ${score} de ${total} perguntas`,
+                quizRestartBtn: 'Refazer Quiz',
+                quizMsgHigh: 'Excelente! Você domina a anatomia humana!',
+                quizMsgMid: 'Muito bem! Você tem ótimos conhecimentos sobre o corpo humano.',
+                quizMsgLow: 'Bom começo! Explore mais os sistemas acima e tente novamente.',
+                footerTitle: 'Corpo Humano 360° — Educação Científica Interativa',
+                footerSubtitle: 'Desenvolvido para fins educativos. Explore, clique e aprenda.'
+            },
+            en: {
+                pageTitle: 'Interactive Anatomy - Human Body Systems',
+                headerTitleHTML: 'Human Body <span class="text-indigo-600">360°</span>',
+                headerSubtitle: 'Interactive Anatomical Atlas & Fun Facts',
+                navExplore: 'Explore Systems',
+                navQuiz: 'Mini-Quiz',
+                heroBadge: 'Interactive Visual Learning',
+                heroTitleHTML: 'Discover the incredible machine that is the <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-500">Human Body</span>',
+                heroSubtitle: 'Click directly on the organs in the anatomical model or select one of the six main systems below to explore their vital functions, structures, and surprising facts.',
+                svgTouchHint: 'Tap an organ',
+                svgViewAll: 'View All',
+                svgSelectedPrefix: 'Selected system:',
+                svgAllSystemsLabel: 'All Systems (Overview)',
+                systemBadge: 'Anatomical System',
+                mainFunctionsTitle: 'Main Functions',
+                organsTitle: 'Main Organs & Structures',
+                factsTitle: 'Did You Know? Fun Facts',
+                quizBadge: 'Knowledge Challenge',
+                quizTitle: 'Anatomy Mini-Quiz',
+                quizSubtitle: 'Test what you have learned by exploring the human body systems.',
+                quizScoreLabel: 'Score',
+                quizQuestionCounter: (curr, total) => `Question ${curr} of ${total}`,
+                quizCompletedPercent: (pct) => `${pct}% completed`,
+                quizCorrectFeedback: 'Correct Answer!',
+                quizWrongFeedback: 'Almost there!',
+                quizNextBtn: 'Next',
+                quizFinishBtn: 'See Results',
+                quizEndTitle: 'Quiz Completed!',
+                quizEndScore: (score, total) => `You got ${score} out of ${total} questions right`,
+                quizRestartBtn: 'Restart Quiz',
+                quizMsgHigh: 'Excellent! You master human anatomy!',
+                quizMsgMid: 'Well done! You have great knowledge about the human body.',
+                quizMsgLow: 'Good start! Explore the systems above and try again.',
+                footerTitle: 'Human Body 360° — Interactive Science Education',
+                footerSubtitle: 'Developed for educational purposes. Explore, click, and learn.'
+            },
+            es: {
+                pageTitle: 'Anatomía Interactiva - Sistemas del Cuerpo Humano',
+                headerTitleHTML: 'Cuerpo Humano <span class="text-indigo-600">360°</span>',
+                headerSubtitle: 'Atlas Anatómico Interactivo y Curiosidades',
+                navExplore: 'Explorar Sistemas',
+                navQuiz: 'Mini-Cuestionario',
+                heroBadge: 'Aprendizaje Visual Interactivo',
+                heroTitleHTML: 'Descubre la increíble máquina que es el <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-500">Cuerpo Humano</span>',
+                heroSubtitle: 'Haz clic directamente en los órganos del modelo anatómico o selecciona uno de los seis sistemas principales a continuación para explorar sus funciones vitales, estructuras y datos sorprendentes.',
+                svgTouchHint: 'Toca un órgano',
+                svgViewAll: 'Ver Todos',
+                svgSelectedPrefix: 'Sistema seleccionado:',
+                svgAllSystemsLabel: 'Todos los Sistemas (Vista General)',
+                systemBadge: 'Sistema Anatómico',
+                mainFunctionsTitle: 'Funciones Principales',
+                organsTitle: 'Órganos y Estructuras Principales',
+                factsTitle: '¿Sabías Que? Datos Curiosos',
+                quizBadge: 'Desafío de Conocimiento',
+                quizTitle: 'Mini-Cuestionario de Anatomía',
+                quizSubtitle: 'Pon a prueba lo que aprendiste explorando los sistemas del cuerpo humano.',
+                quizScoreLabel: 'Puntuación',
+                quizQuestionCounter: (curr, total) => `Pregunta ${curr} de ${total}`,
+                quizCompletedPercent: (pct) => `${pct}% completado`,
+                quizCorrectFeedback: '¡Respuesta Correcta!',
+                quizWrongFeedback: '¡Casi lo logras!',
+                quizNextBtn: 'Siguiente',
+                quizFinishBtn: 'Ver Resultado',
+                quizEndTitle: '¡Cuestionario Completado!',
+                quizEndScore: (score, total) => `Acertaste ${score} de ${total} preguntas`,
+                quizRestartBtn: 'Reiniciar Cuestionario',
+                quizMsgHigh: '¡Excelente! ¡Dominas la anatomía humana!',
+                quizMsgMid: '¡Muy bien! Tienes grandes conocimientos sobre el cuerpo humano.',
+                quizMsgLow: '¡Buen comienzo! Explora más los sistemas arriba e inténtalo de nuevo.',
+                footerTitle: 'Cuerpo Humano 360° — Educación Científica Interactiva',
+                footerSubtitle: 'Desarrollado con fines educativos. Explora, haz clic y aprende.'
+            }
+        };
+
+        // ==========================================
+        // 2. BASE DE DADOS MULTILÍNGUE DOS SISTEMAS
         // ==========================================
         const bodySystems = [
             {
                 id: 'cardiovascular',
-                name: 'Sistema Cardiovascular',
-                shortName: 'Cardiovascular',
                 icon: 'heart-pulse',
                 theme: {
                     bgLight: 'bg-red-50',
@@ -300,35 +433,95 @@
                     btnActive: 'bg-red-600 text-white shadow-red-600/25',
                     accentHex: '#EF4444'
                 },
-                tagline: 'A rede vital de transporte de oxigênio e nutrientes',
-                description: 'O sistema cardiovascular é responsável por bombear e distribuir sangue por todo o organismo. Ele garante que cada célula receba oxigênio, nutrientes e hormônios essenciais, enquanto recolhe gás carbônico e resíduos metabólicos para eliminação.',
-                mainFunctions: [
-                    'Transporte de oxigênio dos pulmões para os tecidos e de CO₂ no sentido inverso.',
-                    'Distribuição de nutrientes absorvidos pelo sistema digestório.',
-                    'Regulação da temperatura corporal e do equilíbrio hídrico.',
-                    'Defesa imunológica através do transporte de glóbulos brancos e anticorpos.'
-                ],
-                organs: [
-                    { name: 'Coração', role: 'Bomba muscular de quatro câmaras que impulsiona o sangue.' },
-                    { name: 'Artérias', role: 'Vasos que levam sangue rico em oxigênio do coração para o corpo.' },
-                    { name: 'Veias', role: 'Vasos que trazem o sangue de volta ao coração.' },
-                    { name: 'Capilares', role: 'Vasos microscópicos onde ocorrem as trocas gasosas e de nutrientes.' }
-                ],
-                facts: [
-                    'Se todos os vasos sanguíneos de um adulto fossem esticados em linha reta, eles dariam cerca de 2,5 voltas ao redor da Terra (aproximadamente 100.000 km)!',
-                    'O coração humano bate em média 100.000 vezes por dia, bombeando cerca de 5 litros de sangue por minuto em repouso.',
-                    'A córnea (parte transparente da frente do olho) é a única parte do corpo humano que não recebe suprimento direto de sangue.'
-                ],
-                metrics: [
-                    { label: 'Batimentos/dia', value: '~100.000' },
-                    { label: 'Extensão Vascular', value: '96.000 km' },
-                    { label: 'Volume de Sangue', value: '4,5 a 5,5 L' }
-                ]
+                i18n: {
+                    pt: {
+                        name: 'Sistema Cardiovascular',
+                        shortName: 'Cardiovascular',
+                        tagline: 'A rede vital de transporte de oxigênio e nutrientes',
+                        description: 'O sistema cardiovascular é responsável por bombear e distribuir sangue por todo o organismo. Ele garante que cada célula receba oxigênio, nutrientes e hormônios essenciais, enquanto recolhe gás carbônico e resíduos metabólicos para eliminação.',
+                        mainFunctions: [
+                            'Transporte de oxigênio dos pulmões para os tecidos e de CO₂ no sentido inverso.',
+                            'Distribuição de nutrientes absorvidos pelo sistema digestório.',
+                            'Regulação da temperatura corporal e do equilíbrio hídrico.',
+                            'Defesa imunológica através do transporte de glóbulos brancos e anticorpos.'
+                        ],
+                        organs: [
+                            { name: 'Coração', role: 'Bomba muscular de quatro câmaras que impulsiona o sangue.' },
+                            { name: 'Artérias', role: 'Vasos que levam sangue rico em oxigênio do coração para o corpo.' },
+                            { name: 'Veias', role: 'Vasos que trazem o sangue de volta ao coração.' },
+                            { name: 'Capilares', role: 'Vasos microscópicos onde ocorrem as trocas gasosas e de nutrientes.' }
+                        ],
+                        facts: [
+                            'Se todos os vasos sanguíneos de um adulto fossem esticados em linha reta, eles dariam cerca de 2,5 voltas ao redor da Terra (aproximadamente 100.000 km)!',
+                            'O coração humano bate em média 100.000 vezes por dia, bombeando cerca de 5 litros de sangue por minuto em repouso.',
+                            'A córnea (parte transparente da frente do olho) é a única parte do corpo humano que não recebe suprimento direto de sangue.'
+                        ],
+                        metrics: [
+                            { label: 'Batimentos/dia', value: '~100.000' },
+                            { label: 'Extensão Vascular', value: '96.000 km' },
+                            { label: 'Volume de Sangue', value: '4,5 a 5,5 L' }
+                        ]
+                    },
+                    en: {
+                        name: 'Cardiovascular System',
+                        shortName: 'Cardiovascular',
+                        tagline: 'The vital transport network for oxygen and nutrients',
+                        description: 'The cardiovascular system is responsible for pumping and distributing blood throughout the body. It ensures every cell receives oxygen, nutrients, and essential hormones while collecting carbon dioxide and metabolic waste for elimination.',
+                        mainFunctions: [
+                            'Transporting oxygen from the lungs to tissues and CO₂ in the opposite direction.',
+                            'Distributing nutrients absorbed by the digestive system.',
+                            'Regulating body temperature and fluid balance.',
+                            'Immune defense by transporting white blood cells and antibodies.'
+                        ],
+                        organs: [
+                            { name: 'Heart', role: 'Four-chambered muscular pump that propels blood throughout the body.' },
+                            { name: 'Arteries', role: 'Blood vessels that carry oxygen-rich blood away from the heart.' },
+                            { name: 'Veins', role: 'Blood vessels that return blood back to the heart.' },
+                            { name: 'Capillaries', role: 'Microscopic vessels where gas and nutrient exchanges occur.' }
+                        ],
+                        facts: [
+                            'If all the blood vessels in an adult were laid end-to-end, they would circle the Earth about 2.5 times (nearly 100,000 km / 60,000 miles)!',
+                            'The human heart beats an average of 100,000 times a day, pumping about 5 liters of blood per minute at rest.',
+                            'The cornea (the clear front part of the eye) is the only part of the human body with no direct blood supply.'
+                        ],
+                        metrics: [
+                            { label: 'Beats/day', value: '~100,000' },
+                            { label: 'Vessel Length', value: '96,000 km' },
+                            { label: 'Blood Volume', value: '4.5 to 5.5 L' }
+                        ]
+                    },
+                    es: {
+                        name: 'Sistema Cardiovascular',
+                        shortName: 'Cardiovascular',
+                        tagline: 'La red vital de transporte de oxígeno y nutrientes',
+                        description: 'El sistema cardiovascular se encarga de bombear y distribuir la sangre por todo el organismo. Garantiza que cada célula reciba oxígeno, nutrientes y hormonas esenciales, mientras recoge dióxido de carbono y desechos metabólicos para su eliminación.',
+                        mainFunctions: [
+                            'Transporte de oxígeno desde los pulmones hacia los tejidos y de CO₂ en sentido inverso.',
+                            'Distribución de nutrientes absorbidos por el sistema digestivo.',
+                            'Regulación de la temperatura corporal y del equilibrio hídrico.',
+                            'Defensa inmunológica mediante el transporte de glóbulos blancos y anticuerpos.'
+                        ],
+                        organs: [
+                            { name: 'Corazón', role: 'Bomba muscular de cuatro cámaras que impulsa la sangre.' },
+                            { name: 'Arterias', role: 'Vasos que llevan sangre rica en oxígeno desde el corazón al cuerpo.' },
+                            { name: 'Venas', role: 'Vasos que devuelven la sangre al corazón.' },
+                            { name: 'Capilares', role: 'Vasos microscópicos donde ocurren los intercambios gaseosos y de nutrientes.' }
+                        ],
+                        facts: [
+                            'Si todos los vasos sanguíneos de un adulto se estiraran en línea recta, darían unas 2,5 vueltas alrededor de la Tierra (¡aproximadamente 100.000 km)!',
+                            'El corazón humano late un promedio de 100.000 veces al día, bombeando unos 5 litros de sangre por minuto en reposo.',
+                            'La córnea (la parte transparente frontal del ojo) es la única parte del cuerpo humano que no recibe suministro directo de sangre.'
+                        ],
+                        metrics: [
+                            { label: 'Latidos/día', value: '~100.000' },
+                            { label: 'Extensión Vascular', value: '96.000 km' },
+                            { label: 'Volumen de Sangre', value: '4,5 a 5,5 L' }
+                        ]
+                    }
+                }
             },
             {
                 id: 'nervous',
-                name: 'Sistema Nervoso',
-                shortName: 'Nervoso',
                 icon: 'brain',
                 theme: {
                     bgLight: 'bg-amber-50',
@@ -339,35 +532,95 @@
                     btnActive: 'bg-amber-500 text-white shadow-amber-500/25',
                     accentHex: '#F59E0B'
                 },
-                tagline: 'O centro de comando, processamento e comunicação rápida',
-                description: 'O sistema nervoso coordena todas as ações voluntárias e involuntárias do corpo. Por meio de sinais elétricos e químicos ultrarrápidos, ele interpreta estímulos externos e internos, gera pensamentos, memórias, emoções e controla nossos movimentos.',
-                mainFunctions: [
-                    'Recepção e interpretação de estímulos sensoriais (visão, audição, tato, olfato, paladar).',
-                    'Controle dos movimentos musculares voluntários e reflexos rápidos.',
-                    'Regulação de funções vitais automáticas, como respiração e frequência cardíaca.',
-                    'Processamento cognitivo: memória, linguagem, raciocínio e emoções.'
-                ],
-                organs: [
-                    { name: 'Cérebro', role: 'Órgão principal do sistema nervoso central, sede da consciência e cognição.' },
-                    { name: 'Medula Espinhal', role: 'Via principal de comunicação entre o cérebro e o resto do corpo.' },
-                    { name: 'Cerebelo', role: 'Coordena o equilíbrio, a postura e a precisão dos movimentos.' },
-                    { name: 'Nervos Periféricos', role: 'Rede de fibras que conecta o sistema central aos órgãos e membros.' }
-                ],
-                facts: [
-                    'O cérebro humano contém aproximadamente 86 bilhões de neurônios, formando trilhões de conexões chamadas sinapses.',
-                    'Impulsos nervosos podem viajar a velocidades superiores a 400 km/h — mais rápido que um carro de Fórmula 1!',
-                    'Embora represente apenas cerca de 2% do peso corporal, o cérebro consome cerca de 20% de todo o oxigênio e energia do corpo.'
-                ],
-                metrics: [
-                    { label: 'Neurônios', value: '~86 Bilhões' },
-                    { label: 'Velocidade do Impulso', value: 'Até 430 km/h' },
-                    { label: 'Consumo de Energia', value: '20% do total' }
-                ]
+                i18n: {
+                    pt: {
+                        name: 'Sistema Nervoso',
+                        shortName: 'Nervoso',
+                        tagline: 'O centro de comando, processamento e comunicação rápida',
+                        description: 'O sistema nervoso coordena todas as ações voluntárias e involuntárias do corpo. Por meio de sinais elétricos e químicos ultrarrápidos, ele interpreta estímulos externos e internos, gera pensamentos, memórias, emoções e controla nossos movimentos.',
+                        mainFunctions: [
+                            'Recepção e interpretação de estímulos sensoriais (visão, audição, tato, olfato, paladar).',
+                            'Controle dos movimentos musculares voluntários e reflexos rápidos.',
+                            'Regulação de funções vitais automáticas, como respiração e frequência cardíaca.',
+                            'Processamento cognitivo: memória, linguagem, raciocínio e emoções.'
+                        ],
+                        organs: [
+                            { name: 'Cérebro', role: 'Órgão principal do sistema nervoso central, sede da consciência e cognição.' },
+                            { name: 'Medula Espinhal', role: 'Via principal de comunicação entre o cérebro e o resto do corpo.' },
+                            { name: 'Cerebelo', role: 'Coordena o equilíbrio, a postura e a precisão dos movimentos.' },
+                            { name: 'Nervos Periféricos', role: 'Rede de fibras que conecta o sistema central aos órgãos e membros.' }
+                        ],
+                        facts: [
+                            'O cérebro humano contém aproximadamente 86 bilhões de neurônios, formando trilhões de conexões chamadas sinapses.',
+                            'Impulsos nervosos podem viajar a velocidades superiores a 400 km/h — mais rápido que um carro de Fórmula 1!',
+                            'Embora represente apenas cerca de 2% do peso corporal, o cérebro consome cerca de 20% de todo o oxigênio e energia do corpo.'
+                        ],
+                        metrics: [
+                            { label: 'Neurônios', value: '~86 Bilhões' },
+                            { label: 'Velocidade do Impulso', value: 'Até 430 km/h' },
+                            { label: 'Consumo de Energia', value: '20% do total' }
+                        ]
+                    },
+                    en: {
+                        name: 'Nervous System',
+                        shortName: 'Nervous',
+                        tagline: 'The command center for processing and rapid communication',
+                        description: 'The nervous system coordinates all voluntary and involuntary actions of the body. Through ultra-fast electrical and chemical signals, it interprets external and internal stimuli, generates thoughts, memories, emotions, and controls movement.',
+                        mainFunctions: [
+                            'Reception and interpretation of sensory stimuli (sight, hearing, touch, smell, taste).',
+                            'Control of voluntary muscle movements and rapid reflexes.',
+                            'Regulation of automatic vital functions such as breathing and heart rate.',
+                            'Cognitive processing: memory, language, reasoning, and emotions.'
+                        ],
+                        organs: [
+                            { name: 'Brain', role: 'Main organ of the central nervous system, seat of consciousness and cognition.' },
+                            { name: 'Spinal Cord', role: 'Main communication highway between the brain and the rest of the body.' },
+                            { name: 'Cerebellum', role: 'Coordinates balance, posture, and precision of movements.' },
+                            { name: 'Peripheral Nerves', role: 'Network of fibers connecting the central system to organs and limbs.' }
+                        ],
+                        facts: [
+                            'The human brain contains approximately 86 billion neurons, forming trillions of connections called synapses.',
+                            'Nerve impulses can travel at speeds exceeding 400 km/h (250 mph) — faster than a Formula 1 car!',
+                            'Although it accounts for only about 2% of body weight, the brain consumes roughly 20% of the body’s total oxygen and energy.'
+                        ],
+                        metrics: [
+                            { label: 'Neurons', value: '~86 Billion' },
+                            { label: 'Impulse Speed', value: 'Up to 430 km/h' },
+                            { label: 'Energy Usage', value: '20% of total' }
+                        ]
+                    },
+                    es: {
+                        name: 'Sistema Nervioso',
+                        shortName: 'Nervioso',
+                        tagline: 'El centro de mando, procesamiento y comunicación rápida',
+                        description: 'El sistema nervioso coordina todas las acciones voluntarias e involuntarias del cuerpo. Mediante señales eléctricas y químicas ultrarrápidas, interpreta estímulos externos e internos, genera pensamientos, recuerdos, emociones y controla nuestros movimientos.',
+                        mainFunctions: [
+                            'Recepción e interpretación de estímulos sensoriales (vista, oído, tacto, olfato, gusto).',
+                            'Control de los movimientos musculares voluntarios y reflejos rápidos.',
+                            'Regulación de funciones vitales automáticas, como la respiración y el ritmo cardíaco.',
+                            'Procesamiento cognitivo: memoria, lenguaje, razonamiento y emociones.'
+                        ],
+                        organs: [
+                            { name: 'Cerebro', role: 'Órgano principal del sistema nervioso central, sede de la conciencia y la cognición.' },
+                            { name: 'Médula Espinal', role: 'Vía principal de comunicación entre el cerebro y el resto del cuerpo.' },
+                            { name: 'Cerebelo', role: 'Coordina el equilibrio, la postura y la precisión de los movimientos.' },
+                            { name: 'Nervios Periféricos', role: 'Red de fibras que conecta el sistema central con los órganos y extremidades.' }
+                        ],
+                        facts: [
+                            'El cerebro humano contiene aproximadamente 86 mil millones de neuronas, formando billones de conexiones llamadas sinapsis.',
+                            '¡Los impulsos nerviosos pueden viajar a velocidades superiores a los 400 km/h, más rápido que un coche de Fórmula 1!',
+                            'Aunque representa solo alrededor del 2% del peso corporal, el cerebro consume cerca del 20% de todo el oxígeno y la energía del cuerpo.'
+                        ],
+                        metrics: [
+                            { label: 'Neuronas', value: '~86 Mil Millones' },
+                            { label: 'Velocidad del Impulso', value: 'Hasta 430 km/h' },
+                            { label: 'Consumo de Energía', value: '20% del total' }
+                        ]
+                    }
+                }
             },
             {
                 id: 'respiratory',
-                name: 'Sistema Respiratório',
-                shortName: 'Respiratório',
                 icon: 'wind',
                 theme: {
                     bgLight: 'bg-sky-50',
@@ -378,35 +631,95 @@
                     btnActive: 'bg-sky-600 text-white shadow-sky-600/25',
                     accentHex: '#0EA5E9'
                 },
-                tagline: 'A troca gasosa essencial para a produção de energia celular',
-                description: 'O sistema respiratório permite a entrada de oxigênio no organismo e a eliminação de dióxido de carbono (CO₂). Trabalhando em sintonia íntima com o sistema cardiovascular, ele garante o combustível gasoso para o metabolismo de todas as células.',
-                mainFunctions: [
-                    'Captação de oxigênio (O₂) do ar atmosférico para a corrente sanguínea.',
-                    'Eliminação de dióxido de carbono (CO₂), resíduo da respiração celular.',
-                    'Filtração, aquecimento e umidificação do ar inspirado.',
-                    'Produção da voz através da vibração das pregas vocais na laringe.'
-                ],
-                organs: [
-                    { name: 'Pulmões', role: 'Órgãos esponjosos onde ocorrem as trocas gasosas nos alvéolos.' },
-                    { name: 'Traqueia e Brônquios', role: 'Canais reforçados por anéis cartilaginosos que conduzem o ar.' },
-                    { name: 'Alvéolos Pulmonares', role: 'Minúsculas bolsas de ar cercadas por capilares sanguíneos.' },
-                    { name: 'Diafragma', role: 'Principal músculo respiratório que se contrai para puxar o ar para dentro.' }
-                ],
-                facts: [
-                    'Se os cerca de 300 a 500 milhões de alvéolos dos pulmões fossem abertos e estendidos, cobririam uma área equivalente à metade de uma quadra de tênis!',
-                    'O pulmão direito é ligeiramente maior que o esquerdo, pois o esquerdo precisa abrir espaço para acomodar o coração.',
-                    'Respiramos em média 20.000 vezes por dia, movimentando mais de 10.000 litros de ar.'
-                ],
-                metrics: [
-                    { label: 'Respirações/dia', value: '~20.000' },
-                    { label: 'Alvéolos', value: '~400 Milhões' },
-                    { label: 'Área Interna', value: '~70 m²' }
-                ]
+                i18n: {
+                    pt: {
+                        name: 'Sistema Respiratório',
+                        shortName: 'Respiratório',
+                        tagline: 'A troca gasosa essencial para a produção de energia celular',
+                        description: 'O sistema respiratório permite a entrada de oxigênio no organismo e a eliminação de dióxido de carbono (CO₂). Trabalhando em sintonia íntima com o sistema cardiovascular, ele garante o combustível gasoso para o metabolismo de todas as células.',
+                        mainFunctions: [
+                            'Captação de oxigênio (O₂) do ar atmosférico para a corrente sanguínea.',
+                            'Eliminação de dióxido de carbono (CO₂), resíduo da respiração celular.',
+                            'Filtração, aquecimento e umidificação do ar inspirado.',
+                            'Produção da voz através da vibração das pregas vocais na laringe.'
+                        ],
+                        organs: [
+                            { name: 'Pulmões', role: 'Órgãos esponjosos onde ocorrem as trocas gasosas nos alvéolos.' },
+                            { name: 'Traqueia e Brônquios', role: 'Canais reforçados por anéis cartilaginosos que conduzem o ar.' },
+                            { name: 'Alvéolos Pulmonares', role: 'Minúsculas bolsas de ar cercadas por capilares sanguíneos.' },
+                            { name: 'Diafragma', role: 'Principal músculo respiratório que se contrai para puxar o ar para dentro.' }
+                        ],
+                        facts: [
+                            'Se os cerca de 300 a 500 milhões de alvéolos dos pulmões fossem abertos e estendidos, cobririam uma área equivalente à metade de uma quadra de tênis!',
+                            'O pulmão direito é ligeiramente maior que o esquerdo, pois o esquerdo precisa abrir espaço para acomodar o coração.',
+                            'Respiramos em média 20.000 vezes por dia, movimentando mais de 10.000 litros de ar.'
+                        ],
+                        metrics: [
+                            { label: 'Respirações/dia', value: '~20.000' },
+                            { label: 'Alvéolos', value: '~400 Milhões' },
+                            { label: 'Área Interna', value: '~70 m²' }
+                        ]
+                    },
+                    en: {
+                        name: 'Respiratory System',
+                        shortName: 'Respiratory',
+                        tagline: 'Essential gas exchange for cellular energy production',
+                        description: 'The respiratory system allows oxygen to enter the body and eliminates carbon dioxide (CO₂). Working in close harmony with the cardiovascular system, it ensures gaseous fuel for the metabolism of all cells.',
+                        mainFunctions: [
+                            'Capturing oxygen (O₂) from atmospheric air into the bloodstream.',
+                            'Eliminating carbon dioxide (CO₂), a waste product of cellular respiration.',
+                            'Filtering, warming, and humidifying inhaled air.',
+                            'Producing voice through the vibration of vocal cords in the larynx.'
+                        ],
+                        organs: [
+                            { name: 'Lungs', role: 'Spongy organs where gas exchange takes place inside the alveoli.' },
+                            { name: 'Trachea & Bronchi', role: 'Airways reinforced with cartilage rings that conduct air.' },
+                            { name: 'Pulmonary Alveoli', role: 'Tiny air sacs surrounded by blood capillaries.' },
+                            { name: 'Diaphragm', role: 'Main respiratory muscle that contracts to draw air into the lungs.' }
+                        ],
+                        facts: [
+                            'If the roughly 300 to 500 million alveoli in your lungs were spread out flat, they would cover an area equivalent to half a tennis court!',
+                            'The right lung is slightly larger than the left lung, as the left side makes room to accommodate the heart.',
+                            'We breathe an average of 20,000 times a day, moving more than 10,000 liters of air.'
+                        ],
+                        metrics: [
+                            { label: 'Breaths/day', value: '~20,000' },
+                            { label: 'Alveoli', value: '~400 Million' },
+                            { label: 'Surface Area', value: '~70 m²' }
+                        ]
+                    },
+                    es: {
+                        name: 'Sistema Respiratorio',
+                        shortName: 'Respiratorio',
+                        tagline: 'El intercambio gaseoso esencial para la producción de energía celular',
+                        description: 'El sistema respiratorio permite la entrada de oxígeno al organismo y la eliminación de dióxido de carbono (CO₂). Trabajando en estrecha sintonía con el sistema cardiovascular, garantiza el combustible gaseoso para el metabolismo de todas las células.',
+                        mainFunctions: [
+                            'Captación de oxígeno (O₂) del aire atmosférico hacia el torrente sanguíneo.',
+                            'Eliminación de dióxido de carbono (CO₂), residuo de la respiración celular.',
+                            'Filtración, calentamiento y humidificación del aire inspirado.',
+                            'Producción de la voz mediante la vibración de las cuerdas vocales en la laringe.'
+                        ],
+                        organs: [
+                            { name: 'Pulmones', role: 'Órganos esponjosos donde ocurren los intercambios gaseosos en los alvéolos.' },
+                            { name: 'Tráquea y Bronquios', role: 'Conductos reforzados por anillos cartilaginosos que transportan el aire.' },
+                            { name: 'Alvéolos Pulmonares', role: 'Diminutos sacos de aire rodeados de capilares sanguíneos.' },
+                            { name: 'Diafragma', role: 'Principal músculo respiratorio que se contrae para inhalar aire.' }
+                        ],
+                        facts: [
+                            'Si los cerca de 300 a 500 millones de alvéolos de los pulmones se extendieran planos, ¡cubrirían un área equivalente a la mitad de una cancha de tenis!',
+                            'El pulmón derecho es ligeramente más grande que el izquierdo, ya que el izquierdo hace espacio para alojar el corazón.',
+                            'Respiramos un promedio de 20.000 veces al día, moviendo más de 10.000 litros de aire.'
+                        ],
+                        metrics: [
+                            { label: 'Respiraciones/día', value: '~20.000' },
+                            { label: 'Alvéolos', value: '~400 Millones' },
+                            { label: 'Área Interna', value: '~70 m²' }
+                        ]
+                    }
+                }
             },
             {
                 id: 'digestive',
-                name: 'Sistema Digestório',
-                shortName: 'Digestório',
                 icon: 'utensils',
                 theme: {
                     bgLight: 'bg-emerald-50',
@@ -417,35 +730,95 @@
                     btnActive: 'bg-emerald-600 text-white shadow-emerald-600/25',
                     accentHex: '#22C55E'
                 },
-                tagline: 'Transformando alimentos em combustível e blocos de construção',
-                description: 'O sistema digestório é um longo tubo muscular auxiliado por glândulas anexas que quebra os alimentos mecanicamente e quimicamente em moléculas pequenas (glicose, aminoácidos, ácidos graxos) para serem absorvidas pelo sangue.',
-                mainFunctions: [
-                    'Ingestão e trituração mecânica dos alimentos.',
-                    'Digestão química por meio de enzimas, ácidos e bile.',
-                    'Absorção de nutrientes, vitaminas, sais minerais e água.',
-                    'Compactação e eliminação dos resíduos não digeridos.'
-                ],
-                organs: [
-                    { name: 'Estômago', role: 'Bolsa muscular que secreta ácido clorídrico e enzimas para digerir proteínas.' },
-                    { name: 'Intestino Delgado', role: 'Tubo de ~6 metros onde ocorre 90% da absorção de nutrientes.' },
-                    { name: 'Fígado e Pâncreas', role: 'Glândulas que produzem bile e enzimas digestivas essenciais.' },
-                    { name: 'Intestino Grosso', role: 'Absorve água e eletrólitos, abrigando trilhões de bactérias benéficas.' }
-                ],
-                facts: [
-                    'O ácido clorídrico presente no estômago é tão forte (pH entre 1,5 e 3,5) que poderia dissolver lâminas de metal; o estômago não se autodigere graças a uma camada renovável de muco.',
-                    'O intestino delgado tem cerca de 6 metros de comprimento, mas suas vilosidades aumentam sua área de absorção para o tamanho de um apartamento grande.',
-                    'O intestino possui seu próprio sistema nervoso ("sistema nervoso entérico"), frequentemente chamado de "segundo cérebro".'
-                ],
-                metrics: [
-                    { label: 'Extensão do Tubo', value: '~9 metros' },
-                    { label: 'Tempo de Digestão', value: '24 a 72h' },
-                    { label: 'pH Estomacal', value: '1,5 a 3,5' }
-                ]
+                i18n: {
+                    pt: {
+                        name: 'Sistema Digestório',
+                        shortName: 'Digestório',
+                        tagline: 'Transformando alimentos em combustível e blocos de construção',
+                        description: 'O sistema digestório é um longo tubo muscular auxiliado por glândulas anexas que quebra os alimentos mecanicamente e quimicamente em moléculas pequenas (glicose, aminoácidos, ácidos graxos) para serem absorvidas pelo sangue.',
+                        mainFunctions: [
+                            'Ingestão e trituração mecânica dos alimentos.',
+                            'Digestão química por meio de enzimas, ácidos e bile.',
+                            'Absorção de nutrientes, vitaminas, sais minerais e água.',
+                            'Compactação e eliminação dos resíduos não digeridos.'
+                        ],
+                        organs: [
+                            { name: 'Estômago', role: 'Bolsa muscular que secreta ácido clorídrico e enzimas para digerir proteínas.' },
+                            { name: 'Intestino Delgado', role: 'Tubo de ~6 metros onde ocorre 90% da absorção de nutrientes.' },
+                            { name: 'Fígado e Pâncreas', role: 'Glândulas que produzem bile e enzimas digestivas essenciais.' },
+                            { name: 'Intestino Grosso', role: 'Absorve água e eletrólitos, abrigando trilhões de bactérias benéficas.' }
+                        ],
+                        facts: [
+                            'O ácido clorídrico presente no estômago é tão forte (pH entre 1,5 e 3,5) que poderia dissolver lâminas de metal; o estômago não se autodigere graças a uma camada renovável de muco.',
+                            'O intestino delgado tem cerca de 6 metros de comprimento, mas suas vilosidades aumentam sua área de absorção para o tamanho de um apartamento grande.',
+                            'O intestino possui seu próprio sistema nervoso ("sistema nervoso entérico"), frequentemente chamado de "segundo cérebro".'
+                        ],
+                        metrics: [
+                            { label: 'Extensão do Tubo', value: '~9 metros' },
+                            { label: 'Tempo de Digestão', value: '24 a 72h' },
+                            { label: 'pH Estomacal', value: '1,5 a 3,5' }
+                        ]
+                    },
+                    en: {
+                        name: 'Digestive System',
+                        shortName: 'Digestive',
+                        tagline: 'Transforming food into fuel and cellular building blocks',
+                        description: 'The digestive system is a long muscular tube aided by accessory glands that breaks down food mechanically and chemically into small molecules (glucose, amino acids, fatty acids) to be absorbed into the bloodstream.',
+                        mainFunctions: [
+                            'Ingestion and mechanical breakdown of food.',
+                            'Chemical digestion using enzymes, stomach acids, and bile.',
+                            'Absorption of nutrients, vitamins, minerals, and water.',
+                            'Compaction and elimination of undigested waste.'
+                        ],
+                        organs: [
+                            { name: 'Stomach', role: 'Muscular sac that secretes hydrochloric acid and enzymes to digest proteins.' },
+                            { name: 'Small Intestine', role: '~6-meter tube where 90% of nutrient absorption takes place.' },
+                            { name: 'Liver & Pancreas', role: 'Glands that produce bile and essential digestive enzymes.' },
+                            { name: 'Large Intestine', role: 'Absorbs water and electrolytes, housing trillions of beneficial bacteria.' }
+                        ],
+                        facts: [
+                            'Hydrochloric acid in the stomach is so strong (pH 1.5 to 3.5) it could dissolve metal blades; the stomach doesn’t digest itself thanks to a constantly renewing mucus lining.',
+                            'The small intestine is about 6 meters (20 ft) long, but its villi expand its absorption surface area to the size of a large apartment.',
+                            'The gut has its own independent nervous system (the "enteric nervous system"), often referred to as the "second brain".'
+                        ],
+                        metrics: [
+                            { label: 'Tract Length', value: '~9 meters' },
+                            { label: 'Digestion Time', value: '24 to 72h' },
+                            { label: 'Stomach pH', value: '1.5 to 3.5' }
+                        ]
+                    },
+                    es: {
+                        name: 'Sistema Digestivo',
+                        shortName: 'Digestivo',
+                        tagline: 'Transformando alimentos en combustible y bloques de construcción',
+                        description: 'El sistema digestivo es un largo tubo muscular ayudado por glándulas anexas que descompone los alimentos mecánica y químicamente en moléculas pequeñas (glucosa, aminoácidos, ácidos grasos) para ser absorbidas por la sangre.',
+                        mainFunctions: [
+                            'Ingestión y trituración mecánica de los alimentos.',
+                            'Digestión química mediante enzimas, ácidos y bilis.',
+                            'Absorción de nutrientes, vitaminas, sales minerales y agua.',
+                            'Compactación y eliminación de los residuos no digeridos.'
+                        ],
+                        organs: [
+                            { name: 'Estómago', role: 'Bolsa muscular que secreta ácido clorhídrico y enzimas para digerir proteínas.' },
+                            { name: 'Intestino Delgado', role: 'Tubo de ~6 metros donde ocurre el 90% de la absorción de nutrientes.' },
+                            { name: 'Hígado y Páncreas', role: 'Glándulas que producen bilis y enzimas digestivas esenciales.' },
+                            { name: 'Intestino Grueso', role: 'Absorbe agua y electrolitos, albergando billones de bacterias beneficiosas.' }
+                        ],
+                        facts: [
+                            'El ácido clorhídrico del estómago es tan fuerte (pH entre 1,5 y 3,5) que podría disolver hojas de metal; el estómago no se autodigiere gracias a una capa renovable de mucosa.',
+                            'El intestino delgado mide unos 6 metros de largo, pero sus vellosidades aumentan su área de absorción al tamaño de un apartamento grande.',
+                            'El intestino posee su propio sistema nervioso ("sistema nervioso entérico"), conocido frecuentemente como el "segundo cerebro".'
+                        ],
+                        metrics: [
+                            { label: 'Extensión del Tubo', value: '~9 metros' },
+                            { label: 'Tiempo de Digestión', value: '24 a 72h' },
+                            { label: 'pH Estomacal', value: '1,5 a 3,5' }
+                        ]
+                    }
+                }
             },
             {
                 id: 'skeletal',
-                name: 'Sistema Esquelético',
-                shortName: 'Esquelético',
                 icon: 'bone',
                 theme: {
                     bgLight: 'bg-slate-100',
@@ -456,35 +829,95 @@
                     btnActive: 'bg-slate-800 text-white shadow-slate-800/25',
                     accentHex: '#64748B'
                 },
-                tagline: 'A estrutura viva de sustentação, proteção e produção sanguínea',
-                description: 'Muito mais do que um arcabouço rígido, o sistema esquelético é composto por tecidos vivos em constante remodelação. Ele sustenta o corpo contra a gravidade, protege órgãos vitais delicados e serve de alavanca para os músculos.',
-                mainFunctions: [
-                    'Sustentação estrutural e definição da forma do corpo humano.',
-                    'Proteção de órgãos vitais (crânio protege o cérebro; caixa torácica protege coração e pulmões).',
-                    'Hematopoiese: produção de células sanguíneas na medula óssea vermelha.',
-                    'Armazenamento de minerais essenciais, especialmente cálcio e fósforo.'
-                ],
-                organs: [
-                    { name: 'Crânio e Coluna', role: 'Protegem o sistema nervoso central e sustentam o tronco.' },
-                    { name: 'Caixa Torácica', role: 'Costelas e esterno que blindam os órgãos do tórax.' },
-                    { name: 'Fêmur', role: 'O maior e mais resistente osso do corpo humano, localizado na coxa.' },
-                    { name: 'Articulações e Cartilagens', role: 'Conectam os ossos permitindo mobilidade e absorção de impacto.' }
-                ],
-                facts: [
-                    'Bebês nascem com cerca de 270 a 300 ossos, mas muitos se fundem durante o crescimento, resultando nos 206 ossos de um adulto.',
-                    'O menor osso do corpo humano é o estribo, localizado no ouvido médio, medindo apenas cerca de 2,8 milímetros!',
-                    'O osso é cerca de cinco vezes mais resistente que uma barra de aço de mesmo peso.'
-                ],
-                metrics: [
-                    { label: 'Ossos no Adulto', value: '206 ossos' },
-                    { label: 'Maior Osso', value: 'Fêmur (~48 cm)' },
-                    { label: 'Menor Osso', value: 'Estribo (2,8 mm)' }
-                ]
+                i18n: {
+                    pt: {
+                        name: 'Sistema Esquelético',
+                        shortName: 'Esquelético',
+                        tagline: 'A estrutura viva de sustentação, proteção e produção sanguínea',
+                        description: 'Muito mais do que um arcabouço rígido, o sistema esquelético é composto por tecidos vivos em constante remodelação. Ele sustenta o corpo contra a gravidade, protege órgãos vitais delicados e serve de alavanca para os músculos.',
+                        mainFunctions: [
+                            'Sustentação estrutural e definição da forma do corpo humano.',
+                            'Proteção de órgãos vitais (crânio protege o cérebro; caixa torácica protege coração e pulmões).',
+                            'Hematopoiese: produção de células sanguíneas na medula óssea vermelha.',
+                            'Armazenamento de minerais essenciais, especialmente cálcio e fósforo.'
+                        ],
+                        organs: [
+                            { name: 'Crânio e Coluna', role: 'Protegem o sistema nervoso central e sustentam o tronco.' },
+                            { name: 'Caixa Torácica', role: 'Costelas e esterno que blindam os órgãos do tórax.' },
+                            { name: 'Fêmur', role: 'O maior e mais resistente osso do corpo humano, localizado na coxa.' },
+                            { name: 'Articulações e Cartilagens', role: 'Conectam os ossos permitindo mobilidade e absorção de impacto.' }
+                        ],
+                        facts: [
+                            'Bebês nascem com cerca de 270 a 300 ossos, mas muitos se fundem durante o crescimento, resultando nos 206 ossos de um adulto.',
+                            'O menor osso do corpo humano é o estribo, localizado no ouvido médio, medindo apenas cerca de 2,8 milímetros!',
+                            'O osso é cerca de cinco vezes mais resistente que uma barra de aço de mesmo peso.'
+                        ],
+                        metrics: [
+                            { label: 'Ossos no Adulto', value: '206 ossos' },
+                            { label: 'Maior Osso', value: 'Fêmur (~48 cm)' },
+                            { label: 'Menor Osso', value: 'Estribo (2,8 mm)' }
+                        ]
+                    },
+                    en: {
+                        name: 'Skeletal System',
+                        shortName: 'Skeletal',
+                        tagline: 'The living framework for support, protection, and blood production',
+                        description: 'Far more than a rigid frame, the skeletal system consists of living tissues constantly remodeling themselves. It supports the body against gravity, shields delicate vital organs, and acts as levers for muscles.',
+                        mainFunctions: [
+                            'Structural support and defining the shape of the human body.',
+                            'Protection of vital organs (skull shields the brain; rib cage protects heart and lungs).',
+                            'Hematopoiesis: production of blood cells inside red bone marrow.',
+                            'Storage of essential minerals, especially calcium and phosphorus.'
+                        ],
+                        organs: [
+                            { name: 'Skull & Spine', role: 'Protect the central nervous system and support the torso.' },
+                            { name: 'Rib Cage', role: 'Ribs and sternum that shield thoracic organs.' },
+                            { name: 'Femur', role: 'The longest and strongest bone in the human body, located in the thigh.' },
+                            { name: 'Joints & Cartilage', role: 'Connect bones allowing mobility and shock absorption.' }
+                        ],
+                        facts: [
+                            'Babies are born with about 270 to 300 bones, many of which fuse together during growth, resulting in 206 bones in an adult.',
+                            'The smallest bone in the human body is the stapes (stirrup), located in the middle ear, measuring only about 2.8 millimeters!',
+                            'Bone is roughly five times stronger than a steel bar of the exact same weight.'
+                        ],
+                        metrics: [
+                            { label: 'Adult Bones', value: '206 bones' },
+                            { label: 'Longest Bone', value: 'Femur (~48 cm)' },
+                            { label: 'Smallest Bone', value: 'Stapes (2.8 mm)' }
+                        ]
+                    },
+                    es: {
+                        name: 'Sistema Esquelético',
+                        shortName: 'Esquelético',
+                        tagline: 'La estructura viva de soporte, protección y producción sanguínea',
+                        description: 'Mucho más que un armazón rígido, el sistema esquelético está compuesto por tejidos vivos en constante remodelación. Sostiene el cuerpo contra la gravedad, protege órganos vitales delicados y sirve de palanca para los músculos.',
+                        mainFunctions: [
+                            'Soporte estructural y definición de la forma del cuerpo humano.',
+                            'Protección de órganos vitales (el cráneo protege el cerebro; la caja torácica protege corazón y pulmones).',
+                            'Hematopoyesis: producción de células sanguíneas en la médula ósea roja.',
+                            'Almacenamiento de minerales esenciales, especialmente calcio y fósforo.'
+                        ],
+                        organs: [
+                            { name: 'Cráneo y Columna', role: 'Protegen el sistema nervioso central y sostienen el tronco.' },
+                            { name: 'Caja Torácica', role: 'Costillas y esternón que blindan los órganos del tórax.' },
+                            { name: 'Fémur', role: 'El hueso más largo y resistente del cuerpo humano, ubicado en el muslo.' },
+                            { name: 'Articulaciones y Cartílagos', role: 'Conectan los huesos permitiendo movilidad y absorción de impactos.' }
+                        ],
+                        facts: [
+                            'Los bebés nacen con unos 270 a 300 huesos, pero muchos se fusionan durante el crecimiento, dando lugar a los 206 huesos de un adulto.',
+                            'El hueso más pequeño del cuerpo humano es el estribo, situado en el oído medio, ¡y mide apenas unos 2,8 milímetros!',
+                            'El hueso es aproximadamente cinco veces más resistente que una barra de acero del mismo peso.'
+                        ],
+                        metrics: [
+                            { label: 'Huesos en Adulto', value: '206 huesos' },
+                            { label: 'Hueso Más Largo', value: 'Fémur (~48 cm)' },
+                            { label: 'Hueso Más Corto', value: 'Estribo (2,8 mm)' }
+                        ]
+                    }
+                }
             },
             {
                 id: 'muscular',
-                name: 'Sistema Muscular',
-                shortName: 'Muscular',
                 icon: 'biceps-flexed',
                 theme: {
                     bgLight: 'bg-pink-50',
@@ -495,88 +928,296 @@
                     btnActive: 'bg-pink-600 text-white shadow-pink-600/25',
                     accentHex: '#EC4899'
                 },
-                tagline: 'O motor biológico responsável por todo movimento e postura',
-                description: 'Composto por mais de 600 músculos, o sistema muscular converte energia química em força mecânica através da contração de fibras especializadas. Ele atua tanto nos movimentos conscientes quanto no funcionamento interno dos órgãos.',
-                mainFunctions: [
-                    'Locomoção e execução de movimentos precisos (músculos esqueléticos).',
-                    'Manutenção da postura corporal e estabilidade das articulações.',
-                    'Geração de calor corporal (termogênese) para manter a temperatura em ~36,5°C.',
-                    'Movimentação de substâncias internas, como alimentos no intestino e sangue nos vasos.'
-                ],
-                organs: [
-                    { name: 'Músculos Esqueléticos', role: 'Ligados aos ossos por tendões; possuem controle voluntário.' },
-                    { name: 'Músculo Cardíaco', role: 'Exclusivo do coração, contrai-se ritmicamente de forma involuntária.' },
-                    { name: 'Músculos Lisos', role: 'Presentes nas paredes do estômago, intestinos e vasos sanguíneos.' },
-                    { name: 'Tendões', role: 'Faixas fibrosas resistentes que conectam os músculos aos ossos.' }
-                ],
-                facts: [
-                    'O músculo mais forte em relação ao seu tamanho é o masseter (músculo da mandíbula), capaz de exercer uma força de mordida superior a 90 kg nos molares.',
-                    'O maior músculo do corpo humano em volume é o glúteo máximo, essencial para nos manter eretos e subir escadas.',
-                    'Para dar um único passo, você utiliza cerca de 200 músculos diferentes trabalhando em coordenação.'
-                ],
-                metrics: [
-                    { label: 'Total de Músculos', value: '+600 músculos' },
-                    { label: 'Massa Corporal', value: '~40% do peso' },
-                    { label: 'Músculos por Passo', value: '~200 ativos' }
-                ]
+                i18n: {
+                    pt: {
+                        name: 'Sistema Muscular',
+                        shortName: 'Muscular',
+                        tagline: 'O motor biológico responsável por todo movimento e postura',
+                        description: 'Composto por mais de 600 músculos, o sistema muscular converte energia química em força mecânica através da contração de fibras especializadas. Ele atua tanto nos movimentos conscientes quanto no funcionamento interno dos órgãos.',
+                        mainFunctions: [
+                            'Locomoção e execução de movimentos precisos (músculos esqueléticos).',
+                            'Manutenção da postura corporal e estabilidade das articulações.',
+                            'Geração de calor corporal (termogênese) para manter a temperatura em ~36,5°C.',
+                            'Movimentação de substâncias internas, como alimentos no intestino e sangue nos vasos.'
+                        ],
+                        organs: [
+                            { name: 'Músculos Esqueléticos', role: 'Ligados aos ossos por tendões; possuem controle voluntário.' },
+                            { name: 'Músculo Cardíaco', role: 'Exclusivo do coração, contrai-se ritmicamente de forma involuntária.' },
+                            { name: 'Músculos Lisos', role: 'Presentes nas paredes do estômago, intestinos e vasos sanguíneos.' },
+                            { name: 'Tendões', role: 'Faixas fibrosas resistentes que conectam os músculos aos ossos.' }
+                        ],
+                        facts: [
+                            'O músculo mais forte em relação ao seu tamanho é o masseter (músculo da mandíbula), capaz de exercer uma força de mordida superior a 90 kg nos molares.',
+                            'O maior músculo do corpo humano em volume é o glúteo máximo, essencial para nos manter eretos e subir escadas.',
+                            'Para dar um único passo, você utiliza cerca de 200 músculos diferentes trabalhando em coordenação.'
+                        ],
+                        metrics: [
+                            { label: 'Total de Músculos', value: '+600 músculos' },
+                            { label: 'Massa Corporal', value: '~40% do peso' },
+                            { label: 'Músculos por Passo', value: '~200 ativos' }
+                        ]
+                    },
+                    en: {
+                        name: 'Muscular System',
+                        shortName: 'Muscular',
+                        tagline: 'The biological engine behind every movement and posture',
+                        description: 'Composed of over 600 muscles, the muscular system converts chemical energy into mechanical force through the contraction of specialized fibers. It drives both conscious movements and the internal functioning of organs.',
+                        mainFunctions: [
+                            'Locomotion and execution of precise movements (skeletal muscles).',
+                            'Maintaining body posture and joint stability.',
+                            'Generating body heat (thermogenesis) to maintain a temperature around 36.5°C (97.7°F).',
+                            'Moving internal substances such as food through the gut and blood through vessels.'
+                        ],
+                        organs: [
+                            { name: 'Skeletal Muscles', role: 'Attached to bones via tendons; under voluntary control.' },
+                            { name: 'Cardiac Muscle', role: 'Exclusive to the heart; contracts rhythmically and involuntarily.' },
+                            { name: 'Smooth Muscles', role: 'Found in the walls of the stomach, intestines, and blood vessels.' },
+                            { name: 'Tendons', role: 'Tough fibrous bands that connect muscles to bones.' }
+                        ],
+                        facts: [
+                            'The strongest muscle relative to its size is the masseter (jaw muscle), capable of exerting a bite force exceeding 90 kg (200 lbs) on the molars.',
+                            'The largest muscle in the human body by volume is the gluteus maximus, essential for keeping us upright and climbing stairs.',
+                            'Taking a single step engages around 200 different muscles working in coordination.'
+                        ],
+                        metrics: [
+                            { label: 'Total Muscles', value: '600+ muscles' },
+                            { label: 'Body Mass', value: '~40% of weight' },
+                            { label: 'Muscles per Step', value: '~200 active' }
+                        ]
+                    },
+                    es: {
+                        name: 'Sistema Muscular',
+                        shortName: 'Muscular',
+                        tagline: 'El motor biológico responsable de cada movimiento y postura',
+                        description: 'Compuesto por más de 600 músculos, el sistema muscular convierte la energía química en fuerza mecánica mediante la contracción de fibras especializadas. Actúa tanto en los movimientos conscientes como en el funcionamiento interno de los órganos.',
+                        mainFunctions: [
+                            'Locomoción y ejecución de movimientos precisos (músculos esqueléticos).',
+                            'Mantenimiento de la postura corporal y estabilidad de las articulaciones.',
+                            'Generación de calor corporal (termogénesis) para mantener la temperatura en ~36,5°C.',
+                            'Movimiento de sustancias internas, como alimentos en el intestino y sangre en los vasos.'
+                        ],
+                        organs: [
+                            { name: 'Músculos Esqueléticos', role: 'Unidos a los huesos por tendones; tienen control voluntario.' },
+                            { name: 'Músculo Cardíaco', role: 'Exclusivo del corazón, se contrae rítmicamente de forma involuntaria.' },
+                            { name: 'Músculos Lisos', role: 'Presentes en las paredes del estómago, intestinos y vasos sanguíneos.' },
+                            { name: 'Tendones', role: 'Bandas fibrosas resistentes que conectan los músculos con los huesos.' }
+                        ],
+                        facts: [
+                            'El músculo más fuerte en relación con su tamaño es el masetero (músculo de la mandíbula), capaz de ejercer una fuerza de mordida superior a 90 kg en los molares.',
+                            'El músculo más grande del cuerpo humano en volumen es el glúteo mayor, esencial para mantenernos erguidos y subir escaleras.',
+                            'Para dar un solo paso, utilizas alrededor de 200 músculos diferentes trabajando en coordinación.'
+                        ],
+                        metrics: [
+                            { label: 'Total de Músculos', value: '+600 músculos' },
+                            { label: 'Masa Corporal', value: '~40% del peso' },
+                            { label: 'Músculos por Paso', value: '~200 activos' }
+                        ]
+                    }
+                }
             }
         ];
 
         // ==========================================
-        // 2. PERGUNTAS DO MINI-QUIZ INTERATIVO
+        // 3. PERGUNTAS MULTILÍNGUES DO MINI-QUIZ
         // ==========================================
         const quizQuestions = [
             {
-                question: 'Qual é o único osso do corpo humano que mede menos de 3 milímetros e fica no ouvido?',
-                options: ['Fêmur', 'Estribo', 'Patela', 'Clavícula'],
                 correctIndex: 1,
-                explanation: 'O estribo, localizado no ouvido médio, mede cerca de 2,8 mm e transmite vibrações sonoras.'
+                i18n: {
+                    pt: {
+                        question: 'Qual é o único osso do corpo humano que mede menos de 3 milímetros e fica no ouvido?',
+                        options: ['Fêmur', 'Estribo', 'Patela', 'Clavícula'],
+                        explanation: 'O estribo, localizado no ouvido médio, mede cerca de 2,8 mm e transmite vibrações sonoras.'
+                    },
+                    en: {
+                        question: 'Which bone in the human body measures less than 3 millimeters and is located in the ear?',
+                        options: ['Femur', 'Stapes (Stirrup)', 'Patella', 'Clavicle'],
+                        explanation: 'The stapes, located in the middle ear, measures about 2.8 mm and transmits sound vibrations.'
+                    },
+                    es: {
+                        question: '¿Cuál es el hueso del cuerpo humano que mide menos de 3 milímetros y se encuentra en el oído?',
+                        options: ['Fémur', 'Estribo', 'Rótula', 'Clavícula'],
+                        explanation: 'El estribo, ubicado en el oído medio, mide unos 2,8 mm y transmite vibraciones sonoras.'
+                    }
+                }
             },
             {
-                question: 'Qual porcentagem aproximada do oxigênio e energia do corpo é consumida apenas pelo cérebro?',
-                options: ['5%', '10%', '20%', '45%'],
                 correctIndex: 2,
-                explanation: 'Apesar de representar apenas 2% do peso corporal, o cérebro consome cerca de 20% da energia total.'
+                i18n: {
+                    pt: {
+                        question: 'Qual porcentagem aproximada do oxigênio e energia do corpo é consumida apenas pelo cérebro?',
+                        options: ['5%', '10%', '20%', '45%'],
+                        explanation: 'Apesar de representar apenas 2% do peso corporal, o cérebro consome cerca de 20% da energia total.'
+                    },
+                    en: {
+                        question: 'Approximately what percentage of the body’s oxygen and energy is consumed by the brain alone?',
+                        options: ['5%', '10%', '20%', '45%'],
+                        explanation: 'Despite accounting for only 2% of body weight, the brain consumes roughly 20% of total energy.'
+                    },
+                    es: {
+                        question: '¿Qué porcentaje aproximado del oxígeno y la energía del cuerpo consume únicamente el cerebro?',
+                        options: ['5%', '10%', '20%', '45%'],
+                        explanation: 'A pesar de representar solo el 2% del peso corporal, el cerebro consume cerca del 20% de la energía total.'
+                    }
+                }
             },
             {
-                question: 'Onde ocorre cerca de 90% da absorção dos nutrientes dos alimentos que ingerimos?',
-                options: ['Estômago', 'Esôfago', 'Intestino Delgado', 'Intestino Grosso'],
                 correctIndex: 2,
-                explanation: 'O intestino delgado possui cerca de 6 metros e milhões de vilosidades que absorvem os nutrientes para o sangue.'
+                i18n: {
+                    pt: {
+                        question: 'Onde ocorre cerca de 90% da absorção dos nutrientes dos alimentos que ingerimos?',
+                        options: ['Estômago', 'Esôfago', 'Intestino Delgado', 'Intestino Grosso'],
+                        explanation: 'O intestino delgado possui cerca de 6 metros e milhões de vilosidades que absorvem os nutrientes para o sangue.'
+                    },
+                    en: {
+                        question: 'Where does about 90% of nutrient absorption from the food we eat take place?',
+                        options: ['Stomach', 'Esophagus', 'Small Intestine', 'Large Intestine'],
+                        explanation: 'The small intestine is about 6 meters long and has millions of villi that absorb nutrients into the blood.'
+                    },
+                    es: {
+                        question: '¿Dónde ocurre cerca del 90% de la absorción de nutrientes de los alimentos que ingerimos?',
+                        options: ['Estómago', 'Esófago', 'Intestino Delgado', 'Intestino Grueso'],
+                        explanation: 'El intestino delgado mide unos 6 metros y tiene millones de vellosidades que absorben los nutrientes hacia la sangre.'
+                    }
+                }
             },
             {
-                question: 'Aproximadamente quantas vezes o coração humano bate em um único dia?',
-                options: ['10.000 vezes', '50.000 vezes', '100.000 vezes', '500.000 vezes'],
                 correctIndex: 2,
-                explanation: 'Em média, o coração bate entre 60 e 100 vezes por minuto, totalizando cerca de 100.000 batimentos diários.'
+                i18n: {
+                    pt: {
+                        question: 'Aproximadamente quantas vezes o coração humano bate em um único dia?',
+                        options: ['10.000 vezes', '50.000 vezes', '100.000 vezes', '500.000 vezes'],
+                        explanation: 'Em média, o coração bate entre 60 e 100 vezes por minuto, totalizando cerca de 100.000 batimentos diários.'
+                    },
+                    en: {
+                        question: 'Approximately how many times does the human heart beat in a single day?',
+                        options: ['10,000 times', '50,000 times', '100,000 times', '500,000 times'],
+                        explanation: 'On average, the heart beats 60 to 100 times per minute, totaling around 100,000 beats daily.'
+                    },
+                    es: {
+                        question: '¿Aproximadamente cuántas veces late el corazón humano en un solo día?',
+                        options: ['10.000 veces', '50.000 veces', '100.000 veces', '500.000 veces'],
+                        explanation: 'En promedio, el corazón late entre 60 y 100 veces por minuto, sumando unos 100.000 latidos diarios.'
+                    }
+                }
             },
             {
-                question: 'Qual estrutura dos pulmões é responsável diretamente pelas trocas gasosas com o sangue?',
-                options: ['Alvéolos Pulmonares', 'Traqueia', 'Diafragma', 'Laringe'],
                 correctIndex: 0,
-                explanation: 'Os alvéolos são milhões de pequenas bolsas envolvidas por capilares onde o O₂ entra no sangue e o CO₂ sai.'
+                i18n: {
+                    pt: {
+                        question: 'Qual estrutura dos pulmões é responsável diretamente pelas trocas gasosas com o sangue?',
+                        options: ['Alvéolos Pulmonares', 'Traqueia', 'Diafragma', 'Laringe'],
+                        explanation: 'Os alvéolos são milhões de pequenas bolsas envolvidas por capilares onde o O₂ entra no sangue e o CO₂ sai.'
+                    },
+                    en: {
+                        question: 'Which structure in the lungs is directly responsible for gas exchange with the blood?',
+                        options: ['Pulmonary Alveoli', 'Trachea', 'Diaphragm', 'Larynx'],
+                        explanation: 'Alveoli are millions of tiny sacs surrounded by capillaries where O₂ enters the blood and CO₂ exits.'
+                    },
+                    es: {
+                        question: '¿Qué estructura de los pulmones es directamente responsable del intercambio gaseoso con la sangre?',
+                        options: ['Alvéolos Pulmonares', 'Tráquea', 'Diafragma', 'Laringe'],
+                        explanation: 'Los alvéolos son millones de pequeños sacos rodeados de capilares donde el O₂ entra en la sangre y sale el CO₂.'
+                    }
+                }
             },
             {
-                question: 'Qual é o músculo mais forte do corpo humano proporcionalmente ao seu tamanho?',
-                options: ['Bíceps Braquial', 'Masseter (Mandíbula)', 'Sartório', 'Diafragma'],
                 correctIndex: 1,
-                explanation: 'O masseter, responsável por fechar a mandíbula durante a mastigação, gera uma força impressionante para seu tamanho.'
+                i18n: {
+                    pt: {
+                        question: 'Qual é o músculo mais forte do corpo humano proporcionalmente ao seu tamanho?',
+                        options: ['Bíceps Braquial', 'Masseter (Mandíbula)', 'Sartório', 'Diafragma'],
+                        explanation: 'O masseter, responsável por fechar a mandíbula durante a mastigação, gera uma força impressionante para seu tamanho.'
+                    },
+                    en: {
+                        question: 'What is the strongest muscle in the human body relative to its size?',
+                        options: ['Biceps Brachii', 'Masseter (Jaw)', 'Sartorius', 'Diaphragm'],
+                        explanation: 'The masseter, responsible for closing the jaw during chewing, generates impressive force for its size.'
+                    },
+                    es: {
+                        question: '¿Cuál es el músculo más fuerte del cuerpo humano proporcionalmente a su tamaño?',
+                        options: ['Bíceps Braquial', 'Masetero (Mandíbula)', 'Sartorio', 'Diafragma'],
+                        explanation: 'El masetero, encargado de cerrar la mandíbula al masticar, genera una fuerza impresionante para su tamaño.'
+                    }
+                }
             }
         ];
 
         // ==========================================
-        // 3. ESTADO DA APLICAÇÃO E RENDERIZAÇÃO
+        // 4. ESTADO DA APLICAÇÃO E CONTROLE DE IDIOMA
         // ==========================================
+        let currentLang = 'pt';
         let activeSystemId = 'cardiovascular';
+        let isOverviewMode = false;
         let currentQuizIndex = 0;
         let quizScore = 0;
         let answeredCurrent = false;
+        let lastSelectedOptionIndex = null;
+
+        // Alternar idioma e atualizar toda a UI preservando o estado
+        function setLanguage(lang) {
+            if (!uiTranslations[lang]) return;
+            currentLang = lang;
+
+            // Atualizar atributo lang do documento HTML e título da aba
+            const langMap = { pt: 'pt-BR', en: 'en', es: 'es' };
+            document.documentElement.lang = langMap[lang];
+            document.title = uiTranslations[lang].pageTitle;
+
+            // Atualizar estilo visual dos botões de idioma no cabeçalho
+            ['pt', 'en', 'es'].forEach(code => {
+                const btn = document.getElementById(`lang-btn-${code}`);
+                if (code === lang) {
+                    btn.className = 'px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 bg-white text-indigo-600 shadow-xs';
+                } else {
+                    btn.className = 'px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 text-slate-600 hover:text-slate-900';
+                }
+            });
+
+            // Atualizar textos estáticos da página
+            updateStaticTexts();
+
+            // Re-renderizar componentes dinâmicos mantendo o estado atual
+            renderTabs();
+            updateSvgHighlight(isOverviewMode ? null : activeSystemId);
+            renderSystemDetails(activeSystemId);
+            renderQuiz();
+        }
+
+        function updateStaticTexts() {
+            const t = uiTranslations[currentLang];
+            document.getElementById('header-title').innerHTML = t.headerTitleHTML;
+            document.getElementById('header-subtitle').textContent = t.headerSubtitle;
+            document.getElementById('nav-explore-btn').textContent = t.navExplore;
+            document.getElementById('nav-quiz-btn').textContent = t.navQuiz;
+            document.getElementById('hero-badge').textContent = t.heroBadge;
+            document.getElementById('hero-title').innerHTML = t.heroTitleHTML;
+            document.getElementById('hero-subtitle').textContent = t.heroSubtitle;
+            document.getElementById('svg-touch-hint').textContent = t.svgTouchHint;
+            document.getElementById('svg-view-all-btn').textContent = t.svgViewAll;
+            document.getElementById('svg-selected-prefix').textContent = t.svgSelectedPrefix;
+            document.getElementById('quiz-badge').textContent = t.quizBadge;
+            document.getElementById('quiz-title').textContent = t.quizTitle;
+            document.getElementById('quiz-subtitle').textContent = t.quizSubtitle;
+            document.getElementById('quiz-score-label').textContent = t.quizScoreLabel;
+            document.getElementById('footer-title').textContent = t.footerTitle;
+            document.getElementById('footer-subtitle').textContent = t.footerSubtitle;
+
+            // Atualizar tooltips (<title>) dentro do SVG
+            bodySystems.forEach(sys => {
+                const titleEl = document.getElementById(`title-${sys.id}`);
+                if (titleEl) {
+                    titleEl.textContent = sys.i18n[currentLang].name;
+                }
+            });
+        }
 
         // Inicializar abas superiores
         function renderTabs() {
             const tabsContainer = document.getElementById('system-tabs');
             tabsContainer.innerHTML = bodySystems.map(sys => {
                 const isActive = sys.id === activeSystemId;
+                const sysContent = sys.i18n[currentLang];
                 return `
                     <button 
                         onclick="selectSystem('${sys.id}')"
@@ -586,7 +1227,7 @@
                                 : 'bg-white text-slate-600 border-slate-200/90 hover:bg-slate-100 hover:text-slate-900'
                         }">
                         <i data-lucide="${sys.icon}" class="w-4 h-4"></i>
-                        <span>${sys.shortName}</span>
+                        <span>${sysContent.shortName}</span>
                     </button>
                 `;
             }).join('');
@@ -597,12 +1238,13 @@
         function updateSvgHighlight(systemId) {
             const allLayers = document.querySelectorAll('.svg-organ');
             const labelEl = document.getElementById('svg-active-label');
+            const t = uiTranslations[currentLang];
 
             if (!systemId) {
                 allLayers.forEach(layer => {
                     layer.classList.remove('active', 'dimmed');
                 });
-                labelEl.textContent = 'Todos os Sistemas (Visão Geral)';
+                labelEl.textContent = t.svgAllSystemsLabel;
                 return;
             }
 
@@ -618,13 +1260,15 @@
 
             const sys = bodySystems.find(s => s.id === systemId);
             if (sys) {
-                labelEl.textContent = sys.name;
+                labelEl.textContent = sys.i18n[currentLang].name;
             }
         }
 
         // Renderizar o Painel de Detalhes do Sistema Selecionado
         function renderSystemDetails(systemId) {
             const sys = bodySystems.find(s => s.id === systemId) || bodySystems[0];
+            const content = sys.i18n[currentLang];
+            const t = uiTranslations[currentLang];
             const panel = document.getElementById('info-panel');
 
             panel.innerHTML = `
@@ -637,21 +1281,21 @@
                             </div>
                             <div>
                                 <span class="inline-block text-xs font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full ${sys.theme.badge} mb-1">
-                                    Sistema Anatômico
+                                    ${t.systemBadge}
                                 </span>
-                                <h3 class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">${sys.name}</h3>
+                                <h3 class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">${content.name}</h3>
                             </div>
                         </div>
                     </div>
 
-                    <p class="text-sm font-semibold ${sys.theme.textMain} mb-3">${sys.tagline}</p>
+                    <p class="text-sm font-semibold ${sys.theme.textMain} mb-3">${content.tagline}</p>
                     <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
-                        ${sys.description}
+                        ${content.description}
                     </p>
 
                     <!-- Métricas Rápidas -->
                     <div class="grid grid-cols-3 gap-3 mb-6">
-                        ${sys.metrics.map(m => `
+                        ${content.metrics.map(m => `
                             <div class="${sys.theme.bgLight} rounded-2xl p-3.5 border ${sys.theme.border}">
                                 <span class="block text-xs text-slate-500 font-medium">${m.label}</span>
                                 <span class="font-display text-base sm:text-lg font-extrabold ${sys.theme.textDark}">${m.value}</span>
@@ -663,10 +1307,10 @@
                     <div>
                         <h4 class="font-display font-bold text-slate-900 text-base mb-3 flex items-center gap-2">
                             <i data-lucide="check-circle-2" class="w-5 h-5 ${sys.theme.textMain}"></i>
-                            Funções Principais
+                            ${t.mainFunctionsTitle}
                         </h4>
                         <ul class="space-y-2.5">
-                            ${sys.mainFunctions.map(fn => `
+                            ${content.mainFunctions.map(fn => `
                                 <li class="flex items-start gap-2.5 text-sm text-slate-700 bg-slate-50/80 p-3 rounded-xl border border-slate-100">
                                     <span class="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style="background-color: ${sys.theme.accentHex}"></span>
                                     <span>${fn}</span>
@@ -683,10 +1327,10 @@
                     <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200/80">
                         <h4 class="font-display font-bold text-slate-900 text-base mb-4 flex items-center gap-2">
                             <i data-lucide="layers" class="w-5 h-5 ${sys.theme.textMain}"></i>
-                            Principais Órgãos e Estruturas
+                            ${t.organsTitle}
                         </h4>
                         <div class="space-y-3">
-                            ${sys.organs.map(org => `
+                            ${content.organs.map(org => `
                                 <div class="p-3.5 rounded-2xl border border-slate-100 bg-slate-50/70 hover:bg-slate-50 transition">
                                     <div class="font-bold text-sm text-slate-900 mb-0.5">${org.name}</div>
                                     <div class="text-xs text-slate-600 leading-relaxed">${org.role}</div>
@@ -702,10 +1346,10 @@
                                 <div class="w-8 h-8 rounded-xl bg-white flex items-center justify-center ${sys.theme.textMain} shadow-xs">
                                     <i data-lucide="lightbulb" class="w-4 h-4"></i>
                                 </div>
-                                <h4 class="font-display font-bold ${sys.theme.textDark} text-base">Você Sabia? Fatos Curiosos</h4>
+                                <h4 class="font-display font-bold ${sys.theme.textDark} text-base">${t.factsTitle}</h4>
                             </div>
                             <div class="space-y-3">
-                                ${sys.facts.map((fact, idx) => `
+                                ${content.facts.map((fact, idx) => `
                                     <div class="bg-white/90 backdrop-blur-xs p-3.5 rounded-2xl shadow-2xs border border-white text-xs sm:text-sm text-slate-700 leading-relaxed">
                                         <span class="font-bold ${sys.theme.textMain} mr-1">#${idx + 1}</span> ${fact}
                                     </div>
@@ -722,6 +1366,7 @@
         // Selecionar um sistema
         function selectSystem(systemId) {
             activeSystemId = systemId;
+            isOverviewMode = false;
             renderTabs();
             updateSvgHighlight(systemId);
             renderSystemDetails(systemId);
@@ -729,6 +1374,7 @@
 
         // Resetar visão do SVG para mostrar todas as camadas sem opacidade reduzida
         function resetView() {
+            isOverviewMode = true;
             updateSvgHighlight(null);
         }
 
@@ -741,32 +1387,33 @@
         }
 
         // ==========================================
-        // 4. LÓGICA DO MINI-QUIZ INTERATIVO
+        // 5. LÓGICA DO MINI-QUIZ INTERATIVO
         // ==========================================
         function renderQuiz() {
             const container = document.getElementById('quiz-container');
             const scoreBadge = document.getElementById('quiz-score-badge');
+            const t = uiTranslations[currentLang];
             scoreBadge.textContent = `${quizScore} / ${quizQuestions.length}`;
 
             // Tela de Conclusão do Quiz
             if (currentQuizIndex >= quizQuestions.length) {
-                let message = 'Excelente! Você domina a anatomia humana!';
-                if (quizScore < 3) message = 'Bom começo! Explore mais os sistemas acima e tente novamente.';
-                else if (quizScore < 5) message = 'Muito bem! Você tem ótimos conhecimentos sobre o corpo humano.';
+                let message = t.quizMsgHigh;
+                if (quizScore < 3) message = t.quizMsgLow;
+                else if (quizScore < 5) message = t.quizMsgMid;
 
                 container.innerHTML = `
                     <div class="text-center py-6">
                         <div class="w-16 h-16 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mx-auto mb-4">
                             <i data-lucide="trophy" class="w-8 h-8"></i>
                         </div>
-                        <h4 class="font-display text-2xl font-bold text-slate-900 mb-2">Quiz Concluído!</h4>
+                        <h4 class="font-display text-2xl font-bold text-slate-900 mb-2">${t.quizEndTitle}</h4>
                         <p class="text-slate-600 mb-4">${message}</p>
                         <div class="inline-block bg-slate-100 px-6 py-3 rounded-2xl font-display text-xl font-extrabold text-indigo-600 mb-6">
-                            Você acertou ${quizScore} de ${quizQuestions.length} perguntas
+                            ${t.quizEndScore(quizScore, quizQuestions.length)}
                         </div>
                         <div>
                             <button onclick="restartQuiz()" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl shadow-sm transition inline-flex items-center gap-2">
-                                <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Refazer Quiz
+                                <i data-lucide="rotate-ccw" class="w-4 h-4"></i> ${t.quizRestartBtn}
                             </button>
                         </div>
                     </div>
@@ -775,15 +1422,16 @@
                 return;
             }
 
-            const q = quizQuestions[currentQuizIndex];
-            const progressPercent = ((currentQuizIndex) / quizQuestions.length) * 100;
+            const qObj = quizQuestions[currentQuizIndex];
+            const qContent = qObj.i18n[currentLang];
+            const progressPercent = (currentQuizIndex / quizQuestions.length) * 100;
 
             container.innerHTML = `
                 <!-- Barra de Progresso -->
                 <div class="mb-6">
                     <div class="flex justify-between text-xs font-semibold text-slate-500 mb-2">
-                        <span>Pergunta ${currentQuizIndex + 1} de ${quizQuestions.length}</span>
-                        <span>${Math.round(progressPercent)}% concluído</span>
+                        <span>${t.quizQuestionCounter(currentQuizIndex + 1, quizQuestions.length)}</span>
+                        <span>${t.quizCompletedPercent(Math.round(progressPercent))}</span>
                     </div>
                     <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
                         <div class="h-full bg-indigo-600 transition-all duration-300" style="width: ${progressPercent}%"></div>
@@ -792,12 +1440,12 @@
 
                 <!-- Enunciado -->
                 <h4 class="font-display text-lg sm:text-xl font-bold text-slate-900 mb-5">
-                    ${q.question}
+                    ${qContent.question}
                 </h4>
 
                 <!-- Alternativas -->
                 <div class="space-y-3" id="quiz-options">
-                    ${q.options.map((opt, idx) => `
+                    ${qContent.options.map((opt, idx) => `
                         <button 
                             onclick="handleQuizAnswer(${idx})"
                             id="quiz-opt-${idx}"
@@ -816,29 +1464,45 @@
                 <!-- Feedback da Resposta (oculto até responder) -->
                 <div id="quiz-feedback" class="hidden mt-6 p-4 rounded-2xl border"></div>
             `;
+
+            // Se o usuário já respondeu esta pergunta antes de trocar o idioma, reaplica o estado visual
+            if (answeredCurrent && lastSelectedOptionIndex !== null) {
+                applyAnsweredStyles(lastSelectedOptionIndex);
+            }
+
             lucide.createIcons();
         }
 
         function handleQuizAnswer(selectedIndex) {
             if (answeredCurrent) return;
             answeredCurrent = true;
+            lastSelectedOptionIndex = selectedIndex;
 
-            const q = quizQuestions[currentQuizIndex];
-            const isCorrect = selectedIndex === q.correctIndex;
+            const qObj = quizQuestions[currentQuizIndex];
+            const isCorrect = selectedIndex === qObj.correctIndex;
 
             if (isCorrect) {
                 quizScore++;
                 document.getElementById('quiz-score-badge').textContent = `${quizScore} / ${quizQuestions.length}`;
             }
 
-            // Estilizar botões após resposta
-            q.options.forEach((_, idx) => {
+            applyAnsweredStyles(selectedIndex);
+            lucide.createIcons();
+        }
+
+        function applyAnsweredStyles(selectedIndex) {
+            const qObj = quizQuestions[currentQuizIndex];
+            const qContent = qObj.i18n[currentLang];
+            const t = uiTranslations[currentLang];
+            const isCorrect = selectedIndex === qObj.correctIndex;
+
+            qContent.options.forEach((_, idx) => {
                 const btn = document.getElementById(`quiz-opt-${idx}`);
                 const iconSpan = document.getElementById(`quiz-icon-${idx}`);
                 btn.disabled = true;
                 btn.classList.remove('hover:border-indigo-400', 'hover:bg-indigo-50/40');
 
-                if (idx === q.correctIndex) {
+                if (idx === qObj.correctIndex) {
                     btn.classList.add('bg-emerald-50', 'border-emerald-500', 'text-emerald-900');
                     iconSpan.innerHTML = `<i data-lucide="check-circle" class="w-5 h-5 text-emerald-600"></i>`;
                 } else if (idx === selectedIndex && !isCorrect) {
@@ -849,7 +1513,6 @@
                 }
             });
 
-            // Mostrar explicação e botão de próxima pergunta
             const feedbackEl = document.getElementById('quiz-feedback');
             feedbackEl.classList.remove('hidden');
             feedbackEl.className = `mt-6 p-4 rounded-2xl border flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${
@@ -858,20 +1521,20 @@
 
             feedbackEl.innerHTML = `
                 <div class="text-sm">
-                    <strong class="block font-bold mb-0.5">${isCorrect ? 'Resposta Correta!' : 'Quase lá!'}</strong>
-                    <span class="text-slate-700">${q.explanation}</span>
+                    <strong class="block font-bold mb-0.5">${isCorrect ? t.quizCorrectFeedback : t.quizWrongFeedback}</strong>
+                    <span class="text-slate-700">${qContent.explanation}</span>
                 </div>
                 <button onclick="nextQuizQuestion()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-xl shrink-0 transition flex items-center justify-center gap-1.5">
-                    <span>${currentQuizIndex + 1 < quizQuestions.length ? 'Próxima' : 'Ver Resultado'}</span>
+                    <span>${currentQuizIndex + 1 < quizQuestions.length ? t.quizNextBtn : t.quizFinishBtn}</span>
                     <i data-lucide="arrow-right" class="w-4 h-4"></i>
                 </button>
             `;
-            lucide.createIcons();
         }
 
         function nextQuizQuestion() {
             currentQuizIndex++;
             answeredCurrent = false;
+            lastSelectedOptionIndex = null;
             renderQuiz();
         }
 
@@ -879,13 +1542,13 @@
             currentQuizIndex = 0;
             quizScore = 0;
             answeredCurrent = false;
+            lastSelectedOptionIndex = null;
             renderQuiz();
         }
 
         // Inicialização ao carregar a página
         window.addEventListener('DOMContentLoaded', () => {
-            selectSystem('cardiovascular');
-            renderQuiz();
+            setLanguage('pt');
         });
     </script>
 </body>
