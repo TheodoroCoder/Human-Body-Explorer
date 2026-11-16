@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anatomia Interativa - Sistemas do Corpo Humano</title>
+    <!-- Carregando Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carregando Fontes Google (Inter e Plus Jakarta Sans) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Carregando Ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        cardio: { light: '#FEE2E2', main: '#EF4444', dark: '#991B1B' },
+                        nervous: { light: '#FEF3C7', main: '#F59E0B', dark: '#92400E' },
+                        respiratory: { light: '#E0F2FE', main: '#0EA5E9', dark: '#075985' },
+                        digestive: { light: '#DCFCE7', main: '#22C55E', dark: '#166534' },
+                        skeletal: { light: '#F1F5F9', main: '#64748B', dark: '#1E293B' },
+                        muscular: { light: '#FCE7F3', main: '#EC4899', dark: '#9D174D' },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilos customizados para o SVG interativo e animações suaves */
+        .svg-organ {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            transform-origin: center;
+        }
+        .svg-organ:hover {
+            filter: brightness(1.1) drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));
+            transform: scale(1.03);
+        }
+        .svg-organ.active {
+            filter: drop-shadow(0 0 12px currentColor);
+            opacity: 1 !important;
+        }
+        .svg-organ.dimmed {
+            opacity: 0.22;
+        }
+        @keyframes pulse-soft {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+        }
+        .animate-heartbeat {
+            animation: pulse-soft 1.4s infinite ease-in-out;
+            transform-origin: 155px 155px;
+        }
+        /* Ocultar barra de rolagem mantendo funcionalidade */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-indigo-100 selection:text-indigo-900">
+
+    <!-- Cabeçalho / Navbar -->
+    <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-blue-500 flex items-center justify-center text-white shadow-md shadow-indigo-500/20">
+                    <i data-lucide="activity" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h1 class="font-display font-bold text-lg sm:text-xl text-slate-900 leading-tight">Corpo Humano <span class="text-indigo-600">360°</span></h1>
+                    <p class="text-xs text-slate-500 hidden sm:block">Atlas Anatômico Interativo & Curiosidades</p>
+                </div>
+            </div>
+
+            <nav class="flex items-center gap-2 sm:gap-4">
+                <button onclick="scrollToSection('explorer-section')" class="px-3 py-2 text-sm font-medium text-slate-600 hover:text-indigo-600 rounded-lg hover:bg-slate-100 transition">
+                    Explorar Sistemas
+                </button>
+                <button onclick="scrollToSection('quiz-section')" class="px-4 py-2 text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl shadow-sm shadow-indigo-600/20 transition flex items-center gap-2">
+                    <i data-lucide="brain-circuit" class="w-4 h-4"></i>
+                    <span>Mini-Quiz</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Seção Principal (Hero Compacto) -->
+    <section class="bg-gradient-to-b from-white to-slate-50 pt-8 pb-6 px-4 sm:px-6 lg:px-8 border-b border-slate-200/60">
+        <div class="max-w-7xl mx-auto text-center max-w-3xl">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-100 mb-3">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Aprendizado Visual Interativo
+            </span>
+            <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
+                Descubra a incrível máquina que é o <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-500">Corpo Humano</span>
+            </h2>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                Clique nos órgãos diretamente no modelo anatômico ou selecione um dos seis sistemas principais abaixo para explorar suas funções vitais, estruturas e fatos surpreendentes.
+            </p>
+        </div>
+    </section>
+
+    <!-- Seção do Explorador Interativo -->
+    <main id="explorer-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- Barra de Seleção Rápida dos Sistemas -->
+        <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-4 mb-6" id="system-tabs">
+            <!-- Botões gerados dinamicamente via JavaScript -->
+        </div>
+
+        <!-- Grid Principal: Diagrama SVG à Esquerda + Painel Informativo à Direita -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Coluna 1: Diagrama Anatômico Interativo (5 colunas em telas grandes) -->
+            <div class="lg:col-span-5 bg-white rounded-3xl p-6 shadow-sm border border-slate-200/80 flex flex-col items-center relative overflow-hidden">
+                <div class="w-full flex items-center justify-between mb-2">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                        <i data-lucide="mouse-pointer-click" class="w-4 h-4 text-indigo-500"></i> Toque em um órgão
+                    </span>
+                    <button onclick="resetView()" class="text-xs font-medium text-indigo-600 hover:text-indigo-800 bg-indigo-50 hover:bg-indigo-100 px-2.5 py-1 rounded-lg transition">
+                        Ver Todos
+                    </button>
+                </div>
+
+                <!-- SVG Anatômico Estilizado e Interativo -->
+                <div class="w-full max-w-[320px] aspect-[3/5] relative flex items-center justify-center my-2">
+                    <svg id="human-body-svg" viewBox="0 0 300 520" class="w-full h-full drop-shadow-sm select-none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <!-- Gradientes para profundidade visual -->
+                            <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#F8FAFC" />
+                                <stop offset="100%" stop-color="#E2E8F0" />
+                            </linearGradient>
+                            <linearGradient id="lungGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#38BDF8" />
+                                <stop offset="100%" stop-color="#0284C7" />
+                            </linearGradient>
+                            <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#F87171" />
+                                <stop offset="100%" stop-color="#DC2626" />
+                            </linearGradient>
+                            <linearGradient id="brainGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#FBBF24" />
+                                <stop offset="100%" stop-color="#D97706" />
+                            </linearGradient>
+                            <linearGradient id="digestGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#4ADE80" />
+                                <stop offset="100%" stop-color="#16A34A" />
+                            </linearGradient>
+                        </defs>
+
+                        <!-- Silhueta Base do Corpo Humano -->
+                        <path d="M150,18 C172,18 186,34 186,56 C186,73 176,86 165,92 L165,104 C198,108 225,122 234,152 L254,248 C257,260 245,266 239,255 L218,172 L212,265 L224,475 C225,490 205,492 202,477 L182,315 L150,315 L118,315 L98,477 C95,492 75,490 76,475 L88,265 L82,172 L61,255 C55,266 43,260 46,248 L66,152 C75,122 102,108 135,104 L135,92 C124,86 114,73 114,56 C114,34 128,18 150,18 Z" 
+                              fill="url(#bodyGrad)" stroke="#CBD5E1" stroke-width="2.5" />
+
+                        <!-- 1. SISTEMA ESQUELÉTICO (Costelas, Coluna, Fêmur) -->
+                        <g id="layer-skeletal" class="svg-organ text-slate-500" onclick="selectSystem('skeletal')">
+                            <!-- Coluna Vertebral -->
+                            <rect x="146" y="95" width="8" height="175" rx="4" fill="#94A3B8" opacity="0.65" />
+                            <!-- Caixa Torácica (Costelas estilizadas) -->
+                            <path d="M122,132 Q150,142 178,132 M118,148 Q150,160 182,148 M120,164 Q150,176 180,164 M125,180 Q150,190 175,180" 
+                                  fill="none" stroke="#64748B" stroke-width="4" stroke-linecap="round" opacity="0.7" />
+                            <!-- Pelve -->
+                            <path d="M120,262 Q150,282 180,262 L172,285 Q150,292 128,285 Z" fill="#94A3B8" opacity="0.7" />
+                            <!-- Ossos das Pernas (Fêmur e Tíbia) -->
+                            <line x1="125" y1="290" x2="112" y2="380" stroke="#64748B" stroke-width="6" stroke-linecap="round" opacity="0.7" />
+                            <line x1="112" y1="390" x2="105" y2="470" stroke="#64748B" stroke-width="5" stroke-linecap="round" opacity="0.7" />
+                            <line x1="175" y1="290" x2="188" y2="380" stroke="#64748B" stroke-width="6" stroke-linecap="round" opacity="0.7" />
+                            <line x1="188" y1="390" x2="195" y2="470" stroke="#64748B" stroke-width="5" stroke-linecap="round" opacity="0.7" />
+                        </g>
+
+                        <!-- 2. SISTEMA MUSCULAR (Peitoral, Bíceps, Quadríceps) -->
+                        <g id="layer-muscular" class="svg-organ text-pink-500" onclick="selectSystem('muscular')">
+                            <!-- Deltoides e Bíceps -->
+                            <path d="M98,118 Q76,125 72,155 Q84,158 94,142 Z" fill="#F472B6" opacity="0.75" />
+                            <path d="M202,118 Q224,125 228,155 Q216,158 206,142 Z" fill="#F472B6" opacity="0.75" />
+                            <ellipse cx="75" cy="182" rx="8" ry="22" transform="rotate(14 75 182)" fill="#EC4899" opacity="0.7" />
+                            <ellipse cx="225" cy="182" rx="8" ry="22" transform="rotate(-14 225 182)" fill="#EC4899" opacity="0.7" />
+                            <!-- Quadríceps (Coxas) -->
+                            <ellipse cx="122" cy="335" rx="13" ry="38" transform="rotate(6 122 335)" fill="#EC4899" opacity="0.65" />
+                            <ellipse cx="178" cy="335" rx="13" ry="38" transform="rotate(-6 178 335)" fill="#EC4899" opacity="0.65" />
+                        </g>
+
+                        <!-- 3. SISTEMA RESPIRATÓRIO (Traqueia e Pulmões) -->
+                        <g id="layer-respiratory" class="svg-organ text-sky-500" onclick="selectSystem('respiratory')">
+                            <!-- Traqueia -->
+                            <rect x="146" y="96" width="8" height="34" rx="3" fill="#0284C7" />
+                            <!-- Pulmão Direito -->
+                            <path d="M142,126 C122,126 112,148 112,175 C112,190 124,196 142,192 Z" fill="url(#lungGrad)" opacity="0.88" />
+                            <!-- Pulmão Esquerdo -->
+                            <path d="M158,126 C178,126 188,148 188,175 C188,190 176,196 158,192 Z" fill="url(#lungGrad)" opacity="0.88" />
+                        </g>
+
+                        <!-- 4. SISTEMA CARDIOVASCULAR (Coração e Vasos Principais) -->
+                        <g id="layer-cardiovascular" class="svg-organ text-red-500" onclick="selectSystem('cardiovascular')">
+                            <!-- Artérias Principais -->
+                            <path d="M152,140 L152,110 M152,145 L125,135 M152,145 L178,135 M152,170 L152,255" 
+                                  stroke="#EF4444" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8" />
+                            <!-- Coração -->
+                            <path class="animate-heartbeat" d="M155,146 C151,140 142,141 142,149 C142,158 155,167 157,169 C159,167 171,158 171,149 C171,141 162,140 158,146 Z" 
+                                  fill="url(#heartGrad)" stroke="#991B1B" stroke-width="1.2" />
+                        </g>
+
+                        <!-- 5. SISTEMA DIGESTÓRIO (Esôfago, Estômago, Fígado e Intestinos) -->
+                        <g id="layer-digestive" class="svg-organ text-emerald-500" onclick="selectSystem('digestive')">
+                            <!-- Fígado -->
+                            <path d="M122,196 L154,196 L146,214 L120,210 Z" fill="#15803D" opacity="0.85" />
+                            <!-- Estômago -->
+                            <path d="M152,198 C168,196 176,208 170,220 C164,228 148,225 148,215 Z" fill="url(#digestGrad)" />
+                            <!-- Intestinos (Delgado e Grosso) -->
+                            <rect x="124" y="226" width="52" height="42" rx="12" fill="#22C55E" opacity="0.85" />
+                            <path d="M132,235 H168 M132,245 H168 M132,255 H168" stroke="#DCFCE7" stroke-width="3" stroke-linecap="round" />
+                        </g>
+
+                        <!-- 6. SISTEMA NERVOSO (Cérebro e Medula) -->
+                        <g id="layer-nervous" class="svg-organ text-amber-500" onclick="selectSystem('nervous')">
+                            <!-- Cérebro -->
+                            <path d="M150,25 C134,25 124,36 124,49 C124,60 132,67 144,67 L156,67 C168,67 176,60 176,49 C176,36 166,25 150,25 Z" 
+                                  fill="url(#brainGrad)" stroke="#B45309" stroke-width="1.5" />
+                            <!-- Sulcos Cerebrais -->
+                            <path d="M150,26 V66 M134,38 Q142,42 136,48 M166,38 Q158,42 164,48 M136,55 Q144,53 142,60 M164,55 Q156,53 158,60" 
+                                  stroke="#FEF3C7" stroke-width="1.8" stroke-linecap="round" fill="none" />
+                            <!-- Nervos / Medula Espinhal -->
+                            <line x1="150" y1="67" x2="150" y2="250" stroke="#F59E0B" stroke-width="2.5" stroke-dasharray="4 3" />
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- Legenda Interativa Inferior -->
+                <div class="w-full bg-slate-50 rounded-2xl p-3 border border-slate-200/70 text-center">
+                    <p class="text-xs text-slate-500">
+                        Sistema selecionado: <strong id="svg-active-label" class="text-slate-800">Todos os Sistemas</strong>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Coluna 2: Painel de Informações Detalhadas (7 colunas em telas grandes) -->
+            <div class="lg:col-span-7 flex flex-col gap-6" id="info-panel">
+                <!-- Conteúdo injetado dinamicamente via JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Seção do Mini-Quiz Interativo -->
+    <section id="quiz-section" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 mt-4">
+        <div class="bg-white rounded-3xl shadow-sm border border-slate-200/90 overflow-hidden">
+            <div class="bg-gradient-to-r from-indigo-600 to-blue-600 p-6 sm:p-8 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                    <span class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider bg-white/15 px-3 py-1 rounded-full mb-2">
+                        <i data-lucide="award" class="w-3.5 h-3.5"></i> Desafio de Conhecimento
+                    </span>
+                    <h3 class="font-display text-2xl font-bold">Mini-Quiz de Anatomia</h3>
+                    <p class="text-indigo-100 text-sm mt-1">Teste o que você aprendeu explorando os sistemas do corpo humano.</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl px-4 py-3 text-center border border-white/20 shrink-0">
+                    <span class="block text-xs text-indigo-100 uppercase font-semibold">Pontuação</span>
+                    <span id="quiz-score-badge" class="font-display text-2xl font-extrabold">0 / 6</span>
+                </div>
+            </div>
+
+            <div class="p-6 sm:p-8" id="quiz-container">
+                <!-- Perguntas do Quiz renderizadas dinamicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="bg-white border-t border-slate-200 mt-12 py-8 px-4 text-center text-slate-500 text-sm">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="font-medium text-slate-700">Corpo Humano 360° — Educação Científica Interativa</p>
+            <p class="text-xs">Desenvolvido para fins educativos. Explore, clique e aprenda.</p>
+        </div>
+    </footer>
+
+    <!-- Lógica JavaScript Completa -->
+    <script>
+        // ==========================================
+        // 1. BASE DE DADOS DOS SISTEMAS DO CORPO
+        // ==========================================
+        const bodySystems = [
+            {
+                id: 'cardiovascular',
+                name: 'Sistema Cardiovascular',
+                shortName: 'Cardiovascular',
+                icon: 'heart-pulse',
+                theme: {
+                    bgLight: 'bg-red-50',
+                    textMain: 'text-red-600',
+                    textDark: 'text-red-900',
+                    border: 'border-red-200',
+                    badge: 'bg-red-100 text-red-700',
+                    btnActive: 'bg-red-600 text-white shadow-red-600/25',
+                    accentHex: '#EF4444'
+                },
+                tagline: 'A rede vital de transporte de oxigênio e nutrientes',
+                description: 'O sistema cardiovascular é responsável por bombear e distribuir sangue por todo o organismo. Ele garante que cada célula receba oxigênio, nutrientes e hormônios essenciais, enquanto recolhe gás carbônico e resíduos metabólicos para eliminação.',
+                mainFunctions: [
+                    'Transporte de oxigênio dos pulmões para os tecidos e de CO₂ no sentido inverso.',
+                    'Distribuição de nutrientes absorvidos pelo sistema digestório.',
+                    'Regulação da temperatura corporal e do equilíbrio hídrico.',
+                    'Defesa imunológica através do transporte de glóbulos brancos e anticorpos.'
+                ],
+                organs: [
+                    { name: 'Coração', role: 'Bomba muscular de quatro câmaras que impulsiona o sangue.' },
+                    { name: 'Artérias', role: 'Vasos que levam sangue rico em oxigênio do coração para o corpo.' },
+                    { name: 'Veias', role: 'Vasos que trazem o sangue de volta ao coração.' },
+                    { name: 'Capilares', role: 'Vasos microscópicos onde ocorrem as trocas gasosas e de nutrientes.' }
+                ],
+                facts: [
+                    'Se todos os vasos sanguíneos de um adulto fossem esticados em linha reta, eles dariam cerca de 2,5 voltas ao redor da Terra (aproximadamente 100.000 km)!',
+                    'O coração humano bate em média 100.000 vezes por dia, bombeando cerca de 5 litros de sangue por minuto em repouso.',
+                    'A córnea (parte transparente da frente do olho) é a única parte do corpo humano que não recebe suprimento direto de sangue.'
+                ],
+                metrics: [
+                    { label: 'Batimentos/dia', value: '~100.000' },
+                    { label: 'Extensão Vascular', value: '96.000 km' },
+                    { label: 'Volume de Sangue', value: '4,5 a 5,5 L' }
+                ]
+            },
+            {
+                id: 'nervous',
+                name: 'Sistema Nervoso',
+                shortName: 'Nervoso',
+                icon: 'brain',
+                theme: {
+                    bgLight: 'bg-amber-50',
+                    textMain: 'text-amber-600',
+                    textDark: 'text-amber-900',
+                    border: 'border-amber-200',
+                    badge: 'bg-amber-100 text-amber-800',
+                    btnActive: 'bg-amber-500 text-white shadow-amber-500/25',
+                    accentHex: '#F59E0B'
+                },
+                tagline: 'O centro de comando, processamento e comunicação rápida',
+                description: 'O sistema nervoso coordena todas as ações voluntárias e involuntárias do corpo. Por meio de sinais elétricos e químicos ultrarrápidos, ele interpreta estímulos externos e internos, gera pensamentos, memórias, emoções e controla nossos movimentos.',
+                mainFunctions: [
+                    'Recepção e interpretação de estímulos sensoriais (visão, audição, tato, olfato, paladar).',
+                    'Controle dos movimentos musculares voluntários e reflexos rápidos.',
+                    'Regulação de funções vitais automáticas, como respiração e frequência cardíaca.',
+                    'Processamento cognitivo: memória, linguagem, raciocínio e emoções.'
+                ],
+                organs: [
+                    { name: 'Cérebro', role: 'Órgão principal do sistema nervoso central, sede da consciência e cognição.' },
+                    { name: 'Medula Espinhal', role: 'Via principal de comunicação entre o cérebro e o resto do corpo.' },
+                    { name: 'Cerebelo', role: 'Coordena o equilíbrio, a postura e a precisão dos movimentos.' },
+                    { name: 'Nervos Periféricos', role: 'Rede de fibras que conecta o sistema central aos órgãos e membros.' }
+                ],
+                facts: [
+                    'O cérebro humano contém aproximadamente 86 bilhões de neurônios, formando trilhões de conexões chamadas sinapses.',
+                    'Impulsos nervosos podem viajar a velocidades superiores a 400 km/h — mais rápido que um carro de Fórmula 1!',
+                    'Embora represente apenas cerca de 2% do peso corporal, o cérebro consome cerca de 20% de todo o oxigênio e energia do corpo.'
+                ],
+                metrics: [
+                    { label: 'Neurônios', value: '~86 Bilhões' },
+                    { label: 'Velocidade do Impulso', value: 'Até 430 km/h' },
+                    { label: 'Consumo de Energia', value: '20% do total' }
+                ]
+            },
+            {
+                id: 'respiratory',
+                name: 'Sistema Respiratório',
+                shortName: 'Respiratório',
+                icon: 'wind',
+                theme: {
+                    bgLight: 'bg-sky-50',
+                    textMain: 'text-sky-600',
+                    textDark: 'text-sky-900',
+                    border: 'border-sky-200',
+                    badge: 'bg-sky-100 text-sky-800',
+                    btnActive: 'bg-sky-600 text-white shadow-sky-600/25',
+                    accentHex: '#0EA5E9'
+                },
+                tagline: 'A troca gasosa essencial para a produção de energia celular',
+                description: 'O sistema respiratório permite a entrada de oxigênio no organismo e a eliminação de dióxido de carbono (CO₂). Trabalhando em sintonia íntima com o sistema cardiovascular, ele garante o combustível gasoso para o metabolismo de todas as células.',
+                mainFunctions: [
+                    'Captação de oxigênio (O₂) do ar atmosférico para a corrente sanguínea.',
+                    'Eliminação de dióxido de carbono (CO₂), resíduo da respiração celular.',
+                    'Filtração, aquecimento e umidificação do ar inspirado.',
+                    'Produção da voz através da vibração das pregas vocais na laringe.'
+                ],
+                organs: [
+                    { name: 'Pulmões', role: 'Órgãos esponjosos onde ocorrem as trocas gasosas nos alvéolos.' },
+                    { name: 'Traqueia e Brônquios', role: 'Canais reforçados por anéis cartilaginosos que conduzem o ar.' },
+                    { name: 'Alvéolos Pulmonares', role: 'Minúsculas bolsas de ar cercadas por capilares sanguíneos.' },
+                    { name: 'Diafragma', role: 'Principal músculo respiratório que se contrai para puxar o ar para dentro.' }
+                ],
+                facts: [
+                    'Se os cerca de 300 a 500 milhões de alvéolos dos pulmões fossem abertos e estendidos, cobririam uma área equivalente à metade de uma quadra de tênis!',
+                    'O pulmão direito é ligeiramente maior que o esquerdo, pois o esquerdo precisa abrir espaço para acomodar o coração.',
+                    'Respiramos em média 20.000 vezes por dia, movimentando mais de 10.000 litros de ar.'
+                ],
+                metrics: [
+                    { label: 'Respirações/dia', value: '~20.000' },
+                    { label: 'Alvéolos', value: '~400 Milhões' },
+                    { label: 'Área Interna', value: '~70 m²' }
+                ]
+            },
+            {
+                id: 'digestive',
+                name: 'Sistema Digestório',
+                shortName: 'Digestório',
+                icon: 'utensils',
+                theme: {
+                    bgLight: 'bg-emerald-50',
+                    textMain: 'text-emerald-600',
+                    textDark: 'text-emerald-900',
+                    border: 'border-emerald-200',
+                    badge: 'bg-emerald-100 text-emerald-800',
+                    btnActive: 'bg-emerald-600 text-white shadow-emerald-600/25',
+                    accentHex: '#22C55E'
+                },
+                tagline: 'Transformando alimentos em combustível e blocos de construção',
+                description: 'O sistema digestório é um longo tubo muscular auxiliado por glândulas anexas que quebra os alimentos mecanicamente e quimicamente em moléculas pequenas (glicose, aminoácidos, ácidos graxos) para serem absorvidas pelo sangue.',
+                mainFunctions: [
+                    'Ingestão e trituração mecânica dos alimentos.',
+                    'Digestão química por meio de enzimas, ácidos e bile.',
+                    'Absorção de nutrientes, vitaminas, sais minerais e água.',
+                    'Compactação e eliminação dos resíduos não digeridos.'
+                ],
+                organs: [
+                    { name: 'Estômago', role: 'Bolsa muscular que secreta ácido clorídrico e enzimas para digerir proteínas.' },
+                    { name: 'Intestino Delgado', role: 'Tubo de ~6 metros onde ocorre 90% da absorção de nutrientes.' },
+                    { name: 'Fígado e Pâncreas', role: 'Glândulas que produzem bile e enzimas digestivas essenciais.' },
+                    { name: 'Intestino Grosso', role: 'Absorve água e eletrólitos, abrigando trilhões de bactérias benéficas.' }
+                ],
+                facts: [
+                    'O ácido clorídrico presente no estômago é tão forte (pH entre 1,5 e 3,5) que poderia dissolver lâminas de metal; o estômago não se autodigere graças a uma camada renovável de muco.',
+                    'O intestino delgado tem cerca de 6 metros de comprimento, mas suas vilosidades aumentam sua área de absorção para o tamanho de um apartamento grande.',
+                    'O intestino possui seu próprio sistema nervoso ("sistema nervoso entérico"), frequentemente chamado de "segundo cérebro".'
+                ],
+                metrics: [
+                    { label: 'Extensão do Tubo', value: '~9 metros' },
+                    { label: 'Tempo de Digestão', value: '24 a 72h' },
+                    { label: 'pH Estomacal', value: '1,5 a 3,5' }
+                ]
+            },
+            {
+                id: 'skeletal',
+                name: 'Sistema Esquelético',
+                shortName: 'Esquelético',
+                icon: 'bone',
+                theme: {
+                    bgLight: 'bg-slate-100',
+                    textMain: 'text-slate-700',
+                    textDark: 'text-slate-900',
+                    border: 'border-slate-300',
+                    badge: 'bg-slate-200 text-slate-800',
+                    btnActive: 'bg-slate-800 text-white shadow-slate-800/25',
+                    accentHex: '#64748B'
+                },
+                tagline: 'A estrutura viva de sustentação, proteção e produção sanguínea',
+                description: 'Muito mais do que um arcabouço rígido, o sistema esquelético é composto por tecidos vivos em constante remodelação. Ele sustenta o corpo contra a gravidade, protege órgãos vitais delicados e serve de alavanca para os músculos.',
+                mainFunctions: [
+                    'Sustentação estrutural e definição da forma do corpo humano.',
+                    'Proteção de órgãos vitais (crânio protege o cérebro; caixa torácica protege coração e pulmões).',
+                    'Hematopoiese: produção de células sanguíneas na medula óssea vermelha.',
+                    'Armazenamento de minerais essenciais, especialmente cálcio e fósforo.'
+                ],
+                organs: [
+                    { name: 'Crânio e Coluna', role: 'Protegem o sistema nervoso central e sustentam o tronco.' },
+                    { name: 'Caixa Torácica', role: 'Costelas e esterno que blindam os órgãos do tórax.' },
+                    { name: 'Fêmur', role: 'O maior e mais resistente osso do corpo humano, localizado na coxa.' },
+                    { name: 'Articulações e Cartilagens', role: 'Conectam os ossos permitindo mobilidade e absorção de impacto.' }
+                ],
+                facts: [
+                    'Bebês nascem com cerca de 270 a 300 ossos, mas muitos se fundem durante o crescimento, resultando nos 206 ossos de um adulto.',
+                    'O menor osso do corpo humano é o estribo, localizado no ouvido médio, medindo apenas cerca de 2,8 milímetros!',
+                    'O osso é cerca de cinco vezes mais resistente que uma barra de aço de mesmo peso.'
+                ],
+                metrics: [
+                    { label: 'Ossos no Adulto', value: '206 ossos' },
+                    { label: 'Maior Osso', value: 'Fêmur (~48 cm)' },
+                    { label: 'Menor Osso', value: 'Estribo (2,8 mm)' }
+                ]
+            },
+            {
+                id: 'muscular',
+                name: 'Sistema Muscular',
+                shortName: 'Muscular',
+                icon: 'biceps-flexed',
+                theme: {
+                    bgLight: 'bg-pink-50',
+                    textMain: 'text-pink-600',
+                    textDark: 'text-pink-900',
+                    border: 'border-pink-200',
+                    badge: 'bg-pink-100 text-pink-800',
+                    btnActive: 'bg-pink-600 text-white shadow-pink-600/25',
+                    accentHex: '#EC4899'
+                },
+                tagline: 'O motor biológico responsável por todo movimento e postura',
+                description: 'Composto por mais de 600 músculos, o sistema muscular converte energia química em força mecânica através da contração de fibras especializadas. Ele atua tanto nos movimentos conscientes quanto no funcionamento interno dos órgãos.',
+                mainFunctions: [
+                    'Locomoção e execução de movimentos precisos (músculos esqueléticos).',
+                    'Manutenção da postura corporal e estabilidade das articulações.',
+                    'Geração de calor corporal (termogênese) para manter a temperatura em ~36,5°C.',
+                    'Movimentação de substâncias internas, como alimentos no intestino e sangue nos vasos.'
+                ],
+                organs: [
+                    { name: 'Músculos Esqueléticos', role: 'Ligados aos ossos por tendões; possuem controle voluntário.' },
+                    { name: 'Músculo Cardíaco', role: 'Exclusivo do coração, contrai-se ritmicamente de forma involuntária.' },
+                    { name: 'Músculos Lisos', role: 'Presentes nas paredes do estômago, intestinos e vasos sanguíneos.' },
+                    { name: 'Tendões', role: 'Faixas fibrosas resistentes que conectam os músculos aos ossos.' }
+                ],
+                facts: [
+                    'O músculo mais forte em relação ao seu tamanho é o masseter (músculo da mandíbula), capaz de exercer uma força de mordida superior a 90 kg nos molares.',
+                    'O maior músculo do corpo humano em volume é o glúteo máximo, essencial para nos manter eretos e subir escadas.',
+                    'Para dar um único passo, você utiliza cerca de 200 músculos diferentes trabalhando em coordenação.'
+                ],
+                metrics: [
+                    { label: 'Total de Músculos', value: '+600 músculos' },
+                    { label: 'Massa Corporal', value: '~40% do peso' },
+                    { label: 'Músculos por Passo', value: '~200 ativos' }
+                ]
+            }
+        ];
+
+        // ==========================================
+        // 2. PERGUNTAS DO MINI-QUIZ INTERATIVO
+        // ==========================================
+        const quizQuestions = [
+            {
+                question: 'Qual é o único osso do corpo humano que mede menos de 3 milímetros e fica no ouvido?',
+                options: ['Fêmur', 'Estribo', 'Patela', 'Clavícula'],
+                correctIndex: 1,
+                explanation: 'O estribo, localizado no ouvido médio, mede cerca de 2,8 mm e transmite vibrações sonoras.'
+            },
+            {
+                question: 'Qual porcentagem aproximada do oxigênio e energia do corpo é consumida apenas pelo cérebro?',
+                options: ['5%', '10%', '20%', '45%'],
+                correctIndex: 2,
+                explanation: 'Apesar de representar apenas 2% do peso corporal, o cérebro consome cerca de 20% da energia total.'
+            },
+            {
+                question: 'Onde ocorre cerca de 90% da absorção dos nutrientes dos alimentos que ingerimos?',
+                options: ['Estômago', 'Esôfago', 'Intestino Delgado', 'Intestino Grosso'],
+                correctIndex: 2,
+                explanation: 'O intestino delgado possui cerca de 6 metros e milhões de vilosidades que absorvem os nutrientes para o sangue.'
+            },
+            {
+                question: 'Aproximadamente quantas vezes o coração humano bate em um único dia?',
+                options: ['10.000 vezes', '50.000 vezes', '100.000 vezes', '500.000 vezes'],
+                correctIndex: 2,
+                explanation: 'Em média, o coração bate entre 60 e 100 vezes por minuto, totalizando cerca de 100.000 batimentos diários.'
+            },
+            {
+                question: 'Qual estrutura dos pulmões é responsável diretamente pelas trocas gasosas com o sangue?',
+                options: ['Alvéolos Pulmonares', 'Traqueia', 'Diafragma', 'Laringe'],
+                correctIndex: 0,
+                explanation: 'Os alvéolos são milhões de pequenas bolsas envolvidas por capilares onde o O₂ entra no sangue e o CO₂ sai.'
+            },
+            {
+                question: 'Qual é o músculo mais forte do corpo humano proporcionalmente ao seu tamanho?',
+                options: ['Bíceps Braquial', 'Masseter (Mandíbula)', 'Sartório', 'Diafragma'],
+                correctIndex: 1,
+                explanation: 'O masseter, responsável por fechar a mandíbula durante a mastigação, gera uma força impressionante para seu tamanho.'
+            }
+        ];
+
+        // ==========================================
+        // 3. ESTADO DA APLICAÇÃO E RENDERIZAÇÃO
+        // ==========================================
+        let activeSystemId = 'cardiovascular';
+        let currentQuizIndex = 0;
+        let quizScore = 0;
+        let answeredCurrent = false;
+
+        // Inicializar abas superiores
+        function renderTabs() {
+            const tabsContainer = document.getElementById('system-tabs');
+            tabsContainer.innerHTML = bodySystems.map(sys => {
+                const isActive = sys.id === activeSystemId;
+                return `
+                    <button 
+                        onclick="selectSystem('${sys.id}')"
+                        class="flex items-center gap-2 px-4 py-2.5 rounded-2xl text-sm font-semibold whitespace-nowrap transition-all duration-200 border ${
+                            isActive 
+                                ? `${sys.theme.btnActive} border-transparent shadow-md scale-[1.02]` 
+                                : 'bg-white text-slate-600 border-slate-200/90 hover:bg-slate-100 hover:text-slate-900'
+                        }">
+                        <i data-lucide="${sys.icon}" class="w-4 h-4"></i>
+                        <span>${sys.shortName}</span>
+                    </button>
+                `;
+            }).join('');
+            lucide.createIcons();
+        }
+
+        // Atualizar destaque visual no SVG
+        function updateSvgHighlight(systemId) {
+            const allLayers = document.querySelectorAll('.svg-organ');
+            const labelEl = document.getElementById('svg-active-label');
+
+            if (!systemId) {
+                allLayers.forEach(layer => {
+                    layer.classList.remove('active', 'dimmed');
+                });
+                labelEl.textContent = 'Todos os Sistemas (Visão Geral)';
+                return;
+            }
+
+            allLayers.forEach(layer => {
+                if (layer.id === `layer-${systemId}`) {
+                    layer.classList.add('active');
+                    layer.classList.remove('dimmed');
+                } else {
+                    layer.classList.remove('active');
+                    layer.classList.add('dimmed');
+                }
+            });
+
+            const sys = bodySystems.find(s => s.id === systemId);
+            if (sys) {
+                labelEl.textContent = sys.name;
+            }
+        }
+
+        // Renderizar o Painel de Detalhes do Sistema Selecionado
+        function renderSystemDetails(systemId) {
+            const sys = bodySystems.find(s => s.id === systemId) || bodySystems[0];
+            const panel = document.getElementById('info-panel');
+
+            panel.innerHTML = `
+                <!-- Cartão Principal de Visão Geral -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/80 transition-all">
+                    <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+                        <div class="flex items-center gap-3.5">
+                            <div class="w-12 h-12 rounded-2xl ${sys.theme.bgLight} ${sys.theme.textMain} flex items-center justify-center border ${sys.theme.border}">
+                                <i data-lucide="${sys.icon}" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <span class="inline-block text-xs font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full ${sys.theme.badge} mb-1">
+                                    Sistema Anatômico
+                                </span>
+                                <h3 class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">${sys.name}</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-sm font-semibold ${sys.theme.textMain} mb-3">${sys.tagline}</p>
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
+                        ${sys.description}
+                    </p>
+
+                    <!-- Métricas Rápidas -->
+                    <div class="grid grid-cols-3 gap-3 mb-6">
+                        ${sys.metrics.map(m => `
+                            <div class="${sys.theme.bgLight} rounded-2xl p-3.5 border ${sys.theme.border}">
+                                <span class="block text-xs text-slate-500 font-medium">${m.label}</span>
+                                <span class="font-display text-base sm:text-lg font-extrabold ${sys.theme.textDark}">${m.value}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <!-- Funções Principais -->
+                    <div>
+                        <h4 class="font-display font-bold text-slate-900 text-base mb-3 flex items-center gap-2">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 ${sys.theme.textMain}"></i>
+                            Funções Principais
+                        </h4>
+                        <ul class="space-y-2.5">
+                            ${sys.mainFunctions.map(fn => `
+                                <li class="flex items-start gap-2.5 text-sm text-slate-700 bg-slate-50/80 p-3 rounded-xl border border-slate-100">
+                                    <span class="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style="background-color: ${sys.theme.accentHex}"></span>
+                                    <span>${fn}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Grid Inferior: Órgãos Envolvidos + Fatos Curiosos -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Cartão de Órgãos Envolvidos -->
+                    <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200/80">
+                        <h4 class="font-display font-bold text-slate-900 text-base mb-4 flex items-center gap-2">
+                            <i data-lucide="layers" class="w-5 h-5 ${sys.theme.textMain}"></i>
+                            Principais Órgãos e Estruturas
+                        </h4>
+                        <div class="space-y-3">
+                            ${sys.organs.map(org => `
+                                <div class="p-3.5 rounded-2xl border border-slate-100 bg-slate-50/70 hover:bg-slate-50 transition">
+                                    <div class="font-bold text-sm text-slate-900 mb-0.5">${org.name}</div>
+                                    <div class="text-xs text-slate-600 leading-relaxed">${org.role}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Cartão de Curiosidades / Você Sabia? -->
+                    <div class="${sys.theme.bgLight} rounded-3xl p-6 border ${sys.theme.border} flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-2 mb-4">
+                                <div class="w-8 h-8 rounded-xl bg-white flex items-center justify-center ${sys.theme.textMain} shadow-xs">
+                                    <i data-lucide="lightbulb" class="w-4 h-4"></i>
+                                </div>
+                                <h4 class="font-display font-bold ${sys.theme.textDark} text-base">Você Sabia? Fatos Curiosos</h4>
+                            </div>
+                            <div class="space-y-3">
+                                ${sys.facts.map((fact, idx) => `
+                                    <div class="bg-white/90 backdrop-blur-xs p-3.5 rounded-2xl shadow-2xs border border-white text-xs sm:text-sm text-slate-700 leading-relaxed">
+                                        <span class="font-bold ${sys.theme.textMain} mr-1">#${idx + 1}</span> ${fact}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        // Selecionar um sistema
+        function selectSystem(systemId) {
+            activeSystemId = systemId;
+            renderTabs();
+            updateSvgHighlight(systemId);
+            renderSystemDetails(systemId);
+        }
+
+        // Resetar visão do SVG para mostrar todas as camadas sem opacidade reduzida
+        function resetView() {
+            updateSvgHighlight(null);
+        }
+
+        // Rolagem suave entre seções
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // ==========================================
+        // 4. LÓGICA DO MINI-QUIZ INTERATIVO
+        // ==========================================
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            const scoreBadge = document.getElementById('quiz-score-badge');
+            scoreBadge.textContent = `${quizScore} / ${quizQuestions.length}`;
+
+            // Tela de Conclusão do Quiz
+            if (currentQuizIndex >= quizQuestions.length) {
+                let message = 'Excelente! Você domina a anatomia humana!';
+                if (quizScore < 3) message = 'Bom começo! Explore mais os sistemas acima e tente novamente.';
+                else if (quizScore < 5) message = 'Muito bem! Você tem ótimos conhecimentos sobre o corpo humano.';
+
+                container.innerHTML = `
+                    <div class="text-center py-6">
+                        <div class="w-16 h-16 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="trophy" class="w-8 h-8"></i>
+                        </div>
+                        <h4 class="font-display text-2xl font-bold text-slate-900 mb-2">Quiz Concluído!</h4>
+                        <p class="text-slate-600 mb-4">${message}</p>
+                        <div class="inline-block bg-slate-100 px-6 py-3 rounded-2xl font-display text-xl font-extrabold text-indigo-600 mb-6">
+                            Você acertou ${quizScore} de ${quizQuestions.length} perguntas
+                        </div>
+                        <div>
+                            <button onclick="restartQuiz()" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl shadow-sm transition inline-flex items-center gap-2">
+                                <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Refazer Quiz
+                            </button>
+                        </div>
+                    </div>
+                `;
+                lucide.createIcons();
+                return;
+            }
+
+            const q = quizQuestions[currentQuizIndex];
+            const progressPercent = ((currentQuizIndex) / quizQuestions.length) * 100;
+
+            container.innerHTML = `
+                <!-- Barra de Progresso -->
+                <div class="mb-6">
+                    <div class="flex justify-between text-xs font-semibold text-slate-500 mb-2">
+                        <span>Pergunta ${currentQuizIndex + 1} de ${quizQuestions.length}</span>
+                        <span>${Math.round(progressPercent)}% concluído</span>
+                    </div>
+                    <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                        <div class="h-full bg-indigo-600 transition-all duration-300" style="width: ${progressPercent}%"></div>
+                    </div>
+                </div>
+
+                <!-- Enunciado -->
+                <h4 class="font-display text-lg sm:text-xl font-bold text-slate-900 mb-5">
+                    ${q.question}
+                </h4>
+
+                <!-- Alternativas -->
+                <div class="space-y-3" id="quiz-options">
+                    ${q.options.map((opt, idx) => `
+                        <button 
+                            onclick="handleQuizAnswer(${idx})"
+                            id="quiz-opt-${idx}"
+                            class="w-full text-left p-4 rounded-2xl border border-slate-200 hover:border-indigo-400 hover:bg-indigo-50/40 transition flex items-center justify-between group">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-xl bg-slate-100 group-hover:bg-indigo-100 group-hover:text-indigo-700 text-slate-600 font-bold text-sm flex items-center justify-center transition">
+                                    ${String.fromCharCode(65 + idx)}
+                                </span>
+                                <span class="font-medium text-slate-800 text-sm sm:text-base">${opt}</span>
+                            </div>
+                            <span id="quiz-icon-${idx}"></span>
+                        </button>
+                    `).join('')}
+                </div>
+
+                <!-- Feedback da Resposta (oculto até responder) -->
+                <div id="quiz-feedback" class="hidden mt-6 p-4 rounded-2xl border"></div>
+            `;
+            lucide.createIcons();
+        }
+
+        function handleQuizAnswer(selectedIndex) {
+            if (answeredCurrent) return;
+            answeredCurrent = true;
+
+            const q = quizQuestions[currentQuizIndex];
+            const isCorrect = selectedIndex === q.correctIndex;
+
+            if (isCorrect) {
+                quizScore++;
+                document.getElementById('quiz-score-badge').textContent = `${quizScore} / ${quizQuestions.length}`;
+            }
+
+            // Estilizar botões após resposta
+            q.options.forEach((_, idx) => {
+                const btn = document.getElementById(`quiz-opt-${idx}`);
+                const iconSpan = document.getElementById(`quiz-icon-${idx}`);
+                btn.disabled = true;
+                btn.classList.remove('hover:border-indigo-400', 'hover:bg-indigo-50/40');
+
+                if (idx === q.correctIndex) {
+                    btn.classList.add('bg-emerald-50', 'border-emerald-500', 'text-emerald-900');
+                    iconSpan.innerHTML = `<i data-lucide="check-circle" class="w-5 h-5 text-emerald-600"></i>`;
+                } else if (idx === selectedIndex && !isCorrect) {
+                    btn.classList.add('bg-red-50', 'border-red-400', 'text-red-900');
+                    iconSpan.innerHTML = `<i data-lucide="x-circle" class="w-5 h-5 text-red-500"></i>`;
+                } else {
+                    btn.classList.add('opacity-50');
+                }
+            });
+
+            // Mostrar explicação e botão de próxima pergunta
+            const feedbackEl = document.getElementById('quiz-feedback');
+            feedbackEl.classList.remove('hidden');
+            feedbackEl.className = `mt-6 p-4 rounded-2xl border flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${
+                isCorrect ? 'bg-emerald-50/70 border-emerald-200 text-emerald-900' : 'bg-amber-50/70 border-amber-200 text-amber-900'
+            }`;
+
+            feedbackEl.innerHTML = `
+                <div class="text-sm">
+                    <strong class="block font-bold mb-0.5">${isCorrect ? 'Resposta Correta!' : 'Quase lá!'}</strong>
+                    <span class="text-slate-700">${q.explanation}</span>
+                </div>
+                <button onclick="nextQuizQuestion()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-xl shrink-0 transition flex items-center justify-center gap-1.5">
+                    <span>${currentQuizIndex + 1 < quizQuestions.length ? 'Próxima' : 'Ver Resultado'}</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+            `;
+            lucide.createIcons();
+        }
+
+        function nextQuizQuestion() {
+            currentQuizIndex++;
+            answeredCurrent = false;
+            renderQuiz();
+        }
+
+        function restartQuiz() {
+            currentQuizIndex = 0;
+            quizScore = 0;
+            answeredCurrent = false;
+            renderQuiz();
+        }
+
+        // Inicialização ao carregar a página
+        window.addEventListener('DOMContentLoaded', () => {
+            selectSystem('cardiovascular');
+            renderQuiz();
+        });
+    </script>
+</body>
+</html>
