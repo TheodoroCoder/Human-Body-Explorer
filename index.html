@@ -82,226 +82,202 @@
             </div>
 
             <div class="flex items-center gap-2 sm:gap-4 ml-auto">
-                <!-- Seletor de Idiomas (PT / EN / ES) -->
-                <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200/80" role="group" aria-label="Seletor de Idioma">
-                    <button onclick="setLanguage('pt')" id="lang-btn-pt" class="px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 bg-white text-indigo-600 shadow-xs">
+                <!-- Seletor de Idiomas (PT / EN / ES / LA / ZH) -->
+                <div class="flex flex-wrap items-center bg-slate-100 p-1 rounded-xl border border-slate-200/80 gap-0.5" role="group" aria-label="Seletor de Idioma">
+                    <button onclick="setLanguage('pt')" id="lang-btn-pt" class="px-2 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 bg-white text-indigo-600 shadow-xs">
                         <span>🇧🇷</span><span>PT</span>
                     </button>
-                    <button onclick="setLanguage('en')" id="lang-btn-en" class="px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 text-slate-600 hover:text-slate-900">
+                    <button onclick="setLanguage('en')" id="lang-btn-en" class="px-2 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 text-slate-600 hover:text-slate-900">
                         <span>🇺🇸</span><span>EN</span>
                     </button>
-                    <button onclick="setLanguage('es')" id="lang-btn-es" class="px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 text-slate-600 hover:text-slate-900">
+                    <button onclick="setLanguage('es')" id="lang-btn-es" class="px-2 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 text-slate-600 hover:text-slate-900">
                         <span>🇪🇸</span><span>ES</span>
+                    </button>
+                    <button onclick="setLanguage('la')" id="lang-btn-la" class="px-2 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 text-slate-600 hover:text-slate-900" title="Latina">
+                        <span>🏛️</span><span>LA</span>
+                    </button>
+                    <button onclick="setLanguage('zh')" id="lang-btn-zh" class="px-2 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 text-slate-600 hover:text-slate-900" title="简体中文">
+                        <span>🇨🇳</span><span>中文</span>
                     </button>
                 </div>
 
-                <nav class="flex items-center gap-1.5 sm:gap-3">
-                    <button id="nav-explore-btn" onclick="scrollToSection('explorer-section')" class="hidden md:inline-block px-3 py-2 text-sm font-medium text-slate-600 hover:text-indigo-600 rounded-lg hover:bg-slate-100 transition">
-                        Explorar Sistemas
-                    </button>
-                    <button onclick="scrollToSection('quiz-section')" class="px-3.5 py-2 text-xs sm:text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl shadow-sm shadow-indigo-600/20 transition flex items-center gap-1.5">
-                        <i data-lucide="brain-circuit" class="w-4 h-4"></i>
-                        <span id="nav-quiz-btn">Mini-Quiz</span>
-                    </button>
+                <nav class="hidden md:flex items-center gap-3">
+                    <button onclick="scrollToSection('explore-section')" id="nav-explore-btn" class="text-xs font-bold text-slate-600 hover:text-indigo-600 transition">Explorar Sistemas</button>
+                    <button onclick="scrollToSection('quiz-section')" id="nav-quiz-btn" class="text-xs font-bold text-slate-600 hover:text-indigo-600 transition">Mini-Quiz</button>
                 </nav>
             </div>
         </div>
     </header>
 
-    <!-- Seção Principal (Hero Compacto) -->
-    <section class="bg-gradient-to-b from-white to-slate-50 pt-8 pb-6 px-4 sm:px-6 lg:px-8 border-b border-slate-200/60">
-        <div class="max-w-7xl mx-auto text-center max-w-3xl">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-100 mb-3">
-                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> <span id="hero-badge">Aprendizado Visual Interativo</span>
+    <!-- Conteúdo Principal -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+
+        <!-- Seção Hero / Boas-vindas -->
+        <section class="text-center max-w-3xl mx-auto space-y-4">
+            <span id="hero-badge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-50 text-indigo-600 border border-indigo-100">
+                Aprendizado Visual Interativo
             </span>
-            <h2 id="hero-title" class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
+            <h2 id="hero-title" class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
                 Descubra a incrível máquina que é o <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-500">Corpo Humano</span>
             </h2>
-            <p id="hero-subtitle" class="text-slate-600 text-sm sm:text-base leading-relaxed">
+            <p id="hero-subtitle" class="text-base sm:text-lg text-slate-600 leading-relaxed">
                 Clique nos órgãos diretamente no modelo anatômico ou selecione um dos seis sistemas principais abaixo para explorar suas funções vitais, estruturas e fatos surpreendentes.
             </p>
-        </div>
-    </section>
+        </section>
 
-    <!-- Seção do Explorador Interativo -->
-    <main id="explorer-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        
-        <!-- Barra de Seleção Rápida dos Sistemas -->
-        <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-4 mb-6" id="system-tabs">
-            <!-- Botões gerados dinamicamente via JavaScript -->
-        </div>
-
-        <!-- Grid Principal: Diagrama SVG à Esquerda + Painel Informativo à Direita -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <!-- Seção de Exploração Interativa (SVG + Detalhes) -->
+        <section id="explore-section" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            <!-- Coluna 1: Diagrama Anatômico Interativo (5 colunas em telas grandes) -->
-            <div class="lg:col-span-5 bg-white rounded-3xl p-6 shadow-sm border border-slate-200/80 flex flex-col items-center relative overflow-hidden">
-                <div class="w-full flex items-center justify-between mb-2">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                        <i data-lucide="mouse-pointer-click" class="w-4 h-4 text-indigo-500"></i> <span id="svg-touch-hint">Toque em um órgão</span>
-                    </span>
-                    <button id="svg-view-all-btn" onclick="resetView()" class="text-xs font-medium text-indigo-600 hover:text-indigo-800 bg-indigo-50 hover:bg-indigo-100 px-2.5 py-1 rounded-lg transition">
+            <!-- Coluna Esquerda: Modelo Anatômico SVG Interativo (5 colunas) -->
+            <div class="lg:col-span-5 bg-white rounded-3xl p-6 shadow-sm border border-slate-200/80 sticky top-24">
+                <div class="flex items-center justify-between mb-4">
+                    <span id="svg-touch-hint" class="text-xs font-bold text-slate-400 uppercase tracking-wider">Toque em um órgão</span>
+                    <button onclick="resetView()" id="svg-view-all-btn" class="text-xs font-bold text-indigo-600 hover:text-indigo-700 bg-indigo-50 px-3 py-1 rounded-xl transition">
                         Ver Todos
                     </button>
                 </div>
 
-                <!-- SVG Anatômico Estilizado e Interativo -->
-                <div class="w-full max-w-[320px] aspect-[3/5] relative flex items-center justify-center my-2">
-                    <svg id="human-body-svg" viewBox="0 0 300 520" class="w-full h-full drop-shadow-sm select-none" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <!-- Gradientes para profundidade visual -->
-                            <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#F8FAFC" />
-                                <stop offset="100%" stop-color="#E2E8F0" />
-                            </linearGradient>
-                            <linearGradient id="lungGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" stop-color="#38BDF8" />
-                                <stop offset="100%" stop-color="#0284C7" />
-                            </linearGradient>
-                            <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#F87171" />
-                                <stop offset="100%" stop-color="#DC2626" />
-                            </linearGradient>
-                            <linearGradient id="brainGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" stop-color="#FBBF24" />
-                                <stop offset="100%" stop-color="#D97706" />
-                            </linearGradient>
-                            <linearGradient id="digestGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" stop-color="#4ADE80" />
-                                <stop offset="100%" stop-color="#16A34A" />
-                            </linearGradient>
-                        </defs>
-
+                <!-- SVG do Corpo Humano -->
+                <div class="relative w-full aspect-[1/2] max-h-[480px] mx-auto flex items-center justify-center bg-slate-50/50 rounded-2xl p-4 border border-slate-100">
+                    <svg viewBox="0 0 310 620" class="w-full h-full drop-shadow-sm" xmlns="http://www.w3.org/2000/svg">
                         <!-- Silhueta Base do Corpo Humano -->
-                        <path d="M150,18 C172,18 186,34 186,56 C186,73 176,86 165,92 L165,104 C198,108 225,122 234,152 L254,248 C257,260 245,266 239,255 L218,172 L212,265 L224,475 C225,490 205,492 202,477 L182,315 L150,315 L118,315 L98,477 C95,492 75,490 76,475 L88,265 L82,172 L61,255 C55,266 43,260 46,248 L66,152 C75,122 102,108 135,104 L135,92 C124,86 114,73 114,56 C114,34 128,18 150,18 Z" 
-                              fill="url(#bodyGrad)" stroke="#CBD5E1" stroke-width="2.5" />
-
-                        <!-- 1. SISTEMA ESQUELÉTICO (Costelas, Coluna, Fêmur) -->
-                        <g id="layer-skeletal" class="svg-organ text-slate-500" onclick="selectSystem('skeletal')">
-                            <title id="title-skeletal">Sistema Esquelético</title>
-                            <!-- Coluna Vertebral -->
-                            <rect x="146" y="95" width="8" height="175" rx="4" fill="#94A3B8" opacity="0.65" />
-                            <!-- Caixa Torácica (Costelas estilizadas) -->
-                            <path d="M122,132 Q150,142 178,132 M118,148 Q150,160 182,148 M120,164 Q150,176 180,164 M125,180 Q150,190 175,180" 
-                                  fill="none" stroke="#64748B" stroke-width="4" stroke-linecap="round" opacity="0.7" />
-                            <!-- Pelve -->
-                            <path d="M120,262 Q150,282 180,262 L172,285 Q150,292 128,285 Z" fill="#94A3B8" opacity="0.7" />
-                            <!-- Ossos das Pernas (Fêmur e Tíbia) -->
-                            <line x1="125" y1="290" x2="112" y2="380" stroke="#64748B" stroke-width="6" stroke-linecap="round" opacity="0.7" />
-                            <line x1="112" y1="390" x2="105" y2="470" stroke="#64748B" stroke-width="5" stroke-linecap="round" opacity="0.7" />
-                            <line x1="175" y1="290" x2="188" y2="380" stroke="#64748B" stroke-width="6" stroke-linecap="round" opacity="0.7" />
-                            <line x1="188" y1="390" x2="195" y2="470" stroke="#64748B" stroke-width="5" stroke-linecap="round" opacity="0.7" />
+                        <g id="body-silhouette" class="transition-all duration-300">
+                            <!-- Cabeça e Pescoço -->
+                            <path d="M155 20 C135 20 125 35 125 55 C125 75 135 90 155 90 C175 90 185 75 185 55 C185 35 175 20 155 20 Z" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="2"/>
+                            <path d="M142 90 L142 115 C142 118 145 120 155 120 C165 120 168 118 168 115 L168 90 Z" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="2"/>
+                            <!-- Tronco e Ombros -->
+                            <path d="M110 120 C90 120 75 135 75 160 C75 210 85 270 95 320 C98 335 105 340 115 340 L195 340 C205 340 212 335 215 320 C225 270 235 210 235 160 C235 135 220 120 200 120 Z" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="2"/>
+                            <!-- Membros Superiores (Braços simplificados) -->
+                            <path d="M75 125 L45 220 C42 230 48 240 58 238 C68 236 75 220 85 160 Z" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="2"/>
+                            <path d="M235 125 L265 220 C268 230 262 240 252 238 C242 236 235 220 225 160 Z" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="2"/>
+                            <!-- Membros Inferiores (Pernas simplificadas) -->
+                            <path d="M100 340 L95 500 C94 510 102 518 112 516 C122 514 128 490 132 420 L135 340 Z" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="2"/>
+                            <path d="M210 340 L215 500 C216 510 208 518 198 516 C188 514 182 490 178 420 L175 340 Z" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="2"/>
                         </g>
 
-                        <!-- 2. SISTEMA MUSCULAR (Peitoral, Bíceps, Quadríceps) -->
-                        <g id="layer-muscular" class="svg-organ text-pink-500" onclick="selectSystem('muscular')">
-                            <title id="title-muscular">Sistema Muscular</title>
-                            <!-- Deltoides e Bíceps -->
-                            <path d="M98,118 Q76,125 72,155 Q84,158 94,142 Z" fill="#F472B6" opacity="0.75" />
-                            <path d="M202,118 Q224,125 228,155 Q216,158 206,142 Z" fill="#F472B6" opacity="0.75" />
-                            <ellipse cx="75" cy="182" rx="8" ry="22" transform="rotate(14 75 182)" fill="#EC4899" opacity="0.7" />
-                            <ellipse cx="225" cy="182" rx="8" ry="22" transform="rotate(-14 225 182)" fill="#EC4899" opacity="0.7" />
-                            <!-- Quadríceps (Coxas) -->
-                            <ellipse cx="122" cy="335" rx="13" ry="38" transform="rotate(6 122 335)" fill="#EC4899" opacity="0.65" />
-                            <ellipse cx="178" cy="335" rx="13" ry="38" transform="rotate(-6 178 335)" fill="#EC4899" opacity="0.65" />
+                        <!-- Camada 1: Cérebro (Sistema Nervoso) -->
+                        <g id="layer-nervous" class="svg-organ" onclick="selectSystem('nervous')">
+                            <title id="title-nervous">Sistema Nervoso</title>
+                            <ellipse cx="155" cy="55" rx="22" ry="16" fill="#F59E0B" opacity="0.85" stroke="#B45309" stroke-width="2"/>
+                            <path d="M155 71 L155 180" stroke="#F59E0B" stroke-width="4" stroke-dasharray="3,3"/>
                         </g>
 
-                        <!-- 3. SISTEMA RESPIRATÓRIO (Traqueia e Pulmões) -->
-                        <g id="layer-respiratory" class="svg-organ text-sky-500" onclick="selectSystem('respiratory')">
+                        <!-- Camada 2: Pulmões (Sistema Respiratório) -->
+                        <g id="layer-respiratory" class="svg-organ" onclick="selectSystem('respiratory')">
                             <title id="title-respiratory">Sistema Respiratório</title>
                             <!-- Traqueia -->
-                            <rect x="146" y="96" width="8" height="34" rx="3" fill="#0284C7" />
+                            <rect x="151" y="115" width="8" height="30" fill="#0EA5E9" opacity="0.8" rx="2"/>
+                            <!-- Pulmão Esquerdo (do ponto de vista do observador) -->
+                            <path d="M148 150 C130 150 115 170 115 200 C115 230 135 245 148 245 C150 245 150 170 148 150 Z" fill="#0EA5E9" opacity="0.85" stroke="#0369A1" stroke-width="2"/>
                             <!-- Pulmão Direito -->
-                            <path d="M142,126 C122,126 112,148 112,175 C112,190 124,196 142,192 Z" fill="url(#lungGrad)" opacity="0.88" />
-                            <!-- Pulmão Esquerdo -->
-                            <path d="M158,126 C178,126 188,148 188,175 C188,190 176,196 158,192 Z" fill="url(#lungGrad)" opacity="0.88" />
+                            <path d="M162 150 C180 150 195 170 195 200 C195 230 175 245 162 245 C160 245 160 170 162 150 Z" fill="#0EA5E9" opacity="0.85" stroke="#0369A1" stroke-width="2"/>
                         </g>
 
-                        <!-- 4. SISTEMA CARDIOVASCULAR (Coração e Vasos Principais) -->
-                        <g id="layer-cardiovascular" class="svg-organ text-red-500" onclick="selectSystem('cardiovascular')">
+                        <!-- Camada 3: Coração (Sistema Cardiovascular) -->
+                        <g id="layer-cardiovascular" class="svg-organ animate-heartbeat" onclick="selectSystem('cardiovascular')">
                             <title id="title-cardiovascular">Sistema Cardiovascular</title>
-                            <!-- Artérias Principais -->
-                            <path d="M152,140 L152,110 M152,145 L125,135 M152,145 L178,135 M152,170 L152,255" 
-                                  stroke="#EF4444" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8" />
-                            <!-- Coração -->
-                            <path class="animate-heartbeat" d="M155,146 C151,140 142,141 142,149 C142,158 155,167 157,169 C159,167 171,158 171,149 C171,141 162,140 158,146 Z" 
-                                  fill="url(#heartGrad)" stroke="#991B1B" stroke-width="1.2" />
+                            <path d="M155 178 C155 178 142 165 136 172 C130 180 135 194 155 210 C175 194 180 180 174 172 C168 165 155 178 155 178 Z" fill="#EF4444" stroke="#991B1B" stroke-width="2"/>
                         </g>
 
-                        <!-- 5. SISTEMA DIGESTÓRIO (Esôfago, Estômago, Fígado e Intestinos) -->
-                        <g id="layer-digestive" class="svg-organ text-emerald-500" onclick="selectSystem('digestive')">
+                        <!-- Camada 4: Estômago e Intestinos (Sistema Digestório) -->
+                        <g id="layer-digestive" class="svg-organ" onclick="selectSystem('digestive')">
                             <title id="title-digestive">Sistema Digestório</title>
-                            <!-- Fígado -->
-                            <path d="M122,196 L154,196 L146,214 L120,210 Z" fill="#15803D" opacity="0.85" />
                             <!-- Estômago -->
-                            <path d="M152,198 C168,196 176,208 170,220 C164,228 148,225 148,215 Z" fill="url(#digestGrad)" />
-                            <!-- Intestinos (Delgado e Grosso) -->
-                            <rect x="124" y="226" width="52" height="42" rx="12" fill="#22C55E" opacity="0.85" />
-                            <path d="M132,235 H168 M132,245 H168 M132,255 H168" stroke="#DCFCE7" stroke-width="3" stroke-linecap="round" />
+                            <path d="M142 225 C132 225 125 235 130 250 C135 260 152 255 152 240 Z" fill="#22C55E" opacity="0.85" stroke="#166534" stroke-width="2"/>
+                            <!-- Intestinos -->
+                            <circle cx="155" cy="275" r="20" fill="none" stroke="#22C55E" stroke-width="7" stroke-dasharray="10,4"/>
                         </g>
 
-                        <!-- 6. SISTEMA NERVOSO (Cérebro e Medula) -->
-                        <g id="layer-nervous" class="svg-organ text-amber-500" onclick="selectSystem('nervous')">
-                            <title id="title-nervous">Sistema Nervoso</title>
-                            <!-- Cérebro -->
-                            <path d="M150,25 C134,25 124,36 124,49 C124,60 132,67 144,67 L156,67 C168,67 176,60 176,49 C176,36 166,25 150,25 Z" 
-                                  fill="url(#brainGrad)" stroke="#B45309" stroke-width="1.5" />
-                            <!-- Sulcos Cerebrais -->
-                            <path d="M150,26 V66 M134,38 Q142,42 136,48 M166,38 Q158,42 164,48 M136,55 Q144,53 142,60 M164,55 Q156,53 158,60" 
-                                  stroke="#FEF3C7" stroke-width="1.8" stroke-linecap="round" fill="none" />
-                            <!-- Nervos / Medula Espinhal -->
-                            <line x1="150" y1="67" x2="150" y2="250" stroke="#F59E0B" stroke-width="2.5" stroke-dasharray="4 3" />
+                        <!-- Camada 5: Esqueleto (Sistema Esquelético) -->
+                        <g id="layer-skeletal" class="svg-organ" onclick="selectSystem('skeletal')">
+                            <title id="title-skeletal">Sistema Esquelético</title>
+                            <!-- Coluna Vertebral -->
+                            <line x1="155" y1="95" x2="155" y2="330" stroke="#64748B" stroke-width="5" stroke-dasharray="8,4"/>
+                            <!-- Costelas -->
+                            <path d="M135 160 Q155 170 175 160" fill="none" stroke="#64748B" stroke-width="3"/>
+                            <path d="M132 180 Q155 192 178 180" fill="none" stroke="#64748B" stroke-width="3"/>
+                            <path d="M132 200 Q155 212 178 200" fill="none" stroke="#64748B" stroke-width="3"/>
+                        </g>
+
+                        <!-- Camada 6: Músculos (Sistema Muscular) -->
+                        <g id="layer-muscular" class="svg-organ" onclick="selectSystem('muscular')">
+                            <title id="title-muscular">Sistema Muscular</title>
+                            <!-- Bíceps e Ombros -->
+                            <path d="M110 135 C95 135 90 160 100 180 C105 170 110 150 110 135 Z" fill="#EC4899" opacity="0.8" stroke="#9D174D" stroke-width="2"/>
+                            <path d="M200 135 C215 135 220 160 210 180 C205 170 200 150 200 135 Z" fill="#EC4899" opacity="0.8" stroke="#9D174D" stroke-width="2"/>
                         </g>
                     </svg>
                 </div>
 
-                <!-- Legenda Interativa Inferior -->
-                <div class="w-full bg-slate-50 rounded-2xl p-3 border border-slate-200/70 text-center">
-                    <p class="text-xs text-slate-500">
-                        <span id="svg-selected-prefix">Sistema selecionado:</span> <strong id="svg-active-label" class="text-slate-800">Todos os Sistemas</strong>
-                    </p>
+                <div class="mt-4 text-center">
+                    <span class="text-xs text-slate-500 font-medium" id="svg-selected-prefix">Sistema selecionado:</span>
+                    <span id="svg-active-label" class="block font-display font-bold text-slate-900 text-sm mt-0.5">Sistema Cardiovascular</span>
                 </div>
             </div>
 
-            <!-- Coluna 2: Painel de Informações Detalhadas (7 colunas em telas grandes) -->
-            <div class="lg:col-span-7 flex flex-col gap-6" id="info-panel">
-                <!-- Conteúdo injetado dinamicamente via JavaScript -->
+            <!-- Coluna Direita: Abas de Navegação + Painel de Informações Detalhadas (7 colunas) -->
+            <div class="lg:col-span-7 space-y-6">
+                <!-- Abas dos Sistemas (Horizontal Scrollable) -->
+                <div class="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar" id="system-tabs">
+                    <!-- Gerado dinamicamente via JS -->
+                </div>
+
+                <!-- Painel de Detalhes do Sistema -->
+                <div id="info-panel" class="space-y-6">
+                    <!-- Gerado dinamicamente via JS -->
+                </div>
             </div>
-        </div>
+
+        </section>
+
+        <!-- Seção do Mini-Quiz Interativo -->
+        <section id="quiz-section" class="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-slate-200/80 max-w-4xl mx-auto">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-100">
+                <div class="flex items-center gap-3.5">
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center border border-indigo-100 shrink-0">
+                        <i data-lucide="help-circle" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <span id="quiz-badge" class="inline-block text-xs font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 mb-1">
+                            Desafio de Conhecimento
+                        </span>
+                        <h3 id="quiz-title" class="font-display text-2xl font-extrabold text-slate-900">Mini-Quiz de Anatomia</h3>
+                        <p id="quiz-subtitle" class="text-xs sm:text-sm text-slate-500">Teste o que você aprendeu explorando os sistemas do corpo humano.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-2 bg-slate-50 px-4 py-2.5 rounded-2xl border border-slate-200/80 shrink-0">
+                    <span id="quiz-score-label" class="text-xs font-semibold text-slate-500">Pontuação</span>
+                    <span id="quiz-score-badge" class="font-display font-extrabold text-indigo-600 text-base">0 / 6</span>
+                </div>
+            </div>
+
+            <!-- Corpo Dinâmico do Quiz -->
+            <div id="quiz-container">
+                <!-- Gerado dinamicamente via JS -->
+            </div>
+        </section>
+
     </main>
 
-    <!-- Seção do Mini-Quiz Interativo -->
-    <section id="quiz-section" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 mt-4">
-        <div class="bg-white rounded-3xl shadow-sm border border-slate-200/90 overflow-hidden">
-            <div class="bg-gradient-to-r from-indigo-600 to-blue-600 p-6 sm:p-8 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div>
-                    <span class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider bg-white/15 px-3 py-1 rounded-full mb-2">
-                        <i data-lucide="award" class="w-3.5 h-3.5"></i> <span id="quiz-badge">Desafio de Conhecimento</span>
-                    </span>
-                    <h3 id="quiz-title" class="font-display text-2xl font-bold">Mini-Quiz de Anatomia</h3>
-                    <p id="quiz-subtitle" class="text-indigo-100 text-sm mt-1">Teste o que você aprendeu explorando os sistemas do corpo humano.</p>
-                </div>
-                <div class="bg-white/10 backdrop-blur-sm rounded-2xl px-4 py-3 text-center border border-white/20 shrink-0">
-                    <span id="quiz-score-label" class="block text-xs text-indigo-100 uppercase font-semibold">Pontuação</span>
-                    <span id="quiz-score-badge" class="font-display text-2xl font-extrabold">0 / 6</span>
-                </div>
-            </div>
-
-            <div class="p-6 sm:p-8" id="quiz-container">
-                <!-- Perguntas do Quiz renderizadas dinamicamente -->
-            </div>
-        </div>
-    </section>
-
     <!-- Rodapé -->
-    <footer class="bg-white border-t border-slate-200 mt-12 py-8 px-4 text-center text-slate-500 text-sm">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p id="footer-title" class="font-medium text-slate-700">Corpo Humano 360° — Educação Científica Interativa</p>
-            <p id="footer-subtitle" class="text-xs">Desenvolvido para fins educativos. Explore, clique e aprenda.</p>
+    <footer class="bg-white border-t border-slate-200/80 mt-16 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-sm">
+                    <i data-lucide="activity" class="w-4 h-4"></i>
+                </div>
+                <div>
+                    <h4 id="footer-title" class="font-display font-bold text-sm text-slate-900">Corpo Humano 360° — Educação Científica Interativa</h4>
+                    <p id="footer-subtitle" class="text-xs text-slate-500">Desenvolvido para fins educativos. Explore, clique e aprenda.</p>
+                </div>
+            </div>
+            <div class="text-xs text-slate-400 font-medium">
+                Atlas Anatômico Interativo &copy; 2026
+            </div>
         </div>
     </footer>
-
-    <!-- Lógica JavaScript Completa com Suporte Multilíngue (PT, EN, ES) -->
+    <!-- Lógica JavaScript Completa com Suporte Multilíngue (PT, EN, ES, LA, ZH) -->
     <script>
         // ==========================================
         // 1. DICIONÁRIO DE TRADUÇÕES DA INTERFACE (UI)
@@ -414,6 +390,78 @@
                 quizMsgLow: '¡Buen comienzo! Explora más los sistemas arriba e inténtalo de nuevo.',
                 footerTitle: 'Cuerpo Humano 360° — Educación Científica Interactiva',
                 footerSubtitle: 'Desarrollado con fines educativos. Explora, haz clic y aprende.'
+            },
+            la: {
+                pageTitle: 'Anatomia Interactiva - Systemata Corporis Humani',
+                headerTitleHTML: 'Corpus Humanum <span class="text-indigo-600">360°</span>',
+                headerSubtitle: 'Atlas Anatomicus Interactivus & Mirabilia',
+                navExplore: 'Explora Systemata',
+                navQuiz: 'Quaestiunculae',
+                heroBadge: 'Doctrina Visualis Interactiva',
+                heroTitleHTML: 'Detege mirabilem machinam quae est <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-500">Corpus Humanum</span>',
+                heroSubtitle: 'Preme organa directe in exemplo anatomico vel elige unum ex sex systematibus praecipuis infra ut functiones vitales, structuras et facta mirabilia explores.',
+                svgTouchHint: 'Tange organum',
+                svgViewAll: 'Vide Omnia',
+                svgSelectedPrefix: 'Systema electum:',
+                svgAllSystemsLabel: 'Omnia Systemata (Conspectus Generalis)',
+                systemBadge: 'Systema Anatomicum',
+                mainFunctionsTitle: 'Functiones Praecipuae',
+                organsTitle: 'Organa et Structurae Praecipuae',
+                factsTitle: 'Sciebasne? Facta Mirabilia',
+                quizBadge: 'Certamen Scientiae',
+                quizTitle: 'Quaestiunculae Anatomiae',
+                quizSubtitle: 'Proba quae didicisti explorando systemata corporis humani.',
+                quizScoreLabel: 'Puncta',
+                quizQuestionCounter: (curr, total) => `Quaestio ${curr} ex ${total}`,
+                quizCompletedPercent: (pct) => `${pct}% perfectum`,
+                quizCorrectFeedback: 'Responsum Rectum!',
+                quizWrongFeedback: 'Paene!',
+                quizNextBtn: 'Sequens',
+                quizFinishBtn: 'Vide Exitum',
+                quizEndTitle: 'Certamen Perfectum!',
+                quizEndScore: (score, total) => `Recte respondisti ${score} ex ${total} quaestionibus`,
+                quizRestartBtn: 'Iterum Incipe',
+                quizMsgHigh: 'Optime! Anatomiam humanam praeclare tenes!',
+                quizMsgMid: 'Bene factum! Magnam scientiam de corpore humano habes.',
+                quizMsgLow: 'Bonum initium! Explora systemata supra et iterum tenta.',
+                footerTitle: 'Corpus Humanum 360° — Educatio Scientifica Interactiva',
+                footerSubtitle: 'Ad usum educativum elaboratum. Explora, preme et disce.'
+            },
+            zh: {
+                pageTitle: '互动解剖学 - 人体系统探索',
+                headerTitleHTML: '人体奥秘 <span class="text-indigo-600">360°</span>',
+                headerSubtitle: '互动解剖图谱与趣味冷知识',
+                navExplore: '探索系统',
+                navQuiz: '趣味测验',
+                heroBadge: '互动视觉学习',
+                heroTitleHTML: '探索令人惊叹的生命机器——<span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-500">人体系统</span>',
+                heroSubtitle: '直接点击解剖模型上的器官，或从下方选择六大主要系统之一，探索它们的生命功能、结构以及令人惊奇的科学事实。',
+                svgTouchHint: '点击器官查看',
+                svgViewAll: '查看全部',
+                svgSelectedPrefix: '当前选择系统：',
+                svgAllSystemsLabel: '所有系统（总览）',
+                systemBadge: '解剖系统',
+                mainFunctionsTitle: '主要功能',
+                organsTitle: '主要器官与结构',
+                factsTitle: '你知道吗？趣味冷知识',
+                quizBadge: '知识挑战',
+                quizTitle: '解剖学迷你测验',
+                quizSubtitle: '测试一下你通过探索人体系统学到的知识吧。',
+                quizScoreLabel: '得分',
+                quizQuestionCounter: (curr, total) => `第 ${curr} 题，共 ${total} 题`,
+                quizCompletedPercent: (pct) => `已完成 ${pct}%`,
+                quizCorrectFeedback: '回答正确！',
+                quizWrongFeedback: '差一点就对了！',
+                quizNextBtn: '下一题',
+                quizFinishBtn: '查看结果',
+                quizEndTitle: '测验完成！',
+                quizEndScore: (score, total) => `你答对了 ${total} 题中的 ${score} 题`,
+                quizRestartBtn: '重新测验',
+                quizMsgHigh: '太棒了！你已经精通人体解剖学知识！',
+                quizMsgMid: '做得很好！你对人体系统有很深入的了解。',
+                quizMsgLow: '良好的开端！多探索上方的各个系统后再来挑战吧。',
+                footerTitle: '人体奥秘 360° — 互动科学教育',
+                footerSubtitle: '专为教育目的设计。探索、点击并学习。'
             }
         };
 
@@ -517,6 +565,62 @@
                             { label: 'Extensión Vascular', value: '96.000 km' },
                             { label: 'Volumen de Sangre', value: '4,5 a 5,5 L' }
                         ]
+                    },
+                    la: {
+                        name: 'Systema Cardiovasculare',
+                        shortName: 'Cardiovasculare',
+                        tagline: 'Rete vitale transportans oxygenium et nutrimenta',
+                        description: 'Systema cardiovasculare sanguinem per totum organismum impellit et distribuit. Curat ut unaquaeque cellula oxygenium, nutrimenta et hormona essentialia accipiat, dum dioxidum carbonii et residua metabolica ad eliminationem colligit.',
+                        mainFunctions: [
+                            'Transportatio oxygenii a pulmonibus ad textus et dioxidi carbonii (CO₂) in directionem contrariam.',
+                            'Distributio nutrimentorum a systemate digestorio absorptorum.',
+                            'Moderatio temperaturae corporis et aequilibrii aquosi.',
+                            'Defensio immunologica per transportationem leucocytorum et anticorporum.'
+                        ],
+                        organs: [
+                            { name: 'Cor', role: 'Antlia muscularis quattuor camerarum quae sanguinem impellit.' },
+                            { name: 'Arteriae', role: 'Vasa quae sanguinem oxygenio divitem a corde ad corpus ducunt.' },
+                            { name: 'Venae', role: 'Vasa quae sanguinem ad cor reducunt.' },
+                            { name: 'Vasa Capillaria', role: 'Vasa microscopica ubi permutationes gasorum et nutrimentorum fiunt.' }
+                        ],
+                        facts: [
+                            'Si omnia vasa sanguinea hominis adulti in lineam rectam extenderentur, Terram circiter 2,5 vicibus circumirent (fere 100.000 km)!',
+                            'Cor humanum mediocriter 100.000 vicibus per diem palpitatur, circiter 5 litros sanguinis per minutum in quiete impellens.',
+                            'Cornea (pars pellucida anterior oculi) est sola pars corporis humani quae directum sanguinis fluxum non accipit.'
+                        ],
+                        metrics: [
+                            { label: 'Pulsus/die', value: '~100.000' },
+                            { label: 'Longitudo Vasorum', value: '96.000 km' },
+                            { label: 'Volumen Sanguinis', value: '4,5 - 5,5 L' }
+                        ]
+                    },
+                    zh: {
+                        name: '心血管系统',
+                        shortName: '心血管系统',
+                        tagline: '输送氧气和营养物质的生命网络',
+                        description: '心血管系统负责将血液泵送并分配到全身各个部位。它确保每个细胞都能获得氧气、营养物质和必需的激素，同时收集二氧化碳和代谢废物以排出体外。',
+                        mainFunctions: [
+                            '将氧气从肺部输送到全身组织，并将二氧化碳运回肺部排出。',
+                            '分配由消化系统吸收的各类营养物质。',
+                            '调节体温并维持体液平衡。',
+                            '通过运输白细胞和抗体提供免疫防御。'
+                        ],
+                        organs: [
+                            { name: '心脏', role: '拥有四个腔室的肌肉泵，推动血液在全身循环。' },
+                            { name: '动脉', role: '将富含氧气的血液从心脏输送到全身的血管。' },
+                            { name: '静脉', role: '将血液输送回心脏的血管。' },
+                            { name: '毛细血管', role: '进行气体和营养物质交换的微观血管。' }
+                        ],
+                        facts: [
+                            '如果将一个成年人全身的所有血管首尾相连拉成直线，总长度大约可以绕地球2.5圈（约10万公里）！',
+                            '人类心脏平均每天跳动约10万次，在静息状态下每分钟泵血约5升。',
+                            '角膜（眼睛前部的透明部分）是人体唯一没有直接血液供应的部位。'
+                        ],
+                        metrics: [
+                            { label: '每日心跳', value: '约10万次' },
+                            { label: '血管总长', value: '9.6万公里' },
+                            { label: '血液总量', value: '4.5至5.5升' }
+                        ]
                     }
                 }
             },
@@ -615,6 +719,62 @@
                             { label: 'Neuronas', value: '~86 Mil Millones' },
                             { label: 'Velocidad del Impulso', value: 'Hasta 430 km/h' },
                             { label: 'Consumo de Energía', value: '20% del total' }
+                        ]
+                    },
+                    la: {
+                        name: 'Systema Nervosum',
+                        shortName: 'Nervosum',
+                        tagline: 'Centrum imperii, processus et communicationis celerrimae',
+                        description: 'Systema nervosum omnes actiones voluntarias et involuntarias corporis coordinat. Per signa electrica et chemica celerrima, stimulos externos et internos interpretatur, cogitationes, memorias, affectiones generat et motus moderatur.',
+                        mainFunctions: [
+                            'Receptio et interpretatio stimulorum sensoriorum (visus, auditus, tactus, olfactus, gustus).',
+                            'Moderatio motuum muscularium voluntariorum et reflexuum celerium.',
+                            'Regulatio functionum vitalium automaticarum, sicut respiratio et pulsus cordis.',
+                            'Processus cognitivus: memoria, lingua, ratiocinatio et affectiones.'
+                        ],
+                        organs: [
+                            { name: 'Cerebrum', role: 'Organum principale systematis nervosi centralis, sedes conscientiae et cognitionis.' },
+                            { name: 'Medulla Spinalis', role: 'Via principalis communicationis inter cerebrum et reliquum corpus.' },
+                            { name: 'Cerebellum', role: 'Aequilibrium, staturam et subtilitatem motuum coordinat.' },
+                            { name: 'Nervi Peripherici', role: 'Rete fibrarum quod systema centrale cum organis et membris coniungit.' }
+                        ],
+                        facts: [
+                            'Cerebrum humanum circiter 86 miliarda neuronum continet, trilliones nexuum qui synapses vocantur formantium.',
+                            'Impulsus nervosi celeritate plus quam 400 km/h currere possunt — celerius quam currus Formulae 1!',
+                            'Quamquam tantum circiter 2% ponderis corporis repraesentat, cerebrum fere 20% totius oxygenii et energiae corporis consumit.'
+                        ],
+                        metrics: [
+                            { label: 'Neurona', value: '~86 Miliarda' },
+                            { label: 'Celeritas Impulsus', value: 'Ad 430 km/h' },
+                            { label: 'Consumptio Energiae', value: '20% totius' }
+                        ]
+                    },
+                    zh: {
+                        name: '神经系统',
+                        shortName: '神经系统',
+                        tagline: '指挥、信息处理与高速通信的中心',
+                        description: '神经系统协调人体所有的随意和不随意活动。通过超高速的电信号和化学信号，它解析内外环境刺激，产生思维、记忆和情感，并精准控制我们的身体运动。',
+                        mainFunctions: [
+                            '接收并解析感官刺激（视觉、听觉、触觉、嗅觉、味觉）。',
+                            '控制随意的肌肉运动以及快速的神经反射。',
+                            '调节呼吸和心率等自动维持生命的功能。',
+                            '高级认知处理：包括记忆、语言、推理和情绪。'
+                        ],
+                        organs: [
+                            { name: '大脑', role: '中枢神经系统的核心器官，意识和认知的所在。' },
+                            { name: '脊髓', role: '连接大脑与身体其余部分的主要信息高速公路。' },
+                            { name: '小脑', role: '协调身体平衡、姿势以及动作的精确度。' },
+                            { name: '周围神经', role: '将中枢神经系统连接到全身器官和四肢的神经纤维网络。' }
+                        ],
+                        facts: [
+                            '人类大脑包含大约860亿个神经元，形成了数万亿个被称为“突触”的连接。',
+                            '神经冲动的传导速度可超过每小时400公里——比一级方程式赛车还要快！',
+                            '虽然大脑仅占体重的约2%，但它却消耗了人体总氧气和能量的约20%。'
+                        ],
+                        metrics: [
+                            { label: '神经元数量', value: '约860亿个' },
+                            { label: '冲动传导速度', value: '高达430 km/h' },
+                            { label: '能量消耗占比', value: '占全身20%' }
                         ]
                     }
                 }
@@ -715,6 +875,62 @@
                             { label: 'Alvéolos', value: '~400 Millones' },
                             { label: 'Área Interna', value: '~70 m²' }
                         ]
+                    },
+                    la: {
+                        name: 'Systema Respiratorium',
+                        shortName: 'Respiratorium',
+                        tagline: 'Permutatio gasorum essentialis ad energiam cellularem producendam',
+                        description: 'Systema respiratorium introitum oxygenii in organismum et eliminationem dioxidi carbonii (CO₂) permittit. Cum systemate cardiovasculari arcte collaborans, combustibile gaseosum pro metabolismo omnium cellularum praestat.',
+                        mainFunctions: [
+                            'Captatio oxygenii (O₂) ex aere atmosphaerico in flumen sanguineum.',
+                            'Eliminatio dioxidi carbonii (CO₂), residui respirationis cellularis.',
+                            'Filtratio, calefactio et humectatio aeris inspirati.',
+                            'Productio vocis per vibrationem plicarum vocalium in larynge.'
+                        ],
+                        organs: [
+                            { name: 'Pulmones', role: 'Organa spongiosa ubi permutationes gasorum in alveolis fiunt.' },
+                            { name: 'Trachea et Bronchi', role: 'Canales anulis cartilagineis firmati qui aerem ducunt.' },
+                            { name: 'Alveoli Pulmonis', role: 'Minutissimi sacci aeris vasis capillaribus sanguineis circumdati.' },
+                            { name: 'Diaphragma', role: 'Musculus respiratorius principalis qui contrahitur ut aerem introrsum trahat.' }
+                        ],
+                        facts: [
+                            'Si circiter 300 ad 500 milliones alveolorum pulmonum aperirentur et extenderentur, aream dimidio campi teniludii aequalem tegerent!',
+                            'Pulmo dexter paulo maior est quam sinister, quia sinister spatium ad cor accommodandum praebet.',
+                            'Mediocriter 20.000 vicibus per diem respiramus, plus quam 10.000 litros aeris moventes.'
+                        ],
+                        metrics: [
+                            { label: 'Respirationes/die', value: '~20.000' },
+                            { label: 'Alveoli', value: '~400 Milliones' },
+                            { label: 'Area Interna', value: '~70 m²' }
+                        ]
+                    },
+                    zh: {
+                        name: '呼吸系统',
+                        shortName: '呼吸系统',
+                        tagline: '为细胞产生能量提供关键的气体交换',
+                        description: '呼吸系统使氧气进入人体并排出二氧化碳（CO₂）。它与心血管系统密切配合，为全身所有细胞的新陈代谢提供气体燃料。',
+                        mainFunctions: [
+                            '从大气中摄取氧气（O₂）并将其送入血液循环。',
+                            '排出细胞呼吸产生的代谢废物——二氧化碳（CO₂）。',
+                            '对吸入的空气进行过滤、加温和湿润处理。',
+                            '通过喉部声带的振动发出声音。'
+                        ],
+                        organs: [
+                            { name: '肺', role: '海绵状器官，气体交换在其内部的肺泡中进行。' },
+                            { name: '气管与支气管', role: '由软骨环支撑的气体通道，负责输送空气。' },
+                            { name: '肺泡', role: '周围布满毛细血管的微小气囊。' },
+                            { name: '膈肌', role: '主要的呼吸肌，收缩时将空气吸入肺部。' }
+                        ],
+                        facts: [
+                            '如果把肺部大约3亿到5亿个肺泡全部展开铺平，其总面积相当于半个标准网球场！',
+                            '右肺比左肺略大，因为左侧需要留出空间来容纳心脏。',
+                            '我们平均每天呼吸约2万次，吸入和呼出的空气总量超过1万升。'
+                        ],
+                        metrics: [
+                            { label: '每日呼吸次数', value: '约2万次' },
+                            { label: '肺泡总数', value: '约4亿个' },
+                            { label: '内部表面积', value: '约70 m²' }
+                        ]
                     }
                 }
             },
@@ -813,6 +1029,62 @@
                             { label: 'Extensión del Tubo', value: '~9 metros' },
                             { label: 'Tiempo de Digestión', value: '24 a 72h' },
                             { label: 'pH Estomacal', value: '1,5 a 3,5' }
+                        ]
+                    },
+                    la: {
+                        name: 'Systema Digestorium',
+                        shortName: 'Digestorium',
+                        tagline: 'Cibos in combustibile et elementa aedificatoria transformans',
+                        description: 'Systema digestorium est longus tubus muscularis glandulis annexis adiutus qui cibos mechanice et chemice in parvas moleculas (glucosum, aminoacida, acida pinguia) frangit ut in sanguinem absorbeantur.',
+                        mainFunctions: [
+                            'Ingestio et trituratio mechanica ciborum.',
+                            'Digestio chemica per enzyma, acida et bilem.',
+                            'Absorptio nutrimentorum, vitaminorum, salium mineralium et aquae.',
+                            'Compactatio et eliminatio residuorum non digestorum.'
+                        ],
+                        organs: [
+                            { name: 'Ventriculus (Gaster)', role: 'Saccus muscularis qui acidum hydrochloricum et enzyma ad proteina digerenda secernit.' },
+                            { name: 'Intestinum Tenue', role: 'Tubus ~6 metrorum ubi 90% absorptionis nutrimentorum fit.' },
+                            { name: 'Hepar et Pancreas', role: 'Glandulae quae bilem et enzyma digestiva essentialia producunt.' },
+                            { name: 'Intestinum Crassum', role: 'Aquam et electrolyta absorbet, trilliones bacteriorum utilium hospitans.' }
+                        ],
+                        facts: [
+                            'Acidum hydrochloricum in ventriculo tam forte est (pH inter 1,5 et 3,5) ut lamellas metallicas dissolvere possit; ventriculus se ipsum non digerit propter stratum muci renovabile.',
+                            'Intestinum tenue circiter 6 metra longum est, sed villi eius aream absorptionis ad magnitudinem magnae domus augent.',
+                            'Intestinum suum proprium systema nervosum ("systema nervosum entericum") habet, saepe "secundum cerebrum" appellatum.'
+                        ],
+                        metrics: [
+                            { label: 'Longitudo Tubi', value: '~9 metra' },
+                            { label: 'Tempus Digestionis', value: '24 - 72 h' },
+                            { label: 'pH Ventriculi', value: '1,5 - 3,5' }
+                        ]
+                    },
+                    zh: {
+                        name: '消化系统',
+                        shortName: '消化系统',
+                        tagline: '将食物转化为燃料和细胞构建模块',
+                        description: '消化系统是一条由附属腺体辅助的长肌性管道，通过机械和化学方式将食物分解为小分子（葡萄糖、氨基酸、脂肪酸），以便被血液吸收利用。',
+                        mainFunctions: [
+                            '摄入食物并进行物理咀嚼与研磨。',
+                            '通过消化酶、胃酸和胆汁进行化学消化。',
+                            '吸收营养物质、维生素、矿物质和水分。',
+                            '浓缩并排出未被消化的食物残渣。'
+                        ],
+                        organs: [
+                            { name: '胃', role: '肌性囊袋，分泌盐酸和消化酶以初步消化蛋白质。' },
+                            { name: '小肠', role: '长约6米的管道，90%的营养物质在此处被吸收。' },
+                            { name: '肝脏与胰腺', role: '分泌胆汁和关键消化酶的重要腺体。' },
+                            { name: '大肠', role: '吸收水分和电解质，栖息着数万亿有益菌群。' }
+                        ],
+                        facts: [
+                            '胃中的盐酸酸性极强（pH值在1.5至3.5之间），甚至足以溶解金属刀片；胃之所以不会消化自身，全靠一层不断更新的黏液保护层。',
+                            '小肠虽然只有约6米长，但其内壁密集的绒毛结构将吸收表面积扩大到了相当于一套大公寓的大小。',
+                            '肠道拥有独立运作的神经网络（“肠神经系统”），因此常被称为人体的“第二大脑”。'
+                        ],
+                        metrics: [
+                            { label: '消化道总长', value: '约9米' },
+                            { label: '消化时间', value: '24至72小时' },
+                            { label: '胃酸pH值', value: '1.5至3.5' }
                         ]
                     }
                 }
@@ -913,6 +1185,62 @@
                             { label: 'Hueso Más Largo', value: 'Fémur (~48 cm)' },
                             { label: 'Hueso Más Corto', value: 'Estribo (2,8 mm)' }
                         ]
+                    },
+                    la: {
+                        name: 'Systema Skeletale',
+                        shortName: 'Skeletale',
+                        tagline: 'Structura viva sustentationis, protectionis et productionis sanguinis',
+                        description: 'Multo plus quam compages rigida, systema skeletale ex textibus vivis in perpetua renovatione constat. Corpus contra gravitatem sustinet, organa vitalia delicata protegit et musculis tamquam vectis servit.',
+                        mainFunctions: [
+                            'Sustentatio structuralis et definitio formae corporis humani.',
+                            'Protectio organorum vitalium (cranium cerebrum protegit; cavea thoracis cor et pulmones).',
+                            'Haematopoiesis: productio cellularum sanguinis in medulla ossium rubra.',
+                            'Reconditio mineralium essentialium, praesertim calcii et phosphori.'
+                        ],
+                        organs: [
+                            { name: 'Cranium et Columna Vertebralis', role: 'Systema nervosum centrale protegunt et truncum sustinent.' },
+                            { name: 'Cavea Thoracis', role: 'Costae et sternum quae organa thoracis muniunt.' },
+                            { name: 'Femur', role: 'Longissimum et fortissimum os corporis humani, in femore situm.' },
+                            { name: 'Articulationes et Cartilagines', role: 'Ossa coniungunt mobilitatem et absorptionem ictuum permittentes.' }
+                        ],
+                        facts: [
+                            'Infantes cum circiter 270 ad 300 ossibus nascuntur, sed multa inter crescendum coalescunt, unde 206 ossa in adulto exsistunt.',
+                            'Minimum os corporis humani est stapes, in aure media situs, tantum circiter 2,8 millimetra metiens!',
+                            'Os circiter quinquies fortius est quam virga chalybis eiusdem ponderis.'
+                        ],
+                        metrics: [
+                            { label: 'Ossa in Adulto', value: '206 ossa' },
+                            { label: 'Maximum Os', value: 'Femur (~48 cm)' },
+                            { label: 'Minimum Os', value: 'Stapes (2,8 mm)' }
+                        ]
+                    },
+                    zh: {
+                        name: '骨骼系统',
+                        shortName: '骨骼系统',
+                        tagline: '提供支撑、保护与造血功能的活体框架',
+                        description: '骨骼系统远不止是一个坚硬的支架，它由不断自我重塑的活体组织构成。它抵抗重力支撑身体，保护脆弱的重要器官，并作为肌肉发力的杠杆。',
+                        mainFunctions: [
+                            '提供结构支撑并塑造人体的基本形态。',
+                            '保护重要内脏器官（颅骨保护大脑；胸廓保护心脏和肺部）。',
+                            '造血功能：在红骨髓中生成红细胞、白细胞和血小板。',
+                            '储存重要矿物质，尤其是钙和磷。'
+                        ],
+                        organs: [
+                            { name: '颅骨与脊柱', role: '保护中枢神经系统并支撑躯干。' },
+                            { name: '胸廓', role: '由肋骨和胸骨组成，为胸腔器官提供坚固屏障。' },
+                            { name: '股骨', role: '人体最长且最坚固的骨头，位于大腿部。' },
+                            { name: '关节与软骨', role: '连接骨骼，赋予身体灵活性并缓冲震动冲击。' }
+                        ],
+                        facts: [
+                            '婴儿出生时大约有270到300块骨头，随着成长许多骨头会逐渐融合，最终成年人共有206块骨头。',
+                            '人体最小的骨头是位于中耳的镫骨，长度仅为2.8毫米左右！',
+                            '按相同重量计算，人类骨骼的强度大约是钢材的五倍。'
+                        ],
+                        metrics: [
+                            { label: '成人骨骼数', value: '206块' },
+                            { label: '最长的骨头', value: '股骨 (约48 cm)' },
+                            { label: '最小的骨头', value: '镫骨 (2.8 mm)' }
+                        ]
                     }
                 }
             },
@@ -1012,6 +1340,62 @@
                             { label: 'Masa Corporal', value: '~40% del peso' },
                             { label: 'Músculos por Paso', value: '~200 activos' }
                         ]
+                    },
+                    la: {
+                        name: 'Systema Musculare',
+                        shortName: 'Musculare',
+                        tagline: 'Motor biologicus omni motui et staturae praepositus',
+                        description: 'Ex plus quam 600 musculis compositum, systema musculare energiam chemicam in vim mechanicam per contractionem fibrarum specialium convertit. Tam in motibus voluntariis quam in functione interna organorum agit.',
+                        mainFunctions: [
+                            'Locomotio et executio motuum subtilium (musculi skeletales).',
+                            'Conservatio staturae corporis et stabilitatis articulationum.',
+                            'Generatio caloris corporis (thermogenesis) ad temperaturam ~36,5°C servandam.',
+                            'Motio substantiarum internarum, sicut ciborum in intestino et sanguinis in vasis.'
+                        ],
+                        organs: [
+                            { name: 'Musculi Skeletales', role: 'Ossibus per tendines coniuncti; imperio voluntario subiecti.' },
+                            { name: 'Musculus Cardiacus', role: 'Cordi proprius, rhythmice et involuntarie contrahitur.' },
+                            { name: 'Musculi Leves', role: 'In parietibus ventriculi, intestinorum et vasorum sanguineorum inventi.' },
+                            { name: 'Tendines', role: 'Fasciae fibrosae resistentes quae musculos cum ossibus conectunt.' }
+                        ],
+                        facts: [
+                            'Musculus fortissimus pro magnitudine sua est masseter (musculus mandibulae), vim morsus plus quam 90 kg in molaribus exercere potens.',
+                            'Maximus musculus corporis humani volumine est gluteus maximus, essentialis ad nos erectos tenendos et scalas ascendendas.',
+                            'Ad unum tantum passum faciendum, circiter 200 musculis diversis una coordinatis uteris.'
+                        ],
+                        metrics: [
+                            { label: 'Numerus Musculorum', value: '+600 musculi' },
+                            { label: 'Massa Corporis', value: '~40% ponderis' },
+                            { label: 'Musculi per Passum', value: '~200 activi' }
+                        ]
+                    },
+                    zh: {
+                        name: '肌肉系统',
+                        shortName: '肌肉系统',
+                        tagline: '驱动每一次运动与维持姿势的生物引擎',
+                        description: '肌肉系统由600多块肌肉组成，通过特化肌纤维的收缩将化学能转化为机械力。它既负责有意识的肢体运动，也维持着内脏器官的内部运转。',
+                        mainFunctions: [
+                            '实现身体移动以及执行精细动作（骨骼肌）。',
+                            '维持人体直立姿势与关节稳定性。',
+                            '产生体热（产热作用），使体温维持在约36.5°C。',
+                            '推动体内物质运行，如食物在肠道内的蠕动和血液在血管中的流动。'
+                        ],
+                        organs: [
+                            { name: '骨骼肌', role: '通过肌腱附着在骨骼上，受意识随意控制。' },
+                            { name: '心肌', role: '心脏独有的肌肉组织，有节律地进行不随意收缩。' },
+                            { name: '平滑肌', role: '分布于胃壁、肠壁和血管壁中，负责内脏蠕动。' },
+                            { name: '肌腱', role: '连接肌肉与骨骼的坚韧纤维束带。' }
+                        ],
+                        facts: [
+                            '按体积比例计算，人体最有力的肌肉是咬肌（下颌肌肉），在臼齿处可产生超过90公斤的咬合力。',
+                            '人体体积最大的肌肉是臀大肌，对于保持人体直立和爬楼梯至关重要。',
+                            '仅仅迈出一步，就需要调动大约200块不同的肌肉协同工作。'
+                        ],
+                        metrics: [
+                            { label: '肌肉总数', value: '600多块' },
+                            { label: '占体重比例', value: '约40%' },
+                            { label: '每步调动肌肉', value: '约200块' }
+                        ]
                     }
                 }
             }
@@ -1038,6 +1422,16 @@
                         question: '¿Cuál es el hueso del cuerpo humano que mide menos de 3 milímetros y se encuentra en el oído?',
                         options: ['Fémur', 'Estribo', 'Rótula', 'Clavícula'],
                         explanation: 'El estribo, ubicado en el oído medio, mide unos 2,8 mm y transmite vibraciones sonoras.'
+                    },
+                    la: {
+                        question: 'Quod os corporis humani minus quam 3 millimetra metitur et in aure situm est?',
+                        options: ['Femur', 'Stapes', 'Patella', 'Clavicula'],
+                        explanation: 'Stapes, in aure media situs, circiter 2,8 mm metitur et vibrationes sonoras transmittit.'
+                    },
+                    zh: {
+                        question: '人体中哪块骨头的长度不到3毫米，并且位于耳朵内部？',
+                        options: ['股骨', '镫骨', '髌骨', '锁骨'],
+                        explanation: '位于中耳的镫骨长度仅为约2.8毫米，负责传导声波振动。'
                     }
                 }
             },
@@ -1058,6 +1452,16 @@
                         question: '¿Qué porcentaje aproximado del oxígeno y la energía del cuerpo consume únicamente el cerebro?',
                         options: ['5%', '10%', '20%', '45%'],
                         explanation: 'A pesar de representar solo el 2% del peso corporal, el cerebro consume cerca del 20% de la energía total.'
+                    },
+                    la: {
+                        question: 'Quanta fere pars centesima oxygenii et energiae corporis a solo cerebro consumitur?',
+                        options: ['5%', '10%', '20%', '45%'],
+                        explanation: 'Quamvis tantum 2% ponderis corporis repraesentet, cerebrum fere 20% totius energiae consumit.'
+                    },
+                    zh: {
+                        question: '仅大脑一个器官就消耗了人体大约百分之多少的氧气和能量？',
+                        options: ['5%', '10%', '20%', '45%'],
+                        explanation: '尽管大脑仅占体重的2%，但它却消耗了人体总能量的约20%。'
                     }
                 }
             },
@@ -1078,6 +1482,16 @@
                         question: '¿Dónde ocurre cerca del 90% de la absorción de nutrientes de los alimentos que ingerimos?',
                         options: ['Estómago', 'Esófago', 'Intestino Delgado', 'Intestino Grueso'],
                         explanation: 'El intestino delgado mide unos 6 metros y tiene millones de vellosidades que absorben los nutrientes hacia la sangre.'
+                    },
+                    la: {
+                        question: 'Ubi fit circiter 90% absorptionis nutrimentorum ex cibis quos edimus?',
+                        options: ['Ventriculus', 'Oesophagus', 'Intestinum Tenue', 'Intestinum Crassum'],
+                        explanation: 'Intestinum tenue circiter 6 metra longum est et milliones villorum habet qui nutrimenta in sanguinem absorbent.'
+                    },
+                    zh: {
+                        question: '我们摄入食物中约90%的营养物质是在哪里被吸收的？',
+                        options: ['胃', '食道', '小肠', '大肠'],
+                        explanation: '小肠长约6米，内壁拥有数百万个绒毛结构，负责将营养物质吸收到血液中。'
                     }
                 }
             },
@@ -1098,6 +1512,16 @@
                         question: '¿Aproximadamente cuántas veces late el corazón humano en un solo día?',
                         options: ['10.000 veces', '50.000 veces', '100.000 veces', '500.000 veces'],
                         explanation: 'En promedio, el corazón late entre 60 y 100 veces por minuto, sumando unos 100.000 latidos diarios.'
+                    },
+                    la: {
+                        question: 'Quotiens fere cor humanum uno die palpitatur?',
+                        options: ['10.000 vicibus', '50.000 vicibus', '100.000 vicibus', '500.000 vicibus'],
+                        explanation: 'Mediocriter cor inter 60 et 100 vicibus per minutum palpitatur, quod circiter 100.000 pulsus cotidianos efficit.'
+                    },
+                    zh: {
+                        question: '人类心脏在一天之内大约跳动多少次？',
+                        options: ['1万次', '5万次', '10万次', '50万次'],
+                        explanation: '心脏平均每分钟跳动60到100次，每天累计跳动约10万次。'
                     }
                 }
             },
@@ -1118,6 +1542,16 @@
                         question: '¿Qué estructura de los pulmones es directamente responsable del intercambio gaseoso con la sangre?',
                         options: ['Alvéolos Pulmonares', 'Tráquea', 'Diafragma', 'Laringe'],
                         explanation: 'Los alvéolos son millones de pequeños sacos rodeados de capilares donde el O₂ entra en la sangre y sale el CO₂.'
+                    },
+                    la: {
+                        question: 'Quae structura pulmonum directe permutationi gasorum cum sanguine praeest?',
+                        options: ['Alveoli Pulmonis', 'Trachea', 'Diaphragma', 'Larynx'],
+                        explanation: 'Alveoli sunt milliones parvorum saccorum vasis capillaribus circumdatorum ubi O₂ in sanguinem intrat et CO₂ exit.'
+                    },
+                    zh: {
+                        question: '肺部的哪个结构直接负责与血液进行气体交换？',
+                        options: ['肺泡', '气管', '膈肌', '喉'],
+                        explanation: '肺泡是由毛细血管包裹的数百万个微小气囊，氧气在此进入血液，二氧化碳则在此排出。'
                     }
                 }
             },
@@ -1138,6 +1572,16 @@
                         question: '¿Cuál es el músculo más fuerte del cuerpo humano proporcionalmente a su tamaño?',
                         options: ['Bíceps Braquial', 'Masetero (Mandíbula)', 'Sartorio', 'Diafragma'],
                         explanation: 'El masetero, encargado de cerrar la mandíbula al masticar, genera una fuerza impresionante para su tamaño.'
+                    },
+                    la: {
+                        question: 'Quis est musculus fortissimus corporis humani pro magnitudine sua?',
+                        options: ['Biceps Brachii', 'Masseter (Mandibulae)', 'Sartorius', 'Diaphragma'],
+                        explanation: 'Masseter, qui mandibulam inter manducandum claudit, vim mirabilem pro magnitudine sua generat.'
+                    },
+                    zh: {
+                        question: '按体积比例计算，人体中最强壮的肌肉是哪一块？',
+                        options: ['肱二头肌', '咬肌（下颌）', '缝匠肌', '膈肌'],
+                        explanation: '负责在咀嚼时闭合下颌的咬肌，相对于其体积而言能产生惊人的力量。'
                     }
                 }
             }
@@ -1160,17 +1604,18 @@
             currentLang = lang;
 
             // Atualizar atributo lang do documento HTML e título da aba
-            const langMap = { pt: 'pt-BR', en: 'en', es: 'es' };
+            const langMap = { pt: 'pt-BR', en: 'en', es: 'es', la: 'la', zh: 'zh-CN' };
             document.documentElement.lang = langMap[lang];
             document.title = uiTranslations[lang].pageTitle;
 
             // Atualizar estilo visual dos botões de idioma no cabeçalho
-            ['pt', 'en', 'es'].forEach(code => {
+            ['pt', 'en', 'es', 'la', 'zh'].forEach(code => {
                 const btn = document.getElementById(`lang-btn-${code}`);
+                if (!btn) return;
                 if (code === lang) {
-                    btn.className = 'px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 bg-white text-indigo-600 shadow-xs';
+                    btn.className = 'px-2 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 bg-white text-indigo-600 shadow-xs';
                 } else {
-                    btn.className = 'px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 text-slate-600 hover:text-slate-900';
+                    btn.className = 'px-2 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 text-slate-600 hover:text-slate-900';
                 }
             });
 
@@ -1186,22 +1631,38 @@
 
         function updateStaticTexts() {
             const t = uiTranslations[currentLang];
-            document.getElementById('header-title').innerHTML = t.headerTitleHTML;
-            document.getElementById('header-subtitle').textContent = t.headerSubtitle;
-            document.getElementById('nav-explore-btn').textContent = t.navExplore;
-            document.getElementById('nav-quiz-btn').textContent = t.navQuiz;
-            document.getElementById('hero-badge').textContent = t.heroBadge;
-            document.getElementById('hero-title').innerHTML = t.heroTitleHTML;
-            document.getElementById('hero-subtitle').textContent = t.heroSubtitle;
-            document.getElementById('svg-touch-hint').textContent = t.svgTouchHint;
-            document.getElementById('svg-view-all-btn').textContent = t.svgViewAll;
-            document.getElementById('svg-selected-prefix').textContent = t.svgSelectedPrefix;
-            document.getElementById('quiz-badge').textContent = t.quizBadge;
-            document.getElementById('quiz-title').textContent = t.quizTitle;
-            document.getElementById('quiz-subtitle').textContent = t.quizSubtitle;
-            document.getElementById('quiz-score-label').textContent = t.quizScoreLabel;
-            document.getElementById('footer-title').textContent = t.footerTitle;
-            document.getElementById('footer-subtitle').textContent = t.footerSubtitle;
+            const headerTitle = document.getElementById('header-title');
+            if (headerTitle) headerTitle.innerHTML = t.headerTitleHTML;
+            const headerSubtitle = document.getElementById('header-subtitle');
+            if (headerSubtitle) headerSubtitle.textContent = t.headerSubtitle;
+            const navExploreBtn = document.getElementById('nav-explore-btn');
+            if (navExploreBtn) navExploreBtn.textContent = t.navExplore;
+            const navQuizBtn = document.getElementById('nav-quiz-btn');
+            if (navQuizBtn) navQuizBtn.textContent = t.navQuiz;
+            const heroBadge = document.getElementById('hero-badge');
+            if (heroBadge) heroBadge.textContent = t.heroBadge;
+            const heroTitle = document.getElementById('hero-title');
+            if (heroTitle) heroTitle.innerHTML = t.heroTitleHTML;
+            const heroSubtitle = document.getElementById('hero-subtitle');
+            if (heroSubtitle) heroSubtitle.textContent = t.heroSubtitle;
+            const svgTouchHint = document.getElementById('svg-touch-hint');
+            if (svgTouchHint) svgTouchHint.textContent = t.svgTouchHint;
+            const svgViewAllBtn = document.getElementById('svg-view-all-btn');
+            if (svgViewAllBtn) svgViewAllBtn.textContent = t.svgViewAll;
+            const svgSelectedPrefix = document.getElementById('svg-selected-prefix');
+            if (svgSelectedPrefix) svgSelectedPrefix.textContent = t.svgSelectedPrefix;
+            const quizBadge = document.getElementById('quiz-badge');
+            if (quizBadge) quizBadge.textContent = t.quizBadge;
+            const quizTitle = document.getElementById('quiz-title');
+            if (quizTitle) quizTitle.textContent = t.quizTitle;
+            const quizSubtitle = document.getElementById('quiz-subtitle');
+            if (quizSubtitle) quizSubtitle.textContent = t.quizSubtitle;
+            const quizScoreLabel = document.getElementById('quiz-score-label');
+            if (quizScoreLabel) quizScoreLabel.textContent = t.quizScoreLabel;
+            const footerTitle = document.getElementById('footer-title');
+            if (footerTitle) footerTitle.textContent = t.footerTitle;
+            const footerSubtitle = document.getElementById('footer-subtitle');
+            if (footerSubtitle) footerSubtitle.textContent = t.footerSubtitle;
 
             // Atualizar tooltips (<title>) dentro do SVG
             bodySystems.forEach(sys => {
@@ -1215,6 +1676,7 @@
         // Inicializar abas superiores
         function renderTabs() {
             const tabsContainer = document.getElementById('system-tabs');
+            if (!tabsContainer) return;
             tabsContainer.innerHTML = bodySystems.map(sys => {
                 const isActive = sys.id === activeSystemId;
                 const sysContent = sys.i18n[currentLang];
