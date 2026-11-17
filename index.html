@@ -191,20 +191,53 @@
                         <!-- Camada 5: Esqueleto (Sistema Esquelético) -->
                         <g id="layer-skeletal" class="svg-organ" onclick="selectSystem('skeletal')">
                             <title id="title-skeletal">Sistema Esquelético</title>
+                            <!-- Crânio (contorno) -->
+                            <circle cx="155" cy="52" r="24" fill="none" stroke="#64748B" stroke-width="2.5" stroke-dasharray="4,2"/>
                             <!-- Coluna Vertebral -->
-                            <line x1="155" y1="95" x2="155" y2="330" stroke="#64748B" stroke-width="5" stroke-dasharray="8,4"/>
+                            <line x1="155" y1="82" x2="155" y2="315" stroke="#64748B" stroke-width="6" stroke-dasharray="8,4"/>
+                            <!-- Clavículas -->
+                            <path d="M115 125 Q135 120 155 128 Q175 120 195 125" fill="none" stroke="#64748B" stroke-width="3.5" stroke-linecap="round"/>
                             <!-- Costelas -->
-                            <path d="M135 160 Q155 170 175 160" fill="none" stroke="#64748B" stroke-width="3"/>
-                            <path d="M132 180 Q155 192 178 180" fill="none" stroke="#64748B" stroke-width="3"/>
-                            <path d="M132 200 Q155 212 178 200" fill="none" stroke="#64748B" stroke-width="3"/>
+                            <path d="M128 152 Q155 164 182 152" fill="none" stroke="#64748B" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M125 172 Q155 186 185 172" fill="none" stroke="#64748B" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M127 192 Q155 206 183 192" fill="none" stroke="#64748B" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M132 212 Q155 224 178 212" fill="none" stroke="#64748B" stroke-width="3.5" stroke-linecap="round"/>
+                            <!-- Pelve / Bacia -->
+                            <path d="M122 315 C118 332 135 342 155 332 C175 342 192 332 188 315 C175 310 135 310 122 315 Z" fill="none" stroke="#64748B" stroke-width="3.5"/>
+                            <!-- Fêmures (Ossos das Coxas) -->
+                            <line x1="126" y1="335" x2="118" y2="420" stroke="#64748B" stroke-width="5" stroke-linecap="round"/>
+                            <line x1="184" y1="335" x2="192" y2="420" stroke="#64748B" stroke-width="5" stroke-linecap="round"/>
+                            <!-- Tíbias (Ossos das Pernas) -->
+                            <line x1="118" y1="430" x2="112" y2="500" stroke="#64748B" stroke-width="4" stroke-linecap="round"/>
+                            <line x1="192" y1="430" x2="198" y2="500" stroke="#64748B" stroke-width="4" stroke-linecap="round"/>
                         </g>
 
                         <!-- Camada 6: Músculos (Sistema Muscular) -->
                         <g id="layer-muscular" class="svg-organ" onclick="selectSystem('muscular')">
                             <title id="title-muscular">Sistema Muscular</title>
-                            <!-- Bíceps e Ombros -->
-                            <path d="M110 135 C95 135 90 160 100 180 C105 170 110 150 110 135 Z" fill="#EC4899" opacity="0.8" stroke="#9D174D" stroke-width="2"/>
-                            <path d="M200 135 C215 135 220 160 210 180 C205 170 200 150 200 135 Z" fill="#EC4899" opacity="0.8" stroke="#9D174D" stroke-width="2"/>
+                            <!-- Esternocleidomastoideo (Pescoço) -->
+                            <line x1="145" y1="92" x2="150" y2="120" stroke="#EC4899" stroke-width="3.5" stroke-linecap="round" opacity="0.8"/>
+                            <line x1="165" y1="92" x2="160" y2="120" stroke="#EC4899" stroke-width="3.5" stroke-linecap="round" opacity="0.8"/>
+                            <!-- Peitorais -->
+                            <path d="M115 135 Q135 132 152 142 L152 168 Q132 172 115 162 Z" fill="#EC4899" opacity="0.75" stroke="#9D174D" stroke-width="1.5"/>
+                            <path d="M195 135 Q175 132 158 142 L158 168 Q178 172 195 162 Z" fill="#EC4899" opacity="0.75" stroke="#9D174D" stroke-width="1.5"/>
+                            <!-- Deltoides e Bíceps -->
+                            <path d="M108 130 C88 132 76 162 84 195 C92 185 104 160 108 130 Z" fill="#EC4899" opacity="0.85" stroke="#9D174D" stroke-width="1.5"/>
+                            <path d="M202 130 C222 132 234 162 226 195 C218 185 206 160 202 130 Z" fill="#EC4899" opacity="0.85" stroke="#9D174D" stroke-width="1.5"/>
+                            <!-- Antebraços (Braquiorradial e Flexores) -->
+                            <path d="M76 192 L54 232 L64 236 L84 198 Z" fill="#EC4899" opacity="0.75" stroke="#9D174D" stroke-width="1.2"/>
+                            <path d="M234 192 L256 232 L246 236 L226 198 Z" fill="#EC4899" opacity="0.75" stroke="#9D174D" stroke-width="1.2"/>
+                            <!-- Reto Abdominal e Oblíquos -->
+                            <rect x="138" y="218" width="14" height="58" rx="5" fill="#EC4899" opacity="0.7" stroke="#9D174D" stroke-width="1.5"/>
+                            <rect x="158" y="218" width="14" height="58" rx="5" fill="#EC4899" opacity="0.7" stroke="#9D174D" stroke-width="1.5"/>
+                            <path d="M118 222 Q128 248 122 276" fill="none" stroke="#EC4899" stroke-width="4" stroke-linecap="round" opacity="0.65"/>
+                            <path d="M192 222 Q182 248 188 276" fill="none" stroke="#EC4899" stroke-width="4" stroke-linecap="round" opacity="0.65"/>
+                            <!-- Quadríceps (Coxas) -->
+                            <path d="M112 345 C106 375 106 405 114 422 C124 422 128 385 128 345 Z" fill="#EC4899" opacity="0.8" stroke="#9D174D" stroke-width="1.5"/>
+                            <path d="M198 345 C204 375 204 405 196 422 C186 422 182 385 182 345 Z" fill="#EC4899" opacity="0.8" stroke="#9D174D" stroke-width="1.5"/>
+                            <!-- Panturrilhas / Gastrocnêmios -->
+                            <path d="M106 436 C100 458 102 480 110 492 C118 480 120 458 116 436 Z" fill="#EC4899" opacity="0.75" stroke="#9D174D" stroke-width="1.2"/>
+                            <path d="M204 436 C210 458 208 480 200 492 C192 480 190 458 194 436 Z" fill="#EC4899" opacity="0.75" stroke="#9D174D" stroke-width="1.2"/>
                         </g>
                     </svg>
                 </div>
@@ -217,8 +250,8 @@
 
             <!-- Coluna Direita: Abas de Navegação + Painel de Informações Detalhadas (7 colunas) -->
             <div class="lg:col-span-7 space-y-6">
-                <!-- Abas dos Sistemas (Horizontal Scrollable) -->
-                <div class="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar" id="system-tabs">
+                <!-- Botões dos Sistemas (Grade Responsiva para todos os 6 sistemas ficarem visíveis) -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5" id="system-tabs">
                     <!-- Gerado dinamicamente via JS -->
                 </div>
 
@@ -248,7 +281,7 @@
 
                 <div class="flex items-center gap-2 bg-slate-50 px-4 py-2.5 rounded-2xl border border-slate-200/80 shrink-0">
                     <span id="quiz-score-label" class="text-xs font-semibold text-slate-500">Pontuação</span>
-                    <span id="quiz-score-badge" class="font-display font-extrabold text-indigo-600 text-base">0 / 6</span>
+                    <span id="quiz-score-badge" class="font-display font-extrabold text-indigo-600 text-base">0 / 20</span>
                 </div>
             </div>
 
@@ -1246,7 +1279,7 @@
             },
             {
                 id: 'muscular',
-                icon: 'biceps-flexed',
+                icon: 'dumbbell',
                 theme: {
                     bgLight: 'bg-pink-50',
                     textMain: 'text-pink-600',
@@ -1584,6 +1617,426 @@
                         explanation: '负责在咀嚼时闭合下颌的咬肌，相对于其体积而言能产生惊人的力量。'
                     }
                 }
+            },
+            {
+                correctIndex: 0,
+                i18n: {
+                    pt: {
+                        question: 'Quantos ossos possui o esqueleto de um ser humano adulto?',
+                        options: ['206 ossos', '270 ossos', '185 ossos', '300 ossos'],
+                        explanation: 'Um adulto possui 206 ossos, pois muitos dos ~270 ossos presentes ao nascer se fundem durante o crescimento.'
+                    },
+                    en: {
+                        question: 'How many bones are in an adult human skeleton?',
+                        options: ['206 bones', '270 bones', '185 bones', '300 bones'],
+                        explanation: 'An adult has 206 bones, as many of the ~270 bones present at birth fuse together during growth.'
+                    },
+                    es: {
+                        question: '¿Cuántos huesos tiene el esqueleto de un ser humano adulto?',
+                        options: ['206 huesos', '270 huesos', '185 huesos', '300 huesos'],
+                        explanation: 'Un adulto tiene 206 huesos, ya que muchos de los ~270 huesos presentes al nacer se fusionan durante el crecimiento.'
+                    },
+                    la: {
+                        question: 'Quot ossa skeleton hominis adulti habet?',
+                        options: ['206 ossa', '270 ossa', '185 ossa', '300 ossa'],
+                        explanation: 'Adultus 206 ossa habet, quia multa ex ~270 ossibus in nativitate praesentibus inter crescendum coalescunt.'
+                    },
+                    zh: {
+                        question: '成年人的骨骼系统共有多少块骨头？',
+                        options: ['206块', '270块', '185块', '300块'],
+                        explanation: '成年人有206块骨头，因为出生时的约270块骨头在成长过程中许多会相互融合。'
+                    }
+                }
+            },
+            {
+                correctIndex: 3,
+                i18n: {
+                    pt: {
+                        question: 'Qual é o maior e mais resistente osso do corpo humano?',
+                        options: ['Úmero', 'Tíbia', 'Esterno', 'Fêmur'],
+                        explanation: 'O fêmur, localizado na coxa, é o osso mais longo e resistente do esqueleto humano.'
+                    },
+                    en: {
+                        question: 'What is the longest and strongest bone in the human body?',
+                        options: ['Humerus', 'Tibia', 'Sternum', 'Femur'],
+                        explanation: 'The femur, located in the thigh, is the longest and strongest bone in the human skeleton.'
+                    },
+                    es: {
+                        question: '¿Cuál es el hueso más largo y resistente del cuerpo humano?',
+                        options: ['Húmero', 'Tibia', 'Esternón', 'Fémur'],
+                        explanation: 'El fémur, ubicado en el muslo, es el hueso más largo y resistente del esqueleto humano.'
+                    },
+                    la: {
+                        question: 'Quod est longissimum et fortissimum os corporis humani?',
+                        options: ['Humerus', 'Tibia', 'Sternum', 'Femur'],
+                        explanation: 'Femur, in femore situm, est longissimum et fortissimum os skeleti humani.'
+                    },
+                    zh: {
+                        question: '人体最长且最坚固的骨头是哪一块？',
+                        options: ['肱骨', '胫骨', '胸骨', '股骨'],
+                        explanation: '位于大腿的股骨是人类骨骼中最长且最坚固的骨头。'
+                    }
+                }
+            },
+            {
+                correctIndex: 1,
+                i18n: {
+                    pt: {
+                        question: 'Aproximadamente quantos neurônios existem no cérebro humano?',
+                        options: ['8,6 milhões', '86 bilhões', '860 mil', '8,6 trilhões'],
+                        explanation: 'O cérebro humano contém cerca de 86 bilhões de neurônios conectados por trilhões de sinapses.'
+                    },
+                    en: {
+                        question: 'Approximately how many neurons are in the human brain?',
+                        options: ['8.6 million', '86 billion', '860 thousand', '8.6 trillion'],
+                        explanation: 'The human brain contains about 86 billion neurons connected by trillions of synapses.'
+                    },
+                    es: {
+                        question: '¿Aproximadamente cuántas neuronas existen en el cerebro humano?',
+                        options: ['8,6 millones', '86 mil millones', '860 mil', '8,6 billones'],
+                        explanation: 'El cerebro humano contiene unos 86 mil millones de neuronas conectadas por billones de sinapsis.'
+                    },
+                    la: {
+                        question: 'Quot fere neurona in cerebro humano exsistunt?',
+                        options: ['8,6 milliones', '86 miliarda', '860 milia', '8,6 trilliones'],
+                        explanation: 'Cerebrum humanum circiter 86 miliarda neuronum per trilliones synapsium conexorum continet.'
+                    },
+                    zh: {
+                        question: '人类大脑中大约有多少个神经元？',
+                        options: ['860万个', '860亿个', '86万个', '8.6万亿个'],
+                        explanation: '人类大脑包含约860亿个神经元，通过数万亿个突触相互连接。'
+                    }
+                }
+            },
+            {
+                correctIndex: 0,
+                i18n: {
+                    pt: {
+                        question: 'Qual parte do encéfalo coordena o equilíbrio, a postura e a precisão dos movimentos?',
+                        options: ['Cerebelo', 'Bulbo', 'Hipotálamo', 'Tálamo'],
+                        explanation: 'O cerebelo atua na coordenação motora fina, no equilíbrio e na manutenção da postura.'
+                    },
+                    en: {
+                        question: 'Which part of the brain coordinates balance, posture, and precision of movement?',
+                        options: ['Cerebellum', 'Medulla Oblongata', 'Hypothalamus', 'Thalamus'],
+                        explanation: 'The cerebellum manages fine motor coordination, balance, and posture maintenance.'
+                    },
+                    es: {
+                        question: '¿Qué parte del encéfalo coordina el equilibrio, la postura y la precisión de los movimientos?',
+                        options: ['Cerebelo', 'Bulbo raquídeo', 'Hipotálamo', 'Tálamo'],
+                        explanation: 'El cerebelo actúa en la coordinación motora fina, el equilibrio y el mantenimiento de la postura.'
+                    },
+                    la: {
+                        question: 'Quae pars encephali aequilibrium, staturam et subtilitatem motuum coordinat?',
+                        options: ['Cerebellum', 'Medulla Oblongata', 'Hypothalamus', 'Thalamus'],
+                        explanation: 'Cerebellum coordinationi motoriae subtili, aequilibrio et conservationi staturae praeest.'
+                    },
+                    zh: {
+                        question: '脑部的哪个部分负责协调身体平衡、姿势和动作的精确度？',
+                        options: ['小脑', '延髓', '下丘脑', '丘脑'],
+                        explanation: '小脑负责精细运动协调、身体平衡以及维持正常姿势。'
+                    }
+                }
+            },
+            {
+                correctIndex: 2,
+                i18n: {
+                    pt: {
+                        question: 'Qual é o principal músculo responsável pelos movimentos da respiração?',
+                        options: ['Peitoral Maior', 'Trapésio', 'Diafragma', 'Deltoide'],
+                        explanation: 'O diafragma contrai-se e desce durante a inspiração, aumentando o volume da caixa torácica para puxar o ar.'
+                    },
+                    en: {
+                        question: 'What is the main muscle responsible for breathing movements?',
+                        options: ['Pectoralis Major', 'Trapezius', 'Diaphragm', 'Deltoid'],
+                        explanation: 'The diaphragm contracts and moves downward during inhalation, expanding the chest cavity to draw air in.'
+                    },
+                    es: {
+                        question: '¿Cuál es el principal músculo responsable de los movimientos respiratorios?',
+                        options: ['Pectoral Mayor', 'Trapecio', 'Diafragma', 'Deltoides'],
+                        explanation: 'El diafragma se contrae y desciende durante la inhalación, aumentando el volumen torácico para aspirar aire.'
+                    },
+                    la: {
+                        question: 'Quis est musculus principalis motibus respirationis praepositus?',
+                        options: ['Pectoralis Maior', 'Trapezius', 'Diaphragma', 'Deltoideus'],
+                        explanation: 'Diaphragma inter inspirationem contrahitur et descendit, volumen caveae thoracis augens ut aerem trahat.'
+                    },
+                    zh: {
+                        question: '负责呼吸运动的主要肌肉是哪一块？',
+                        options: ['胸大肌', '斜方肌', '膈肌', '三角肌'],
+                        explanation: '吸气时膈肌收缩并下移，扩大胸腔容积从而将空气吸入肺部。'
+                    }
+                }
+            },
+            {
+                correctIndex: 1,
+                i18n: {
+                    pt: {
+                        question: 'Por que o pulmão esquerdo é ligeiramente menor que o pulmão direito?',
+                        options: ['Para acomodar o fígado', 'Para acomodar o coração', 'Para acomodar o estômago', 'Para acomodar o baço'],
+                        explanation: 'O pulmão esquerdo possui a incisura cardíaca, um espaço reservado para acomodar o coração.'
+                    },
+                    en: {
+                        question: 'Why is the left lung slightly smaller than the right lung?',
+                        options: ['To make room for the liver', 'To make room for the heart', 'To make room for the stomach', 'To make room for the spleen'],
+                        explanation: 'The left lung has a cardiac notch, a dedicated space to accommodate the heart.'
+                    },
+                    es: {
+                        question: '¿Por qué el pulmón izquierdo es ligeramente más pequeño que el derecho?',
+                        options: ['Para alojar el hígado', 'Para alojar el corazón', 'Para alojar el estómago', 'Para alojar el bazo'],
+                        explanation: 'El pulmón izquierdo tiene la escotadura cardíaca, un espacio reservado para alojar el corazón.'
+                    },
+                    la: {
+                        question: 'Cur pulmo sinister paulo minor est quam pulmo dexter?',
+                        options: ['Ut hepar accommodet', 'Ut cor accommodet', 'Ut ventriculum accommodet', 'Ut lienem accommodet'],
+                        explanation: 'Pulmo sinister incisuram cardiacam habet, spatium ad cor accommodandum reservatum.'
+                    },
+                    zh: {
+                        question: '为什么左肺比右肺略小一些？',
+                        options: ['为了容纳肝脏', '为了容纳心脏', '为了容纳胃', '为了容纳脾脏'],
+                        explanation: '左肺有一个心切迹，专门用来留出空间容纳心脏。'
+                    }
+                }
+            },
+            {
+                correctIndex: 3,
+                i18n: {
+                    pt: {
+                        question: 'Qual é a única parte transparente do corpo humano que não recebe suprimento direto de sangue?',
+                        options: ['Retina', 'Íris', 'Tímpano', 'Córnea'],
+                        explanation: 'A córnea recebe oxigênio diretamente do ar e das lágrimas, mantendo-se totalmente transparente.'
+                    },
+                    en: {
+                        question: 'What is the only transparent part of the human body with no direct blood supply?',
+                        options: ['Retina', 'Iris', 'Eardrum', 'Cornea'],
+                        explanation: 'The cornea receives oxygen directly from the air and tears, allowing it to remain completely clear.'
+                    },
+                    es: {
+                        question: '¿Cuál es la única parte transparente del cuerpo humano que no recibe suministro directo de sangre?',
+                        options: ['Retina', 'Iris', 'Tímpano', 'Córnea'],
+                        explanation: 'La córnea recibe oxígeno directamente del aire y las lágrimas, manteniéndose totalmente transparente.'
+                    },
+                    la: {
+                        question: 'Quae est sola pars pellucida corporis humani quae directum sanguinis fluxum non accipit?',
+                        options: ['Retina', 'Iris', 'Tympanum', 'Cornea'],
+                        explanation: 'Cornea oxygenium directe ex aere et lacrimis accipit, ita omnino pellucida manens.'
+                    },
+                    zh: {
+                        question: '人体唯一没有直接血液供应的透明部位是哪里？',
+                        options: ['视网膜', '虹膜', '鼓膜', '角膜'],
+                        explanation: '角膜直接从空气和泪液中获取氧气，从而保持完全透明以让光线通过。'
+                    }
+                }
+            },
+            {
+                correctIndex: 0,
+                i18n: {
+                    pt: {
+                        question: 'Qual tipo de vaso sanguíneo leva sangue rico em oxigênio do coração para os tecidos do corpo?',
+                        options: ['Artérias', 'Veias', 'Vênulas', 'Válvulas'],
+                        explanation: 'As artérias transportam sangue sob alta pressão saindo do coração (geralmente rico em oxigênio) para o corpo.'
+                    },
+                    en: {
+                        question: 'Which type of blood vessel carries oxygen-rich blood away from the heart to body tissues?',
+                        options: ['Arteries', 'Veins', 'Venules', 'Valves'],
+                        explanation: 'Arteries carry blood under high pressure away from the heart (usually oxygen-rich) to the rest of the body.'
+                    },
+                    es: {
+                        question: '¿Qué tipo de vaso sanguíneo lleva sangre rica en oxígeno desde el corazón hacia los tejidos del cuerpo?',
+                        options: ['Arterias', 'Venas', 'Vénulas', 'Válvulas'],
+                        explanation: 'Las arterias transportan sangre a alta presión desde el corazón (generalmente rica en oxígeno) hacia el cuerpo.'
+                    },
+                    la: {
+                        question: 'Quod genus vasorum sanguineorum sanguinem oxygenio divitem a corde ad textus corporis ducit?',
+                        options: ['Arteriae', 'Venae', 'Venulae', 'Valvulae'],
+                        explanation: 'Arteriae sanguinem magna pressione a corde (plerumque oxygenio divitem) ad corpus portant.'
+                    },
+                    zh: {
+                        question: '哪种血管负责将富含氧气的血液从心脏输送到全身组织？',
+                        options: ['动脉', '静脉', '小静脉', '瓣膜'],
+                        explanation: '动脉在高压下将血液（通常富含氧气）从心脏泵出并输送到全身各处。'
+                    }
+                }
+            },
+            {
+                correctIndex: 2,
+                i18n: {
+                    pt: {
+                        question: 'O que protege o estômago de ser digerido pelo próprio ácido clorídrico?',
+                        options: ['Bile hepática', 'Enzimas salivares', 'Camada renovável de muco', 'Cartilagem gástrica'],
+                        explanation: 'As células da parede estomacal produzem continuamente uma barreira alcalina de muco que neutraliza o ácido.'
+                    },
+                    en: {
+                        question: 'What protects the stomach from being digested by its own hydrochloric acid?',
+                        options: ['Hepatic bile', 'Salivary enzymes', 'Renewing mucus lining', 'Gastric cartilage'],
+                        explanation: 'Cells in the stomach lining continuously produce an alkaline mucus barrier that neutralizes acid at the surface.'
+                    },
+                    es: {
+                        question: '¿Qué protege al estómago de ser digerido por su propio ácido clorhídrico?',
+                        options: ['Bilis hepática', 'Enzimas salivales', 'Capa renovable de mucosa', 'Cartílago gástrico'],
+                        explanation: 'Las células de la pared estomacal producen continuamente una barrera alcalina de moco que neutraliza el ácido.'
+                    },
+                    la: {
+                        question: 'Quid ventriculum protegit ne a suo proprio acido hydrochlorico digeratur?',
+                        options: ['Bilis hepatica', 'Enzyma salivaria', 'Stratum muci renovabile', 'Cartilago gastrica'],
+                        explanation: 'Cellulae parietis ventriculi continenter impedimentum muci alcalini producunt quod acidum neutralizat.'
+                    },
+                    zh: {
+                        question: '是什么保护胃不被自身的盐酸消化掉？',
+                        options: ['肝胆汁', '唾液酶', '不断更新的黏液层', '胃软骨'],
+                        explanation: '胃壁细胞会持续分泌一层碱性黏液屏障，在胃壁表面中和强酸。'
+                    }
+                }
+            },
+            {
+                correctIndex: 1,
+                i18n: {
+                    pt: {
+                        question: 'Qual órgão produz a bile, substância essencial para emulsionar gorduras na digestão?',
+                        options: ['Pâncreas', 'Fígado', 'Baço', 'Apêndice'],
+                        explanation: 'O fígado produz a bile, que é armazenada na vesícula biliar e liberada no intestino delgado para digerir gorduras.'
+                    },
+                    en: {
+                        question: 'Which organ produces bile, an essential substance for emulsifying fats during digestion?',
+                        options: ['Pancreas', 'Liver', 'Spleen', 'Appendix'],
+                        explanation: 'The liver produces bile, which is stored in the gallbladder and released into the small intestine to break down fats.'
+                    },
+                    es: {
+                        question: '¿Qué órgano produce la bilis, sustancia esencial para emulsionar las grasas en la digestión?',
+                        options: ['Páncreas', 'Hígado', 'Bazo', 'Apéndice'],
+                        explanation: 'El hígado produce la bilis, que se almacena en la vesícula biliar y se libera en el intestino delgado para digerir grasas.'
+                    },
+                    la: {
+                        question: 'Quod organum bilem producit, substantiam essentialem ad adipes in digestione emulsificandos?',
+                        options: ['Pancreas', 'Hepar', 'Lien', 'Appendix'],
+                        explanation: 'Hepar bilem producit, quae in vesica biliaris servatur et in intestinum tenue ad adipes digerendos emittitur.'
+                    },
+                    zh: {
+                        question: '哪个器官分泌胆汁，在消化过程中对乳化脂肪起关键作用？',
+                        options: ['胰腺', '肝脏', '脾脏', '阑尾'],
+                        explanation: '肝脏分泌胆汁，储存在胆囊中，并在进食后排入小肠以帮助分解脂肪。'
+                    }
+                }
+            },
+            {
+                correctIndex: 0,
+                i18n: {
+                    pt: {
+                        question: 'Aproximadamente quantos músculos diferentes são ativados para dar um único passo?',
+                        options: ['200 músculos', '20 músculos', '50 músculos', '600 músculos'],
+                        explanation: 'Caminhar exige a coordenação simultânea de cerca de 200 músculos nos pés, pernas, quadril e tronco.'
+                    },
+                    en: {
+                        question: 'Approximately how many different muscles are engaged to take a single step?',
+                        options: ['200 muscles', '20 muscles', '50 muscles', '600 muscles'],
+                        explanation: 'Walking requires the simultaneous coordination of around 200 muscles in the feet, legs, hips, and torso.'
+                    },
+                    es: {
+                        question: '¿Aproximadamente cuántos músculos diferentes se activan para dar un solo paso?',
+                        options: ['200 músculos', '20 músculos', '50 músculos', '600 músculos'],
+                        explanation: 'Caminar requiere la coordinación simultánea de unos 200 músculos en los pies, piernas, cadera y tronco.'
+                    },
+                    la: {
+                        question: 'Quot fere musculi diversi ad unum tantum passum faciendum activantur?',
+                        options: ['200 musculi', '20 musculi', '50 musculi', '600 musculi'],
+                        explanation: 'Ambulare coordinationem simultaneam circiter 200 musculorum in pedibus, cruribus, coxis et trunco requirit.'
+                    },
+                    zh: {
+                        question: '仅仅迈出一步大约需要调动多少块不同的肌肉？',
+                        options: ['200块肌肉', '20块肌肉', '50块肌肉', '600块肌肉'],
+                        explanation: '行走需要脚部、腿部、髋部和躯干中大约200块肌肉同时协调工作。'
+                    }
+                }
+            },
+            {
+                correctIndex: 2,
+                i18n: {
+                    pt: {
+                        question: 'Qual é o maior músculo do corpo humano em volume?',
+                        options: ['Quadríceps', 'Bíceps', 'Glúteo Máximo', 'Latíssimo do Dorso'],
+                        explanation: 'O glúteo máximo é o maior músculo em volume, fundamental para manter o tronco ereto e subir escadas.'
+                    },
+                    en: {
+                        question: 'What is the largest muscle in the human body by volume?',
+                        options: ['Quadriceps', 'Biceps', 'Gluteus Maximus', 'Latissimus Dorsi'],
+                        explanation: 'The gluteus maximus is the largest muscle by volume, essential for keeping the torso upright and climbing stairs.'
+                    },
+                    es: {
+                        question: '¿Cuál es el músculo más grande del cuerpo humano en volumen?',
+                        options: ['Cuádriceps', 'Bíceps', 'Glúteo Mayor', 'Dorsal Ancho'],
+                        explanation: 'El glúteo mayor es el músculo más grande en volumen, fundamental para mantener el tronco erguido y subir escaleras.'
+                    },
+                    la: {
+                        question: 'Quis est maximus musculus corporis humani volumine?',
+                        options: ['Quadriceps', 'Biceps', 'Gluteus Maximus', 'Latissimus Dorsi'],
+                        explanation: 'Gluteus maximus est maximus musculus volumine, fundamentalis ad truncum erectum tenendum et scalas ascendendas.'
+                    },
+                    zh: {
+                        question: '按体积计算，人体最大的肌肉是哪一块？',
+                        options: ['股四头肌', '肱二头肌', '臀大肌', '背阔肌'],
+                        explanation: '臀大肌是人体体积最大的肌肉，对于保持躯干直立和爬楼梯至关重要。'
+                    }
+                }
+            },
+            {
+                correctIndex: 1,
+                i18n: {
+                    pt: {
+                        question: 'Onde são produzidas as células sanguíneas (glóbulos vermelhos, brancos e plaquetas)?',
+                        options: ['No baço', 'Na medula óssea vermelha', 'Nos linfonodos', 'No pâncreas'],
+                        explanation: 'A hematopoiese ocorre principalmente na medula óssea vermelha localizada no interior de certos ossos.'
+                    },
+                    en: {
+                        question: 'Where are blood cells (red blood cells, white blood cells, and platelets) produced?',
+                        options: ['In the spleen', 'In red bone marrow', 'In lymph nodes', 'In the pancreas'],
+                        explanation: 'Hematopoiesis occurs primarily in the red bone marrow located inside certain bones.'
+                    },
+                    es: {
+                        question: '¿Dónde se producen las células sanguíneas (glóbulos rojos, blancos y plaquetas)?',
+                        options: ['En el bazo', 'En la médula ósea roja', 'En los ganglios linfáticos', 'En el páncreas'],
+                        explanation: 'La hematopoyesis ocurre principalmente en la médula ósea roja ubicada en el interior de ciertos huesos.'
+                    },
+                    la: {
+                        question: 'Ubi cellulae sanguinis (erythrocyti, leucocyti et thrombocyti) producuntur?',
+                        options: ['In liene', 'In medulla ossium rubra', 'In nodis lymphaticis', 'In pancreate'],
+                        explanation: 'Haematopoiesis praecipue in medulla ossium rubra intra quaedam ossa sita fit.'
+                    },
+                    zh: {
+                        question: '血细胞（红细胞、白细胞和血小板）是在哪里生成的？',
+                        options: ['脾脏中', '红骨髓中', '淋巴结中', '胰腺中'],
+                        explanation: '造血作用主要发生在某些骨骼内部的红骨髓中。'
+                    }
+                }
+            },
+            {
+                correctIndex: 3,
+                i18n: {
+                    pt: {
+                        question: 'Qual estrutura fibrosa resistente conecta os músculos aos ossos?',
+                        options: ['Ligamentos', 'Cartilagens', 'Alvéolos', 'Tendões'],
+                        explanation: 'Os tendões transmitem a força de contração dos músculos para os ossos, gerando o movimento articular.'
+                    },
+                    en: {
+                        question: 'Which tough fibrous structure connects muscles to bones?',
+                        options: ['Ligaments', 'Cartilage', 'Alveoli', 'Tendons'],
+                        explanation: 'Tendons transmit the pulling force of muscle contractions to bones, producing joint movement.'
+                    },
+                    es: {
+                        question: '¿Qué estructura fibrosa resistente conecta los músculos con los huesos?',
+                        options: ['Ligamentos', 'Cartílagos', 'Alvéolos', 'Tendones'],
+                        explanation: 'Los tendones transmiten la fuerza de contracción de los músculos hacia los huesos, generando movimiento articular.'
+                    },
+                    la: {
+                        question: 'Quae structura fibrosa resistens musculos cum ossibus conectit?',
+                        options: ['Ligamenta', 'Cartilagines', 'Alveoli', 'Tendines'],
+                        explanation: 'Tendines vim contractionis musculorum ad ossa transmittunt, motum articularem generantes.'
+                    },
+                    zh: {
+                        question: '连接肌肉与骨骼的坚韧纤维结构叫什么？',
+                        options: ['韧带', '软骨', '肺泡', '肌腱'],
+                        explanation: '肌腱将肌肉收缩产生的拉力传递给骨骼，从而带动关节产生运动。'
+                    }
+                }
             }
         ];
 
@@ -1591,7 +2044,7 @@
         // 4. ESTADO DA APLICAÇÃO E CONTROLE DE IDIOMA
         // ==========================================
         let currentLang = 'pt';
-        let activeSystemId = 'cardiovascular';
+        let activeSystemId = 'muscular';
         let isOverviewMode = false;
         let currentQuizIndex = 0;
         let quizScore = 0;
@@ -1683,13 +2136,13 @@
                 return `
                     <button 
                         onclick="selectSystem('${sys.id}')"
-                        class="flex items-center gap-2 px-4 py-2.5 rounded-2xl text-sm font-semibold whitespace-nowrap transition-all duration-200 border ${
+                        class="flex items-center justify-center gap-2 px-3.5 py-3 rounded-2xl text-sm font-semibold transition-all duration-200 border ${
                             isActive 
                                 ? `${sys.theme.btnActive} border-transparent shadow-md scale-[1.02]` 
                                 : 'bg-white text-slate-600 border-slate-200/90 hover:bg-slate-100 hover:text-slate-900'
                         }">
-                        <i data-lucide="${sys.icon}" class="w-4 h-4"></i>
-                        <span>${sysContent.shortName}</span>
+                        <i data-lucide="${sys.icon}" class="w-4 h-4 shrink-0"></i>
+                        <span class="truncate">${sysContent.shortName}</span>
                     </button>
                 `;
             }).join('');
@@ -1860,8 +2313,9 @@
             // Tela de Conclusão do Quiz
             if (currentQuizIndex >= quizQuestions.length) {
                 let message = t.quizMsgHigh;
-                if (quizScore < 3) message = t.quizMsgLow;
-                else if (quizScore < 5) message = t.quizMsgMid;
+                const ratio = quizScore / quizQuestions.length;
+                if (ratio < 0.5) message = t.quizMsgLow;
+                else if (ratio < 0.8) message = t.quizMsgMid;
 
                 container.innerHTML = `
                     <div class="text-center py-6">
