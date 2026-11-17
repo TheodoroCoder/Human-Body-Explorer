@@ -25,6 +25,8 @@
                         digestive: { light: '#DCFCE7', main: '#22C55E', dark: '#166534' },
                         skeletal: { light: '#F1F5F9', main: '#64748B', dark: '#1E293B' },
                         muscular: { light: '#FCE7F3', main: '#EC4899', dark: '#9D174D' },
+                        immune: { light: '#EDE9FE', main: '#8B5CF6', dark: '#5B21B6' },
+                        excretory: { light: '#FEF9C3', main: '#CA8A04', dark: '#713F12' },
                     }
                 }
             }
@@ -121,7 +123,7 @@
                 Descubra a incrível máquina que é o <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-500">Corpo Humano</span>
             </h2>
             <p id="hero-subtitle" class="text-base sm:text-lg text-slate-600 leading-relaxed">
-                Clique nos órgãos diretamente no modelo anatômico ou selecione um dos seis sistemas principais abaixo para explorar suas funções vitais, estruturas e fatos surpreendentes.
+                Clique nos órgãos diretamente no modelo anatômico ou selecione um dos oito sistemas principais abaixo para explorar suas funções vitais, estruturas e fatos surpreendentes.
             </p>
         </section>
 
@@ -239,6 +241,39 @@
                             <path d="M106 436 C100 458 102 480 110 492 C118 480 120 458 116 436 Z" fill="#EC4899" opacity="0.75" stroke="#9D174D" stroke-width="1.2"/>
                             <path d="M204 436 C210 458 208 480 200 492 C192 480 190 458 194 436 Z" fill="#EC4899" opacity="0.75" stroke="#9D174D" stroke-width="1.2"/>
                         </g>
+
+                        <!-- Camada 7: Sistema Imunológico / Linfático -->
+                        <g id="layer-immune" class="svg-organ" onclick="selectSystem('immune')">
+                            <title id="title-immune">Sistema Imunológico</title>
+                            <!-- Rede de Vasos Linfáticos -->
+                            <path d="M142 105 L125 140 M168 105 L185 140 M155 135 L155 295 M155 295 L128 335 M155 295 L182 335" stroke="#8B5CF6" stroke-width="2.5" stroke-dasharray="4,3" fill="none"/>
+                            <!-- Timo (Tórax Superior) -->
+                            <path d="M148 132 C148 126 162 126 162 132 C164 142 158 148 155 148 C152 148 146 142 148 132 Z" fill="#8B5CF6" opacity="0.9" stroke="#5B21B6" stroke-width="1.5"/>
+                            <!-- Baço (Lado Esquerdo do Abdômen) -->
+                            <ellipse cx="182" cy="232" rx="11" ry="7" transform="rotate(-20 182 232)" fill="#8B5CF6" opacity="0.9" stroke="#5B21B6" stroke-width="1.5"/>
+                            <!-- Linfonodos Principais (Cervicais, Axilares e Inguinais) -->
+                            <circle cx="141" cy="105" r="4" fill="#8B5CF6" stroke="#5B21B6" stroke-width="1.2"/>
+                            <circle cx="169" cy="105" r="4" fill="#8B5CF6" stroke="#5B21B6" stroke-width="1.2"/>
+                            <circle cx="122" cy="142" r="4.5" fill="#8B5CF6" stroke="#5B21B6" stroke-width="1.2"/>
+                            <circle cx="188" cy="142" r="4.5" fill="#8B5CF6" stroke="#5B21B6" stroke-width="1.2"/>
+                            <circle cx="130" cy="332" r="4.5" fill="#8B5CF6" stroke="#5B21B6" stroke-width="1.2"/>
+                            <circle cx="180" cy="332" r="4.5" fill="#8B5CF6" stroke="#5B21B6" stroke-width="1.2"/>
+                        </g>
+
+                        <!-- Camada 8: Sistema Excretor / Urinário -->
+                        <g id="layer-excretory" class="svg-organ" onclick="selectSystem('excretory')">
+                            <title id="title-excretory">Sistema Excretor</title>
+                            <!-- Rim Direito e Esquerdo -->
+                            <path d="M137 248 C126 248 124 272 137 272 C142 272 141 264 139 260 C141 256 142 248 137 248 Z" fill="#CA8A04" opacity="0.9" stroke="#713F12" stroke-width="1.5"/>
+                            <path d="M173 248 C184 248 186 272 173 272 C168 272 169 264 171 260 C169 256 168 248 173 248 Z" fill="#CA8A04" opacity="0.9" stroke="#713F12" stroke-width="1.5"/>
+                            <!-- Ureteres -->
+                            <path d="M139 263 Q144 295 150 322" fill="none" stroke="#CA8A04" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M171 263 Q166 295 160 322" fill="none" stroke="#CA8A04" stroke-width="2.5" stroke-linecap="round"/>
+                            <!-- Bexiga Urinária -->
+                            <ellipse cx="155" cy="326" rx="11" ry="8" fill="#EAB308" opacity="0.9" stroke="#713F12" stroke-width="1.5"/>
+                            <!-- Uretra -->
+                            <line x1="155" y1="334" x2="155" y2="343" stroke="#CA8A04" stroke-width="2.5" stroke-linecap="round"/>
+                        </g>
                     </svg>
                 </div>
 
@@ -250,8 +285,8 @@
 
             <!-- Coluna Direita: Abas de Navegação + Painel de Informações Detalhadas (7 colunas) -->
             <div class="lg:col-span-7 space-y-6">
-                <!-- Botões dos Sistemas (Grade Responsiva para todos os 6 sistemas ficarem visíveis) -->
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5" id="system-tabs">
+                <!-- Botões dos Sistemas (Grade Responsiva para todos os 8 sistemas ficarem visíveis) -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5" id="system-tabs">
                     <!-- Gerado dinamicamente via JS -->
                 </div>
 
@@ -324,7 +359,7 @@
                 navQuiz: 'Mini-Quiz',
                 heroBadge: 'Aprendizado Visual Interativo',
                 heroTitleHTML: 'Descubra a incrível máquina que é o <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-500">Corpo Humano</span>',
-                heroSubtitle: 'Clique nos órgãos diretamente no modelo anatômico ou selecione um dos seis sistemas principais abaixo para explorar suas funções vitais, estruturas e fatos surpreendentes.',
+                heroSubtitle: 'Clique nos órgãos diretamente no modelo anatômico ou selecione um dos oito sistemas principais abaixo para explorar suas funções vitais, estruturas e fatos surpreendentes.',
                 svgTouchHint: 'Toque em um órgão',
                 svgViewAll: 'Ver Todos',
                 svgSelectedPrefix: 'Sistema selecionado:',
@@ -360,7 +395,7 @@
                 navQuiz: 'Mini-Quiz',
                 heroBadge: 'Interactive Visual Learning',
                 heroTitleHTML: 'Discover the incredible machine that is the <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-500">Human Body</span>',
-                heroSubtitle: 'Click directly on the organs in the anatomical model or select one of the six main systems below to explore their vital functions, structures, and surprising facts.',
+                heroSubtitle: 'Click directly on the organs in the anatomical model or select one of the eight main systems below to explore their vital functions, structures, and surprising facts.',
                 svgTouchHint: 'Tap an organ',
                 svgViewAll: 'View All',
                 svgSelectedPrefix: 'Selected system:',
@@ -396,7 +431,7 @@
                 navQuiz: 'Mini-Cuestionario',
                 heroBadge: 'Aprendizaje Visual Interactivo',
                 heroTitleHTML: 'Descubre la increíble máquina que es el <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-500">Cuerpo Humano</span>',
-                heroSubtitle: 'Haz clic directamente en los órganos del modelo anatómico o selecciona uno de los seis sistemas principales a continuación para explorar sus funciones vitales, estructuras y datos sorprendentes.',
+                heroSubtitle: 'Haz clic directamente en los órganos del modelo anatómico o selecciona uno de los ocho sistemas principales a continuación para explorar sus funciones vitales, estructuras y datos sorprendentes.',
                 svgTouchHint: 'Toca un órgano',
                 svgViewAll: 'Ver Todos',
                 svgSelectedPrefix: 'Sistema seleccionado:',
@@ -432,7 +467,7 @@
                 navQuiz: 'Quaestiunculae',
                 heroBadge: 'Doctrina Visualis Interactiva',
                 heroTitleHTML: 'Detege mirabilem machinam quae est <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-500">Corpus Humanum</span>',
-                heroSubtitle: 'Preme organa directe in exemplo anatomico vel elige unum ex sex systematibus praecipuis infra ut functiones vitales, structuras et facta mirabilia explores.',
+                heroSubtitle: 'Preme organa directe in exemplo anatomico vel elige unum ex octo systematibus praecipuis infra ut functiones vitales, structuras et facta mirabilia explores.',
                 svgTouchHint: 'Tange organum',
                 svgViewAll: 'Vide Omnia',
                 svgSelectedPrefix: 'Systema electum:',
@@ -468,7 +503,7 @@
                 navQuiz: '趣味测验',
                 heroBadge: '互动视觉学习',
                 heroTitleHTML: '探索令人惊叹的生命机器——<span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-500">人体系统</span>',
-                heroSubtitle: '直接点击解剖模型上的器官，或从下方选择六大主要系统之一，探索它们的生命功能、结构以及令人惊奇的科学事实。',
+                heroSubtitle: '直接点击解剖模型上的器官，或从下方选择八大主要系统之一，探索它们的生命功能、结构以及令人惊奇的科学事实。',
                 svgTouchHint: '点击器官查看',
                 svgViewAll: '查看全部',
                 svgSelectedPrefix: '当前选择系统：',
@@ -1431,40 +1466,350 @@
                         ]
                     }
                 }
+            },
+            {
+                id: 'immune',
+                icon: 'shield-check',
+                theme: {
+                    bgLight: 'bg-violet-50',
+                    textMain: 'text-violet-600',
+                    textDark: 'text-violet-900',
+                    border: 'border-violet-200',
+                    badge: 'bg-violet-100 text-violet-800',
+                    btnActive: 'bg-violet-600 text-white shadow-violet-600/25',
+                    accentHex: '#8B5CF6'
+                },
+                i18n: {
+                    pt: {
+                        name: 'Sistema Imunológico',
+                        shortName: 'Imunológico',
+                        tagline: 'O exército de defesa inteligente que protege o organismo contra invasores',
+                        description: 'O sistema imunológico é uma rede complexa de células, tecidos e órgãos que trabalham juntos para defender o corpo contra patógenos como bactérias, vírus, fungos e parasitas, além de eliminar células anormais.',
+                        mainFunctions: [
+                            'Identificação e neutralização de microrganismos invasores (vírus, bactérias e fungos).',
+                            'Produção de anticorpos específicos e desenvolvimento de memória imunológica.',
+                            'Drenagem de fluidos em excesso e filtragem de toxinas através da linfa.',
+                            'Vigilância celular para destruir células danificadas ou tumorais.'
+                        ],
+                        organs: [
+                            { name: 'Medula Óssea e Timo', role: 'Órgãos primários onde os glóbulos brancos (linfócitos B e T) são produzidos e amadurecem.' },
+                            { name: 'Baço', role: 'Filtra o sangue, recicla glóbulos vermelhos velhos e armazena células de defesa.' },
+                            { name: 'Linfonodos', role: 'Pequenos filtros espalhados pelo corpo que capturam invasores e ativam linfócitos.' },
+                            { name: 'Glóbulos Brancos (Leucócitos)', role: 'Células especializadas que patrulham o sangue e os tecidos combatendo infecções.' }
+                        ],
+                        facts: [
+                            'O sistema imunológico possui "memória": após combater um invasor ou receber uma vacina, linfócitos de memória podem lembrar como derrotá-lo por décadas ou pela vida toda!',
+                            'A febre não é causada diretamente pelo vírus ou bactéria, mas sim por uma resposta estratégica do próprio sistema imunológico para dificultar a multiplicação de patógenos.',
+                            'Cerca de 70% das células imunológicas do corpo humano residem no intestino, trabalhando em parceria com a microbiota intestinal.'
+                        ],
+                        metrics: [
+                            { label: 'Linfonodos', value: '500 a 700' },
+                            { label: 'Células no Intestino', value: '~70% do total' },
+                            { label: 'Tipos de Defesa', value: 'Inata & Adaptativa' }
+                        ]
+                    },
+                    en: {
+                        name: 'Immune System',
+                        shortName: 'Immune',
+                        tagline: 'The intelligent defense army protecting the body against invaders',
+                        description: 'The immune system is a complex network of cells, tissues, and organs working together to defend the body against pathogens such as bacteria, viruses, fungi, and parasites, while also clearing abnormal cells.',
+                        mainFunctions: [
+                            'Identifying and neutralizing invading microorganisms (viruses, bacteria, and fungi).',
+                            'Producing specific antibodies and building long-term immunological memory.',
+                            'Draining excess tissue fluids and filtering toxins through the lymphatic network.',
+                            'Cellular surveillance to destroy damaged or cancerous cells.'
+                        ],
+                        organs: [
+                            { name: 'Bone Marrow & Thymus', role: 'Primary organs where white blood cells (B and T lymphocytes) are produced and mature.' },
+                            { name: 'Spleen', role: 'Filters blood, recycles old red blood cells, and stores immune defense cells.' },
+                            { name: 'Lymph Nodes', role: 'Small bean-shaped filters throughout the body that trap invaders and activate lymphocytes.' },
+                            { name: 'White Blood Cells (Leukocytes)', role: 'Specialized patrol cells in blood and tissues that fight off infections.' }
+                        ],
+                        facts: [
+                            'The immune system has "memory": after fighting off an invader or receiving a vaccine, memory lymphocytes can remember how to defeat it for decades or even a lifetime!',
+                            'A fever is not caused directly by a virus or bacteria—it is a strategic defense response triggered by your immune system to slow pathogen replication.',
+                            'Roughly 70% of the human body’s immune cells reside in the gut, working alongside beneficial gut microbiota.'
+                        ],
+                        metrics: [
+                            { label: 'Lymph Nodes', value: '500 to 700' },
+                            { label: 'Gut Immune Cells', value: '~70% of total' },
+                            { label: 'Defense Layers', value: 'Innate & Adaptive' }
+                        ]
+                    },
+                    es: {
+                        name: 'Sistema Inmunológico',
+                        shortName: 'Inmunológico',
+                        tagline: 'El ejército de defensa inteligente que protege al organismo contra invasores',
+                        description: 'El sistema inmunológico es una red compleja de células, tejidos y órganos que trabajan juntos para defender el cuerpo contra patógenos como bacterias, virus, hongos y parásitos, además de eliminar células anormales.',
+                        mainFunctions: [
+                            'Identificación y neutralización de microorganismos invasores (virus, bacterias y hongos).',
+                            'Producción de anticuerpos específicos y desarrollo de memoria inmunológica.',
+                            'Drenaje del exceso de líquidos y filtración de toxinas a través de la linfa.',
+                            'Vigilancia celular para destruir células dañadas o tumorales.'
+                        ],
+                        organs: [
+                            { name: 'Médula Ósea y Timo', role: 'Órganos primarios donde se producen y maduran los glóbulos blancos (linfocitos B y T).' },
+                            { name: 'Bazo', role: 'Filtra la sangre, recicla glóbulos rojos envejecidos y almacena células de defensa.' },
+                            { name: 'Ganglios Linfáticos', role: 'Pequeños filtros distribuidos por el cuerpo que atrapan invasores y activan linfocitos.' },
+                            { name: 'Glóbulos Blancos (Leucocitos)', role: 'Células especializadas que patrullan la sangre y los tejidos combatiendo infecciones.' }
+                        ],
+                        facts: [
+                            '¡El sistema inmunológico tiene "memoria": tras combatir un invasor o recibir una vacuna, los linfocitos de memoria pueden recordar cómo derrotarlo durante décadas o toda la vida!',
+                            'La fiebre no es causada directamente por el virus o la bacteria, sino por una respuesta estratégica del propio sistema inmunitario para frenar la multiplicación de patógenos.',
+                            'Alrededor del 70% de las células inmunitarias del cuerpo humano residen en el intestino, colaborando con la microbiota intestinal.'
+                        ],
+                        metrics: [
+                            { label: 'Ganglios Linfáticos', value: '500 a 700' },
+                            { label: 'Células en Intestino', value: '~70% del total' },
+                            { label: 'Tipos de Defensa', value: 'Innata y Adaptativa' }
+                        ]
+                    },
+                    la: {
+                        name: 'Systema Immunitatis',
+                        shortName: 'Immunitatis',
+                        tagline: 'Exercitus defensionis sapiens qui organismum contra invasores protegit',
+                        description: 'Systema immunitatis est rete complexum cellularum, textuum et organorum quae una laborant ad corpus defendendum contra pathogenos sicut bacteria, vira, fungos et parasitos, necnon ad cellulas abnormales eliminandas.',
+                        mainFunctions: [
+                            'Cognitio et neutralizatio microorganismorum invasorum (virorum, bacteriorum et fungorum).',
+                            'Productio anticorporum specificorum et evolutio memoriae immunologicae.',
+                            'Exhauratio humorum superfluorum et filtratio toxinorum per lympham.',
+                            'Vigilia cellularis ad cellulas laesas vel tumorales destruendas.'
+                        ],
+                        organs: [
+                            { name: 'Medulla Ossium et Thymus', role: 'Organa primaria ubi leucocyti (lymphocyti B et T) producuntur et maturescunt.' },
+                            { name: 'Lien (Splen)', role: 'Sanguinem filtrat, erythrocytos vetustos redivivos facit et cellulas defensionis servat.' },
+                            { name: 'Nodi Lymphatici', role: 'Parva filtra per corpus sparsa quae invasores capiunt et lymphocytos excitant.' },
+                            { name: 'Leucocyti', role: 'Cellulae speciales quae sanguinem et textus custodiunt infectiones pugnantes.' }
+                        ],
+                        facts: [
+                            'Systema immunitatis "memoriam" habet: postquam invasorem vicit vel vaccinum accepit, lymphocyti memoriae per decennia vel totam vitam quomodo eum vincant meminisse possunt!',
+                            'Febris non directe a viro vel bacterio efficitur, sed a responso strategico ipsius systematis immunitatis ad multiplicationem pathogenorum tardandam.',
+                            'Circiter 70% cellularum immunologicarum corporis humani in intestino habitant, cum microbiota intestinali collaborantes.'
+                        ],
+                        metrics: [
+                            { label: 'Nodi Lymphatici', value: '500 - 700' },
+                            { label: 'Cellulae in Intestino', value: '~70% totius' },
+                            { label: 'Genera Defensionis', value: 'Innata & Adaptativa' }
+                        ]
+                    },
+                    zh: {
+                        name: '免疫系统',
+                        shortName: '免疫系统',
+                        tagline: '抵御病原体入侵的智慧防御军团',
+                        description: '免疫系统是由细胞、组织和器官组成的复杂防御网络，它们协同工作，抵御细菌、病毒、真菌和寄生虫等病原体的入侵，并清除体内异常细胞。',
+                        mainFunctions: [
+                            '识别并中和入侵的微生物（病毒、细菌和真菌）。',
+                            '产生特异性抗体并建立长期免疫记忆。',
+                            '通过淋巴系统引流多余组织液并过滤毒素。',
+                            '执行细胞监视，清除受损或发生癌变的细胞。'
+                        ],
+                        organs: [
+                            { name: '骨髓与胸腺', role: '白细胞（B淋巴细胞和T淋巴细胞）生成与发育成熟的初级免疫器官。' },
+                            { name: '脾脏', role: '过滤血液、回收衰老红细胞并储存大量免疫防御细胞。' },
+                            { name: '淋巴结', role: '遍布全身的豆状过滤器，负责拦截病原体并激活淋巴细胞。' },
+                            { name: '白细胞', role: '巡逻于血液和组织中的专业防御细胞，直接对抗感染。' }
+                        ],
+                        facts: [
+                            '免疫系统拥有“记忆力”：在击败病原体或接种疫苗后，记忆淋巴细胞可以长达数十年甚至终身记住如何消灭该敌人！',
+                            '发烧并非由病毒或细菌直接引起，而是免疫系统主动启动的战略防御反应，通过升高体温来抑制病原体繁殖。',
+                            '人体大约70%的免疫细胞居住在肠道中，与肠道有益菌群协同守护健康。'
+                        ],
+                        metrics: [
+                            { label: '淋巴结数量', value: '500至700个' },
+                            { label: '肠道免疫细胞', value: '约占70%' },
+                            { label: '防御机制', value: '先天与适应性' }
+                        ]
+                    }
+                }
+            },
+            {
+                id: 'excretory',
+                icon: 'droplets',
+                theme: {
+                    bgLight: 'bg-yellow-50',
+                    textMain: 'text-yellow-700',
+                    textDark: 'text-yellow-900',
+                    border: 'border-yellow-200',
+                    badge: 'bg-yellow-100 text-yellow-800',
+                    btnActive: 'bg-yellow-600 text-white shadow-yellow-600/25',
+                    accentHex: '#CA8A04'
+                },
+                i18n: {
+                    pt: {
+                        name: 'Sistema Excretor',
+                        shortName: 'Excretor',
+                        tagline: 'A central de filtragem sanguínea e equilíbrio hídrico do organismo',
+                        description: 'O sistema excretor (ou urinário) é responsável por filtrar o sangue, remover resíduos metabólicos tóxicos (como ureia e ácido úrico) e regular com precisão o volume de água, sais minerais e o pH do corpo.',
+                        mainFunctions: [
+                            'Filtração contínua do sangue para eliminar resíduos tóxicos do metabolismo celular.',
+                            'Regulação do equilíbrio hídrico (quantidade de água) e eletrolítico (sódio, potássio, cálcio).',
+                            'Controle da pressão arterial e do equilíbrio ácido-base (pH sanguíneo).',
+                            'Produção de hormônios como a eritropoietina, que estimula a fabricação de glóbulos vermelhos.'
+                        ],
+                        organs: [
+                            { name: 'Rins', role: 'Dois órgãos em formato de feijão que filtram o sangue através de milhões de néfrons.' },
+                            { name: 'Ureteres', role: 'Dois canais musculares finos que conduzem a urina dos rins até a bexiga.' },
+                            { name: 'Bexiga Urinária', role: 'Bolsa muscular elástica que armazena a urina até o momento da eliminação.' },
+                            { name: 'Uretra', role: 'Canal que transporta a urina da bexiga para o exterior do corpo.' }
+                        ],
+                        facts: [
+                            'Os rins filtram cerca de 180 litros de fluido sanguíneo todos os dias — o equivalente a encher quase uma banheira inteira — mas 99% dessa água é reabsorvida!',
+                            'Cada rim contém aproximadamente 1 milhão de unidades microscópicas de filtração chamadas néfrons.',
+                            'Uma pessoa pode viver uma vida perfeitamente saudável com apenas um rim, pois o rim remanescente cresce e aumenta sua capacidade de filtração.'
+                        ],
+                        metrics: [
+                            { label: 'Sangue Filtrado/dia', value: '~180 Litros' },
+                            { label: 'Néfrons por Rim', value: '~1 Milhão' },
+                            { label: 'Urina Produzida/dia', value: '1 a 2 Litros' }
+                        ]
+                    },
+                    en: {
+                        name: 'Excretory System',
+                        shortName: 'Excretory',
+                        tagline: 'The blood filtration plant and fluid balance regulator of the body',
+                        description: 'The excretory (or urinary) system is responsible for filtering blood, removing toxic metabolic waste (such as urea and uric acid), and precisely regulating water volume, mineral salts, and body pH.',
+                        mainFunctions: [
+                            'Continuous filtration of blood to eliminate toxic waste from cellular metabolism.',
+                            'Regulation of water balance and electrolytes (sodium, potassium, calcium).',
+                            'Control of blood pressure and acid-base balance (blood pH).',
+                            'Production of hormones such as erythropoietin, which stimulates red blood cell formation.'
+                        ],
+                        organs: [
+                            { name: 'Kidneys', role: 'Two bean-shaped organs that filter blood through millions of nephrons.' },
+                            { name: 'Ureters', role: 'Two thin muscular tubes that carry urine from the kidneys to the bladder.' },
+                            { name: 'Urinary Bladder', role: 'Elastic muscular sac that stores urine until elimination.' },
+                            { name: 'Urethra', role: 'Tube that conveys urine from the bladder to the outside of the body.' }
+                        ],
+                        facts: [
+                            'Your kidneys filter around 180 liters (48 gallons) of blood fluid every single day — nearly enough to fill a bathtub — yet 99% of that water is reabsorbed!',
+                            'Each kidney contains roughly 1 million microscopic filtering units called nephrons.',
+                            'A person can live a completely healthy life with just one kidney, as the remaining kidney enlarges and increases its filtration capacity.'
+                        ],
+                        metrics: [
+                            { label: 'Fluid Filtered/day', value: '~180 Liters' },
+                            { label: 'Nephrons/Kidney', value: '~1 Million' },
+                            { label: 'Urine Output/day', value: '1 to 2 Liters' }
+                        ]
+                    },
+                    es: {
+                        name: 'Sistema Excretor',
+                        shortName: 'Excretor',
+                        tagline: 'La central de filtración sanguínea y equilibrio hídrico del organismo',
+                        description: 'El sistema excretor (o urinario) se encarga de filtrar la sangre, eliminar desechos metabólicos tóxicos (como urea y ácido úrico) y regular con precisión el volumen de agua, sales minerales y el pH del cuerpo.',
+                        mainFunctions: [
+                            'Filtración continua de la sangre para eliminar desechos tóxicos del metabolismo celular.',
+                            'Regulación del equilibrio hídrico (agua) y electrolítico (sodio, potasio, calcio).',
+                            'Control de la presión arterial y del equilibrio ácido-base (pH sanguíneo).',
+                            'Producción de hormonas como la eritropoyetina, que estimula la formación de glóbulos rojos.'
+                        ],
+                        organs: [
+                            { name: 'Riñones', role: 'Dos órganos con forma de frijol que filtran la sangre mediante millones de nefronas.' },
+                            { name: 'Uréteres', role: 'Dos conductos musculares finos que llevan la orina desde los riñones hasta la vejiga.' },
+                            { name: 'Vejiga Urinaria', role: 'Bolsa muscular elástica que almacena la orina hasta su eliminación.' },
+                            { name: 'Uretra', role: 'Conducto que transporta la orina desde la vejiga hacia el exterior del cuerpo.' }
+                        ],
+                        facts: [
+                            '¡Los riñones filtran unos 180 litros de líquido sanguíneo cada día — casi lo suficiente para llenar una bañera — pero el 99% de esa agua se reabsorbe!',
+                            'Cada riñón contiene aproximadamente 1 millón de unidades microscópicas de filtración llamadas nefronas.',
+                            'Una persona puede llevar una vida perfectamente saludable con un solo riñón, ya que el riñón restante crece y aumenta su capacidad.'
+                        ],
+                        metrics: [
+                            { label: 'Sangre Filtrada/día', value: '~180 Litros' },
+                            { label: 'Nefronas por Riñón', value: '~1 Millón' },
+                            { label: 'Orina Producida/día', value: '1 a 2 Litros' }
+                        ]
+                    },
+                    la: {
+                        name: 'Systema Excretorium',
+                        shortName: 'Excretorium',
+                        tagline: 'Officina filtrationis sanguinis et aequilibrii aquosi organismi',
+                        description: 'Systema excretorium (vel urinarium) sanguinem filtrat, residua metabolica toxica (sicut uream et acidum uricum) removet, atque volumen aquae, salium mineralium et pH corporis accurate moderatur.',
+                        mainFunctions: [
+                            'Filtratio continua sanguinis ad residua toxica metabolismi cellularis eliminanda.',
+                            'Regulatio aequilibrii aquosi et electrolytici (natrii, kalii, calcii).',
+                            'Moderatio pressionis arterialis et aequilibrii acidi-basis (pH sanguinis).',
+                            'Productio hormonum sicut erythropoietini, quod formationem erythrocytorum stimulat.'
+                        ],
+                        organs: [
+                            { name: 'Renes', role: 'Duo organa fabae similia quae sanguinem per milliones nephronum filtrant.' },
+                            { name: 'Ureteres', role: 'Duo canales musculares tenues qui urinam a renibus ad vesicam ducunt.' },
+                            { name: 'Vesica Urinaria', role: 'Saccus muscularis elasticus qui urinam usque ad eliminationem servat.' },
+                            { name: 'Urethra', role: 'Canalis qui urinam a vesica ad exteriora corporis transportat.' }
+                        ],
+                        facts: [
+                            'Renes circiter 180 litros humoris sanguinei cotidie filtrant — fere quantum solium balnearium implere possit — sed 99% illius aquae reabsorbetur!',
+                            'Quisque ren circiter 1 millionem unitatum microscopicarum filtrationis quae nephrones vocantur continet.',
+                            'Homo vitam omnino sanam cum uno tantum rene agere potest, quia ren reliquus crescit et facultatem filtrationis auget.'
+                        ],
+                        metrics: [
+                            { label: 'Sanguis Filtratus/die', value: '~180 Litri' },
+                            { label: 'Nephrones/Rene', value: '~1 Millio' },
+                            { label: 'Urina Producta/die', value: '1 - 2 Litri' }
+                        ]
+                    },
+                    zh: {
+                        name: '排泄系统',
+                        shortName: '排泄系统',
+                        tagline: '人体的血液净化中心与水盐平衡调节器',
+                        description: '排泄系统（泌尿系统）负责过滤血液、清除细胞代谢产生的有毒废物（如尿素和尿酸），并精确调节体内的水分含量、矿物质盐分以及酸碱度（pH值）。',
+                        mainFunctions: [
+                            '持续过滤血液，清除细胞新陈代谢产生的有毒废物。',
+                            '调节体内的水分平衡和电解质（钠、钾、钙）浓度。',
+                            '参与控制动脉血压以及维持血液酸碱平衡。',
+                            '分泌促红细胞生成素等激素，刺激骨髓生成红细胞。'
+                        ],
+                        organs: [
+                            { name: '肾脏', role: '一对豆状器官，通过数百万个肾单位高效过滤血液。' },
+                            { name: '输尿管', role: '两条细长的肌性管道，将尿液从肾脏输送至膀胱。' },
+                            { name: '膀胱', role: '具有弹性的肌性囊袋，负责暂时储存尿液直到排出。' },
+                            { name: '尿道', role: '将尿液从膀胱排出体外的通道。' }
+                        ],
+                        facts: [
+                            '肾脏每天过滤的血浆液体高达约180升——几乎相当于一整浴缸的水——但其中99%的水分都会被重新吸收回体内！',
+                            '每个肾脏内部都包含大约100万个被称为“肾单位”的微观过滤单元。',
+                            '人类仅靠一个肾脏就能完全健康地生活，因为剩下的那个肾脏会代偿性增大并提升过滤能力。'
+                        ],
+                        metrics: [
+                            { label: '每日滤液总量', value: '约180升' },
+                            { label: '单肾肾单位数', value: '约100万个' },
+                            { label: '每日排尿量', value: '1至2升' }
+                        ]
+                    }
+                }
             }
         ];
 
         // ==========================================
-        // 3. PERGUNTAS MULTILÍNGUES DO MINI-QUIZ
+        // 3. BASE DE DADOS MULTILÍNGUE DO MINI-QUIZ (20 QUESTÕES)
         // ==========================================
         const quizQuestions = [
             {
                 correctIndex: 1,
                 i18n: {
                     pt: {
-                        question: 'Qual é o único osso do corpo humano que mede menos de 3 milímetros e fica no ouvido?',
-                        options: ['Fêmur', 'Estribo', 'Patela', 'Clavícula'],
-                        explanation: 'O estribo, localizado no ouvido médio, mede cerca de 2,8 mm e transmite vibrações sonoras.'
+                        question: 'Quantas voltas ao redor da Terra todos os vasos sanguíneos de um adulto dariam se esticados em linha reta?',
+                        options: ['Cerca de 0,5 volta', 'Cerca de 2,5 voltas (~100.000 km)', 'Cerca de 10 voltas'],
+                        explanation: 'A rede vascular humana soma aproximadamente 96.000 a 100.000 km, suficiente para dar 2,5 voltas na Terra!'
                     },
                     en: {
-                        question: 'Which bone in the human body measures less than 3 millimeters and is located in the ear?',
-                        options: ['Femur', 'Stapes (Stirrup)', 'Patella', 'Clavicle'],
-                        explanation: 'The stapes, located in the middle ear, measures about 2.8 mm and transmits sound vibrations.'
+                        question: 'How many times around the Earth would all the blood vessels in an adult wrap if laid end-to-end?',
+                        options: ['About 0.5 times', 'About 2.5 times (~100,000 km)', 'About 10 times'],
+                        explanation: 'The human vascular network totals roughly 96,000 to 100,000 km, enough to wrap around Earth 2.5 times!'
                     },
                     es: {
-                        question: '¿Cuál es el hueso del cuerpo humano que mide menos de 3 milímetros y se encuentra en el oído?',
-                        options: ['Fémur', 'Estribo', 'Rótula', 'Clavícula'],
-                        explanation: 'El estribo, ubicado en el oído medio, mide unos 2,8 mm y transmite vibraciones sonoras.'
+                        question: '¿Cuántas vueltas alrededor de la Tierra darían todos los vasos sanguíneos de un adulto si se estiraran en línea recta?',
+                        options: ['Unas 0,5 vueltas', 'Unas 2,5 vueltas (~100.000 km)', 'Unas 10 vueltas'],
+                        explanation: '¡La red vascular humana suma aproximadamente 96.000 a 100.000 km, suficiente para dar 2,5 vueltas a la Tierra!'
                     },
                     la: {
-                        question: 'Quod os corporis humani minus quam 3 millimetra metitur et in aure situm est?',
-                        options: ['Femur', 'Stapes', 'Patella', 'Clavicula'],
-                        explanation: 'Stapes, in aure media situs, circiter 2,8 mm metitur et vibrationes sonoras transmittit.'
+                        question: 'Quotiens circum Terram omnia vasa sanguinea hominis adulti darent si in lineam rectam extenderentur?',
+                        options: ['Circiter 0,5 vicibus', 'Circiter 2,5 vicibus (~100.000 km)', 'Circiter 10 vicibus'],
+                        explanation: 'Rete vasculare humanum circiter 96.000 ad 100.000 km aequat, quod sufficit ad Terram 2,5 vicibus circumiendam!'
                     },
                     zh: {
-                        question: '人体中哪块骨头的长度不到3毫米，并且位于耳朵内部？',
-                        options: ['股骨', '镫骨', '髌骨', '锁骨'],
-                        explanation: '位于中耳的镫骨长度仅为约2.8毫米，负责传导声波振动。'
+                        question: '如果将一个成年人全身的所有血管首尾相连拉成直线，大约可以绕地球多少圈？',
+                        options: ['约0.5圈', '约2.5圈（约10万公里）', '约10圈'],
+                        explanation: '人体血管网络总长约9.6万至10万公里，足以绕地球2.5圈！'
                     }
                 }
             },
@@ -1472,89 +1817,29 @@
                 correctIndex: 2,
                 i18n: {
                     pt: {
-                        question: 'Qual porcentagem aproximada do oxigênio e energia do corpo é consumida apenas pelo cérebro?',
-                        options: ['5%', '10%', '20%', '45%'],
-                        explanation: 'Apesar de representar apenas 2% do peso corporal, o cérebro consome cerca de 20% da energia total.'
+                        question: 'Qual é o menor osso do corpo humano e onde ele está localizado?',
+                        options: ['Falange distal (dedo mínimo)', 'Vômer (nariz)', 'Estribo (ouvido médio)'],
+                        explanation: 'O estribo, localizado no ouvido médio, mede cerca de 2,8 milímetros e transmite vibrações sonoras.'
                     },
                     en: {
-                        question: 'Approximately what percentage of the body’s oxygen and energy is consumed by the brain alone?',
-                        options: ['5%', '10%', '20%', '45%'],
-                        explanation: 'Despite accounting for only 2% of body weight, the brain consumes roughly 20% of total energy.'
+                        question: 'What is the smallest bone in the human body and where is it located?',
+                        options: ['Distal phalanx (little finger)', 'Vomer (nose)', 'Stapes (middle ear)'],
+                        explanation: 'The stapes (stirrup), located in the middle ear, measures about 2.8 millimeters and transmits sound vibrations.'
                     },
                     es: {
-                        question: '¿Qué porcentaje aproximado del oxígeno y la energía del cuerpo consume únicamente el cerebro?',
-                        options: ['5%', '10%', '20%', '45%'],
-                        explanation: 'A pesar de representar solo el 2% del peso corporal, el cerebro consume cerca del 20% de la energía total.'
+                        question: '¿Cuál es el hueso más pequeño del cuerpo humano y dónde se encuentra?',
+                        options: ['Falange distal (meñique)', 'Vómer (nariz)', 'Estribo (oído medio)'],
+                        explanation: 'El estribo, ubicado en el oído medio, mide unos 2,8 milímetros y transmite vibraciones sonoras.'
                     },
                     la: {
-                        question: 'Quanta fere pars centesima oxygenii et energiae corporis a solo cerebro consumitur?',
-                        options: ['5%', '10%', '20%', '45%'],
-                        explanation: 'Quamvis tantum 2% ponderis corporis repraesentet, cerebrum fere 20% totius energiae consumit.'
+                        question: 'Quod est minimum os corporis humani et ubi situm est?',
+                        options: ['Phalanx distalis (digitus minimus)', 'Vomer (nasus)', 'Stapes (auris media)'],
+                        explanation: 'Stapes, in aure media situs, circiter 2,8 millimetra metitur et vibrationes sonoras transmittit.'
                     },
                     zh: {
-                        question: '仅大脑一个器官就消耗了人体大约百分之多少的氧气和能量？',
-                        options: ['5%', '10%', '20%', '45%'],
-                        explanation: '尽管大脑仅占体重的2%，但它却消耗了人体总能量的约20%。'
-                    }
-                }
-            },
-            {
-                correctIndex: 2,
-                i18n: {
-                    pt: {
-                        question: 'Onde ocorre cerca de 90% da absorção dos nutrientes dos alimentos que ingerimos?',
-                        options: ['Estômago', 'Esôfago', 'Intestino Delgado', 'Intestino Grosso'],
-                        explanation: 'O intestino delgado possui cerca de 6 metros e milhões de vilosidades que absorvem os nutrientes para o sangue.'
-                    },
-                    en: {
-                        question: 'Where does about 90% of nutrient absorption from the food we eat take place?',
-                        options: ['Stomach', 'Esophagus', 'Small Intestine', 'Large Intestine'],
-                        explanation: 'The small intestine is about 6 meters long and has millions of villi that absorb nutrients into the blood.'
-                    },
-                    es: {
-                        question: '¿Dónde ocurre cerca del 90% de la absorción de nutrientes de los alimentos que ingerimos?',
-                        options: ['Estómago', 'Esófago', 'Intestino Delgado', 'Intestino Grueso'],
-                        explanation: 'El intestino delgado mide unos 6 metros y tiene millones de vellosidades que absorben los nutrientes hacia la sangre.'
-                    },
-                    la: {
-                        question: 'Ubi fit circiter 90% absorptionis nutrimentorum ex cibis quos edimus?',
-                        options: ['Ventriculus', 'Oesophagus', 'Intestinum Tenue', 'Intestinum Crassum'],
-                        explanation: 'Intestinum tenue circiter 6 metra longum est et milliones villorum habet qui nutrimenta in sanguinem absorbent.'
-                    },
-                    zh: {
-                        question: '我们摄入食物中约90%的营养物质是在哪里被吸收的？',
-                        options: ['胃', '食道', '小肠', '大肠'],
-                        explanation: '小肠长约6米，内壁拥有数百万个绒毛结构，负责将营养物质吸收到血液中。'
-                    }
-                }
-            },
-            {
-                correctIndex: 2,
-                i18n: {
-                    pt: {
-                        question: 'Aproximadamente quantas vezes o coração humano bate em um único dia?',
-                        options: ['10.000 vezes', '50.000 vezes', '100.000 vezes', '500.000 vezes'],
-                        explanation: 'Em média, o coração bate entre 60 e 100 vezes por minuto, totalizando cerca de 100.000 batimentos diários.'
-                    },
-                    en: {
-                        question: 'Approximately how many times does the human heart beat in a single day?',
-                        options: ['10,000 times', '50,000 times', '100,000 times', '500,000 times'],
-                        explanation: 'On average, the heart beats 60 to 100 times per minute, totaling around 100,000 beats daily.'
-                    },
-                    es: {
-                        question: '¿Aproximadamente cuántas veces late el corazón humano en un solo día?',
-                        options: ['10.000 veces', '50.000 veces', '100.000 veces', '500.000 veces'],
-                        explanation: 'En promedio, el corazón late entre 60 y 100 veces por minuto, sumando unos 100.000 latidos diarios.'
-                    },
-                    la: {
-                        question: 'Quotiens fere cor humanum uno die palpitatur?',
-                        options: ['10.000 vicibus', '50.000 vicibus', '100.000 vicibus', '500.000 vicibus'],
-                        explanation: 'Mediocriter cor inter 60 et 100 vicibus per minutum palpitatur, quod circiter 100.000 pulsus cotidianos efficit.'
-                    },
-                    zh: {
-                        question: '人类心脏在一天之内大约跳动多少次？',
-                        options: ['1万次', '5万次', '10万次', '50万次'],
-                        explanation: '心脏平均每分钟跳动60到100次，每天累计跳动约10万次。'
+                        question: '人体最小的骨头是什么，它位于哪个部位？',
+                        options: ['远节指骨（小指）', '犁骨（鼻腔）', '镫骨（中耳）'],
+                        explanation: '位于中耳的镫骨长度仅为约2.8毫米，负责传递声音振动。'
                     }
                 }
             },
@@ -1562,119 +1847,29 @@
                 correctIndex: 0,
                 i18n: {
                     pt: {
-                        question: 'Qual estrutura dos pulmões é responsável diretamente pelas trocas gasosas com o sangue?',
-                        options: ['Alvéolos Pulmonares', 'Traqueia', 'Diafragma', 'Laringe'],
-                        explanation: 'Os alvéolos são milhões de pequenas bolsas envolvidas por capilares onde o O₂ entra no sangue e o CO₂ sai.'
+                        question: 'Por que o pulmão direito é ligeiramente maior do que o pulmão esquerdo?',
+                        options: ['Para abrir espaço para o coração no lado esquerdo', 'Porque o fígado fica acima dele', 'Porque recebe mais oxigênio'],
+                        explanation: 'O coração fica levemente inclinado para a esquerda no tórax, fazendo com que o pulmão esquerdo seja um pouco menor.'
                     },
                     en: {
-                        question: 'Which structure in the lungs is directly responsible for gas exchange with the blood?',
-                        options: ['Pulmonary Alveoli', 'Trachea', 'Diaphragm', 'Larynx'],
-                        explanation: 'Alveoli are millions of tiny sacs surrounded by capillaries where O₂ enters the blood and CO₂ exits.'
+                        question: 'Why is the right lung slightly larger than the left lung?',
+                        options: ['To make room for the heart on the left side', 'Because the liver sits above it', 'Because it receives more oxygen'],
+                        explanation: 'The heart tilts slightly toward the left side of the chest, making the left lung slightly smaller.'
                     },
                     es: {
-                        question: '¿Qué estructura de los pulmones es directamente responsable del intercambio gaseoso con la sangre?',
-                        options: ['Alvéolos Pulmonares', 'Tráquea', 'Diafragma', 'Laringe'],
-                        explanation: 'Los alvéolos son millones de pequeños sacos rodeados de capilares donde el O₂ entra en la sangre y sale el CO₂.'
+                        question: '¿Por qué el pulmón derecho es ligeramente más grande que el pulmón izquierdo?',
+                        options: ['Para hacer espacio al corazón en el lado izquierdo', 'Porque el hígado está encima de él', 'Porque recibe más oxígeno'],
+                        explanation: 'El corazón se inclina ligeramente hacia la izquierda en el tórax, por lo que el pulmón izquierdo es un poco más pequeño.'
                     },
                     la: {
-                        question: 'Quae structura pulmonum directe permutationi gasorum cum sanguine praeest?',
-                        options: ['Alveoli Pulmonis', 'Trachea', 'Diaphragma', 'Larynx'],
-                        explanation: 'Alveoli sunt milliones parvorum saccorum vasis capillaribus circumdatorum ubi O₂ in sanguinem intrat et CO₂ exit.'
+                        question: 'Cur pulmo dexter paulo maior est quam pulmo sinister?',
+                        options: ['Ut spatium cordi in latere sinistro praebeat', 'Quia hepar supra eum situm est', 'Quia plus oxygenii accipit'],
+                        explanation: 'Cor paulum ad sinistram in thorace inclinatur, quare pulmo sinister paulo minor est.'
                     },
                     zh: {
-                        question: '肺部的哪个结构直接负责与血液进行气体交换？',
-                        options: ['肺泡', '气管', '膈肌', '喉'],
-                        explanation: '肺泡是由毛细血管包裹的数百万个微小气囊，氧气在此进入血液，二氧化碳则在此排出。'
-                    }
-                }
-            },
-            {
-                correctIndex: 1,
-                i18n: {
-                    pt: {
-                        question: 'Qual é o músculo mais forte do corpo humano proporcionalmente ao seu tamanho?',
-                        options: ['Bíceps Braquial', 'Masseter (Mandíbula)', 'Sartório', 'Diafragma'],
-                        explanation: 'O masseter, responsável por fechar a mandíbula durante a mastigação, gera uma força impressionante para seu tamanho.'
-                    },
-                    en: {
-                        question: 'What is the strongest muscle in the human body relative to its size?',
-                        options: ['Biceps Brachii', 'Masseter (Jaw)', 'Sartorius', 'Diaphragm'],
-                        explanation: 'The masseter, responsible for closing the jaw during chewing, generates impressive force for its size.'
-                    },
-                    es: {
-                        question: '¿Cuál es el músculo más fuerte del cuerpo humano proporcionalmente a su tamaño?',
-                        options: ['Bíceps Braquial', 'Masetero (Mandíbula)', 'Sartorio', 'Diafragma'],
-                        explanation: 'El masetero, encargado de cerrar la mandíbula al masticar, genera una fuerza impresionante para su tamaño.'
-                    },
-                    la: {
-                        question: 'Quis est musculus fortissimus corporis humani pro magnitudine sua?',
-                        options: ['Biceps Brachii', 'Masseter (Mandibulae)', 'Sartorius', 'Diaphragma'],
-                        explanation: 'Masseter, qui mandibulam inter manducandum claudit, vim mirabilem pro magnitudine sua generat.'
-                    },
-                    zh: {
-                        question: '按体积比例计算，人体中最强壮的肌肉是哪一块？',
-                        options: ['肱二头肌', '咬肌（下颌）', '缝匠肌', '膈肌'],
-                        explanation: '负责在咀嚼时闭合下颌的咬肌，相对于其体积而言能产生惊人的力量。'
-                    }
-                }
-            },
-            {
-                correctIndex: 0,
-                i18n: {
-                    pt: {
-                        question: 'Quantos ossos possui o esqueleto de um ser humano adulto?',
-                        options: ['206 ossos', '270 ossos', '185 ossos', '300 ossos'],
-                        explanation: 'Um adulto possui 206 ossos, pois muitos dos ~270 ossos presentes ao nascer se fundem durante o crescimento.'
-                    },
-                    en: {
-                        question: 'How many bones are in an adult human skeleton?',
-                        options: ['206 bones', '270 bones', '185 bones', '300 bones'],
-                        explanation: 'An adult has 206 bones, as many of the ~270 bones present at birth fuse together during growth.'
-                    },
-                    es: {
-                        question: '¿Cuántos huesos tiene el esqueleto de un ser humano adulto?',
-                        options: ['206 huesos', '270 huesos', '185 huesos', '300 huesos'],
-                        explanation: 'Un adulto tiene 206 huesos, ya que muchos de los ~270 huesos presentes al nacer se fusionan durante el crecimiento.'
-                    },
-                    la: {
-                        question: 'Quot ossa skeleton hominis adulti habet?',
-                        options: ['206 ossa', '270 ossa', '185 ossa', '300 ossa'],
-                        explanation: 'Adultus 206 ossa habet, quia multa ex ~270 ossibus in nativitate praesentibus inter crescendum coalescunt.'
-                    },
-                    zh: {
-                        question: '成年人的骨骼系统共有多少块骨头？',
-                        options: ['206块', '270块', '185块', '300块'],
-                        explanation: '成年人有206块骨头，因为出生时的约270块骨头在成长过程中许多会相互融合。'
-                    }
-                }
-            },
-            {
-                correctIndex: 3,
-                i18n: {
-                    pt: {
-                        question: 'Qual é o maior e mais resistente osso do corpo humano?',
-                        options: ['Úmero', 'Tíbia', 'Esterno', 'Fêmur'],
-                        explanation: 'O fêmur, localizado na coxa, é o osso mais longo e resistente do esqueleto humano.'
-                    },
-                    en: {
-                        question: 'What is the longest and strongest bone in the human body?',
-                        options: ['Humerus', 'Tibia', 'Sternum', 'Femur'],
-                        explanation: 'The femur, located in the thigh, is the longest and strongest bone in the human skeleton.'
-                    },
-                    es: {
-                        question: '¿Cuál es el hueso más largo y resistente del cuerpo humano?',
-                        options: ['Húmero', 'Tibia', 'Esternón', 'Fémur'],
-                        explanation: 'El fémur, ubicado en el muslo, es el hueso más largo y resistente del esqueleto humano.'
-                    },
-                    la: {
-                        question: 'Quod est longissimum et fortissimum os corporis humani?',
-                        options: ['Humerus', 'Tibia', 'Sternum', 'Femur'],
-                        explanation: 'Femur, in femore situm, est longissimum et fortissimum os skeleti humani.'
-                    },
-                    zh: {
-                        question: '人体最长且最坚固的骨头是哪一块？',
-                        options: ['肱骨', '胫骨', '胸骨', '股骨'],
-                        explanation: '位于大腿的股骨是人类骨骼中最长且最坚固的骨头。'
+                        question: '为什么右肺比左肺略大一些？',
+                        options: ['为了给左侧的心脏腾出空间', '因为肝脏位于右肺上方', '因为右肺接收更多氧气'],
+                        explanation: '心脏在胸腔内略微偏向左侧，因此左肺需要留出空间而略小一些。'
                     }
                 }
             },
@@ -1683,58 +1878,28 @@
                 i18n: {
                     pt: {
                         question: 'Aproximadamente quantos neurônios existem no cérebro humano?',
-                        options: ['8,6 milhões', '86 bilhões', '860 mil', '8,6 trilhões'],
-                        explanation: 'O cérebro humano contém cerca de 86 bilhões de neurônios conectados por trilhões de sinapses.'
+                        options: ['86 milhões', '86 bilhões', '860 mil'],
+                        explanation: 'O cérebro humano possui cerca de 86 bilhões de neurônios conectados por trilhões de sinapses.'
                     },
                     en: {
                         question: 'Approximately how many neurons are in the human brain?',
-                        options: ['8.6 million', '86 billion', '860 thousand', '8.6 trillion'],
-                        explanation: 'The human brain contains about 86 billion neurons connected by trillions of synapses.'
+                        options: ['86 million', '86 billion', '860 thousand'],
+                        explanation: 'The human brain contains roughly 86 billion neurons connected by trillions of synapses.'
                     },
                     es: {
                         question: '¿Aproximadamente cuántas neuronas existen en el cerebro humano?',
-                        options: ['8,6 millones', '86 mil millones', '860 mil', '8,6 billones'],
-                        explanation: 'El cerebro humano contiene unos 86 mil millones de neuronas conectadas por billones de sinapsis.'
+                        options: ['86 millones', '86 mil millones', '860 mil'],
+                        explanation: 'El cerebro humano posee alrededor de 86 mil millones de neuronas conectadas por billones de sinapsis.'
                     },
                     la: {
                         question: 'Quot fere neurona in cerebro humano exsistunt?',
-                        options: ['8,6 milliones', '86 miliarda', '860 milia', '8,6 trilliones'],
-                        explanation: 'Cerebrum humanum circiter 86 miliarda neuronum per trilliones synapsium conexorum continet.'
+                        options: ['86 milliones', '86 miliarda', '860 milia'],
+                        explanation: 'Cerebrum humanum circiter 86 miliarda neuronum per trilliones synapsium coniunctorum habet.'
                     },
                     zh: {
                         question: '人类大脑中大约有多少个神经元？',
-                        options: ['860万个', '860亿个', '86万个', '8.6万亿个'],
-                        explanation: '人类大脑包含约860亿个神经元，通过数万亿个突触相互连接。'
-                    }
-                }
-            },
-            {
-                correctIndex: 0,
-                i18n: {
-                    pt: {
-                        question: 'Qual parte do encéfalo coordena o equilíbrio, a postura e a precisão dos movimentos?',
-                        options: ['Cerebelo', 'Bulbo', 'Hipotálamo', 'Tálamo'],
-                        explanation: 'O cerebelo atua na coordenação motora fina, no equilíbrio e na manutenção da postura.'
-                    },
-                    en: {
-                        question: 'Which part of the brain coordinates balance, posture, and precision of movement?',
-                        options: ['Cerebellum', 'Medulla Oblongata', 'Hypothalamus', 'Thalamus'],
-                        explanation: 'The cerebellum manages fine motor coordination, balance, and posture maintenance.'
-                    },
-                    es: {
-                        question: '¿Qué parte del encéfalo coordina el equilibrio, la postura y la precisión de los movimientos?',
-                        options: ['Cerebelo', 'Bulbo raquídeo', 'Hipotálamo', 'Tálamo'],
-                        explanation: 'El cerebelo actúa en la coordinación motora fina, el equilibrio y el mantenimiento de la postura.'
-                    },
-                    la: {
-                        question: 'Quae pars encephali aequilibrium, staturam et subtilitatem motuum coordinat?',
-                        options: ['Cerebellum', 'Medulla Oblongata', 'Hypothalamus', 'Thalamus'],
-                        explanation: 'Cerebellum coordinationi motoriae subtili, aequilibrio et conservationi staturae praeest.'
-                    },
-                    zh: {
-                        question: '脑部的哪个部分负责协调身体平衡、姿势和动作的精确度？',
-                        options: ['小脑', '延髓', '下丘脑', '丘脑'],
-                        explanation: '小脑负责精细运动协调、身体平衡以及维持正常姿势。'
+                        options: ['8600万个', '860亿个', '86万个'],
+                        explanation: '人类大脑拥有约860亿个神经元，通过数万亿个突触相互连接。'
                     }
                 }
             },
@@ -1742,29 +1907,59 @@
                 correctIndex: 2,
                 i18n: {
                     pt: {
-                        question: 'Qual é o principal músculo responsável pelos movimentos da respiração?',
-                        options: ['Peitoral Maior', 'Trapésio', 'Diafragma', 'Deltoide'],
-                        explanation: 'O diafragma contrai-se e desce durante a inspiração, aumentando o volume da caixa torácica para puxar o ar.'
+                        question: 'Qual é o músculo mais forte do corpo humano em relação ao seu tamanho?',
+                        options: ['Bíceps braquial', 'Quadríceps', 'Masseter (músculo da mandíbula)'],
+                        explanation: 'O masseter pode exercer uma força de mordida superior a 90 kg nos dentes molares.'
                     },
                     en: {
-                        question: 'What is the main muscle responsible for breathing movements?',
-                        options: ['Pectoralis Major', 'Trapezius', 'Diaphragm', 'Deltoid'],
-                        explanation: 'The diaphragm contracts and moves downward during inhalation, expanding the chest cavity to draw air in.'
+                        question: 'What is the strongest muscle in the human body relative to its size?',
+                        options: ['Biceps brachii', 'Quadriceps', 'Masseter (jaw muscle)'],
+                        explanation: 'The masseter can exert a bite force exceeding 90 kg (200 lbs) on the molar teeth.'
                     },
                     es: {
-                        question: '¿Cuál es el principal músculo responsable de los movimientos respiratorios?',
-                        options: ['Pectoral Mayor', 'Trapecio', 'Diafragma', 'Deltoides'],
-                        explanation: 'El diafragma se contrae y desciende durante la inhalación, aumentando el volumen torácico para aspirar aire.'
+                        question: '¿Cuál es el músculo más fuerte del cuerpo humano en relación con su tamaño?',
+                        options: ['Bíceps braquial', 'Cuádriceps', 'Masetero (músculo de la mandíbula)'],
+                        explanation: 'El masetero puede ejercer una fuerza de mordida superior a 90 kg en los dientes molares.'
                     },
                     la: {
-                        question: 'Quis est musculus principalis motibus respirationis praepositus?',
-                        options: ['Pectoralis Maior', 'Trapezius', 'Diaphragma', 'Deltoideus'],
-                        explanation: 'Diaphragma inter inspirationem contrahitur et descendit, volumen caveae thoracis augens ut aerem trahat.'
+                        question: 'Quis est musculus fortissimus corporis humani pro magnitudine sua?',
+                        options: ['Biceps brachii', 'Quadriceps', 'Masseter (musculus mandibulae)'],
+                        explanation: 'Masseter vim morsus plus quam 90 kg in dentibus molaribus exercere potest.'
                     },
                     zh: {
-                        question: '负责呼吸运动的主要肌肉是哪一块？',
-                        options: ['胸大肌', '斜方肌', '膈肌', '三角肌'],
-                        explanation: '吸气时膈肌收缩并下移，扩大胸腔容积从而将空气吸入肺部。'
+                        question: '按自身体积比例计算，人体最有力的肌肉是哪一块？',
+                        options: ['肱二头肌', '股四头肌', '咬肌（下颌肌肉）'],
+                        explanation: '咬肌在臼齿处可产生超过90公斤的惊人咬合力。'
+                    }
+                }
+            },
+            {
+                correctIndex: 0,
+                i18n: {
+                    pt: {
+                        question: 'Como o estômago evita ser digerido pelo próprio ácido clorídrico?',
+                        options: ['Produzindo uma camada protetora renovável de muco', 'Porque o ácido só age quando há comida', 'Porque suas paredes são feitas de cartilagem'],
+                        explanation: 'As células da parede gástrica secretam continuamente um muco alcalino que neutraliza e bloqueia o ácido.'
+                    },
+                    en: {
+                        question: 'How does the stomach avoid digesting itself with its own hydrochloric acid?',
+                        options: ['By producing a constantly renewing protective mucus layer', 'Because acid only acts when food is present', 'Because its walls are made of cartilage'],
+                        explanation: 'Cells lining the stomach continuously secrete an alkaline mucus layer that neutralizes and blocks the acid.'
+                    },
+                    es: {
+                        question: '¿Cómo evita el estómago ser digerido por su propio ácido clorhídrico?',
+                        options: ['Produciendo una capa protectora renovable de mucosa', 'Porque el ácido solo actúa cuando hay comida', 'Porque sus paredes están hechas de cartílago'],
+                        explanation: 'Las células de la pared gástrica secretan continuamente una mucosa alcalina que neutraliza y bloquea el ácido.'
+                    },
+                    la: {
+                        question: 'Quomodo ventriculus vitat ne a suo proprio acido hydrochlorico digeratur?',
+                        options: ['Stratum protectivum muci renovabile producendo', 'Quia acidum tantum cum cibus adest agit', 'Quia parietes eius ex cartilagine facti sunt'],
+                        explanation: 'Cellulae parietis gastrici continuo mucum alkalinum secernunt qui acidum neutralizat et arcet.'
+                    },
+                    zh: {
+                        question: '胃是如何避免被自身分泌的强盐酸消化的？',
+                        options: ['分泌一层不断更新的保护性黏液层', '因为胃酸只在有食物时才起作用', '因为胃壁是由软骨构成的'],
+                        explanation: '胃壁细胞会持续分泌一层碱性黏液，有效中和并阻隔胃酸对胃壁的侵蚀。'
                     }
                 }
             },
@@ -1772,89 +1967,29 @@
                 correctIndex: 1,
                 i18n: {
                     pt: {
-                        question: 'Por que o pulmão esquerdo é ligeiramente menor que o pulmão direito?',
-                        options: ['Para acomodar o fígado', 'Para acomodar o coração', 'Para acomodar o estômago', 'Para acomodar o baço'],
-                        explanation: 'O pulmão esquerdo possui a incisura cardíaca, um espaço reservado para acomodar o coração.'
+                        question: 'Qual é a única parte do corpo humano que não recebe suprimento direto de sangue?',
+                        options: ['O lóbulo da orelha', 'A córnea (frente transparente do olho)', 'A ponta do nariz'],
+                        explanation: 'A córnea recebe oxigênio diretamente do ar e nutrientes das lágrimas e do humor aquoso.'
                     },
                     en: {
-                        question: 'Why is the left lung slightly smaller than the right lung?',
-                        options: ['To make room for the liver', 'To make room for the heart', 'To make room for the stomach', 'To make room for the spleen'],
-                        explanation: 'The left lung has a cardiac notch, a dedicated space to accommodate the heart.'
+                        question: 'What is the only part of the human body that receives no direct blood supply?',
+                        options: ['The earlobe', 'The cornea (clear front of the eye)', 'The tip of the nose'],
+                        explanation: 'The cornea receives oxygen directly from the air and nutrients from tears and aqueous humor.'
                     },
                     es: {
-                        question: '¿Por qué el pulmón izquierdo es ligeramente más pequeño que el derecho?',
-                        options: ['Para alojar el hígado', 'Para alojar el corazón', 'Para alojar el estómago', 'Para alojar el bazo'],
-                        explanation: 'El pulmón izquierdo tiene la escotadura cardíaca, un espacio reservado para alojar el corazón.'
+                        question: '¿Cuál es la única parte del cuerpo humano que no recibe suministro directo de sangre?',
+                        options: ['El lóbulo de la oreja', 'La córnea (parte transparente del ojo)', 'La punta de la nariz'],
+                        explanation: 'La córnea recibe oxígeno directamente del aire y nutrientes de las lágrimas y del humor acuoso.'
                     },
                     la: {
-                        question: 'Cur pulmo sinister paulo minor est quam pulmo dexter?',
-                        options: ['Ut hepar accommodet', 'Ut cor accommodet', 'Ut ventriculum accommodet', 'Ut lienem accommodet'],
-                        explanation: 'Pulmo sinister incisuram cardiacam habet, spatium ad cor accommodandum reservatum.'
+                        question: 'Quae est sola pars corporis humani quae directum sanguinis fluxum non accipit?',
+                        options: ['Lobulus auriculae', 'Cornea (pars pellucida oculi)', 'Apex nasi'],
+                        explanation: 'Cornea oxygenium directe ex aere et nutrimenta ex lacrimis et humore aquoso accipit.'
                     },
                     zh: {
-                        question: '为什么左肺比右肺略小一些？',
-                        options: ['为了容纳肝脏', '为了容纳心脏', '为了容纳胃', '为了容纳脾脏'],
-                        explanation: '左肺有一个心切迹，专门用来留出空间容纳心脏。'
-                    }
-                }
-            },
-            {
-                correctIndex: 3,
-                i18n: {
-                    pt: {
-                        question: 'Qual é a única parte transparente do corpo humano que não recebe suprimento direto de sangue?',
-                        options: ['Retina', 'Íris', 'Tímpano', 'Córnea'],
-                        explanation: 'A córnea recebe oxigênio diretamente do ar e das lágrimas, mantendo-se totalmente transparente.'
-                    },
-                    en: {
-                        question: 'What is the only transparent part of the human body with no direct blood supply?',
-                        options: ['Retina', 'Iris', 'Eardrum', 'Cornea'],
-                        explanation: 'The cornea receives oxygen directly from the air and tears, allowing it to remain completely clear.'
-                    },
-                    es: {
-                        question: '¿Cuál es la única parte transparente del cuerpo humano que no recibe suministro directo de sangre?',
-                        options: ['Retina', 'Iris', 'Tímpano', 'Córnea'],
-                        explanation: 'La córnea recibe oxígeno directamente del aire y las lágrimas, manteniéndose totalmente transparente.'
-                    },
-                    la: {
-                        question: 'Quae est sola pars pellucida corporis humani quae directum sanguinis fluxum non accipit?',
-                        options: ['Retina', 'Iris', 'Tympanum', 'Cornea'],
-                        explanation: 'Cornea oxygenium directe ex aere et lacrimis accipit, ita omnino pellucida manens.'
-                    },
-                    zh: {
-                        question: '人体唯一没有直接血液供应的透明部位是哪里？',
-                        options: ['视网膜', '虹膜', '鼓膜', '角膜'],
-                        explanation: '角膜直接从空气和泪液中获取氧气，从而保持完全透明以让光线通过。'
-                    }
-                }
-            },
-            {
-                correctIndex: 0,
-                i18n: {
-                    pt: {
-                        question: 'Qual tipo de vaso sanguíneo leva sangue rico em oxigênio do coração para os tecidos do corpo?',
-                        options: ['Artérias', 'Veias', 'Vênulas', 'Válvulas'],
-                        explanation: 'As artérias transportam sangue sob alta pressão saindo do coração (geralmente rico em oxigênio) para o corpo.'
-                    },
-                    en: {
-                        question: 'Which type of blood vessel carries oxygen-rich blood away from the heart to body tissues?',
-                        options: ['Arteries', 'Veins', 'Venules', 'Valves'],
-                        explanation: 'Arteries carry blood under high pressure away from the heart (usually oxygen-rich) to the rest of the body.'
-                    },
-                    es: {
-                        question: '¿Qué tipo de vaso sanguíneo lleva sangre rica en oxígeno desde el corazón hacia los tejidos del cuerpo?',
-                        options: ['Arterias', 'Venas', 'Vénulas', 'Válvulas'],
-                        explanation: 'Las arterias transportan sangre a alta presión desde el corazón (generalmente rica en oxígeno) hacia el cuerpo.'
-                    },
-                    la: {
-                        question: 'Quod genus vasorum sanguineorum sanguinem oxygenio divitem a corde ad textus corporis ducit?',
-                        options: ['Arteriae', 'Venae', 'Venulae', 'Valvulae'],
-                        explanation: 'Arteriae sanguinem magna pressione a corde (plerumque oxygenio divitem) ad corpus portant.'
-                    },
-                    zh: {
-                        question: '哪种血管负责将富含氧气的血液从心脏输送到全身组织？',
-                        options: ['动脉', '静脉', '小静脉', '瓣膜'],
-                        explanation: '动脉在高压下将血液（通常富含氧气）从心脏泵出并输送到全身各处。'
+                        question: '人体唯一没有直接血液供应的部位是哪里？',
+                        options: ['耳垂', '角膜（眼睛前部的透明部分）', '鼻尖'],
+                        explanation: '角膜直接从空气中获取氧气，并从泪液和房水中获取营养。'
                     }
                 }
             },
@@ -1862,29 +1997,59 @@
                 correctIndex: 2,
                 i18n: {
                     pt: {
-                        question: 'O que protege o estômago de ser digerido pelo próprio ácido clorídrico?',
-                        options: ['Bile hepática', 'Enzimas salivares', 'Camada renovável de muco', 'Cartilagem gástrica'],
-                        explanation: 'As células da parede estomacal produzem continuamente uma barreira alcalina de muco que neutraliza o ácido.'
+                        question: 'Qual porcentagem de todo o oxigênio e energia do corpo o cérebro consome em repouso?',
+                        options: ['Cerca de 2%', 'Cerca de 10%', 'Cerca de 20%'],
+                        explanation: 'Embora represente apenas ~2% do peso corporal, o cérebro consome cerca de 20% da energia total.'
                     },
                     en: {
-                        question: 'What protects the stomach from being digested by its own hydrochloric acid?',
-                        options: ['Hepatic bile', 'Salivary enzymes', 'Renewing mucus lining', 'Gastric cartilage'],
-                        explanation: 'Cells in the stomach lining continuously produce an alkaline mucus barrier that neutralizes acid at the surface.'
+                        question: 'What percentage of the body’s total oxygen and energy does the brain consume at rest?',
+                        options: ['About 2%', 'About 10%', 'About 20%'],
+                        explanation: 'Although it accounts for only ~2% of body weight, the brain consumes roughly 20% of total energy.'
                     },
                     es: {
-                        question: '¿Qué protege al estómago de ser digerido por su propio ácido clorhídrico?',
-                        options: ['Bilis hepática', 'Enzimas salivales', 'Capa renovable de mucosa', 'Cartílago gástrico'],
-                        explanation: 'Las células de la pared estomacal producen continuamente una barrera alcalina de moco que neutraliza el ácido.'
+                        question: '¿Qué porcentaje de todo el oxígeno y la energía del cuerpo consume el cerebro en reposo?',
+                        options: ['Alrededor del 2%', 'Alrededor del 10%', 'Alrededor del 20%'],
+                        explanation: 'Aunque representa solo ~2% del peso corporal, el cerebro consume cerca del 20% de la energía total.'
                     },
                     la: {
-                        question: 'Quid ventriculum protegit ne a suo proprio acido hydrochlorico digeratur?',
-                        options: ['Bilis hepatica', 'Enzyma salivaria', 'Stratum muci renovabile', 'Cartilago gastrica'],
-                        explanation: 'Cellulae parietis ventriculi continenter impedimentum muci alcalini producunt quod acidum neutralizat.'
+                        question: 'Quot centesimas totius oxygenii et energiae corporis cerebrum in quiete consumit?',
+                        options: ['Circiter 2%', 'Circiter 10%', 'Circiter 20%'],
+                        explanation: 'Quamquam tantum ~2% ponderis corporis repraesentat, cerebrum fere 20% totius energiae consumit.'
                     },
                     zh: {
-                        question: '是什么保护胃不被自身的盐酸消化掉？',
-                        options: ['肝胆汁', '唾液酶', '不断更新的黏液层', '胃软骨'],
-                        explanation: '胃壁细胞会持续分泌一层碱性黏液屏障，在胃壁表面中和强酸。'
+                        question: '大脑在静息状态下消耗了人体总氧气和能量的百分之多少？',
+                        options: ['约2%', '约10%', '约20%'],
+                        explanation: '尽管大脑仅占体重的约2%，但它却消耗了全身约20%的氧气和能量。'
+                    }
+                }
+            },
+            {
+                correctIndex: 0,
+                i18n: {
+                    pt: {
+                        question: 'Com quantos ossos um bebê nasce aproximadamente antes de alguns se fundirem?',
+                        options: ['270 a 300 ossos', '206 ossos', '150 ossos'],
+                        explanation: 'Bebês nascem com 270 a 300 ossos; muitos se fundem durante o crescimento até restarem 206 no adulto.'
+                    },
+                    en: {
+                        question: 'Approximately how many bones is a baby born with before several fuse together?',
+                        options: ['270 to 300 bones', '206 bones', '150 bones'],
+                        explanation: 'Babies are born with 270 to 300 bones; many fuse during growth until 206 remain in adulthood.'
+                    },
+                    es: {
+                        question: '¿Con cuántos huesos nace aproximadamente un bebé antes de que algunos se fusionen?',
+                        options: ['270 a 300 huesos', '206 huesos', '150 huesos'],
+                        explanation: 'Los bebés nacen con 270 a 300 huesos; muchos se fusionan durante el crecimiento hasta quedar 206 en el adulto.'
+                    },
+                    la: {
+                        question: 'Cum quot fere ossibus infans nascitur antequam nonnulla coalescant?',
+                        options: ['270 ad 300 ossa', '206 ossa', '150 ossa'],
+                        explanation: 'Infantes cum 270 ad 300 ossibus nascuntur; multa coalescunt dum crescunt donec 206 in adulto maneant.'
+                    },
+                    zh: {
+                        question: '婴儿出生时大约有多少块骨头（在部分骨头融合之前）？',
+                        options: ['270至300块', '206块', '150块'],
+                        explanation: '婴儿出生时有270至300块骨头，随着生长发育许多骨头逐渐融合，成年后变为206块。'
                     }
                 }
             },
@@ -1892,59 +2057,29 @@
                 correctIndex: 1,
                 i18n: {
                     pt: {
-                        question: 'Qual órgão produz a bile, substância essencial para emulsionar gorduras na digestão?',
-                        options: ['Pâncreas', 'Fígado', 'Baço', 'Apêndice'],
-                        explanation: 'O fígado produz a bile, que é armazenada na vesícula biliar e liberada no intestino delgado para digerir gorduras.'
+                        question: 'Qual é o maior osso do corpo humano?',
+                        options: ['Tíbia', 'Fêmur', 'Úmero'],
+                        explanation: 'O fêmur, localizado na coxa, é o osso mais longo e resistente do esqueleto humano.'
                     },
                     en: {
-                        question: 'Which organ produces bile, an essential substance for emulsifying fats during digestion?',
-                        options: ['Pancreas', 'Liver', 'Spleen', 'Appendix'],
-                        explanation: 'The liver produces bile, which is stored in the gallbladder and released into the small intestine to break down fats.'
+                        question: 'What is the longest and largest bone in the human body?',
+                        options: ['Tibia', 'Femur', 'Humerus'],
+                        explanation: 'The femur, located in the thigh, is the longest and strongest bone in the human skeleton.'
                     },
                     es: {
-                        question: '¿Qué órgano produce la bilis, sustancia esencial para emulsionar las grasas en la digestión?',
-                        options: ['Páncreas', 'Hígado', 'Bazo', 'Apéndice'],
-                        explanation: 'El hígado produce la bilis, que se almacena en la vesícula biliar y se libera en el intestino delgado para digerir grasas.'
+                        question: '¿Cuál es el hueso más largo y grande del cuerpo humano?',
+                        options: ['Tibia', 'Fémur', 'Húmero'],
+                        explanation: 'El fémur, ubicado en el muslo, es el hueso más largo y resistente del esqueleto humano.'
                     },
                     la: {
-                        question: 'Quod organum bilem producit, substantiam essentialem ad adipes in digestione emulsificandos?',
-                        options: ['Pancreas', 'Hepar', 'Lien', 'Appendix'],
-                        explanation: 'Hepar bilem producit, quae in vesica biliaris servatur et in intestinum tenue ad adipes digerendos emittitur.'
+                        question: 'Quod est longissimum et maximum os corporis humani?',
+                        options: ['Tibia', 'Femur', 'Humerus'],
+                        explanation: 'Femur, in femore situm, est longissimum et fortissimum os skeleti humani.'
                     },
                     zh: {
-                        question: '哪个器官分泌胆汁，在消化过程中对乳化脂肪起关键作用？',
-                        options: ['胰腺', '肝脏', '脾脏', '阑尾'],
-                        explanation: '肝脏分泌胆汁，储存在胆囊中，并在进食后排入小肠以帮助分解脂肪。'
-                    }
-                }
-            },
-            {
-                correctIndex: 0,
-                i18n: {
-                    pt: {
-                        question: 'Aproximadamente quantos músculos diferentes são ativados para dar um único passo?',
-                        options: ['200 músculos', '20 músculos', '50 músculos', '600 músculos'],
-                        explanation: 'Caminhar exige a coordenação simultânea de cerca de 200 músculos nos pés, pernas, quadril e tronco.'
-                    },
-                    en: {
-                        question: 'Approximately how many different muscles are engaged to take a single step?',
-                        options: ['200 muscles', '20 muscles', '50 muscles', '600 muscles'],
-                        explanation: 'Walking requires the simultaneous coordination of around 200 muscles in the feet, legs, hips, and torso.'
-                    },
-                    es: {
-                        question: '¿Aproximadamente cuántos músculos diferentes se activan para dar un solo paso?',
-                        options: ['200 músculos', '20 músculos', '50 músculos', '600 músculos'],
-                        explanation: 'Caminar requiere la coordinación simultánea de unos 200 músculos en los pies, piernas, cadera y tronco.'
-                    },
-                    la: {
-                        question: 'Quot fere musculi diversi ad unum tantum passum faciendum activantur?',
-                        options: ['200 musculi', '20 musculi', '50 musculi', '600 musculi'],
-                        explanation: 'Ambulare coordinationem simultaneam circiter 200 musculorum in pedibus, cruribus, coxis et trunco requirit.'
-                    },
-                    zh: {
-                        question: '仅仅迈出一步大约需要调动多少块不同的肌肉？',
-                        options: ['200块肌肉', '20块肌肉', '50块肌肉', '600块肌肉'],
-                        explanation: '行走需要脚部、腿部、髋部和躯干中大约200块肌肉同时协调工作。'
+                        question: '人体最长、最大的骨头是哪一块？',
+                        options: ['胫骨', '股骨', '肱骨'],
+                        explanation: '位于大腿部位的股骨是人体骨骼中最长且最坚固的骨头。'
                     }
                 }
             },
@@ -1952,29 +2087,239 @@
                 correctIndex: 2,
                 i18n: {
                     pt: {
-                        question: 'Qual é o maior músculo do corpo humano em volume?',
-                        options: ['Quadríceps', 'Bíceps', 'Glúteo Máximo', 'Latíssimo do Dorso'],
-                        explanation: 'O glúteo máximo é o maior músculo em volume, fundamental para manter o tronco ereto e subir escadas.'
+                        question: 'Onde ocorre cerca de 90% da absorção dos nutrientes dos alimentos?',
+                        options: ['No estômago', 'No intestino grosso', 'No intestino delgado'],
+                        explanation: 'O intestino delgado, com cerca de 6 metros e milhões de vilosidades, absorve quase todos os nutrientes.'
                     },
                     en: {
-                        question: 'What is the largest muscle in the human body by volume?',
-                        options: ['Quadriceps', 'Biceps', 'Gluteus Maximus', 'Latissimus Dorsi'],
-                        explanation: 'The gluteus maximus is the largest muscle by volume, essential for keeping the torso upright and climbing stairs.'
+                        question: 'Where does roughly 90% of nutrient absorption from food take place?',
+                        options: ['In the stomach', 'In the large intestine', 'In the small intestine'],
+                        explanation: 'The small intestine, about 6 meters long with millions of villi, absorbs nearly all nutrients.'
                     },
                     es: {
-                        question: '¿Cuál es el músculo más grande del cuerpo humano en volumen?',
-                        options: ['Cuádriceps', 'Bíceps', 'Glúteo Mayor', 'Dorsal Ancho'],
-                        explanation: 'El glúteo mayor es el músculo más grande en volumen, fundamental para mantener el tronco erguido y subir escaleras.'
+                        question: '¿Dónde ocurre aproximadamente el 90% de la absorción de nutrientes de los alimentos?',
+                        options: ['En el estómago', 'En el intestino grueso', 'En el intestino delgado'],
+                        explanation: 'El intestino delgado, de unos 6 metros con millones de vellosidades, absorbe casi todos los nutrientes.'
                     },
                     la: {
-                        question: 'Quis est maximus musculus corporis humani volumine?',
-                        options: ['Quadriceps', 'Biceps', 'Gluteus Maximus', 'Latissimus Dorsi'],
-                        explanation: 'Gluteus maximus est maximus musculus volumine, fundamentalis ad truncum erectum tenendum et scalas ascendendas.'
+                        question: 'Ubi fere 90% absorptionis nutrimentorum ex cibis fit?',
+                        options: ['In ventriculo', 'In intestino crasso', 'In intestino tenui'],
+                        explanation: 'Intestinum tenue, circiter 6 metra longum cum millionibus villorum, fere omnia nutrimenta absorbet.'
                     },
                     zh: {
-                        question: '按体积计算，人体最大的肌肉是哪一块？',
-                        options: ['股四头肌', '肱二头肌', '臀大肌', '背阔肌'],
-                        explanation: '臀大肌是人体体积最大的肌肉，对于保持躯干直立和爬楼梯至关重要。'
+                        question: '食物中大约90%的营养物质是在哪里被吸收的？',
+                        options: ['胃', '大肠', '小肠'],
+                        explanation: '长约6米且布满数百万绒毛的小肠负责吸收绝大多数营养物质。'
+                    }
+                }
+            },
+            {
+                correctIndex: 0,
+                i18n: {
+                    pt: {
+                        question: 'Qual estrutura do sistema respiratório contém as pregas vocais que produzem a voz?',
+                        options: ['Laringe', 'Alvéolos pulmonares', 'Diafragma'],
+                        explanation: 'A laringe abriga as pregas vocais, que vibram com a passagem do ar para gerar sons.'
+                    },
+                    en: {
+                        question: 'Which structure of the respiratory system contains the vocal cords that produce voice?',
+                        options: ['Larynx', 'Pulmonary alveoli', 'Diaphragm'],
+                        explanation: 'The larynx houses the vocal cords, which vibrate as air passes through to generate sound.'
+                    },
+                    es: {
+                        question: '¿Qué estructura del sistema respiratorio contiene las cuerdas vocales que producen la voz?',
+                        options: ['Laringe', 'Alvéolos pulmonares', 'Diafragma'],
+                        explanation: 'La laringe aloja las cuerdas vocales, que vibran con el paso del aire para generar sonidos.'
+                    },
+                    la: {
+                        question: 'Quae structura systematis respiratorii plicas vocales vocem producentes continet?',
+                        options: ['Larynx', 'Alveoli pulmonis', 'Diaphragma'],
+                        explanation: 'Larynx plicas vocales continet, quae aere transeunte vibrant ut sonos generent.'
+                    },
+                    zh: {
+                        question: '呼吸系统中的哪个结构包含发声所需的声带？',
+                        options: ['喉', '肺泡', '膈肌'],
+                        explanation: '喉部容纳着声带，当气流通过时声带振动从而发出声音。'
+                    }
+                }
+            },
+            {
+                correctIndex: 1,
+                i18n: {
+                    pt: {
+                        question: 'Aproximadamente quantos músculos diferentes são utilizados para dar um único passo?',
+                        options: ['Cerca de 20 músculos', 'Cerca de 200 músculos', 'Cerca de 600 músculos'],
+                        explanation: 'Um único passo exige a coordenação de aproximadamente 200 músculos do tronco, quadris e pernas.'
+                    },
+                    en: {
+                        question: 'Approximately how many different muscles are used to take a single step?',
+                        options: ['About 20 muscles', 'About 200 muscles', 'About 600 muscles'],
+                        explanation: 'Taking a single step requires coordinating roughly 200 muscles across the torso, hips, and legs.'
+                    },
+                    es: {
+                        question: '¿Aproximadamente cuántos músculos diferentes se utilizan para dar un solo paso?',
+                        options: ['Unos 20 músculos', 'Unos 200 músculos', 'Unos 600 músculos'],
+                        explanation: 'Un solo paso requiere la coordinación de aproximadamente 200 músculos del tronco, caderas y piernas.'
+                    },
+                    la: {
+                        question: 'Quot fere musculi diversi ad unum tantum passum faciendum adhibentur?',
+                        options: ['Circiter 20 musculi', 'Circiter 200 musculi', 'Circiter 600 musculi'],
+                        explanation: 'Unus passus coordinationem circiter 200 musculorum trunci, coxarum et crurum requirit.'
+                    },
+                    zh: {
+                        question: '仅仅迈出一步，人体大约需要调动多少块不同的肌肉？',
+                        options: ['约20块肌肉', '约200块肌肉', '约600块肌肉'],
+                        explanation: '仅仅迈出一步，就需要躯干、髋部和腿部大约200块肌肉的协同配合。'
+                    }
+                }
+            },
+            {
+                correctIndex: 2,
+                i18n: {
+                    pt: {
+                        question: 'Qual órgão do sistema imunológico recicla glóbulos vermelhos velhos e filtra o sangue?',
+                        options: ['Timo', 'Pâncreas', 'Baço'],
+                        explanation: 'O baço filtra o sangue, remove glóbulos vermelhos envelhecidos e armazena linfócitos.'
+                    },
+                    en: {
+                        question: 'Which organ of the immune system recycles old red blood cells and filters blood?',
+                        options: ['Thymus', 'Pancreas', 'Spleen'],
+                        explanation: 'The spleen filters blood, removes aging red blood cells, and stores lymphocytes.'
+                    },
+                    es: {
+                        question: '¿Qué órgano del sistema inmunológico recicla glóbulos rojos viejos y filtra la sangre?',
+                        options: ['Timo', 'Páncreas', 'Bazo'],
+                        explanation: 'El bazo filtra la sangre, elimina glóbulos rojos envejecidos y almacena linfocitos.'
+                    },
+                    la: {
+                        question: 'Quod organum systematis immunitatis erythrocytos vetustos redivivos facit et sanguinem filtrat?',
+                        options: ['Thymus', 'Pancreas', 'Lien (Splen)'],
+                        explanation: 'Lien sanguinem filtrat, erythrocytos senescentes removet et lymphocytos servat.'
+                    },
+                    zh: {
+                        question: '免疫系统中的哪个器官负责回收衰老红细胞并过滤血液？',
+                        options: ['胸腺', '胰腺', '脾脏'],
+                        explanation: '脾脏负责过滤血液、清除衰老的红细胞并储存淋巴细胞。'
+                    }
+                }
+            },
+            {
+                correctIndex: 0,
+                i18n: {
+                    pt: {
+                        question: 'Onde reside aproximadamente 70% das células imunológicas do corpo humano?',
+                        options: ['No intestino', 'Nos pulmões', 'No cérebro'],
+                        explanation: 'Cerca de 70% das células de defesa vivem no intestino, atuando junto à microbiota intestinal.'
+                    },
+                    en: {
+                        question: 'Where do roughly 70% of the human body’s immune cells reside?',
+                        options: ['In the gut (intestines)', 'In the lungs', 'In the brain'],
+                        explanation: 'About 70% of immune defense cells reside in the gut, working alongside beneficial microbiota.'
+                    },
+                    es: {
+                        question: '¿Dónde reside aproximadamente el 70% de las células inmunológicas del cuerpo humano?',
+                        options: ['En el intestino', 'En los pulmones', 'En el cerebro'],
+                        explanation: 'Cerca del 70% de las células de defensa viven en el intestino, actuando junto a la microbiota intestinal.'
+                    },
+                    la: {
+                        question: 'Ubi circiter 70% cellularum immunologicarum corporis humani habitant?',
+                        options: ['In intestino', 'In pulmonibus', 'In cerebro'],
+                        explanation: 'Fere 70% cellularum defensionis in intestino vivunt, una cum microbiota intestinali agentes.'
+                    },
+                    zh: {
+                        question: '人体大约70%的免疫细胞居住在哪个部位？',
+                        options: ['肠道', '肺部', '大脑'],
+                        explanation: '大约70%的免疫防御细胞分布在肠道中，与肠道微生物群协同守护健康。'
+                    }
+                }
+            },
+            {
+                correctIndex: 1,
+                i18n: {
+                    pt: {
+                        question: 'Quantos litros de fluido sanguíneo os rins filtram aproximadamente todos os dias?',
+                        options: ['18 litros', '180 litros', '1.800 litros'],
+                        explanation: 'Os rins filtram cerca de 180 litros de fluido por dia, mas 99% da água é reabsorvida pelo organismo.'
+                    },
+                    en: {
+                        question: 'Approximately how many liters of blood fluid do the kidneys filter every single day?',
+                        options: ['18 liters', '180 liters', '1,800 liters'],
+                        explanation: 'The kidneys filter about 180 liters of fluid daily, with 99% of the water reabsorbed by the body.'
+                    },
+                    es: {
+                        question: '¿Aproximadamente cuántos litros de líquido sanguíneo filtran los riñones cada día?',
+                        options: ['18 litros', '180 litros', '1.800 litros'],
+                        explanation: 'Los riñones filtran unos 180 litros de líquido al día, pero el 99% del agua es reabsorbida por el organismo.'
+                    },
+                    la: {
+                        question: 'Quot fere litros humoris sanguinei renes cotidie filtrant?',
+                        options: ['18 litros', '180 litros', '1.800 litros'],
+                        explanation: 'Renes circiter 180 litros humoris per diem filtrant, sed 99% aquae ab organismo reabsorbetur.'
+                    },
+                    zh: {
+                        question: '肾脏每天大约过滤多少升血浆液体？',
+                        options: ['18升', '180升', '1800升'],
+                        explanation: '肾脏每天过滤约180升液体，但其中99%的水分都会被身体重新吸收。'
+                    }
+                }
+            },
+            {
+                correctIndex: 2,
+                i18n: {
+                    pt: {
+                        question: 'Como são chamadas as unidades microscópicas de filtração dentro de cada rim?',
+                        options: ['Alvéolos', 'Neurônios', 'Néfrons'],
+                        explanation: 'Cada rim possui cerca de 1 milhão de néfrons, que filtram o sangue e formam a urina.'
+                    },
+                    en: {
+                        question: 'What are the microscopic filtering units inside each kidney called?',
+                        options: ['Alveoli', 'Neurons', 'Nephrons'],
+                        explanation: 'Each kidney contains roughly 1 million nephrons that filter blood and produce urine.'
+                    },
+                    es: {
+                        question: '¿Cómo se llaman las unidades microscópicas de filtración dentro de cada riñón?',
+                        options: ['Alvéolos', 'Neuronas', 'Nefronas'],
+                        explanation: 'Cada riñón posee alrededor de 1 millón de nefronas, que filtran la sangre y forman la orina.'
+                    },
+                    la: {
+                        question: 'Quomodo vocantur unitates microscopicae filtrationis intra quemque renem?',
+                        options: ['Alveoli', 'Neurona', 'Nephrones'],
+                        explanation: 'Quisque ren circiter 1 millionem nephronum habet, qui sanguinem filtrant et urinam formant.'
+                    },
+                    zh: {
+                        question: '每个肾脏内部的微观过滤单元被称为什么？',
+                        options: ['肺泡', '神经元', '肾单位'],
+                        explanation: '每个肾脏内约有100万个肾单位，负责过滤血液并生成尿液。'
+                    }
+                }
+            },
+            {
+                correctIndex: 0,
+                i18n: {
+                    pt: {
+                        question: 'Qual estrutura do sistema nervoso coordena o equilíbrio, a postura e a precisão dos movimentos?',
+                        options: ['Cerebelo', 'Medula óssea', 'Hipotálamo'],
+                        explanation: 'O cerebelo integra informações sensoriais e motoras para garantir equilíbrio e movimentos suaves.'
+                    },
+                    en: {
+                        question: 'Which structure of the nervous system coordinates balance, posture, and precision of movement?',
+                        options: ['Cerebellum', 'Bone marrow', 'Hypothalamus'],
+                        explanation: 'The cerebellum integrates sensory and motor signals to maintain balance and smooth movements.'
+                    },
+                    es: {
+                        question: '¿Qué estructura del sistema nervioso coordina el equilibrio, la postura y la precisión de los movimientos?',
+                        options: ['Cerebelo', 'Médula ósea', 'Hipotálamo'],
+                        explanation: 'El cerebelo integra señales sensoriales y motoras para garantizar el equilibrio y movimientos precisos.'
+                    },
+                    la: {
+                        question: 'Quae structura systematis nervosi aequilibrium, staturam et subtilitatem motuum coordinat?',
+                        options: ['Cerebellum', 'Medulla ossium', 'Hypothalamus'],
+                        explanation: 'Cerebellum signa sensoria et motoria integrat ut aequilibrium et motus lenes servet.'
+                    },
+                    zh: {
+                        question: '神经系统中的哪个结构负责协调身体平衡、姿势和动作的精确度？',
+                        options: ['小脑', '骨髓', '下丘脑'],
+                        explanation: '小脑整合感觉和运动信号，以维持身体平衡并确保动作协调精准。'
                     }
                 }
             },
@@ -1983,58 +2328,58 @@
                 i18n: {
                     pt: {
                         question: 'Onde são produzidas as células sanguíneas (glóbulos vermelhos, brancos e plaquetas)?',
-                        options: ['No baço', 'Na medula óssea vermelha', 'Nos linfonodos', 'No pâncreas'],
-                        explanation: 'A hematopoiese ocorre principalmente na medula óssea vermelha localizada no interior de certos ossos.'
+                        options: ['No fígado adulto', 'Na medula óssea vermelha', 'Nos linfonodos'],
+                        explanation: 'A hematopoiese ocorre na medula óssea vermelha localizada no interior de diversos ossos.'
                     },
                     en: {
                         question: 'Where are blood cells (red blood cells, white blood cells, and platelets) produced?',
-                        options: ['In the spleen', 'In red bone marrow', 'In lymph nodes', 'In the pancreas'],
-                        explanation: 'Hematopoiesis occurs primarily in the red bone marrow located inside certain bones.'
+                        options: ['In the adult liver', 'In the red bone marrow', 'In the lymph nodes'],
+                        explanation: 'Hematopoiesis takes place in the red bone marrow found inside several bones.'
                     },
                     es: {
                         question: '¿Dónde se producen las células sanguíneas (glóbulos rojos, blancos y plaquetas)?',
-                        options: ['En el bazo', 'En la médula ósea roja', 'En los ganglios linfáticos', 'En el páncreas'],
-                        explanation: 'La hematopoyesis ocurre principalmente en la médula ósea roja ubicada en el interior de ciertos huesos.'
+                        options: ['En el hígado adulto', 'En la médula ósea roja', 'En los ganglios linfáticos'],
+                        explanation: 'La hematopoyesis ocurre en la médula ósea roja ubicada en el interior de varios huesos.'
                     },
                     la: {
                         question: 'Ubi cellulae sanguinis (erythrocyti, leucocyti et thrombocyti) producuntur?',
-                        options: ['In liene', 'In medulla ossium rubra', 'In nodis lymphaticis', 'In pancreate'],
-                        explanation: 'Haematopoiesis praecipue in medulla ossium rubra intra quaedam ossa sita fit.'
+                        options: ['In hepate adulto', 'In medulla ossium rubra', 'In nodis lymphaticis'],
+                        explanation: 'Haematopoiesis in medulla ossium rubra intra diversa ossa sita fit.'
                     },
                     zh: {
                         question: '血细胞（红细胞、白细胞和血小板）是在哪里生成的？',
-                        options: ['脾脏中', '红骨髓中', '淋巴结中', '胰腺中'],
-                        explanation: '造血作用主要发生在某些骨骼内部的红骨髓中。'
+                        options: ['成人肝脏', '红骨髓', '淋巴结'],
+                        explanation: '造血作用发生在位于多块骨骼内部的红骨髓中。'
                     }
                 }
             },
             {
-                correctIndex: 3,
+                correctIndex: 2,
                 i18n: {
                     pt: {
-                        question: 'Qual estrutura fibrosa resistente conecta os músculos aos ossos?',
-                        options: ['Ligamentos', 'Cartilagens', 'Alvéolos', 'Tendões'],
-                        explanation: 'Os tendões transmitem a força de contração dos músculos para os ossos, gerando o movimento articular.'
+                        question: 'Qual é o maior músculo do corpo humano em volume?',
+                        options: ['Peitoral maior', 'Sartório', 'Glúteo máximo'],
+                        explanation: 'O glúteo máximo é o músculo mais volumoso do corpo, fundamental para manter a postura ereta.'
                     },
                     en: {
-                        question: 'Which tough fibrous structure connects muscles to bones?',
-                        options: ['Ligaments', 'Cartilage', 'Alveoli', 'Tendons'],
-                        explanation: 'Tendons transmit the pulling force of muscle contractions to bones, producing joint movement.'
+                        question: 'What is the largest muscle in the human body by volume?',
+                        options: ['Pectoralis major', 'Sartorius', 'Gluteus maximus'],
+                        explanation: 'The gluteus maximus is the most voluminous muscle in the body, essential for upright posture.'
                     },
                     es: {
-                        question: '¿Qué estructura fibrosa resistente conecta los músculos con los huesos?',
-                        options: ['Ligamentos', 'Cartílagos', 'Alvéolos', 'Tendones'],
-                        explanation: 'Los tendones transmiten la fuerza de contracción de los músculos hacia los huesos, generando movimiento articular.'
+                        question: '¿Cuál es el músculo más grande del cuerpo humano en volumen?',
+                        options: ['Pectoral mayor', 'Sartorio', 'Glúteo mayor'],
+                        explanation: 'El glúteo mayor es el músculo más voluminoso del cuerpo, fundamental para mantener la postura erguida.'
                     },
                     la: {
-                        question: 'Quae structura fibrosa resistens musculos cum ossibus conectit?',
-                        options: ['Ligamenta', 'Cartilagines', 'Alveoli', 'Tendines'],
-                        explanation: 'Tendines vim contractionis musculorum ad ossa transmittunt, motum articularem generantes.'
+                        question: 'Quis est maximus musculus corporis humani volumine?',
+                        options: ['Pectoralis maior', 'Sartorius', 'Gluteus maximus'],
+                        explanation: 'Gluteus maximus est musculus maximi voluminis in corpore, ad staturam erectam servandam necessarius.'
                     },
                     zh: {
-                        question: '连接肌肉与骨骼的坚韧纤维结构叫什么？',
-                        options: ['韧带', '软骨', '肺泡', '肌腱'],
-                        explanation: '肌腱将肌肉收缩产生的拉力传递给骨骼，从而带动关节产生运动。'
+                        question: '按体积计算，人体最大的肌肉是哪一块？',
+                        options: ['胸大肌', '缝匠肌', '臀大肌'],
+                        explanation: '臀大肌是人体体积最大的肌肉，对于维持直立姿势至关重要。'
                     }
                 }
             }
