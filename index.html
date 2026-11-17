@@ -274,6 +274,17 @@
                             <!-- Uretra -->
                             <line x1="155" y1="334" x2="155" y2="343" stroke="#CA8A04" stroke-width="2.5" stroke-linecap="round"/>
                         </g>
+
+                        <!-- Camada 9: Sistema Locomotor -->
+                        <g id="layer-locomotor" class="svg-organ" onclick="selectSystem('locomotor')">
+                            <title id="title-locomotor">Sistema Locomotor</title>
+                            <!-- Combinação Esqueleto + Músculos de Locomoção -->
+                            <line x1="155" y1="82" x2="155" y2="315" stroke="#3B82F6" stroke-width="5" stroke-dasharray="6,3" opacity="0.85"/>
+                            <line x1="126" y1="335" x2="118" y2="420" stroke="#3B82F6" stroke-width="6" stroke-linecap="round" opacity="0.85"/>
+                            <line x1="184" y1="335" x2="192" y2="420" stroke="#3B82F6" stroke-width="6" stroke-linecap="round" opacity="0.85"/>
+                            <path d="M112 345 C106 375 106 405 114 422 C124 422 128 385 128 345 Z" fill="#3B82F6" opacity="0.45" stroke="#1D4ED8" stroke-width="1.5"/>
+                            <path d="M198 345 C204 375 204 405 196 422 C186 422 182 385 182 345 Z" fill="#3B82F6" opacity="0.45" stroke="#1D4ED8" stroke-width="1.5"/>
+                        </g>
                     </svg>
                 </div>
 
@@ -1495,794 +1506,147 @@
                         ]
                     }
                 }
-            }
-        ];
-
-        // ==========================================
-        // 2. DICIONÁRIO DE TRADUÇÃO DA INTERFACE (PT, EN, ES, LA, ZH)
-        // ==========================================
-        const uiTranslations = {
-            pt: {
-                pageTitle: 'Anatomia Interativa - Sistemas do Corpo Humano',
-                headerTitleHTML: 'Corpo Humano <span class="text-indigo-600">360°</span>',
-                headerSubtitle: 'Atlas Anatômico Interativo & Curiosidades',
-                navExplore: 'Explorar Sistemas',
-                navQuiz: 'Mini-Quiz',
-                heroBadge: 'Aprendizado Visual Interativo',
-                heroTitleHTML: 'Descubra a incrível máquina que é o <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-500">Corpo Humano</span>',
-                heroSubtitle: 'Clique nos órgãos diretamente no modelo anatômico ou selecione um dos oito sistemas principais abaixo para explorar suas funções vitais, estruturas e fatos surpreendentes.',
-                svgTouchHint: 'Toque em um órgão',
-                svgViewAllBtn: 'Ver Todos',
-                svgSelectedPrefix: 'Sistema selecionado:',
-                svgAllSystemsLabel: 'Visão Geral (Todos os Sistemas)',
-                systemBadge: 'Sistema Anatômico',
-                mainFunctionsTitle: 'Funções Principais',
-                organsTitle: 'Órgãos e Estruturas Principais',
-                factsTitle: 'Você Sabia? (Curiosidades)',
-                quizBadge: 'Desafio de Conhecimento',
-                quizTitle: 'Mini-Quiz de Anatomia',
-                quizSubtitle: 'Teste o que você aprendeu explorando os sistemas do corpo humano.',
-                quizScoreLabel: 'Pontuação',
-                footerTitle: 'Corpo Humano 360° — Educação Científica Interativa',
-                footerSubtitle: 'Desenvolvido para fins educativos. Explore, clique e aprenda.',
-                quizCorrectFeedback: 'Resposta Correta!',
-                quizWrongFeedback: 'Resposta Incorreta.',
-                quizNextBtn: 'Próxima Questão',
-                quizFinishBtn: 'Ver Resultado Final',
-                quizEndTitle: 'Quiz Concluído!',
-                quizMsgHigh: 'Excelente! Você domina a anatomia humana como um verdadeiro especialista!',
-                quizMsgMid: 'Muito bom! Você tem um ótimo conhecimento sobre o corpo humano.',
-                quizMsgLow: 'Bom esforço! Continue explorando o atlas interativo para aprender mais.',
-                quizEndScore: (score, total) => `Sua pontuação final: ${score} de ${total}`,
-                quizRestartBtn: 'Refazer Quiz',
-                quizQuestionCounter: (cur, tot) => `Questão ${cur} de ${tot}`,
-                quizCompletedPercent: (pct) => `${pct}% Concluído`
-            },
-            en: {
-                pageTitle: 'Interactive Anatomy - Human Body Systems',
-                headerTitleHTML: 'Human Body <span class="text-indigo-600">360°</span>',
-                headerSubtitle: 'Interactive Anatomical Atlas & Facts',
-                navExplore: 'Explore Systems',
-                navQuiz: 'Mini-Quiz',
-                heroBadge: 'Interactive Visual Learning',
-                heroTitleHTML: 'Discover the incredible machine that is the <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-500">Human Body</span>',
-                heroSubtitle: 'Click directly on the anatomical model organs or select one of the eight main systems below to explore their vital functions, structures, and surprising facts.',
-                svgTouchHint: 'Tap an organ',
-                svgViewAllBtn: 'View All',
-                svgSelectedPrefix: 'Selected system:',
-                svgAllSystemsLabel: 'Overview (All Systems)',
-                systemBadge: 'Anatomical System',
-                mainFunctionsTitle: 'Main Functions',
-                organsTitle: 'Key Organs & Structures',
-                factsTitle: 'Did You Know? (Facts)',
-                quizBadge: 'Knowledge Challenge',
-                quizTitle: 'Anatomy Mini-Quiz',
-                quizSubtitle: 'Test what you have learned by exploring the human body systems.',
-                quizScoreLabel: 'Score',
-                footerTitle: 'Human Body 360° — Interactive Science Education',
-                footerSubtitle: 'Developed for educational purposes. Explore, click, and learn.',
-                quizCorrectFeedback: 'Correct Answer!',
-                quizWrongFeedback: 'Incorrect Answer.',
-                quizNextBtn: 'Next Question',
-                quizFinishBtn: 'View Final Result',
-                quizEndTitle: 'Quiz Completed!',
-                quizMsgHigh: 'Excellent! You master human anatomy like a true expert!',
-                quizMsgMid: 'Very good! You have a great understanding of the human body.',
-                quizMsgLow: 'Good effort! Keep exploring the interactive atlas to learn more.',
-                quizEndScore: (score, total) => `Your final score: ${score} out of ${total}`,
-                quizRestartBtn: 'Retake Quiz',
-                quizQuestionCounter: (cur, tot) => `Question ${cur} of ${tot}`,
-                quizCompletedPercent: (pct) => `${pct}% Completed`
-            },
-            es: {
-                pageTitle: 'Anatomía Interactiva - Sistemas del Cuerpo Humano',
-                headerTitleHTML: 'Cuerpo Humano <span class="text-indigo-600">360°</span>',
-                headerSubtitle: 'Atlas Anatómico Interactivo y Curiosidades',
-                navExplore: 'Explorar Sistemas',
-                navQuiz: 'Mini-Quiz',
-                heroBadge: 'Aprendizaje Visual Interactivo',
-                heroTitleHTML: 'Descubre la increíble máquina que es el <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-500">Cuerpo Humano</span>',
-                heroSubtitle: 'Haz clic en los órganos del modelo anatómico o selecciona uno de los ocho sistemas principales para explorar sus funciones vitales, estructuras y datos curiosos.',
-                svgTouchHint: 'Toca un órgano',
-                svgViewAllBtn: 'Ver Todos',
-                svgSelectedPrefix: 'Sistema seleccionado:',
-                svgAllSystemsLabel: 'Vista General (Todos los Sistemas)',
-                systemBadge: 'Sistema Anatómico',
-                mainFunctionsTitle: 'Funciones Principales',
-                organsTitle: 'Órganos y Estructuras Clave',
-                factsTitle: '¿Sabías que? (Curiosidades)',
-                quizBadge: 'Desafío de Conocimiento',
-                quizTitle: 'Mini-Quiz de Anatomía',
-                quizSubtitle: 'Pon a prueba lo que aprendiste explorando los sistemas del cuerpo humano.',
-                quizScoreLabel: 'Puntuación',
-                footerTitle: 'Cuerpo Humano 360° — Educación Científica Interactiva',
-                footerSubtitle: 'Desarrollado con fines educativos. Explora, haz clic y aprende.',
-                quizCorrectFeedback: '¡Respuesta Correcta!',
-                quizWrongFeedback: 'Respuesta Incorrecta.',
-                quizNextBtn: 'Siguiente Pregunta',
-                quizFinishBtn: 'Ver Resultado Final',
-                quizEndTitle: '¡Quiz Completado!',
-                quizMsgHigh: '¡Excelente! ¡Dominas la anatomía humana como un verdadero experto!',
-                quizMsgMid: '¡Muy bien! Tienes un gran conocimiento sobre el cuerpo humano.',
-                quizMsgLow: '¡Buen esfuerzo! Sigue explorando el atlas interactivo para aprender más.',
-                quizEndScore: (score, total) => `Tu puntuación final: ${score} de ${total}`,
-                quizRestartBtn: 'Reiniciar Quiz',
-                quizQuestionCounter: (cur, tot) => `Pregunta ${cur} de ${tot}`,
-                quizCompletedPercent: (pct) => `${pct}% Completado`
-            },
-            la: {
-                pageTitle: 'Anatomia Interactiva - Systemata Corporis Humani',
-                headerTitleHTML: 'Corpus Humanum <span class="text-indigo-600">360°</span>',
-                headerSubtitle: 'Atlas Anatomicum & Curiositates',
-                navExplore: 'Explore Systemata',
-                navQuiz: 'Mini-Quiz',
-                heroBadge: 'Doctrina Visual',
-                heroTitleHTML: 'Inveni machinam mirabilem quae est <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-500">Corpus Humanum</span>',
-                heroSubtitle: 'Tange organa in exemplari anatomico vel selige systema ut functiones vitales discas.',
-                svgTouchHint: 'Tange organum',
-                svgViewAllBtn: 'Vide Omnia',
-                svgSelectedPrefix: 'Systema selectum:',
-                svgAllSystemsLabel: 'Conspectus Generalis',
-                systemBadge: 'Systema Anatomicum',
-                mainFunctionsTitle: 'Functiones Principales',
-                organsTitle: 'Organa Principalia',
-                factsTitle: 'Scisne hunc factum?',
-                quizBadge: 'Certamen Scientiae',
-                quizTitle: 'Mini-Quiz Anatomiae',
-                quizSubtitle: 'Experire quod didicisti de corpore humano.',
-                quizScoreLabel: 'Puncta',
-                footerTitle: 'Corpus Humanum 360° — Educatio Scientiae',
-                footerSubtitle: 'Ad usum educativum creatum.',
-                quizCorrectFeedback: 'Responsum Rectum!',
-                quizWrongFeedback: 'Responsum Falsum.',
-                quizNextBtn: 'Quaestio Sequens',
-                quizFinishBtn: 'Vide Eventum',
-                quizEndTitle: 'Quiz Finitum!',
-                quizMsgHigh: 'Optime! Peritus es anatomiae humanae!',
-                quizMsgMid: 'Valde bene! Multa scis de corpore humano.',
-                quizMsgLow: 'Perge laborare et atlas explore!',
-                quizEndScore: (score, total) => `Puncta tua: ${score} ex ${total}`,
-                quizRestartBtn: 'Iterum Quiz',
-                quizQuestionCounter: (cur, tot) => `Quaestio ${cur} ex ${tot}`,
-                quizCompletedPercent: (pct) => `${pct}% Completum`
-            },
-            zh: {
-                pageTitle: '交互式人体解剖学 - 人体系统',
-                headerTitleHTML: '人体奥秘 <span class="text-indigo-600">360°</span>',
-                headerSubtitle: '交互式解剖图谱与科普趣闻',
-                navExplore: '探索系统',
-                navQuiz: '趣味问答',
-                heroBadge: '沉浸式可视化学习',
-                heroTitleHTML: '探索人体这座精密而神奇的 <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-500">生命机器</span>',
-                heroSubtitle: '直接点击解剖模型上的器官，或在下方选择八大核心系统之一，深入了解它们维持生命的奇妙功能与科学趣闻。',
-                svgTouchHint: '轻触解剖模型上的器官',
-                svgViewAllBtn: '查看全部',
-                svgSelectedPrefix: '当前选中系统:',
-                svgAllSystemsLabel: '总览模式（所有系统）',
-                systemBadge: '解剖学系统',
-                mainFunctionsTitle: '核心生理功能',
-                organsTitle: '主要器官与组织结构',
-                factsTitle: '冷知识大揭秘（你可知晓？）',
-                quizBadge: '解剖学知识挑战',
-                quizTitle: '人体趣味微测验',
-                quizSubtitle: '通过互动答题检测你对人体八大系统的探索成果。',
-                quizScoreLabel: '当前得分',
-                footerTitle: '人体 360° — 交互式科学教育平台',
-                footerSubtitle: '专为科学普及与教育打造。点击、探索并学习。',
-                quizCorrectFeedback: '回答正确！',
-                quizWrongFeedback: '回答错误。',
-                quizNextBtn: '下一题',
-                quizFinishBtn: '查看最终成绩',
-                quizEndTitle: '测验顺利完成！',
-                quizMsgHigh: '太棒了！你对人体解剖学的掌握堪称专家水平！',
-                quizMsgMid: '非常不错！你对人体各大系统有了相当深入的了解。',
-                quizMsgLow: '再接再厉！继续探索交互图谱，你会发现更多人体奥秘。',
-                quizEndScore: (score, total) => `你的最终得分: ${score} / ${total}`,
-                quizRestartBtn: '重新开始测验',
-                quizQuestionCounter: (cur, tot) => `第 ${cur} 题，共 ${tot} 题`,
-                quizCompletedPercent: (pct) => `已完成 ${pct}%`
-            }
-        };
-
-        // ==========================================
-        const quizQuestions = [
-            {
-                correctIndex: 1,
-                i18n: {
-                    pt: {
-                        question: 'Quantas voltas ao redor da Terra todos os vasos sanguíneos de um adulto dariam se esticados em linha reta?',
-                        options: ['Cerca de 0,5 volta', 'Cerca de 2,5 voltas (~100.000 km)', 'Cerca de 5 voltas', 'Cerca de 10 voltas', 'Cerca de 50 voltas'],
-                        explanation: 'A rede vascular humana soma aproximadamente 96.000 a 100.000 km, suficiente para dar 2,5 voltas na Terra!'
-                    },
-                    en: {
-                        question: 'How many times around the Earth would all the blood vessels in an adult wrap if laid end-to-end?',
-                        options: ['About 0.5 times', 'About 2.5 times (~100,000 km)', 'About 5 times', 'About 10 times', 'About 50 times'],
-                        explanation: 'The human vascular network totals roughly 96,000 to 100,000 km, enough to wrap around Earth 2.5 times!'
-                    },
-                    es: {
-                        question: '¿Cuántas vueltas alrededor de la Tierra darían todos los vasos sanguíneos de un adulto si se estiraran en línea recta?',
-                        options: ['Unas 0,5 vueltas', 'Unas 2,5 vueltas (~100.000 km)', 'Unas 5 vueltas', 'Unas 10 vueltas', 'Unas 50 vueltas'],
-                        explanation: '¡La red vascular humana suma aproximadamente 96.000 a 100.000 km, suficiente para dar 2,5 vueltas a la Tierra!'
-                    },
-                    la: {
-                        question: 'Quotiens circum Terram omnia vasa sanguinea hominis adulti darent si in lineam rectam extenderentur?',
-                        options: ['Circiter 0,5 vicibus', 'Circiter 2,5 vicibus (~100.000 km)', 'Circiter 5 vicibus', 'Circiter 10 vicibus', 'Circiter 50 vicibus'],
-                        explanation: 'Rete vasculare humanum circiter 96.000 ad 100.000 km aequat, quod sufficit ad Terram 2,5 vicibus circumiendam!'
-                    },
-                    zh: {
-                        question: '如果将一个成年人全身的所有血管首尾相连拉成直线，大约可以绕地球多少圈？',
-                        options: ['约0.5圈', '约2.5圈（约10万公里）', '约5圈', '约10圈', '约50圈'],
-                        explanation: '人体血管网络总长约9.6万至10万公里，足以绕地球2.5圈！'
-                    }
-                }
             },
             {
-                correctIndex: 2,
+                id: 'locomotor',
+                icon: 'move',
+                theme: {
+                    bgLight: 'bg-blue-50',
+                    border: 'border-blue-200',
+                    textMain: 'text-blue-600',
+                    textDark: 'text-blue-900',
+                    btnActive: 'bg-blue-600 text-white shadow-blue-500/25',
+                    accentHex: '#3B82F6'
+                },
                 i18n: {
                     pt: {
-                        question: 'Qual é o menor osso do corpo humano e onde ele está localizado?',
-                        options: ['Falange distal (dedo mínimo)', 'Vômer (nariz)', 'Estribo (ouvido médio)', 'Martelo (ouvido interno)', 'Osso hioide (pescoço)'],
-                        explanation: 'O estribo, localizado no ouvido médio, mede cerca de 2,8 milímetros e transmite vibrações sonoras.'
+                        name: 'Sistema Locomotor',
+                        shortName: 'Locomotor',
+                        tagline: 'Integração de ossos, articulações e músculos para a locomoção.',
+                        description: 'O sistema locomotor resulta da integração harmoniosa entre o sistema esquelético e o muscular. Ele possibilita a locomoção espacial, a manipulação de objetos e a manutenção da postura ereta.',
+                        metrics: [
+                            { label: 'Componentes', value: 'Ossos + Músculos' },
+                            { label: 'Articulações', value: '~360 juntas' },
+                            { label: 'Controle', value: 'Nervoso e Voluntário' }
+                        ],
+                        mainFunctions: [
+                            'Deslocamento do corpo no espaço através da marcha e corrida.',
+                            'Proteção e suporte mecânico integrado aos órgãos vitais.',
+                            'Alavancagem biomecânica otimizada para força e agilidade.'
+                        ],
+                        organs: [
+                            { name: 'Ossos e Esqueleto', role: 'Fornecem as alavancas rígidas de sustentação.' },
+                            { name: 'Músculos Esqueléticos', role: 'Fornecem a força contrátil que move as alavancas ósseas.' },
+                            { name: 'Articulações e Ligamentos', role: 'Permitem amplitude de movimento e estabilidade.' }
+                        ],
+                        facts: [
+                            'O corpo humano possui cerca de 360 articulações que permitem flexibilidade.',
+                            'Para dar um único passo, mais de 200 músculos trabalham em sincronia perfeita.',
+                            'A integração entre ossos e músculos consome grande parte da energia diária em repouso.'
+                        ]
                     },
                     en: {
-                        question: 'What is the smallest bone in the human body and where is it located?',
-                        options: ['Distal phalanx (little finger)', 'Vomer (nose)', 'Stapes (middle ear)', 'Malleus (inner ear)', 'Hyoid bone (neck)'],
-                        explanation: 'The stapes (stirrup), located in the middle ear, measures about 2.8 millimeters and transmits sound vibrations.'
+                        name: 'Locomotor System',
+                        shortName: 'Locomotor',
+                        tagline: 'Integration of bones, joints, and muscles for movement.',
+                        description: 'The locomotor system results from the harmonious integration of the skeletal and muscular systems. It enables spatial locomotion, object manipulation, and upright posture.',
+                        metrics: [
+                            { label: 'Components', value: 'Bones + Muscles' },
+                            { label: 'Joints', value: '~360 joints' },
+                            { label: 'Control', value: 'Nerve & Voluntary' }
+                        ],
+                        mainFunctions: [
+                            'Displacement of the body in space through walking and running.',
+                            'Integrated mechanical protection and support for vital organs.',
+                            'Optimized biomechanical leverage for strength and agility.'
+                        ],
+                        organs: [
+                            { name: 'Bones & Skeleton', role: 'Provide rigid support levers.' },
+                            { name: 'Skeletal Muscles', role: 'Provide contractile force moving bone levers.' },
+                            { name: 'Joints & Ligaments', role: 'Enable range of motion and stability.' }
+                        ],
+                        facts: [
+                            'The human body has about 360 joints allowing for flexibility.',
+                            'To take a single step, over 200 muscles work in perfect synchronization.',
+                            'The integration between bones and muscles consumes a large portion of resting daily energy.'
+                        ]
                     },
                     es: {
-                        question: '¿Cuál es el hueso más pequeño del cuerpo humano y dónde se encuentra?',
-                        options: ['Falange distal (meñique)', 'Vómer (nariz)', 'Estribo (oído medio)', 'Martillo (oído interno)', 'Hueso hioides (cuello)'],
-                        explanation: 'El estribo, ubicado en el oído medio, mide unos 2,8 milímetros y transmite vibraciones sonoras.'
+                        name: 'Sistema Locomotor',
+                        shortName: 'Locomotor',
+                        tagline: 'Integración de huesos, articulaciones y músculos para el movimiento.',
+                        description: 'Resultado de la integración armoniosa entre el sistema esquelético y el muscular. Permite la locomoción espacial y la postura.',
+                        metrics: [
+                            { label: 'Componentes', value: 'Huesos + Músculos' },
+                            { label: 'Articulaciones', value: '~360 juntas' },
+                            { label: 'Control', value: 'Nervioso y Voluntario' }
+                        ],
+                        mainFunctions: [
+                            'Desplazamiento del cuerpo en el espacio.',
+                            'Protección y soporte mecánico integrado.',
+                            'Palanca biomecánica optimizada para fuerza.'
+                        ],
+                        organs: [
+                            { name: 'Huesos y Esqueleto', role: 'Proporcionan palancas rígidas de sostén.' },
+                            { name: 'Músculos Esqueléticos', role: 'Aportan la fuerza contráctil.' },
+                            { name: 'Articulaciones', role: 'Permiten el rango de movimiento.' }
+                        ],
+                        facts: [
+                            'El cuerpo humano cuenta con unas 360 articulaciones.',
+                            'Para dar un solo paso, más de 200 músculos trabajan en sincronía.',
+                            'La interacción osteomuscular consume gran parte de la energía diaria.'
+                        ]
                     },
                     la: {
-                        question: 'Quod est minimum os corporis humani et ubi situm est?',
-                        options: ['Phalanx distalis (digitus minimus)', 'Vomer (nasus)', 'Stapes (auris media)', 'Malleus (auris interna)', 'Os hyoideum (collum)'],
-                        explanation: 'Stapes, in aure media situs, circiter 2,8 millimetra metitur et vibrationes sonoras transmittit.'
+                        name: 'Systema Locomotorium',
+                        shortName: 'Locomotor',
+                        tagline: 'Integratio ossium et musculorum pro motu.',
+                        description: 'Systema locomotorium ex ossibus et musculis constat ad corpus movendum et staturam servandam.',
+                        metrics: [
+                            { label: 'Partes', value: 'Ossa + Musculi' },
+                            { label: 'Articulationes', value: '~360' },
+                            { label: 'Regimen', value: 'Voluntarium' }
+                        ],
+                        mainFunctions: [
+                            'Corpus in spatio movere.',
+                            'Supportum mechanicum praebere.',
+                            'Vim et agilitatem augere.'
+                        ],
+                        organs: [
+                            { name: 'Ossa', role: 'Levera rigida praebent.' },
+                            { name: 'Musculi', role: 'Vim contractionis dant.' },
+                            { name: 'Articulationes', role: 'Flexibilitatem permittunt.' }
+                        ],
+                        facts: [
+                            'Corpus humanum circiter 360 articulationes habet.',
+                            'Unus passus plus quam 200 musculos coordinat.'
+                        ]
                     },
                     zh: {
-                        question: '人体最小的骨头是什么，它位于哪个部位？',
-                        options: ['远节指骨（小指）', '犁骨（鼻腔）', '镫骨（中耳）', '锤骨（内耳）', '舌骨（颈部）'],
-                        explanation: '位于中耳的镫骨长度仅为约2.8毫米，负责传递声音振动。'
-                    }
-                }
-            },
-            {
-                correctIndex: 0,
-                i18n: {
-                    pt: {
-                        question: 'Por que o pulmão direito é ligeiramente maior do que o pulmão esquerdo?',
-                        options: ['Para abrir espaço para o coração no lado esquerdo', 'Porque o fígado fica acima dele', 'Porque recebe mais oxigênio', 'Porque possui três lobos em vez de dois', 'Porque tem mais alvéolos'],
-                        explanation: 'O coração fica levemente inclinado para a esquerda no tórax, fazendo com que o pulmão esquerdo seja um pouco menor.'
-                    },
-                    en: {
-                        question: 'Why is the right lung slightly larger than the left lung?',
-                        options: ['To make room for the heart on the left side', 'Because the liver sits above it', 'Because it receives more oxygen', 'Because it has three lobes instead of two', 'Because it contains more alveoli'],
-                        explanation: 'The heart tilts slightly toward the left side of the chest, making the left lung slightly smaller.'
-                    },
-                    es: {
-                        question: '¿Por qué el pulmón derecho es ligeramente más grande que el pulmón izquierdo?',
-                        options: ['Para hacer espacio al corazón en el lado izquierdo', 'Porque el hígado está encima de él', 'Porque recibe más oxígeno', 'Porque tiene tres lóbulos en lugar de dos', 'Porque contiene más alvéolos'],
-                        explanation: 'El corazón se inclina ligeramente hacia la izquierda en el tórax, por lo que el pulmón izquierdo es un poco más pequeño.'
-                    },
-                    la: {
-                        question: 'Cur pulmo dexter paulo maior est quam pulmo sinister?',
-                        options: ['Ut spatium cordi in latere sinistro praebeat', 'Quia hepar supra eum situm est', 'Quia plus oxygenii accipit', 'Quia tres lobos pro duobus habet', 'Quia plures alveolos continet'],
-                        explanation: 'Cor paulum ad sinistram in thorace inclinatur, quare pulmo sinister paulo minor est.'
-                    },
-                    zh: {
-                        question: '为什么右肺比左肺略大一些？',
-                        options: ['为了给左侧的心脏腾出空间', '因为肝脏位于右肺上方', '因为右肺接收更多氧气', '因为右肺有三个叶而左肺只有两个', '因为右肺包含更多肺泡'],
-                        explanation: '心脏在胸腔内略微偏向左侧，因此左肺需要留出空间而略小一些。'
-                    }
-                }
-            },
-            {
-                correctIndex: 1,
-                i18n: {
-                    pt: {
-                        question: 'Aproximadamente quantos neurônios existem no cérebro humano?',
-                        options: ['86 milhões', '86 bilhões', '860 mil', '8,6 trilhões', '860 bilhões'],
-                        explanation: 'O cérebro humano possui cerca de 86 bilhões de neurônios conectados por trilhões de sinapses.'
-                    },
-                    en: {
-                        question: 'Approximately how many neurons are in the human brain?',
-                        options: ['86 million', '86 billion', '860 thousand', '8.6 trillion', '860 billion'],
-                        explanation: 'The human brain contains roughly 86 billion neurons connected by trillions of synapses.'
-                    },
-                    es: {
-                        question: '¿Aproximadamente cuántas neuronas existen en el cerebro humano?',
-                        options: ['86 millones', '86 mil millones', '860 mil', '8,6 billones', '860 mil millones'],
-                        explanation: 'El cerebro humano posee alrededor de 86 mil millones de neuronas conectadas por billones de sinapsis.'
-                    },
-                    la: {
-                        question: 'Quot fere neurona in cerebro humano exsistunt?',
-                        options: ['86 milliones', '86 miliarda', '860 milia', '8,6 trilliones', '860 miliarda'],
-                        explanation: 'Cerebrum humanum circiter 86 miliarda neuronum per trilliones synapsium coniunctorum habet.'
-                    },
-                    zh: {
-                        question: '人类大脑中大约有多少个神经元？',
-                        options: ['8600万个', '860亿个', '86万个', '8.6万亿个', '8600亿个'],
-                        explanation: '人类大脑拥有约860亿个神经元，通过数万亿个突触相互连接。'
-                    }
-                }
-            },
-            {
-                correctIndex: 2,
-                i18n: {
-                    pt: {
-                        question: 'Qual é o músculo mais forte do corpo humano em relação ao seu tamanho?',
-                        options: ['Bíceps braquial', 'Quadríceps', 'Masseter (músculo da mandíbula)', 'Glúteo máximo', 'Esternocleidomastoideo'],
-                        explanation: 'O masseter pode exercer uma força de mordida superior a 90 kg nos dentes molares.'
-                    },
-                    en: {
-                        question: 'What is the strongest muscle in the human body relative to its size?',
-                        options: ['Biceps brachii', 'Quadriceps', 'Masseter (jaw muscle)', 'Gluteus maximus', 'Sternocleidomastoid'],
-                        explanation: 'The masseter can exert a bite force exceeding 90 kg (200 lbs) on the molar teeth.'
-                    },
-                    es: {
-                        question: '¿Cuál es el músculo más fuerte del cuerpo humano en relación con su tamaño?',
-                        options: ['Bíceps braquial', 'Cuádriceps', 'Masetero (músculo de la mandíbula)', 'Glúteo mayor', 'Esternocleidomastoideo'],
-                        explanation: 'El masetero puede ejercer una fuerza de mordida superior a 90 kg en los dientes molares.'
-                    },
-                    la: {
-                        question: 'Quis est musculus fortissimus corporis humani pro magnitudine sua?',
-                        options: ['Biceps brachii', 'Quadriceps', 'Masseter (musculus mandibulae)', 'Gluteus maximus', 'Sternocleidomastoideus'],
-                        explanation: 'Masseter vim morsus plus quam 90 kg in dentibus molaribus exercere potest.'
-                    },
-                    zh: {
-                        question: '按自身体积比例计算，人体最有力的肌肉是哪一块？',
-                        options: ['肱二头肌', '股四头肌', '咬肌（下颌肌肉）', '臀大肌', '胸锁乳突肌'],
-                        explanation: '咬肌在臼齿处可产生超过90公斤的惊人咬合力。'
-                    }
-                }
-            },
-            {
-                correctIndex: 0,
-                i18n: {
-                    pt: {
-                        question: 'Como o estômago evita ser digerido pelo próprio ácido clorídrico?',
-                        options: ['Produzindo uma camada protetora renovável de muco', 'Porque o ácido só age quando há comida', 'Porque suas paredes são feitas de cartilagem', 'Porque o fígado neutraliza o ácido instantaneamente', 'Porque o suco gástrico é neutro'],
-                        explanation: 'As células da parede gástrica secretam continuamente um muco alcalino que neutraliza e bloqueia o ácido.'
-                    },
-                    en: {
-                        question: 'How does the stomach avoid digesting itself with its own hydrochloric acid?',
-                        options: ['By producing a constantly renewing protective mucus layer', 'Because acid only acts when food is present', 'Because its walls are made of cartilage', 'Because the liver instantly neutralizes the acid', 'Because gastric juice is neutral'],
-                        explanation: 'Cells lining the stomach continuously secrete an alkaline mucus layer that neutralizes and blocks the acid.'
-                    },
-                    es: {
-                        question: '¿Cómo evita el estómago ser digerido por su propio ácido clorhídrico?',
-                        options: ['Produciendo una capa protectora renovable de mucosa', 'Porque el ácido solo actúa cuando hay comida', 'Porque sus paredes están hechas de cartílago', 'Porque el hígado neutraliza el ácido instantáneamente', 'Porque el jugo gástrico es neutro'],
-                        explanation: 'Las células de la pared gástrica secretan continuamente una mucosa alcalina que neutraliza y bloquea el ácido.'
-                    },
-                    la: {
-                        question: 'Quomodo ventriculus vitat ne a suo proprio acido hydrochlorico digeratur?',
-                        options: ['Stratum protectivum muci renovabile producendo', 'Quia acidum tantum cum cibus adest agit', 'Quia parietes eius ex cartilagine facti sunt', 'Quia hepar acidum statim neutralizat', 'Quia succus gastricus neutralis est'],
-                        explanation: 'Cellulae parietis gastrici continuo mucum alkalinum secernunt qui acidum neutralizat et arcet.'
-                    },
-                    zh: {
-                        question: '胃是如何避免被自身分泌的强盐酸消化的？',
-                        options: ['分泌一层不断更新的保护性黏液层', '因为胃酸只在有食物时才起作用', '因为胃壁是由软骨构成的', '因为肝脏会瞬间中和胃酸', '因为胃液本身是中性的'],
-                        explanation: '胃壁细胞会持续分泌一层碱性黏液，有效中和并阻隔胃酸对胃壁的侵蚀。'
-                    }
-                }
-            },
-            {
-                correctIndex: 1,
-                i18n: {
-                    pt: {
-                        question: 'Qual é a única parte do corpo humano que não recebe suprimento direto de sangue?',
-                        options: ['O lóbulo da orelha', 'A córnea (frente transparente do olho)', 'A ponta do nariz', 'As unhas das mãos', 'O esmalte dos dentes'],
-                        explanation: 'A córnea recebe oxigênio diretamente do ar e nutrientes das lágrimas e do humor aquoso.'
-                    },
-                    en: {
-                        question: 'What is the only part of the human body that receives no direct blood supply?',
-                        options: ['The earlobe', 'The cornea (clear front of the eye)', 'The tip of the nose', 'Fingernails', 'Tooth enamel'],
-                        explanation: 'The cornea receives oxygen directly from the air and nutrients from tears and aqueous humor.'
-                    },
-                    es: {
-                        question: '¿Cuál es la única parte del cuerpo humano que não recibe suministro directo de sangre?',
-                        options: ['El lóbulo de la oreja', 'La córnea (parte transparente del ojo)', 'La punta de la nariz', 'Las uñas de las manos', 'El esmalte dental'],
-                        explanation: 'La córnea recibe oxígeno directamente del aire y nutrientes de las lágrimas y del humor acuoso.'
-                    },
-                    la: {
-                        question: 'Quae est sola pars corporis humani quae directum sanguinis fluxum non accipit?',
-                        options: ['Lobulus auriculae', 'Cornea (pars pellucida oculi)', 'Apex nasi', 'Ungues manuum', 'Enamelum dentium'],
-                        explanation: 'Cornea oxygenium directe ex aere et nutrimenta ex lacrimis et humore aquoso accipit.'
-                    },
-                    zh: {
-                        question: '人体唯一没有直接血液供应的部位是哪里？',
-                        options: ['耳垂', '角膜（眼睛前部的透明部分）', '鼻尖', '手指甲', '牙釉质'],
-                        explanation: '角膜直接从空气中获取氧气，并从泪液和房水中获取营养。'
-                    }
-                }
-            },
-            {
-                correctIndex: 2,
-                i18n: {
-                    pt: {
-                        question: 'Qual porcentagem de todo o oxigênio e energia do corpo o cérebro consome em repouso?',
-                        options: ['Cerca de 2%', 'Cerca de 10%', 'Cerca de 20%', 'Cerca de 50%', 'Cerca de 75%'],
-                        explanation: 'Embora represente apenas ~2% do peso corporal, o cérebro consome cerca de 20% da energia total.'
-                    },
-                    en: {
-                        question: 'What percentage of the body’s total oxygen and energy does the brain consume at rest?',
-                        options: ['About 2%', 'About 10%', 'About 20%', 'About 50%', 'About 75%'],
-                        explanation: 'Although it accounts for only ~2% of body weight, the brain consumes roughly 20% of total energy.'
-                    },
-                    es: {
-                        question: '¿Qué porcentaje de todo el oxígeno y la energía del cuerpo consume el cerebro en reposo?',
-                        options: ['Alrededor del 2%', 'Alrededor del 10%', 'Alrededor del 20%', 'Alrededor del 50%', 'Alrededor del 75%'],
-                        explanation: 'Aunque representa solo ~2% del peso corporal, el cerebro consume cerca del 20% de la energía total.'
-                    },
-                    la: {
-                        question: 'Quot centesimas totius oxygenii et energiae corporis cerebrum in quiete consumit?',
-                        options: ['Circiter 2%', 'Circiter 10%', 'Circiter 20%', 'Circiter 50%', 'Circiter 75%'],
-                        explanation: 'Quamquam tantum ~2% ponderis corporis repraesentat, cerebrum fere 20% totius energiae consumit.'
-                    },
-                    zh: {
-                        question: '大脑在静息状态下消耗了人体总氧气和能量的百分之多少？',
-                        options: ['约2%', '约10%', '约20%', '约50%', '约75%'],
-                        explanation: '尽管大脑仅占体重的约2%，但它却消耗了全身约20%的氧气和能量。'
-                    }
-                }
-            },
-            {
-                correctIndex: 0,
-                i18n: {
-                    pt: {
-                        question: 'Com quantos ossos um bebê nasce aproximadamente antes de alguns se fundirem?',
-                        options: ['270 a 300 ossos', '206 ossos', '150 ossos', '350 a 400 ossos', '500 ossos'],
-                        explanation: 'Bebês nascem com 270 a 300 ossos; muitos se fundem durante o crescimento até restarem 206 no adulto.'
-                    },
-                    en: {
-                        question: 'Approximately how many bones is a baby born with before several fuse together?',
-                        options: ['270 to 300 bones', '206 bones', '150 bones', '350 to 400 bones', '500 bones'],
-                        explanation: 'Babies are born with 270 to 300 bones; many fuse during growth until 206 remain in adulthood.'
-                    },
-                    es: {
-                        question: '¿Con cuántos huesos nace aproximadamente un bebé antes de que algunos se fusionen?',
-                        options: ['270 a 300 huesos', '206 huesos', '150 huesos', '350 a 400 huesos', '500 huesos'],
-                        explanation: 'Los bebés nacen con 270 a 300 huesos; muchos se fusionan durante el crecimiento hasta quedar 206 en el adulto.'
-                    },
-                    la: {
-                        question: 'Cum quot fere ossibus infans nascitur antequam nonnulla coalescant?',
-                        options: ['270 ad 300 ossa', '206 ossa', '150 ossa', '350 ad 400 ossa', '500 ossa'],
-                        explanation: 'Infantes cum 270 ad 300 ossibus nascuntur; multa coalescunt dum crescunt donec 206 in adulto maneant.'
-                    },
-                    zh: {
-                        question: '婴儿出生时大约有多少块骨头（在部分骨头融合之前）？',
-                        options: ['270至300块', '206块', '150块', '350至400块', '500块'],
-                        explanation: '婴儿出生时有270至300块骨头，随着生长发育许多骨头逐渐融合，成年后变为206块。'
-                    }
-                }
-            },
-            {
-                correctIndex: 1,
-                i18n: {
-                    pt: {
-                        question: 'Qual é o maior osso do corpo humano?',
-                        options: ['Tíbia', 'Fêmur', 'Úmero', 'Rádio', 'Fibula (perônio)'],
-                        explanation: 'O fêmur, localizado na coxa, é o osso mais longo e resistente do esqueleto humano.'
-                    },
-                    en: {
-                        question: 'What is the longest and largest bone in the human body?',
-                        options: ['Tibia', 'Femur', 'Humerus', 'Radius', 'Fibula'],
-                        explanation: 'The femur, located in the thigh, is the longest and strongest bone in the human skeleton.'
-                    },
-                    es: {
-                        question: '¿Cuál es el hueso más largo y grande del cuerpo humano?',
-                        options: ['Tibia', 'Fémur', 'Húmero', 'Radio', 'Fíbula (peroné)'],
-                        explanation: 'El fémur, ubicado en el muslo, es el hueso más largo y resistente del esqueleto humano.'
-                    },
-                    la: {
-                        question: 'Quod est longissimum et maximum os corporis humani?',
-                        options: ['Tibia', 'Femur', 'Humerus', 'Radius', 'Fibula'],
-                        explanation: 'Femur, in femore situm, est longissimum et fortissimum os skeleti humani.'
-                    },
-                    zh: {
-                        question: '人体最长、最大的骨头是哪一块？',
-                        options: ['胫骨', '股骨', '肱骨', '桡骨', '腓骨'],
-                        explanation: '位于大腿部位的股骨是人体骨骼中最长且最坚固的骨头。'
-                    }
-                }
-            },
-            {
-                correctIndex: 2,
-                i18n: {
-                    pt: {
-                        question: 'Onde ocorre cerca de 90% da absorção dos nutrientes dos alimentos?',
-                        options: ['No estômago', 'No intestino grosso', 'No intestino delgado', 'No esôfago', 'No fígado'],
-                        explanation: 'O intestino delgado, com cerca de 6 metros e milhões de vilosidades, absorve quase todos os nutrientes.'
-                    },
-                    en: {
-                        question: 'Where does roughly 90% of nutrient absorption from food take place?',
-                        options: ['In the stomach', 'In the large intestine', 'In the small intestine', 'In the esophagus', 'In the liver'],
-                        explanation: 'The small intestine, about 6 meters long with millions of villi, absorbs nearly all nutrients.'
-                    },
-                    es: {
-                        question: '¿Dónde ocurre aproximadamente el 90% de la absorción de nutrientes de los alimentos?',
-                        options: ['En el estómago', 'En el intestino grueso', 'En el intestino delgado', 'En el esófago', 'En el hígado'],
-                        explanation: 'El intestino delgado, de unos 6 metros con millones de vellosidades, absorbe casi todos los nutrientes.'
-                    },
-                    la: {
-                        question: 'Ubi fere 90% absorptionis nutrimentorum ex cibis fit?',
-                        options: ['In ventriculo', 'In intestino crasso', 'In intestino tenui', 'In oesophago', 'In hepate'],
-                        explanation: 'Intestinum tenue, circiter 6 metra longum cum millionibus villorum, fere omnia nutrimenta absorbet.'
-                    },
-                    zh: {
-                        question: '食物中大约90%的营养物质是在哪里被吸收的？',
-                        options: ['胃', '大肠', '小肠', '食道', '肝脏'],
-                        explanation: '长约6米且布满数百万绒毛的小肠负责吸收绝大多数营养物质。'
-                    }
-                }
-            },
-            {
-                correctIndex: 0,
-                i18n: {
-                    pt: {
-                        question: 'Qual estrutura do sistema respiratório contém as pregas vocais que produzem a voz?',
-                        options: ['Laringe', 'Alvéolos pulmonares', 'Diafragma', 'Traqueia', 'Brônquios'],
-                        explanation: 'A laringe abriga as pregas vocais, que vibram com a passagem do ar para gerar sons.'
-                    },
-                    en: {
-                        question: 'Which structure of the respiratory system contains the vocal cords that produce voice?',
-                        options: ['Larynx', 'Pulmonary alveoli', 'Diaphragm', 'Trachea', 'Bronchi'],
-                        explanation: 'The larynx houses the vocal cords, which vibrate as air passes through to generate sound.'
-                    },
-                    es: {
-                        question: '¿Qué estructura del sistema respiratorio contiene las cuerdas vocales que producen la voz?',
-                        options: ['Laringe', 'Alvéolos pulmonares', 'Diafragma', 'Tráquea', 'Bronquios'],
-                        explanation: 'La laringe aloja las cuerdas vocales, que vibran con el paso del aire para generar sonidos.'
-                    },
-                    la: {
-                        question: 'Quae structura systematis respiratorii plicas vocales vocem producentes continet?',
-                        options: ['Larynx', 'Alveoli pulmonis', 'Diaphragma', 'Trachea', 'Bronchi'],
-                        explanation: 'Larynx plicas vocales continet, quae aere transeunte vibrant ut sonos generent.'
-                    },
-                    zh: {
-                        question: '呼吸系统中的哪个结构包含发声所需的声带？',
-                        options: ['喉', '肺泡', '膈肌', '气管', '支气管'],
-                        explanation: '喉部容纳着声带，当气流通过时声带振动从而发出声音。'
-                    }
-                }
-            },
-            {
-                correctIndex: 1,
-                i18n: {
-                    pt: {
-                        question: 'Aproximadamente quantos músculos diferentes são utilizados para dar um único passo?',
-                        options: ['Cerca de 20 músculos', 'Cerca de 200 músculos', 'Cerca de 600 músculos', 'Cerca de 10 músculos', 'Cerca de 400 músculos'],
-                        explanation: 'Um único passo exige a coordenação de aproximadamente 200 músculos do tronco, quadris e pernas.'
-                    },
-                    en: {
-                        question: 'Approximately how many different muscles are used to take a single step?',
-                        options: ['About 20 muscles', 'About 200 muscles', 'About 600 muscles', 'About 10 muscles', 'About 400 muscles'],
-                        explanation: 'Taking a single step requires coordinating roughly 200 muscles across the torso, hips, and legs.'
-                    },
-                    es: {
-                        question: '¿Aproximadamente cuántos músculos diferentes se utilizan para dar un solo paso?',
-                        options: ['Unos 20 músculos', 'Unos 200 músculos', 'Unos 600 músculos', 'Unos 10 músculos', 'Unos 400 músculos'],
-                        explanation: 'Un solo paso requiere la coordinación de aproximadamente 200 músculos del tronco, caderas y piernas.'
-                    },
-                    la: {
-                        question: 'Quot fere musculi diversi ad unum tantum passum faciendum adhibentur?',
-                        options: ['Circiter 20 musculi', 'Circiter 200 musculi', 'Circiter 600 musculi', 'Circiter 10 musculi', 'Circiter 400 musculi'],
-                        explanation: 'Unus passus coordinationem circiter 200 musculorum trunci, coxarum et crurum requirit.'
-                    },
-                    zh: {
-                        question: '仅仅迈出一步，人体大约需要调动多少块不同的肌肉？',
-                        options: ['约20块肌肉', '约200块肌肉', '约600块肌肉', '约10块肌肉', '约400块肌肉'],
-                        explanation: '仅仅迈出一步，就需要躯干、髋部和腿部大约200块肌肉的协同配合。'
-                    }
-                }
-            },
-            {
-                correctIndex: 2,
-                i18n: {
-                    pt: {
-                        question: 'Qual órgão do sistema imunológico recicla glóbulos vermelhos velhos e filtra o sangue?',
-                        options: ['Timo', 'Pâncreas', 'Baço', 'Fígado', 'Tireoide'],
-                        explanation: 'O baço filtra o sangue, remove glóbulos vermelhos envelhecidos e armazena linfócitos.'
-                    },
-                    en: {
-                        question: 'Which organ of the immune system recycles old red blood cells and filters blood?',
-                        options: ['Thymus', 'Pancreas', 'Spleen', 'Liver', 'Thyroid'],
-                        explanation: 'The spleen filters blood, removes aging red blood cells, and stores lymphocytes.'
-                    },
-                    es: {
-                        question: '¿Qué órgano del sistema inmunológico recicla glóbulos rojos viejos y filtra la sangre?',
-                        options: ['Timo', 'Páncreas', 'Bazo', 'Hígado', 'Tiroides'],
-                        explanation: 'El bazo filtra la sangre, elimina glóbulos rojos envejecidos y almacena linfocitos.'
-                    },
-                    la: {
-                        question: 'Quod organum systematis immunitatis erythrocytos vetustos redivivos facit et sanguinem filtrat?',
-                        options: ['Thymus', 'Pancreas', 'Lien (Splen)', 'Hepar', 'Glandula thyreoidea'],
-                        explanation: 'Lien sanguinem filtrat, erythrocytos senescentes removet et lymphocytos servat.'
-                    },
-                    zh: {
-                        question: '免疫系统中的哪个器官负责回收衰老红细胞并过滤血液？',
-                        options: ['胸腺', '胰腺', '脾脏', '肝脏', '甲状腺'],
-                        explanation: '脾脏负责过滤血液、清除衰老的红细胞并储存淋巴细胞。'
-                    }
-                }
-            },
-            {
-                correctIndex: 0,
-                i18n: {
-                    pt: {
-                        question: 'Onde reside aproximadamente 70% das células imunológicas do corpo humano?',
-                        options: ['No intestino', 'Nos pulmões', 'No cérebro', 'No coração', 'Nos rins'],
-                        explanation: 'Cerca de 70% das células de defesa vivem no intestino, atuando junto à microbiota intestinal.'
-                    },
-                    en: {
-                        question: 'Where do roughly 70% of the human body’s immune cells reside?',
-                        options: ['In the gut (intestines)', 'In the lungs', 'In the brain', 'In the heart', 'In the kidneys'],
-                        explanation: 'About 70% of immune defense cells reside in the gut, working alongside beneficial microbiota.'
-                    },
-                    es: {
-                        question: '¿Dónde reside aproximadamente el 70% de las células inmunológicas del cuerpo humano?',
-                        options: ['En el intestino', 'En los pulmones', 'En el cerebro', 'En el corazón', 'En los riñones'],
-                        explanation: 'Cerca del 70% de las células de defensa viven en el intestino, actuando junto a la microbiota intestinal.'
-                    },
-                    la: {
-                        question: 'Ubi circiter 70% cellularum immunologicarum corporis humani habitant?',
-                        options: ['In intestino', 'In pulmonibus', 'In cerebro', 'In corde', 'In renibus'],
-                        explanation: 'Fere 70% cellularum defensionis in intestino vivunt, una cum microbiota intestinali agentes.'
-                    },
-                    zh: {
-                        question: '人体大约70%的免疫细胞居住在哪个部位？',
-                        options: ['肠道', '肺部', '大脑', '心脏', '肾脏'],
-                        explanation: '大约70%的免疫防御细胞分布在肠道中，与肠道微生物群协同守护健康。'
-                    }
-                }
-            },
-            {
-                correctIndex: 1,
-                i18n: {
-                    pt: {
-                        question: 'Quantos litros de fluido sanguíneo os rins filtram aproximadamente todos os dias?',
-                        options: ['18 litros', '180 litros', '1.800 litros', '1,8 litro', '18.000 litros'],
-                        explanation: 'Os rins filtram cerca de 180 litros de fluido por dia, mas 99% da água é reabsorvida pelo organismo.'
-                    },
-                    en: {
-                        question: 'Approximately how many liters of blood fluid do the kidneys filter every single day?',
-                        options: ['18 liters', '180 liters', '1,800 liters', '1.8 liters', '18,000 liters'],
-                        explanation: 'The kidneys filter about 180 liters of fluid daily, with 99% of the water reabsorbed by the body.'
-                    },
-                    es: {
-                        question: '¿Aproximadamente cuántos litros de líquido sanguíneo filtran los riñones cada día?',
-                        options: ['18 litros', '180 litros', '1.800 litros', '1,8 litros', '18.000 litros'],
-                        explanation: 'Los riñones filtran unos 180 litros de líquido al día, pero el 99% del agua es reabsorbida por el organismo.'
-                    },
-                    la: {
-                        question: 'Quot fere litros humoris sanguinei renes cotidie filtrant?',
-                        options: ['18 litros', '180 litros', '1.800 litros', '1,8 litri', '18.000 litros'],
-                        explanation: 'Renes circiter 180 litros humoris per diem filtrant, sed 99% aquae ab organismo reabsorbetur.'
-                    },
-                    zh: {
-                        question: '肾脏每天大约过滤多少升血浆液体？',
-                        options: ['18升', '180升', '1800升', '1.8升', '18000升'],
-                        explanation: '肾脏每天过滤约180升液体，但其中99%的水分都会被身体重新吸收。'
-                    }
-                }
-            },
-            {
-                correctIndex: 2,
-                i18n: {
-                    pt: {
-                        question: 'Como são chamadas as unidades microscópicas de filtração dentro de cada rim?',
-                        options: ['Alvéolos', 'Neurônios', 'Néfrons', 'Células de Schwann', 'Vilosidades'],
-                        explanation: 'Cada rim possui cerca de 1 milhão de néfrons, que filtram o sangue e formam a urina.'
-                    },
-                    en: {
-                        question: 'What are the microscopic filtering units inside each kidney called?',
-                        options: ['Alveoli', 'Neurons', 'Nephrons', 'Schwann cells', 'Villi'],
-                        explanation: 'Each kidney contains roughly 1 million nephrons that filter blood and produce urine.'
-                    },
-                    es: {
-                        question: '¿Cómo se llaman las unidades microscópicas de filtración dentro de cada riñón?',
-                        options: ['Alvéolos', 'Neuronas', 'Nefronas', 'Células de Schwann', 'Vellosidades'],
-                        explanation: 'Cada riñón posee alrededor de 1 millón de nefronas, que filtran la sangre y forman la orina.'
-                    },
-                    la: {
-                        question: 'Quomodo vocantur unitates microscopicae filtrationis intra quemque renem?',
-                        options: ['Alveoli', 'Neurona', 'Nephrones', 'Cellulae Schwann', 'Villi'],
-                        explanation: 'Quisque ren circiter 1 millionem nephronum habet, qui sanguinem filtrant et urinam formant.'
-                    },
-                    zh: {
-                        question: '每个肾脏内部的微观过滤单元被称为什么？',
-                        options: ['肺泡', '神经元', '肾单位', '施万细胞', '绒毛'],
-                        explanation: '每个肾脏内约有100万个肾单位，负责过滤血液并生成尿液。'
-                    }
-                }
-            },
-            {
-                correctIndex: 0,
-                i18n: {
-                    pt: {
-                        question: 'Qual estrutura do sistema nervoso coordena o equilíbrio, a postura e a precisão dos movimentos?',
-                        options: ['Cerebelo', 'Medula óssea', 'Hipotálamo', 'Bulbo raquidiano', 'Ponte'],
-                        explanation: 'O cerebelo integra informações sensoriais e motoras para garantir equilíbrio e movimentos suaves.'
-                    },
-                    en: {
-                        question: 'Which structure of the nervous system coordinates balance, posture, and precision of movement?',
-                        options: ['Cerebellum', 'Bone marrow', 'Hypothalamus', 'Medulla oblongata', 'Pons'],
-                        explanation: 'The cerebellum integrates sensory and motor signals to maintain balance and smooth movements.'
-                    },
-                    es: {
-                        question: '¿Qué estructura del sistema nervioso coordina el equilibrio, la postura y la precisión de los movimientos?',
-                        options: ['Cerebelo', 'Médula ósea', 'Hipotálamo', 'Bulbo raquídeo', 'Puente de Varolio'],
-                        explanation: 'El cerebelo integra señales sensoriales y motoras para garantizar el equilibrio y movimientos precisos.'
-                    },
-                    la: {
-                        question: 'Quae structura systematis nervosi aequilibrium, staturam et subtilitatem motuum coordinat?',
-                        options: ['Cerebellum', 'Medulla ossium', 'Hypothalamus', 'Medulla oblongata', 'Pons'],
-                        explanation: 'Cerebellum signa sensoria et motoria integrat ut aequilibrium et motus lenes servet.'
-                    },
-                    zh: {
-                        question: '神经系统中的哪个结构负责协调身体平衡、姿势和动作的精确度？',
-                        options: ['小脑', '骨髓', '下丘脑', '延髓', '脑桥'],
-                        explanation: '小脑整合感觉和运动信号，以维持身体平衡并确保动作协调精准。'
-                    }
-                }
-            },
-            {
-                correctIndex: 1,
-                i18n: {
-                    pt: {
-                        question: 'Onde são produzidas as células sanguíneas (glóbulos vermelhos, brancos e plaquetas)?',
-                        options: ['No fígado adulto', 'Na medula óssea vermelha', 'Nos linfonodos', 'No coração', 'No pâncreas'],
-                        explanation: 'A hematopoiese ocorre na medula óssea vermelha localizada no interior de diversos ossos.'
-                    },
-                    en: {
-                        question: 'Where are blood cells (red blood cells, white blood cells, and platelets) produced?',
-                        options: ['In the adult liver', 'In the red bone marrow', 'In the lymph nodes', 'In the heart', 'In the pancreas'],
-                        explanation: 'Hematopoiesis takes place in the red bone marrow found inside several bones.'
-                    },
-                    es: {
-                        question: '¿Dónde se producen las células sanguíneas (glóbulos rojos, blancos y plaquetas)?',
-                        options: ['En el hígado adulto', 'En la médula ósea roja', 'En los ganglios linfáticos', 'En el corazón', 'En el páncreas'],
-                        explanation: 'La hematopoyesis ocurre en la médula ósea roja ubicada en el interior de varios huesos.'
-                    },
-                    la: {
-                        question: 'Ubi cellulae sanguinis (erythrocyti, leucocyti et thrombocyti) producuntur?',
-                        options: ['In hepate adulto', 'In medulla ossium rubra', 'In nodis lymphaticis', 'In corde', 'In pancreate'],
-                        explanation: 'Haematopoiesis in medulla ossium rubra intra diversa ossa sita fit.'
-                    },
-                    zh: {
-                        question: '血细胞（红细胞、白细胞和血小板）是在哪里生成的？',
-                        options: ['成人肝脏', '红骨髓', '淋巴结', '心脏', '胰腺'],
-                        explanation: '造血作用发生在位于多块骨骼内部的红骨髓中。'
-                    }
-                }
-            },
-            {
-                correctIndex: 2,
-                i18n: {
-                    pt: {
-                        question: 'Qual é o maior músculo do corpo humano em volume?',
-                        options: ['Peitoral maior', 'Sartório', 'Glúteo máximo', 'Deltóide', 'Gastrocnêmio'],
-                        explanation: 'O glúteo máximo é o músculo mais volumoso do corpo, fundamental para manter a postura ereta.'
-                    },
-                    en: {
-                        question: 'What is the largest muscle in the human body by volume?',
-                        options: ['Pectoralis major', 'Sartorius', 'Gluteus maximus', 'Deltoid', 'Gastrocnemius'],
-                        explanation: 'The gluteus maximus is the most voluminous muscle in the body, essential for upright posture.'
-                    },
-                    es: {
-                        question: '¿Cuál es el músculo más grande del cuerpo humano en volumen?',
-                        options: ['Pectoral mayor', 'Sartorio', 'Glúteo mayor', 'Deltoides', 'Gastrocnemio'],
-                        explanation: 'El glúteo mayor es el músculo más voluminoso del cuerpo, fundamental para mantener la postura erguida.'
-                    },
-                    la: {
-                        question: 'Quis est maximus musculus corporis humani volumine?',
-                        options: ['Pectoralis maior', 'Sartorius', 'Gluteus maximus', 'Deltoideus', 'Gastrocnemius'],
-                        explanation: 'Gluteus maximus est musculus maximi voluminis in corpore, ad staturam erectam servandam necessarius.'
-                    },
-                    zh: {
-                        question: '按体积计算，人体最大的肌肉是哪一块？',
-                        options: ['胸大肌', '缝匠肌', '臀大肌', '三角肌', '腓肠肌'],
-                        explanation: '臀大肌是人体体积最大的肌肉，对于维持直立姿势至关重要。'
+                        name: '运动系统（ locomotor系统）',
+                        shortName: '运动系统',
+                        tagline: '由骨骼、关节与肌肉紧密协同以实现身体的位移与姿势。',
+                        description: '运动系统是由骨骼系统和肌肉系统高度协同整合而成的复合系统。它使人体能够在空间中自由移动、操纵物品并保持直立姿态。',
+                        metrics: [
+                            { label: '核心组件', value: '骨骼 + 肌肉' },
+                            { label: '关节总数', value: '约360个关节' },
+                            { label: '控制调节', value: '神经与自主运动' }
+                        ],
+                        mainFunctions: [
+                            '通过行走和奔跑实现身体在空间中的移动。',
+                            '为内部脆弱器官提供集成的机械保护与坚固框架。',
+                            '形成优化的生物力学杠杆，兼具力量与灵活性。'
+                        ],
+                        organs: [
+                            { name: '骨骼与支架', role: '提供坚硬的身体支撑杠杆。' },
+                            { name: '骨骼肌群', role: '提供驱动骨骼杠杆转动的收缩力量。' },
+                            { name: '关节与韧带', role: '赋予身体丰富的活动范围与稳定性。' }
+                        ],
+                        facts: [
+                            '人体大约拥有360个关节，赋予了我们极其灵活的身体姿态。',
+                            '仅仅迈出一步，就需要全身200多块肌肉进行近乎完美的同步配合。',
+                            '骨骼与肌肉的日常协同运转消耗了人体静息能量的很大一部分。'
+                        ]
                     }
                 }
             }
@@ -2298,6 +1662,794 @@
         let quizScore = 0;
         let answeredCurrent = false;
         let lastSelectedOptionIndex = null;
+
+        // Base de dados de 20 questões do Mini-Quiz em 5 idiomas
+        const quizQuestions = [
+            {
+                correctIndex: 0,
+                i18n: {
+                    pt: {
+                        question: "Qual órgão do sistema cardiovascular atua como a bomba principal que impulsiona o sangue para todo o corpo?",
+                        options: ["Coração", "Fígado", "Pulmões", "Rim", "Estômago"],
+                        explanation: "O coração é um órgão muscular oco que atua como bomba hidráulica central."
+                    },
+                    en: {
+                        question: "Which organ in the cardiovascular system acts as the main pump pushing blood throughout the body?",
+                        options: ["Heart", "Liver", "Lungs", "Kidney", "Stomach"],
+                        explanation: "The heart is a hollow muscular organ acting as the central hydraulic pump."
+                    },
+                    es: {
+                        question: "¿Qué órgano del sistema cardiovascular actúa como bomba principal que impulsa la sangre?",
+                        options: ["Corazón", "Hígado", "Pulmones", "Riñón", "Estómago"],
+                        explanation: "El corazón es un órgano muscular que actúa como bomba hidráulica central."
+                    },
+                    la: {
+                        question: "Quod organum in systemate cardiovasculari sanguinem per totum corpus pumpat?",
+                        options: ["Cor", "Hepar", "Pulmones", "Renes", "Ventriculus"],
+                        explanation: "Cor est organum musculare quod sanguinem pumpat."
+                    },
+                    zh: {
+                        question: "心血管系统中，哪一个器官充当将血液泵送至全身的主泵？",
+                        options: ["心脏", "肝脏", "肺", "肾脏", "胃"],
+                        explanation: "心脏是一个强健的肌性器官，充当中央水力泵。"
+                    }
+                }
+            },
+            {
+                correctIndex: 1,
+                i18n: {
+                    pt: {
+                        question: "Quantos ossos compõem aproximadamente o esqueleto de um ser humano adulto saudável?",
+                        options: ["105 ossos", "206 ossos", "312 ossos", "150 ossos", "250 ossos"],
+                        explanation: "O esqueleto de um adulto típico é composto por 206 ossos interconectados."
+                    },
+                    en: {
+                        question: "How many bones make up the skeleton of a healthy adult human approximately?",
+                        options: ["105 bones", "206 bones", "312 bones", "150 bones", "250 bones"],
+                        explanation: "The typical adult skeleton is made up of 206 interconnected bones."
+                    },
+                    es: {
+                        question: "¿Cuántos huesos componen aproximadamente el esqueleto de un ser humano adulto?",
+                        options: ["105 huesos", "206 huesos", "312 huesos", "150 huesos", "250 huesos"],
+                        explanation: "El esqueleto de un adulto típico se compone de 206 huesos."
+                    },
+                    la: {
+                        question: "Quot ossa in sceleto humano adulto typico sunt?",
+                        options: ["105", "206", "312", "150", "250"],
+                        explanation: "Skeletum humanum adultum 206 ossibus constat."
+                    },
+                    zh: {
+                        question: "一个健康的成年人骨骼系统大约由多少块骨头组成？",
+                        options: ["105块", "206块", "312块", "150块", "250块"],
+                        explanation: "典型的成年人骨骼由206块相互连接的骨头组成。"
+                    }
+                }
+            },
+            {
+                correctIndex: 2,
+                i18n: {
+                    pt: {
+                        question: "Qual estrutura pulmonar microscópica realiza diretamente a troca gasosa com os capilares sanguíneos?",
+                        options: ["Traqueia", "Brônquios", "Alvéolos pulmonares", "Laringe", "Pleura"],
+                        explanation: "Os alvéolos são pequenos sacos aéreos onde o oxigênio passa para o sangue e o CO2 é expelido."
+                    },
+                    en: {
+                        question: "Which microscopic lung structure directly performs gas exchange with blood capillaries?",
+                        options: ["Trachea", "Bronchi", "Alveoli", "Larynx", "Pleura"],
+                        explanation: "Alveoli are tiny air sacs where oxygen enters blood and CO2 is expelled."
+                    },
+                    es: {
+                        question: "¿Qué estructura pulmonar microscópica realiza directamente el intercambio gaseoso?",
+                        options: ["Tráquea", "Bronquios", "Alvéolos pulmonares", "Laringe", "Pleura"],
+                        explanation: "Los alvéolos son pequeños sacos donde ocurre el intercambio de gases."
+                    },
+                    la: {
+                        question: "Quae structura pulmonum commutationem gasiorum cum capillariis facit?",
+                        options: ["Trachea", "Bronchi", "Alveoli pulmonis", "Larynx", "Pleura"],
+                        explanation: "Alveoli sunt sacculi ubi oxygenium in sanguinem transit."
+                    },
+                    zh: {
+                        question: "哪一种微观的肺部结构直接与血液毛细血管进行气体交换？",
+                        options: ["气管", "支气管", "肺泡", "喉", "胸膜"],
+                        explanation: "肺泡是微小的气囊，氧气在这里进入血液，二氧化碳被排出。"
+                    }
+                }
+            },
+            {
+                correctIndex: 0,
+                i18n: {
+                    pt: {
+                        question: "Qual é a principal função dos glóbulos brancos (leucócitos) no corpo humano?",
+                        options: ["Defender o corpo contra infecções e patógenos", "Transportar oxigênio", "Coagular o sangue", "Digestão de gorduras", "Produção de hormônios"],
+                        explanation: "Os leucócitos são os principais agentes do sistema imunológico na defesa contra germes."
+                    },
+                    en: {
+                        question: "What is the main function of white blood cells (leukocytes) in the human body?",
+                        options: ["Defending the body against infections and pathogens", "Transporting oxygen", "Clotting blood", "Fat digestion", "Hormone production"],
+                        explanation: "Leukocytes are the primary immune agents defending against germs."
+                    },
+                    es: {
+                        question: "¿Cuál es la principal función de los glóbulos blancos (leucocitos) en el cuerpo humano?",
+                        options: ["Defender al cuerpo contra infecciones y patógenos", "Transportar oxígeno", "Coagular la sangre", "Digerir grasas", "Producir hormonas"],
+                        explanation: "Los leucocitos son los agentes inmunitarios de defensa contra patógenos."
+                    },
+                    la: {
+                        question: "Quis est finis principalis leucocytorum in corpore humano?",
+                        options: ["Corpus contra infectiones defendere", "Oxygenium vehere", "Sanguinem coagulare", "Cibum digerere", "Hormonatos facere"],
+                        explanation: "Leucocyti corpus contra pathogena defendunt."
+                    },
+                    zh: {
+                        question: "白细胞（leukocytes）在人体中的核心功能是什么？",
+                        options: ["抵御感染和病原体入侵", "运输氧气", "凝固血液", "消化脂肪", "分泌激素"],
+                        explanation: "白细胞是免疫系统抵御细菌和病毒等病原体的主力军。"
+                    }
+                }
+            },
+            {
+                correctIndex: 1,
+                i18n: {
+                    pt: {
+                        question: "Aproximadamente quantos litros de sangue os rins humanos filtram todos os dias?",
+                        options: ["10 litros", "180 litros", "500 litros", "5 litros", "50 litros"],
+                        explanation: "Os rins filtram cerca de 180 litros de plasma sanguíneo diariamente."
+                    },
+                    en: {
+                        question: "Approximately how many liters of blood fluid do human kidneys filter every day?",
+                        options: ["10 liters", "180 liters", "500 liters", "5 liters", "50 liters"],
+                        explanation: "The kidneys filter about 180 liters of blood plasma daily."
+                    },
+                    es: {
+                        question: "¿Aproximadamente cuántos litros de líquido sanguíneo filtran los riñones cada día?",
+                        options: ["10 litros", "180 litros", "500 litros", "5 litros", "50 litros"],
+                        explanation: "Los riñones filtran unos 180 litros de plasma sanguíneo al día."
+                    },
+                    la: {
+                        question: "Quot litros sanguinis renes per diem filtrant?",
+                        options: ["10 L", "180 L", "500 L", "5 L", "50 L"],
+                        explanation: "Renes circiter 180 litros sanguinis per diem filtrant."
+                    },
+                    zh: {
+                        question: "人类的肾脏每天大约过滤多少升的血液液体？",
+                        options: ["10升", "180升", "500升", "5升", "50升"],
+                        explanation: "肾脏每天过滤约180升的血浆液体，其中大部分会被重吸收。"
+                    }
+                }
+            },
+            {
+                correctIndex: 2,
+                i18n: {
+                    pt: {
+                        question: "Qual é o osso mais longo e forte de todo o esqueleto humano?",
+                        options: ["Úmero", "Tíbia", "Fêmur", "Mandíbula", "Rádio"],
+                        explanation: "O fêmur está localizado na coxa e suporta grande parte do peso corporal."
+                    },
+                    en: {
+                        question: "What is the longest and strongest bone in the entire human skeleton?",
+                        options: ["Humerus", "Tibia", "Femur", "Mandible", "Radius"],
+                        explanation: "The femur is located in the thigh and supports much of body weight."
+                    },
+                    es: {
+                        question: "¿Cuál es el hueso más largo y fuerte de todo el esqueleto humano?",
+                        options: ["Húmero", "Tibia", "Fémur", "Mandíbula", "Radio"],
+                        explanation: "El fémur se encuentra en el muslo y soporta gran parte del peso."
+                    },
+                    la: {
+                        question: "Quod est os longissimum et fortissimum in sceleto humano?",
+                        options: ["Humerus", "Tibia", "Femur", "Mandibula", "Radius"],
+                        explanation: "Femur est os longissimum in coxa."
+                    },
+                    zh: {
+                        question: "整个人体骨骼中最长、最坚固的骨头是什么？",
+                        options: ["肱骨", "胫骨", "股骨", "下颌骨", "桡骨"],
+                        explanation: "股骨位于大腿，承受着人体的大部分重量。"
+                    }
+                }
+            },
+            {
+                correctIndex: 0,
+                i18n: {
+                    pt: {
+                        question: "Qual órgão humano é o principal centro de comando do sistema nervoso central?",
+                        options: ["Cérebro", "Coração", "Fígado", "Pâncreas", "Baço"],
+                        explanation: "O cérebro coordena o pensamento, as emoções, a memória e as funções motoras."
+                    },
+                    en: {
+                        question: "Which human organ is the main command center of the central nervous system?",
+                        options: ["Brain", "Heart", "Liver", "Pancreas", "Spleen"],
+                        explanation: "The brain coordinates thought, emotion, memory, and motor functions."
+                    },
+                    es: {
+                        question: "¿Qué órgano humano es el principal centro de comando del sistema nervioso central?",
+                        options: ["Cerebro", "Corazón", "Hígado", "Páncreas", "Bazo"],
+                        explanation: "El cerebro coordina el pensamiento, las emociones y la memoria."
+                    },
+                    la: {
+                        question: "Quod organum est centrum imperii systematis nervosi centralis?",
+                        options: ["Cerebrum", "Cor", "Hepar", "Pancreas", "Lien"],
+                        explanation: "Cerebrum cogitationem et motus coordinat."
+                    },
+                    zh: {
+                        question: "哪一个人体器官是中枢神经系统的主指挥中心？",
+                        options: ["大脑", "心脏", "肝脏", "胰腺", "脾脏"],
+                        explanation: "大脑协调思维、情感、记忆和运动功能。"
+                    }
+                }
+            },
+            {
+                correctIndex: 1,
+                i18n: {
+                    pt: {
+                        question: "Onde ocorre cerca de 90% da absorção de nutrientes no sistema digestório?",
+                        options: ["Estômago", "Intestino delgado", "Intestino grosso", "Esôfago", "Reto"],
+                        explanation: "O intestino delgado possui vilosidades que absorvem eficientemente os nutrientes."
+                    },
+                    en: {
+                        question: "Where does about 90% of nutrient absorption occur in the digestive system?",
+                        options: ["Stomach", "Small intestine", "Large intestine", "Esophagus", "Rectum"],
+                        explanation: "The small intestine has villi that efficiently absorb nutrients."
+                    },
+                    es: {
+                        question: "¿Dónde ocurre aproximadamente el 90% de la absorción de nutrientes en el sistema digestivo?",
+                        options: ["Estómago", "Intestino delgado", "Intestino grueso", "Esófago", "Recto"],
+                        explanation: "El intestino delgado cuenta con vellosidades que absorben nutrientes."
+                    },
+                    la: {
+                        question: "Ubi 90% nutrimentorum in systemate digestorio absorbetur?",
+                        options: ["Ventriculus", "Intestinum tenue", "Intestinum crassum", "Esophagus", "Rectum"],
+                        explanation: "Intestinum tenue nutrimenta absorbenda curat."
+                    },
+                    zh: {
+                        question: "在消化系统中，大约90%的营养物质吸收过程发生在哪个部位？",
+                        options: ["胃", "小肠", "大肠", "食道", "直肠"],
+                        explanation: "小肠内壁拥有大量绒毛，能够高效吸收各类营养物质。"
+                    }
+                }
+            },
+            {
+                correctIndex: 2,
+                i18n: {
+                    pt: {
+                        question: "Qual é a principal glândula endócrina onde os linfócitos T do sistema imunológico amadurecem?",
+                        options: ["Tireoide", "Adrenal", "Timo", "Hipófise", "Pâncreas"],
+                        explanation: "O timo é crucial para o desenvolvimento e especialização das células de defesa T."
+                    },
+                    en: {
+                        question: "What is the primary endocrine gland where T-lymphocytes of the immune system mature?",
+                        options: ["Thyroid", "Adrenal", "Thymus", "Pituitary", "Pancreas"],
+                        explanation: "The thymus is crucial for the development and specialization of T cells."
+                    },
+                    es: {
+                        question: "¿Cuál es la glándula principal donde maduran los linfocitos T del sistema inmunitario?",
+                        options: ["Tiroides", "Suprarrenal", "Timo", "Hipófisis", "Páncreas"],
+                        explanation: "El timo es clave para el desarrollo y especialización de los linfocitos T."
+                    },
+                    la: {
+                        question: "Ubi lymphocyti T systematis immunitatis maturescunt?",
+                        options: ["Thyroidea", "Adrenalis", "Thymus", "Hypophysis", "Pancreas"],
+                        explanation: "Thymus est glandula ubi lymphocyti T maturant."
+                    },
+                    zh: {
+                        question: "免疫系统的T淋巴细胞在哪个主要的内分泌腺体内发育成熟？",
+                        options: ["甲状腺", "肾上腺", "胸腺", "垂体", "胰腺"],
+                        explanation: "胸腺对于T细胞的分化、成熟和特异性免疫功能至关重要。"
+                    }
+                }
+            },
+            {
+                correctIndex: 0,
+                i18n: {
+                    pt: {
+                        question: "Cerca de quanto porcento do peso corporal total de um adulto médio é composto por músculos?",
+                        options: ["40% a 50%", "10% a 15%", "70% a 80%", "5% a 8%", "90%"],
+                        explanation: "O tecido muscular representa quase metade da massa corporal de um adulto."
+                    },
+                    en: {
+                        question: "About what percentage of an average adult's total body weight is made up of muscle?",
+                        options: ["40% to 50%", "10% to 15%", "70% to 80%", "5% to 8%", "90%"],
+                        explanation: "Muscle tissue accounts for nearly half of an adult's body mass."
+                    },
+                    es: {
+                        question: "¿Aproximadamente qué porcentaje del peso corporal de un adulto promedio está formado por músculos?",
+                        options: ["40% a 50%", "10% a 15%", "70% a 80%", "5% a 8%", "90%"],
+                        explanation: "El tejido muscular representa casi la mitad de la masa corporal."
+                    },
+                    la: {
+                        question: "Quanta pars ponderis corporis humani ex musculis constat?",
+                        options: ["40% - 50%", "10% - 15%", "70% - 80%", "5% - 8%", "90%"],
+                        explanation: "Musculi fere dimidium ponderis corporis faciunt."
+                    },
+                    zh: {
+                        question: "正常成年人的肌肉组织大约占其总体重的多大比例？",
+                        options: ["40% 至 50%", "10% 至 15%", "70% 至 80%", "5% 至 8%", "90%"],
+                        explanation: "肌肉组织约占成年人身体总质量的一半。"
+                    }
+                }
+            },
+            {
+                correctIndex: 1,
+                i18n: {
+                    pt: {
+                        question: "Qual vaso sanguíneo transporta sangue rico em oxigênio do coração para o restante do corpo?",
+                        options: ["Veia cava", "Artéria aorta", "Veia pulmonar", "Capilar venoso", "Artéria pulmonar"],
+                        explanation: "A aorta é a principal artéria do corpo, originando-se no ventrículo esquerdo."
+                    },
+                    en: {
+                        question: "Which blood vessel carries oxygen-rich blood from the heart to the rest of the body?",
+                        options: ["Vena cava", "Aorta artery", "Pulmonary vein", "Venous capillary", "Pulmonary artery"],
+                        explanation: "The aorta is the body's main artery, originating from the left ventricle."
+                    },
+                    es: {
+                        question: "¿Qué vaso sanguíneo transporta sangre rica en oxígeno del corazón al resto del cuerpo?",
+                        options: ["Vena cava", "Arteria aorta", "Vena pulmonar", "Capilar venoso", "Arteria pulmonar"],
+                        explanation: "La aorta es la principal arteria del cuerpo humano."
+                    },
+                    la: {
+                        question: "Quod vas sanguinem oxygenatum a corde ad corpus vehit?",
+                        options: ["Vena cava", "Aorta", "Vena pulmonaris", "Capillare", "Arteria pulmonaris"],
+                        explanation: "Aorta est arteria principalis corporis."
+                    },
+                    zh: {
+                        question: "哪一根血管负责将富含氧气的血液从心脏输送到全身各处？",
+                        options: ["腔静脉", "主动脉", "肺静脉", "静脉毛细血管", "肺动脉"],
+                        explanation: "主动脉是人体最大的主动脉，起于左心室。"
+                    }
+                }
+            },
+            {
+                correctIndex: 2,
+                i18n: {
+                    pt: {
+                        question: "Qual é o nome do músculo principal responsável por impulsionar a respiração mecânica?",
+                        options: ["Bíceps", "Deltoide", "Diafragma", "Reto abdominal", "Trapézio"],
+                        explanation: "O diafragma separa o tórax do abdômen e se contrai para permitir a entrada de ar."
+                    },
+                    en: {
+                        question: "What is the name of the main muscle responsible for driving mechanical breathing?",
+                        options: ["Biceps", "Deltoid", "Diaphragm", "Rectus abdominis", "Trapezius"],
+                        explanation: "The diaphragm separates the chest from the abdomen and contracts to let air in."
+                    },
+                    es: {
+                        question: "¿Cómo se llama el músculo principal responsable de impulsar la respiración mecánica?",
+                        options: ["Bíceps", "Deltoides", "Diafragma", "Recto abdominal", "Trapecio"],
+                        explanation: "El diafragma separa el tórax del abdomen y se contrae para respirar."
+                    },
+                    la: {
+                        question: "Quis est musculus principalis qui respirationem movet?",
+                        options: ["Biceps", "Deltoides", "Diaphragma", "Rectus abdominis", "Trapezius"],
+                        explanation: "Diaphragma thoracem ab abdomine separat."
+                    },
+                    zh: {
+                        question: "驱动人体机械呼吸运动的最主要肌肉叫什么名字？",
+                        options: ["肱二头肌", "三角肌", "膈肌", "腹直肌", "斜方肌"],
+                        explanation: "膈肌位于胸腔和腹腔之间，通过收缩和舒张来驱动肺部吸气和呼气。"
+                    }
+                }
+            },
+            {
+                correctIndex: 0,
+                i18n: {
+                    pt: {
+                        question: "Aproximadamente quantos neurônios interconectados compõem o sistema nervoso humano?",
+                        options: ["~86 bilhões", "~1 milhão", "~500 mil", "~10 trilhões", "~2 bilhões"],
+                        explanation: "O cérebro humano abriga cerca de 86 bilhões de neurônios."
+                    },
+                    en: {
+                        question: "Approximately how many interconnected neurons make up the human nervous system?",
+                        options: ["~86 billion", "~1 million", "~500 thousand", "~10 trillion", "~2 billion"],
+                        explanation: "The human brain houses roughly 86 billion neurons."
+                    },
+                    es: {
+                        question: "¿Aproximadamente cuántas neuronas interconectadas componen el sistema nervioso humano?",
+                        options: ["~86 mil millones", "~1 millón", "~500 mil", "~10 billones", "~2 mil millones"],
+                        explanation: "El cerebro humano alberga unas 86 mil millones de neuronas."
+                    },
+                    la: {
+                        question: "Quot neurona systema nervosum humanum habet?",
+                        options: ["~86 miliarda", "~1 milies milium", "~500 milia", "~10 billones", "~2 miliarda"],
+                        explanation: "Cerebrum humanum circiter 86 miliarda neuronom habet."
+                    },
+                    zh: {
+                        question: "人体神经系统大约由多少个相互连接的神经元组成？",
+                        options: ["约860亿个", "约100万个", "约50万个", "约10万亿个", "约20亿个"],
+                        explanation: "人类大脑中大约拥有860亿个神经元。"
+                    }
+                }
+            },
+            {
+                correctIndex: 1,
+                i18n: {
+                    pt: {
+                        question: "Qual órgão glandular anexo ao sistema digestório produz a bile para emulsionar gorduras?",
+                        options: ["Pâncreas", "Fígado", "Baço", "Vesícula biliar", "Tireoide"],
+                        explanation: "O fígado produz a bile, que ajuda na quebra e digestão das gorduras."
+                    },
+                    en: {
+                        question: "Which glandular organ attached to the digestive system produces bile to emulsify fats?",
+                        options: ["Pancreas", "Liver", "Spleen", "Gallbladder", "Thyroid"],
+                        explanation: "The liver produces bile, which helps break down and digest fats."
+                    },
+                    es: {
+                        question: "¿Qué órgano glandular anexo al sistema digestivo produce bilis para emulsionar grasas?",
+                        options: ["Páncreas", "Hígado", "Bazo", "Vesícula biliar", "Tiroides"],
+                        explanation: "El hígado produce bilis para ayudar a descomponer las grasas."
+                    },
+                    la: {
+                        question: "Quod organum bilem ad pinguedines concoquendas producit?",
+                        options: ["Pancreas", "Hepar", "Lien", "Vesica fellea", "Thyroidea"],
+                        explanation: "Hepar bilem producit."
+                    },
+                    zh: {
+                        question: "消化系统附属的哪个腺体器官负责产生胆汁来乳化脂肪？",
+                        options: ["胰腺", "肝脏", "脾脏", "胆囊", "甲状腺"],
+                        explanation: "肝脏负责分泌胆汁（胆囊负责储存），用于分解和消化脂肪。"
+                    }
+                }
+            },
+            {
+                correctIndex: 2,
+                i18n: {
+                    pt: {
+                        question: "Como se chamam as unidades funcionais microscópicas de filtração localizadas dentro dos rins?",
+                        options: ["Alvéolos", "Neurônios", "Néfrons", "Hélices", "Vilosidades"],
+                        explanation: "Cada rim possui cerca de 1 milhão de néfrons responsáveis por filtrar o sangue."
+                    },
+                    en: {
+                        question: "What are the microscopic functional filtration units located inside the kidneys called?",
+                        options: ["Alveoli", "Neurons", "Nephrons", "Helices", "Villi"],
+                        explanation: "Each kidney has about 1 million nephrons responsible for filtering blood."
+                    },
+                    es: {
+                        question: "¿Cómo se llaman las unidades funcionales microscópicas de filtración dentro de los riñones?",
+                        options: ["Alvéolos", "Neuronas", "Nefronas", "Hélices", "Vellosidades"],
+                        explanation: "Cada riñón posee cerca de 1 millón de nefronas encargadas de filtrar."
+                    },
+                    la: {
+                        question: "Quomodo appellantur unitates filtrationis microscopicae in renibus?",
+                        options: ["Alveoli", "Neurona", "Nephrones", "Villi", "Capillaria"],
+                        explanation: "Unusquisque ren circiter 1 millionem nephronum habet."
+                    },
+                    zh: {
+                        question: "位于肾脏内部的微观功能过滤单位叫什么名字？",
+                        options: ["肺泡", "神经元", "肾单位", "螺旋体", "绒毛"],
+                        explanation: "每个肾脏大约有100万个肾单位，是过滤血液的核心微观单元。"
+                    }
+                }
+            },
+            {
+                correctIndex: 0,
+                i18n: {
+                    pt: {
+                        question: "Qual é o menor osso de todo o esqueleto humano, localizado no ouvido médio?",
+                        options: ["Estapédio", "Bigorna", "Martelo", "Fíbula", "Patela"],
+                        explanation: "O estapédio é o menor osso do corpo humano, medindo apenas alguns milímetros."
+                    },
+                    en: {
+                        question: "What is the smallest bone in the entire human skeleton, located in the middle ear?",
+                        options: ["Stapes (Stapedius)", "Incus", "Malleus", "Fibula", "Patella"],
+                        explanation: "The stapes is the smallest bone in the human body, measuring just a few millimeters."
+                    },
+                    es: {
+                        question: "¿Cuál es el hueso más pequeño del esqueleto humano, ubicado en el oído medio?",
+                        options: ["Estribo", "Yunque", "Martillo", "Fíbula", "Rótula"],
+                        explanation: "El estribo es el hueso más pequeño del cuerpo humano."
+                    },
+                    la: {
+                        question: "Quod est os minimum in auris media?",
+                        options: ["Stapes", "Incus", "Malleus", "Fibula", "Patella"],
+                        explanation: "Stapes est minimum os corporis humani."
+                    },
+                    zh: {
+                        question: "人体骨骼中位于中耳最小的骨头是什么？",
+                        options: ["镫骨", "砧骨", "锤骨", "腓骨", "髌骨"],
+                        explanation: "镫骨是人体中最小的骨头，长度仅有几毫米。"
+                    }
+                }
+            },
+            {
+                correctIndex: 1,
+                i18n: {
+                    pt: {
+                        question: "Qual órgão do sistema imunológico atua como um grande filtro sanguíneo e destrói hemácias velhas?",
+                        options: ["Timo", "Baço", "Linfonodo", "Amígdala", "Fígado"],
+                        explanation: "O baço filtra o sangue, remove glóbulos vermelhos envelhecidos e armazena células imunes."
+                    },
+                    en: {
+                        question: "Which organ of the immune system acts as a major blood filter and destroys aging red blood cells?",
+                        options: ["Thymus", "Spleen", "Lymph node", "Tonsil", "Liver"],
+                        explanation: "The spleen filters blood, removes aged red blood cells, and stores immune cells."
+                    },
+                    es: {
+                        question: "¿Qué órgano del sistema inmunitario actúa como filtro sanguíneo y destruye glóbulos rojos viejos?",
+                        options: ["Timo", "Bazo", "Ganglio linfático", "Amígdala", "Hígado"],
+                        explanation: "El bazo filtra la sangre y elimina glóbulos rojos envejecidos."
+                    },
+                    la: {
+                        question: "Quod organum systematis immunitatis sanguinem filtrat et cellulas senes delere solet?",
+                        options: ["Thymus", "Lien", "Nodus lymphaticus", "Tonsilla", "Hepar"],
+                        explanation: "Lien sanguinem purgat et cellulas vetustas delest."
+                    },
+                    zh: {
+                        question: "免疫系统中，哪一个器官充当大型血液过滤器并负责销毁衰老的红细胞？",
+                        options: ["胸腺", "脾脏", "淋巴结", "扁桃体", "肝脏"],
+                        explanation: "脾脏能够过滤血液、清除衰老红细胞并储存免疫防御细胞。"
+                    }
+                }
+            },
+            {
+                correctIndex: 2,
+                i18n: {
+                    pt: {
+                        question: "Qual é a principal função do tecido ósseo na medula óssea vermelha?",
+                        options: ["Produção de suco gástrico", "Secreção de insulina", "Produção de células sanguíneas (hematopoiese)", "Armazenamento de bile", "Condução de impulsos nervosos"],
+                        explanation: "A medula óssea vermelha fabrica hemácias, leucócitos e plaquetas."
+                    },
+                    en: {
+                        question: "What is the main function of bone tissue in red bone marrow?",
+                        options: ["Producing gastric juice", "Insulin secretion", "Blood cell production (hematopoiesis)", "Bile storage", "Conduction of nerve impulses"],
+                        explanation: "Red bone marrow manufactures red blood cells, white blood cells, and platelets."
+                    },
+                    es: {
+                        question: "¿Cuál es la función principal de la médula ósea roja en el tejido esquelético?",
+                        options: ["Producir jugo gástrico", "Secretar insulina", "Producir células sanguíneas (hematopoyesis)", "Almacenar bilis", "Conducir impulsos"],
+                        explanation: "La médula ósea roja fabrica glóbulos rojos, blancos y plaquetas."
+                    },
+                    la: {
+                        question: "Quae est principalis functio medullae ossium rubrae?",
+                        options: ["Succum gastricum facere", "Insulinum secretare", "Cellulas sanguinis producere", "Bilem servare", "Impulsus mittere"],
+                        explanation: "Medulla ossina rubra cellulas sanguinis format."
+                    },
+                    zh: {
+                        question: "骨骼中红骨髓的主要生理功能是什么？",
+                        options: ["分泌胃液", "分泌胰岛素", "制造各类血细胞（造血作用）", "储存胆汁", "传导神经冲动"],
+                        explanation: "红骨髓是人体的造血工厂，负责制造红细胞、白细胞和血小板。"
+                    }
+                }
+            },
+            {
+                correctIndex: 0,
+                i18n: {
+                    pt: {
+                        question: "Como se chama a articulação sinovial que permite movimentos amplos em várias direções, como o ombro e o quadril?",
+                        options: ["Articulação esférica (bola e soquete)", "Articulação em dobradiça", "Articulação em pivô", "Articulação plana", "Sutura craniana"],
+                        explanation: "As articulações esféricas oferecem grande amplitude de movimento espacial."
+                    },
+                    en: {
+                        question: "What is the synovial joint that allows wide movement in multiple directions, like the shoulder and hip, called?",
+                        options: ["Ball-and-socket joint", "Hinge joint", "Pivot joint", "Plane joint", "Cranial suture"],
+                        explanation: "Ball-and-socket joints offer broad spatial range of motion."
+                    },
+                    es: {
+                        question: "¿Cómo se llama la articulación sinovial que permite movimientos amplios en varias direcciones (como hombro y cadera)?",
+                        options: ["Articulación esférica", "Articulación en bisagra", "Articualción en pivote", "Articulación plana", "Sutura"],
+                        explanation: "Las articulaciones esféricas ofrecen gran amplitud de movimiento."
+                    },
+                    la: {
+                        question: "Quomodo appellatur articulatio quae motum latum in multis directionibus dat?",
+                        options: ["Articulatio sphaeroidea", "Ginglymus", "Articulatio trochoidea", "Articulatio plana", "Sutura"],
+                        explanation: "Articulatio sphaeroidea motum latum sicut in humero dat."
+                    },
+                    zh: {
+                        question: "允许在多个方向上进行广泛活动的滑膜关节（如肩关节和髋关节）叫什么名称？",
+                        options: ["球窝关节（球状关节）", "铰链关节", "枢轴关节", "平面关节", "颅骨缝"],
+                        explanation: "球窝关节能够提供多维度、广角范围的空间运动能力。"
+                    }
+                }
+            },
+            {
+                correctIndex: 1,
+                i18n: {
+                    pt: {
+                        question: "Qual porcentagem aproximada das células imunológicas do corpo humano está concentrada na região do intestino?",
+                        options: ["Cerca de 10%", "Cerca de 70%", "Cerca de 20%", "Menos de 1%", "50%"],
+                        explanation: "O intestino abriga cerca de 70% de todo o sistema imunológico do corpo."
+                    },
+                    en: {
+                        question: "What approximate percentage of the human body's immune cells is concentrated in the gut region?",
+                        options: ["About 10%", "About 70%", "About 20%", "Less than 1%", "50%"],
+                        explanation: "The gut houses about 70% of the body's entire immune system."
+                    },
+                    es: {
+                        question: "¿Qué porcentaje aproximado de las células inmunitarias del cuerpo humano se concentra en el intestino?",
+                        options: ["Alrededor del 10%", "Alrededor del 70%", "Alrededor del 20%", "Menos del 1%", "50%"],
+                        explanation: "El intestino alberga cerca del 70% de todo el sistema inmunitario."
+                    },
+                    la: {
+                        question: "Quanta pars cellularum immunitatis in intestino habitat?",
+                        options: ["Circiter 10%", "Circiter 70%", "Circiter 20%", "Minus quam 1%", "50%"],
+                        explanation: "Intestinum circiter 70% systematis immunitatis tenet."
+                    },
+                    zh: {
+                        question: "人体大约百分之多少的免疫细胞集中在肠道区域？",
+                        options: ["约10%", "约70%", "约20%", "少于1%", "50%"],
+                        explanation: "人体约70%的免疫细胞都驻扎在肠道中，肠道是核心免疫防线。"
+                    }
+                }
+            }
+        ];
+
+        // Dicionário de Traduções de UI e Textos Estáticos
+        const uiTranslations = {
+            pt: {
+                pageTitle: "Anatomia Interativa - Sistemas do Corpo Humano",
+                headerTitleHTML: 'Corpo Humano <span class="text-indigo-600">360°</span>',
+                headerSubtitle: "Atlas Anatômico Interativo & Curiosidades",
+                navExplore: "Explorar Sistemas",
+                navQuiz: "Mini-Quiz",
+                heroBadge: "Aprendizado Visual Interativo",
+                heroTitleHTML: 'Descubra a incrível máquina que é o <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-500">Corpo Humano</span>',
+                heroSubtitle: "Clique nos órgãos diretamente no modelo anatômico ou selecione um dos sistemas principais abaixo para explorar suas funções vitais, estruturas e fatos surpreendentes.",
+                svgTouchHint: "Toque em um órgão",
+                svgViewAllBtn: "Ver Todos",
+                svgSelectedPrefix: "Sistema selecionado:",
+                svgAllSystemsLabel: "Visão Geral dos Sistemas",
+                quizBadge: "Desafio de Conhecimento",
+                quizTitle: "Mini-Quiz de Anatomia",
+                quizSubtitle: "Teste o que você aprendeu explorando os sistemas do corpo humano.",
+                quizScoreLabel: "Pontuação",
+                footerTitle: "Corpo Humano 360° — Educação Científica Interativa",
+                footerSubtitle: "Desenvolvido para fins educativos. Explore, clique e aprenda.",
+                systemBadge: "Sistema Anatômico",
+                mainFunctionsTitle: "Funções Principais",
+                organsTitle: "Órgãos e Estruturas Envolvidas",
+                factsTitle: "Você Sabia?",
+                quizMsgHigh: "Excelente! Você demonstra um conhecimento profundo da anatomia humana.",
+                quizMsgMid: "Bom trabalho! Continue explorando para dominar todos os sistemas anatômicos.",
+                quizMsgLow: "Continue estudando e explorando os sistemas do corpo humano para melhorar sua pontuação!",
+                quizEndTitle: "Quiz Concluído!",
+                quizEndScore: (score, total) => `Sua Pontuação Final: ${score} / ${total}`,
+                quizRestartBtn: "Tentar Novamente",
+                quizQuestionCounter: (cur, total) => `Questão ${cur} de ${total}`,
+                quizCompletedPercent: (pct) => `${pct}% Concluído`,
+                quizCorrectFeedback: "Correto! Excelente resposta.",
+                quizWrongFeedback: "Incorreto. Revise os detalhes acima para aprender mais.",
+                quizNextBtn: "Próxima Questão",
+                quizFinishBtn: "Ver Resultado Final"
+            },
+            en: {
+                pageTitle: "Interactive Anatomy - Human Body Systems",
+                headerTitleHTML: 'Human Body <span class="text-indigo-600">360°</span>',
+                headerSubtitle: "Interactive Anatomical Atlas & Facts",
+                navExplore: "Explore Systems",
+                navQuiz: "Mini-Quiz",
+                heroBadge: "Interactive Visual Learning",
+                heroTitleHTML: 'Discover the incredible machine that is the <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-500">Human Body</span>',
+                heroSubtitle: "Click on organs directly on the anatomical model or select one of the core systems below to explore their vital functions, structures, and surprising facts.",
+                svgTouchHint: "Tap an organ",
+                svgViewAllBtn: "View All",
+                svgSelectedPrefix: "Selected system:",
+                svgAllSystemsLabel: "General Systems Overview",
+                quizBadge: "Knowledge Challenge",
+                quizTitle: "Anatomy Mini-Quiz",
+                quizSubtitle: "Test what you've learned exploring the human body systems.",
+                quizScoreLabel: "Score",
+                footerTitle: "Human Body 360° — Interactive Scientific Education",
+                footerSubtitle: "Developed for educational purposes. Explore, click, and learn.",
+                systemBadge: "Anatomical System",
+                mainFunctionsTitle: "Main Functions",
+                organsTitle: "Involved Organs & Structures",
+                factsTitle: "Did You Know?",
+                quizMsgHigh: "Excellent! You demonstrate deep knowledge of human anatomy.",
+                quizMsgMid: "Good job! Keep exploring to master all anatomical systems.",
+                quizMsgLow: "Keep studying and exploring the human body systems to improve your score!",
+                quizEndTitle: "Quiz Completed!",
+                quizEndScore: (score, total) => `Final Score: ${score} / ${total}`,
+                quizRestartBtn: "Try Again",
+                quizQuestionCounter: (cur, total) => `Question ${cur} of ${total}`,
+                quizCompletedPercent: (pct) => `${pct}% Completed`,
+                quizCorrectFeedback: "Correct! Excellent answer.",
+                quizWrongFeedback: "Incorrect. Review the details above to learn more.",
+                quizNextBtn: "Next Question",
+                quizFinishBtn: "View Final Result"
+            },
+            es: {
+                pageTitle: "Anatomía Interactiva - Sistemas del Cuerpo Humano",
+                headerTitleHTML: 'Cuerpo Humano <span class="text-indigo-600">360°</span>',
+                headerSubtitle: "Atlas Anatómico Interactivo y Curiosidades",
+                navExplore: "Explorar Sistemas",
+                navQuiz: "Mini-Cuestionario",
+                heroBadge: "Aprendizaje Visual Interactivo",
+                heroTitleHTML: 'Descubre la increíble máquina que es el <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-500">Cuerpo Humano</span>',
+                heroSubtitle: "Haz clic en los órganos directamente en el modelo o selecciona uno de los sistemas principales para explorar sus funciones vitales y datos curiosos.",
+                svgTouchHint: "Toca un órgano",
+                svgViewAllBtn: "Ver Todos",
+                svgSelectedPrefix: "Sistema seleccionado:",
+                svgAllSystemsLabel: "Vista General de Sistemas",
+                quizBadge: "Desafío de Conocimiento",
+                quizTitle: "Mini-Cuestionario de Anatomía",
+                quizSubtitle: "Pon a prueba lo que has aprendido explorando los sistemas del cuerpo humano.",
+                quizScoreLabel: "Puntuación",
+                footerTitle: "Cuerpo Humano 360° — Educación Científica Interactiva",
+                footerSubtitle: "Desarrollado con fines educativos. Explora, haz clic y aprende.",
+                systemBadge: "Sistema Anatómico",
+                mainFunctionsTitle: "Funciones Principales",
+                organsTitle: "Órganos y Estructuras Involucradas",
+                factsTitle: "¿Sabías qué?",
+                quizMsgHigh: "¡Excelente! Demuestras un profundo conocimiento de la anatomía humana.",
+                quizMsgMid: "¡Buen trabajo! Sigue explorando para dominar todos los sistemas anatómicos.",
+                quizMsgLow: "¡Sigue estudiando y explorando los sistemas del cuerpo humano para mejorar tu puntuación!",
+                quizEndTitle: "¡Cuestionario Completado!",
+                quizEndScore: (score, total) => `Puntuación Final: ${score} / ${total}`,
+                quizRestartBtn: "Intentar de Nuevo",
+                quizQuestionCounter: (cur, total) => `Pregunta ${cur} de ${total}`,
+                quizCompletedPercent: (pct) => `${pct}% Completado`,
+                quizCorrectFeedback: "¡Correcto! Excelente respuesta.",
+                quizWrongFeedback: "Incorrecto. Revisa los detalles anteriores para aprender más.",
+                quizNextBtn: "Siguiente Pregunta",
+                quizFinishBtn: "Ver Resultado Final"
+            },
+            la: {
+                pageTitle: "Anatomia Interactiva - Systemata Corporis Humani",
+                headerTitleHTML: 'Corpus Humanum <span class="text-indigo-600">360°</span>',
+                headerSubtitle: "Atlas Anatomicum & Mirabilia",
+                navExplore: "Systemata Explorare",
+                navQuiz: "Mini-Quaestio",
+                heroBadge: "Discentia Visiva",
+                heroTitleHTML: 'Inveni machinam incredibilem quae est <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-500">Corpus Humanum</span>',
+                heroSubtitle: "Preme organa in exemplari anatomico vel elige unum systema ad munera vitalia et facta admiranda exploranda.",
+                svgTouchHint: "Tange organum",
+                svgViewAllBtn: "Omnia",
+                svgSelectedPrefix: "Systema electum:",
+                svgAllSystemsLabel: "Prospectus Systematum",
+                quizBadge: "Certamen Scientiae",
+                quizTitle: "Mini-Quaestio Anatomica",
+                quizSubtitle: "Explora et proba scientiam tuam de corpore humano.",
+                quizScoreLabel: "Puncta",
+                footerTitle: "Corpus Humanum 360° — Educatio Scientifica",
+                footerSubtitle: "Ad finem educativum creatum. Explora, tange et disce.",
+                systemBadge: "Systema Anatomicum",
+                mainFunctionsTitle: "Munera Principalia",
+                organsTitle: "Organa et Structurae",
+                factsTitle: "Scisne?",
+                quizMsgHigh: "Egregie! Altam anatomiae humanae scientiam demonstras.",
+                quizMsgMid: "Bene factum! Perge systemata omnia dominari.",
+                quizMsgLow: "Perge studere ad puncta meliora obtinenda!",
+                quizEndTitle: "Quaestio Finita!",
+                quizEndScore: (score, total) => `Puncta Finalia: ${score} / ${total}`,
+                quizRestartBtn: "Iterum Temptare",
+                quizQuestionCounter: (cur, total) => `Quaestio ${cur} ex ${total}`,
+                quizCompletedPercent: (pct) => `${pct}% Completum`,
+                quizCorrectFeedback: "Recte! Optima responsio.",
+                quizWrongFeedback: "Non recte. Repete singula supra.",
+                quizNextBtn: "Sequens Quaestio",
+                quizFinishBtn: "Videre Exitum"
+            },
+            zh: {
+                pageTitle: "交互式解剖学 - 人体系统大观",
+                headerTitleHTML: '人体结构 <span class="text-indigo-600">360°</span>',
+                headerSubtitle: "互动解剖图谱与趣味科普事实",
+                navExplore: "探索系统",
+                navQuiz: "趣味小测验",
+                heroBadge: "互动视觉化学习",
+                heroTitleHTML: '探索精妙绝伦的人体生命机器 <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-500">Human Body</span>',
+                heroSubtitle: "直接在解剖图上点击器官，或从下方选择系统来探索它们的核心生命功能、涉及器官与惊人事实。",
+                svgTouchHint: "点击图中的器官",
+                svgViewAllBtn: "查看全部",
+                svgSelectedPrefix: "当前选中系统：",
+                svgAllSystemsLabel: "系统总览",
+                quizBadge: "知识挑战",
+                quizTitle: "人体解剖趣味测验",
+                quizSubtitle: "测试您在探索人体各系统过程中学到的知识。",
+                quizScoreLabel: "得分",
+                footerTitle: "人体 360° — 互动科学教育",
+                footerSubtitle: "专为科学教育打造。尽情探索、点击并获取知识。",
+                systemBadge: "解剖系统",
+                mainFunctionsTitle: "核心主要功能",
+                organsTitle: "涉及的器官与结构",
+                factsTitle: "您知道吗？",
+                quizMsgHigh: "太棒了！您对人体解剖学有着非常深刻的理解与掌握。",
+                quizMsgMid: "干得不错！继续探索可以彻底掌握所有人体系统。",
+                quizMsgLow: "再接再厉！继续探索和学习人体各系统来提升您的得分。",
+                quizEndTitle: "测验已完成！",
+                quizEndScore: (score, total) => `最终得分：${score} / ${total}`,
+                quizRestartBtn: "重新开始测验",
+                quizQuestionCounter: (cur, total) => `第 ${cur} 题，共 ${total} 题`,
+                quizCompletedPercent: (pct) => `已完成 ${pct}%`,
+                quizCorrectFeedback: "回答正确！太棒了。",
+                quizWrongFeedback: "回答错误。请复习上方系统介绍以了解更多。",
+                quizNextBtn: "下一题",
+                quizFinishBtn: "查看最终成绩"
+            }
+        };
 
         // Alternar idioma e atualizar toda a UI preservando o estado
         function setLanguage(lang) {
